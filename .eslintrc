@@ -1,0 +1,24 @@
+{
+    // @typescript-eslint/parser
+    "parser": "@typescript-eslint/parser", 
+  
+    //eslint-plugin-prettier
+    "extends": [ 
+      "prettier"
+    ],
+    //eslint-plugin-prettier
+    "plugins": [
+      "prettier"
+    ],
+    //eslint-plugin-prettier
+    "rules": {
+     "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "singleQuote": true,
+        "parser": "flow"
+      }
+    ]
+    }
+  }
