@@ -1,6 +1,6 @@
 {
     // @typescript-eslint/parser
-    "parser": "@typescript-eslint/parser", 
+    "parser": "@typescript-eslint/parser",
   
     //eslint-plugin-prettier
     "extends": [ 
