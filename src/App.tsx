@@ -1,13 +1,17 @@
-import React from 'react';
-import Test from './Test';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import LoginForm from './pages/Login';
+import Main from './pages/Main';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div>
-      <Test />
+    <div className="App">
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/login" component={LoginForm} />
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
