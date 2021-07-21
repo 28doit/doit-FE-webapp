@@ -1,14 +1,13 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'; //페이지 새로고침 안하고도 변경 가능
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <React.StrictMode>
     <App />
-  </BrowserRouter>,
+  </React.StrictMode>,
   document.getElementById('root'),
 );
 
