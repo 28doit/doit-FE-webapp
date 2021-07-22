@@ -1,3 +1,4 @@
+// API를 통해서 저장되어있는 유저 정보들을 가져와서 find 메서드로 비교 후 로그인 판별
 import axios from 'axios';
 
 interface LoginProps {
@@ -15,6 +16,5 @@ export const AxiosLogin = async ({ email, password }: LoginProps) => {
     throw new Error('아이디 또는 비밀번호가 일치하지 않습니다.');
   }
   console.log(`${email}님 환영합니다!`);
-  console.log(typeof user);
   return user;
 };
