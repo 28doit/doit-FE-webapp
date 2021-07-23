@@ -2,15 +2,20 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { AxiosLogin } from '../../services/axiosLogin';
-
-interface Props {
-  disabled?: boolean;
-}
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/actions/user_actions';
 
 const Container = styled.div`
-  margin-top: 100px;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Input = styled.input`
@@ -18,19 +23,17 @@ const Input = styled.input`
   overflow: hidden;
   width: 100%;
   height: 40px;
-  margin: 0 0 8px;
+  margin: 0 0 20px;
   padding: 5px 39px 5px 11px;
   border: solid 1px #dadada;
   background: #fff;
   box-sizing: border-box;
 `;
 
-// eslint-disable-next-line prettier/prettier
-const Button = styled.div<Props>`
+const Button = styled.button`
   font-size: 18px;
   font-weight: 700;
   line-height: 49px;
-  display: block;
   width: 100%;
   height: 49px;
   margin: 16px 0 7px;
@@ -40,45 +43,54 @@ const Button = styled.div<Props>`
   border: none;
   border-radius: 0;
   background-color: #03c75a;
-  ${({ disabled }) =>
-    disabled &&
-    `
-    background-color: #efefef;
-  `}
 `;
 
 const LoginForm: React.FC = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
-  const [account, setAccount] = useState({ email: '', password: '' });
-  const onChangeAccount = (e: any) => {
-    setAccount({ ...account, [e.target.name]: e.target.value });
-    console.log(account);
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
+  const onEmailHandler = (e: any) => {
+    setEmail(e.currentTarget.value);
   };
-  const onSubmitAccount = async () => {
-    try {
-      await AxiosLogin(account);
-      history.replace('/');
-      window.alert(`${account.email}님 환영합니다.`);
-    } catch (error) {
-      window.alert(error);
-    }
+  const onPasswordHandler = (e: any) => {
+    setPassword(e.currentTarget.value);
+  };
+  const onSubmitHandler = async (e: any) => {
+    e.preventDefault();
+    let body = {
+      email: Email,
+      password: Password,
+    };
+    dispatch(loginUser(body)); // then 오류 고쳐야 하는데 잘 모르겠음
+    // .then((response: any) => {
+    //   if (response.payload.joinSuccess) {
+    //     history.replace('/login');
+    //   } else {
+    //     alert('Error');
+    //   }
+    // });
+    history.replace('/');
   };
   return (
     <Container>
-      <Input
-        id="email"
-        name="email"
-        placeholder="이메일을 입력해주세요"
-        onChange={onChangeAccount}
-      />
-      <Input
-        id="password"
-        name="password"
-        type="password"
-        placeholder="비밀번호를 입력해주세요"
-        onChange={onChangeAccount}
-      />
-      <Button onClick={onSubmitAccount}>로그인</Button>
+      <Form onSubmit={onSubmitHandler}>
+        <label>이메일</label>
+        <Input
+          type="email"
+          placeholder="이메일을 입력해주세요"
+          value={Email}
+          onChange={onEmailHandler}
+        />
+        <label>비밀번호</label>
+        <Input
+          type="password"
+          value={Password}
+          placeholder="비밀번호를 입력해주세요"
+          onChange={onPasswordHandler}
+        />
+        <Button type="submit">로그인</Button>
+      </Form>
     </Container>
   );
 };
