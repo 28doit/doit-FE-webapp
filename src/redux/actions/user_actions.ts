@@ -19,6 +19,6 @@ export const joinUser = (dataToSubmit: any) => {
 
   return {
     type: JOIN_USER,
-    payload: request, // 나중에 백엔드에서 로그인 성공하면 보내줄 정보를 저장하는 곳
+    payload: request,
   };
 };

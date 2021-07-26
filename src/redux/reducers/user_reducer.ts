@@ -1,6 +1,6 @@
 import { JOIN_USER, LOGIN_USER } from '../actions/types';
 
-export default function (state = {}, action: any) {
+export default (state = {}, action: any) => {
   switch (action.type) {
     case LOGIN_USER:
       return { ...state, loginSuccess: action.payload }; // 백엔드에서 정보 가져올 예정
@@ -9,4 +9,4 @@ export default function (state = {}, action: any) {
     default:
       return state;
   }
-}
+};

@@ -30,6 +30,28 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
+const BInput = styled.input`
+  position: relative;
+  overflow: hidden;
+  width: 30%;
+  height: 40px;
+  margin: 0 0 20px;
+  padding: 5px 39px 5px 11px;
+  border: solid 1px #dadada;
+  background: #fff;
+  box-sizing: border-box;
+`;
+const BSelect = styled.select`
+  position: relative;
+  overflow: hidden;
+  width: 30%;
+  height: 40px;
+  margin: 0 0 20px;
+  padding: 5px 39px 5px 11px;
+  border: solid 1px #dadada;
+  background: #fff;
+  box-sizing: border-box;
+`;
 const Button = styled.button`
   font-size: 18px;
   font-weight: 700;
@@ -44,6 +66,17 @@ const Button = styled.button`
   border-radius: 0;
   background-color: #03c75a;
 `;
+const Select = styled.select`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 40px;
+  margin: 0 0 20px;
+  padding: 5px 39px 5px 11px;
+  border: solid 1px #dadada;
+  background: #fff;
+  box-sizing: border-box;
+`;
 
 const JoinForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -51,10 +84,16 @@ const JoinForm: React.FC = () => {
   const [Email, setEmail] = useState('');
   const [Name, setName] = useState('');
   const [NickName, setNickName] = useState('');
+  const [Gender, setGender] = useState('');
   const [Phone, setPhone] = useState('');
-  const [Birth, setBirth] = useState('');
+  const [Birth, setBirth] = useState({
+    Year: '',
+    Month: '',
+    Day: '',
+  });
   const [Password, setPassword] = useState('');
   const [ConfirmPassword, setConfirmPassword] = useState('');
+
   const onEmailHandler = (e: any) => {
     setEmail(e.currentTarget.value);
   };
@@ -64,11 +103,18 @@ const JoinForm: React.FC = () => {
   const onNickNameHandler = (e: any) => {
     setNickName(e.currentTarget.value);
   };
+  const onGenderHandler = (e: any) => {
+    setGender(e.currentTarget.value);
+  };
   const onPhoneHandler = (e: any) => {
     setPhone(e.currentTarget.value);
   };
+  const { Year, Month, Day } = Birth;
   const onBirthHandler = (e: any) => {
-    setBirth(e.currentTarget.value);
+    setBirth({
+      ...Birth,
+      [e.target.name]: e.target.value,
+    });
   };
   const onPasswordHandler = (e: any) => {
     setPassword(e.currentTarget.value);
@@ -85,8 +131,9 @@ const JoinForm: React.FC = () => {
       email: Email,
       name: Name,
       nickname: NickName,
+      gender: Gender === 'M' ? true : false,
       phone: Phone,
-      birth: Birth,
+      birth: Year.concat(Month, Day),
       password: Password,
     };
     dispatch(joinUser(body)); // then 오류 고쳐야 하는데 잘 모르겠음
@@ -97,6 +144,7 @@ const JoinForm: React.FC = () => {
     //     alert('Error');
     //   }
     // });
+    console.log(body);
     history.replace('/');
   };
   return (
@@ -104,6 +152,7 @@ const JoinForm: React.FC = () => {
       <Form onSubmit={onSubmitHandler}>
         <label>이메일</label>
         <Input
+          required
           type="email"
           placeholder="이메일"
           value={Email}
@@ -111,6 +160,7 @@ const JoinForm: React.FC = () => {
         />
         <label>이름</label>
         <Input
+          required
           type="text"
           placeholder="이름"
           value={Name}
@@ -118,27 +168,71 @@ const JoinForm: React.FC = () => {
         />
         <label>닉네임</label>
         <Input
+          required
           type="text"
           placeholder="닉네임"
           value={NickName}
           onChange={onNickNameHandler}
         />
+        <label>성별</label>
+        <Select onChange={onGenderHandler} value={Gender} required>
+          <option>성별</option>
+          <option value="M">남자</option>
+          <option value="F">여자</option>
+        </Select>
         <label>전화번호</label>
         <Input
+          required
           type="text"
-          placeholder="전화번호 ex) 01012345678"
+          placeholder="- 빼고 입력"
           value={Phone}
           onChange={onPhoneHandler}
         />
         <label>생년월일</label>
-        <Input
-          type="text"
-          placeholder="생년월일 ex) 980101"
-          value={Birth}
-          onChange={onBirthHandler}
-        />
+        <div
+          className="birth_container"
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <BInput
+            required
+            type="text"
+            placeholder="년 (4자)"
+            value={Year}
+            name="Year"
+            onChange={onBirthHandler}
+          />
+          <BSelect
+            onChange={onBirthHandler}
+            value={Month}
+            name="Month"
+            required
+          >
+            <option>월</option>
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </BSelect>
+          <BInput
+            required
+            type="text"
+            placeholder="일"
+            value={Day}
+            name="Day"
+            onChange={onBirthHandler}
+          />
+        </div>
         <label>비밀번호</label>
         <Input
+          required
           type="password"
           value={Password}
           placeholder="비밀번호"
@@ -146,6 +240,7 @@ const JoinForm: React.FC = () => {
         />
         <label>비밀번호 확인</label>
         <Input
+          required
           type="password"
           value={ConfirmPassword}
           placeholder="비밀번호 확인"
