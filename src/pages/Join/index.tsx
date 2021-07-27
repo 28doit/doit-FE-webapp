@@ -52,6 +52,20 @@ const BSelect = styled.select`
   background: #fff;
   box-sizing: border-box;
 `;
+const CButton = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 49px;
+  width: 100%;
+  height: 49px;
+  margin: 16px 0 7px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  background-color: #2f4f4f;
+`;
 const Button = styled.button`
   font-size: 18px;
   font-weight: 700;
@@ -93,6 +107,7 @@ const JoinForm: React.FC = () => {
   });
   const [Password, setPassword] = useState('');
   const [ConfirmPassword, setConfirmPassword] = useState('');
+  const [Check, setCheck] = useState(false);
 
   const onEmailHandler = (e: any) => {
     setEmail(e.currentTarget.value);
@@ -113,7 +128,7 @@ const JoinForm: React.FC = () => {
   const onBirthHandler = (e: any) => {
     setBirth({
       ...Birth,
-      [e.target.name]: e.target.value,
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
   const onPasswordHandler = (e: any) => {
@@ -121,6 +136,9 @@ const JoinForm: React.FC = () => {
   };
   const onConfirmPasswordHandler = (e: any) => {
     setConfirmPassword(e.currentTarget.value);
+  };
+  const onCheckHandler = (e: any) => {
+    setCheck(!Check);
   };
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
@@ -246,7 +264,15 @@ const JoinForm: React.FC = () => {
           placeholder="비밀번호 확인"
           onChange={onConfirmPasswordHandler}
         />
-        <Button type="submit">회원 가입</Button>
+        <label>약관 동의</label>
+        <div className="agree_check">
+          <Input type="checkbox" onClick={onCheckHandler} />
+        </div>
+        {Check ? (
+          <Button type="submit">회원 가입</Button>
+        ) : (
+          <CButton>약관을 동의 해주세요!</CButton>
+        )}
       </Form>
     </Container>
   );
