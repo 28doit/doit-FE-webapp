@@ -1,10 +1,11 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 module.exports = function (app: any) {
+  const targetUrl: any = process.env.REACT_APP_API_URL;
   app.use(
     '/',
     createProxyMiddleware({
-      target: 'http://113.52.213.92:8080',
+      target: targetUrl,
       changeOrigin: true,
     }),
   );
