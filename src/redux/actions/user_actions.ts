@@ -2,8 +2,9 @@ import axios from 'axios';
 import { JOIN_USER, LOGIN_USER } from './types';
 
 export const loginUser = (dataToSubmit: any) => {
+  const loginUrl: any = process.env.REACT_APP_LOGIN_API_URL;
   const request: any = axios
-    .post('http://localhost:8888/users', dataToSubmit)
+    .post(loginUrl, dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -13,8 +14,9 @@ export const loginUser = (dataToSubmit: any) => {
 };
 
 export const joinUser = (dataToSubmit: any) => {
+  const joinUrl: any = process.env.REACT_APP_JOIN_API_URL;
   const request: any = axios
-    .post('http://localhost:8888/users', dataToSubmit)
+    .post(joinUrl, dataToSubmit)
     .then((response) => response.data);
 
   return {

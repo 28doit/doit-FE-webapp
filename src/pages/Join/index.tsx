@@ -147,12 +147,20 @@ const JoinForm: React.FC = () => {
     }
     let body = {
       email: Email,
-      name: Name,
-      nickname: NickName,
-      gender: Gender === 'M' ? true : false,
-      phone: Phone,
-      birth: Year.concat(Month, Day),
+      userName: Name,
+      nickName: NickName,
+      //sex: Gender === 'M' ? true : false,
+      sex: 1,
+      phoneNumber: Phone,
+      //  birth: Year.concat(Month, Day),
       password: Password,
+      userYear: '11',
+      userMonth: '11',
+      userDay: '11',
+      type: 1,
+      gallCount: 0,
+      userSubscribeCount: 0,
+      profileImageLocation: '1',
     };
     dispatch(joinUser(body)); // then 오류 고쳐야 하는데 잘 모르겠음
     // .then((response: any) => {
