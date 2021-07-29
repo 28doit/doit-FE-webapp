@@ -30,3 +30,14 @@
     회원 가입 페이지 약관 동의 버튼 추가
     - 토글 형식으로 생성
     - 동의 하지 않으면 회원 가입 불가, 동의 시 회원 가입 가능
+
+#### 21.07.28 16:40
+
+    Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
+    - atom - Button, Icon 생성
+
+#### 21.07.28 16:40
+
+    Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
+    - atom - Image, Input, Label 생성
+    - molecules - FormInput 생성
