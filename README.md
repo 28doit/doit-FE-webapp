@@ -36,8 +36,13 @@
     Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
     - atom - Button, Icon 생성
 
-#### 21.07.28 16:40
+#### 21.07.29 17:35
 
     Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
     - atom - Image, Input, Label 생성
     - molecules - FormInput 생성
+
+#### 21.07.30 17:44
+
+    Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
+    - 따로 코딩하지 않고 atom에서 molecules로 조합하면서 응용 하는 방법 공부

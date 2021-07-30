@@ -16,5 +16,5 @@ general.args = {
   captionContent: '에러',
   placeholder: '이메일을 입력해 주세요',
   inputTitle: '이에일 타이틀',
-  buttonContent: '끝',
+  buttonContent: '검색',
 };

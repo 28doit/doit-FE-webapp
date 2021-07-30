@@ -20,7 +20,7 @@ export const FormInput = styled(Input)<Props>`
 export const FormBtn = styled(Btn)<Props>`
   position: absolute;
   right: 0;
-  width 35px;
+  width 60px;
   max-height: 35px;
   height 100%;
 `;
