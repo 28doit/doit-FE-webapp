@@ -70,6 +70,7 @@ const LoginForm: React.FC = () => {
     //     alert('Error');
     //   }
     // });
+
     history.replace('/');
   };
   return (
