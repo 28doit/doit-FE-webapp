@@ -46,3 +46,16 @@
 
     Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
     - 따로 코딩하지 않고 atom에서 molecules로 조합하면서 응용 하는 방법 공부
+
+#### 21.08.02 18:56
+
+    Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
+    - molecules - Card, ModalItem 생성
+    - organism - Boxes, CardGrid, Modal 생성
+
+#### 21.08.03 19:48
+
+    Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
+    - GlobalStyle을 이용해 App과 StoryBook에 Reset.css 적용
+    - organisms - header 생성
+    - template - basetemplate 생성 -> 대부분의 페이지 형태를 이거로 사용
