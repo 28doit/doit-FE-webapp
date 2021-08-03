@@ -19,6 +19,7 @@ const BtnCSS = css<BtnProps>`
   border: none;
   border-radius: 0;
   background-color: #03c75a;
+  text-decoration: none;
 
   &.disabled {
     background-color: #2f4f4f;

@@ -4,14 +4,14 @@ export const ModalOverlay = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  backgroud: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
 `;
 
 export const ModalInner = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  max-width: 600px;
+  max-width: 450px;
   width: 90%;
   padding: 50px 35px 40px;
   transform: translate(-50%, -50%);

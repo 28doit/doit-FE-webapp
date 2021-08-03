@@ -1,9 +1,10 @@
 import { BaseTemplate } from '../../templates';
+import { LoginModal } from '../../components/index';
 
-export const Main = () => {
+export const Login = () => {
   return (
     <BaseTemplate>
-      <h1>Main Page</h1>
+      <LoginModal />
     </BaseTemplate>
   );
 };
