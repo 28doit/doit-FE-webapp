@@ -1,5 +1,17 @@
 # 기록
 
+<details>
+<summary>접기/펼치기 버튼</summary>
+<div markdown="1">
+
+| 제목 | 내용 |
+| ---- | ---- |
+| 1    | 1    |
+| 2    | 10   |
+
+</div>
+</details>
+
 #### 21.07.06 23:00
 
     레포지토리 클론 후 react / typeScript 추가
