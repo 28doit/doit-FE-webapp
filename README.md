@@ -1,16 +1,8 @@
 # 기록
 
 <details>
-<summary>접기/펼치기 버튼</summary>
+<summary>7월의 기록 보기</summary>
 <div markdown="1">
-
-| 제목 | 내용 |
-| ---- | ---- |
-| 1    | 1    |
-| 2    | 10   |
-
-</div>
-</details>
 
 #### 21.07.06 23:00
 
@@ -58,6 +50,9 @@
 
     Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
     - 따로 코딩하지 않고 atom에서 molecules로 조합하면서 응용 하는 방법 공부
+
+</div>
+</details>
 
 #### 21.08.02 18:56
 
