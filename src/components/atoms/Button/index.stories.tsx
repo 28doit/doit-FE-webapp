@@ -5,7 +5,7 @@ import { Btn, BtnProps, LinkBtn, LinkBtnProps } from './index';
 export default {
   title: 'Atoms/Btn',
   argTypes: {
-    btnType: {
+    btntype: {
       control: {
         type: 'select',
         options: ['default', 'gray'],

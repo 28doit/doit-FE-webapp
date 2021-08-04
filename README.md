@@ -54,6 +54,8 @@
 </div>
 </details>
 
+---
+
 #### 21.08.02 18:56
 
     Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
@@ -65,4 +67,16 @@
     Atomic Design과 StoryBook을 이용해서 컴포넌트 분리 작업
     - GlobalStyle을 이용해 App과 StoryBook에 Reset.css 적용
     - organisms - header 생성
-    - template - basetemplate 생성 -> 대부분의 페이지 형태를 이거로 사용
+    - template - baseTemplate 생성 -> 대부분의 페이지 형태를 이거로 사용
+
+#### 21.08.04 21:14
+
+    컴포넌트 분리 작업 및 개발 보수 진행
+    - StoryBook 설정에 Provider 추가 -> 사용하지 않을 경우 dsipatch 에러 발생으로 테스트 불가
+    - 회원 가입 페이지의 state 간소화 진행 - 비슷한 유형의 함수와 state를 8개에서 1개로 줄임
+    - ※기존의 로그인 페이지 atomic으로 재구성 완료, 회원 가입 페이지는 80% 완료※
+
+    ### 추후 무조건 수정 해야하는 거
+    1. 리덕스 dispatch.then 에서 발생 하던 [Property 'then' does not exist on type ...] 에러를 일단 조건문으로 우회해서 해결  - login, join ※ async await 처럼 데이터의 전송을 기다리지 않아서 생기는 문제가 발생 함
+
+    2. - Card 필요한 형태로 처음부터 다시 만들기 - [사용자에게 보여지는 카드, 내가 좋아하는 작가 카드]

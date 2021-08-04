@@ -37,7 +37,7 @@ export const FormInput = ({
         </S.FormInputContainer>
       ) : (
         <S.FormInputContainer>
-          <S.FormBtn btnType="border_none">
+          <S.FormBtn btntype="border_none">
             {buttonContent ? (
               buttonContent
             ) : (

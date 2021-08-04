@@ -4,7 +4,7 @@ import * as S from './style';
 export interface BtnProps {
   children?: React.ReactElement | string;
   disable?: boolean;
-  btnType?: string;
+  btntype?: string;
   btnOnClick?: () => void;
 }
 

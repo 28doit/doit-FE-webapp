@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 interface BtnProps {
-  btnType?: string;
+  btntype?: string;
 }
 
 const BtnCSS = css<BtnProps>`
@@ -24,9 +24,9 @@ const BtnCSS = css<BtnProps>`
   &.disabled {
     background-color: #2f4f4f;
   }
-  ${(props) => props.btnType === 'default' && css``}
+  ${(props) => props.btntype === 'default' && css``}
   ${(props) =>
-    props.btnType === 'gray' &&
+    props.btntype === 'gray' &&
     css`
       border: 0;
       color: #ffffff !important;

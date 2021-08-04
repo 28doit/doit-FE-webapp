@@ -10,8 +10,10 @@ export interface InputProps {
   placeholder?: string;
   value?: string | number;
   height?: string;
+  name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: React.KeyboardEvent) => void;
+  onClick?: (e: any) => void;
 }
 
 export const Input = ({

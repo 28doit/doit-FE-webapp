@@ -1,10 +1,9 @@
 import { BaseTemplate } from '../../templates';
-import { LoginModal } from '../../components/index';
 
-export const Login = () => {
+export const NewLoginForm = () => {
   return (
     <BaseTemplate>
-      <LoginModal />
+      <h1>Join</h1>
     </BaseTemplate>
   );
 };

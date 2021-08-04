@@ -95,113 +95,115 @@ const Select = styled.select`
 const JoinForm: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [Email, setEmail] = useState('');
-  const [Name, setName] = useState('');
-  const [NickName, setNickName] = useState('');
-  const [Gender, setGender] = useState('');
-  const [Phone, setPhone] = useState('');
-  const [Birth, setBirth] = useState({
-    Year: '',
-    Month: '',
-    Day: '',
+
+  const [Account, setAccount] = useState({
+    nEmail: '',
+    nName: '',
+    nNickName: '',
+    nGender: '',
+    nPhone: '',
+    nPassword: '',
+    nConfirmPassword: '',
+    nYear: '',
+    nMonth: '',
+    nDay: '',
   });
-  const [Password, setPassword] = useState('');
-  const [ConfirmPassword, setConfirmPassword] = useState('');
   const [Check, setCheck] = useState(false);
 
-  const onEmailHandler = (e: any) => {
-    setEmail(e.currentTarget.value);
-  };
-  const onNameHandler = (e: any) => {
-    setName(e.currentTarget.value);
-  };
-  const onNickNameHandler = (e: any) => {
-    setNickName(e.currentTarget.value);
-  };
-  const onGenderHandler = (e: any) => {
-    setGender(e.currentTarget.value);
-  };
-  const onPhoneHandler = (e: any) => {
-    setPhone(e.currentTarget.value);
-  };
-  const { Year, Month, Day } = Birth;
-  const onBirthHandler = (e: any) => {
-    setBirth({
-      ...Birth,
+  const {
+    nEmail,
+    nName,
+    nNickName,
+    nGender,
+    nPhone,
+    nPassword,
+    nConfirmPassword,
+    nYear,
+    nMonth,
+    nDay,
+  } = Account;
+
+  const onChangeAccount = (e: any) => {
+    setAccount({
+      ...Account,
       [e.currentTarget.name]: e.currentTarget.value,
     });
   };
-  const onPasswordHandler = (e: any) => {
-    setPassword(e.currentTarget.value);
-  };
-  const onConfirmPasswordHandler = (e: any) => {
-    setConfirmPassword(e.currentTarget.value);
-  };
+
   const onCheckHandler = (e: any) => {
     setCheck(!Check);
   };
+
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
-    if (Password !== ConfirmPassword) {
+    if (nPassword !== nConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
     let body = {
-      email: Email,
-      userName: Name,
-      nickName: NickName,
+      email: nEmail,
+      userName: nName,
+      nickName: nNickName,
       //sex: Gender === 'M' ? true : false,
       sex: 1,
-      phoneNumber: Phone,
-      //  birth: Year.concat(Month, Day),
-      password: Password,
-      userYear: '11',
-      userMonth: '11',
-      userDay: '11',
+      phoneNumber: nPhone,
+      password: nPassword,
+      userYear: nYear,
+      userMonth: nMonth,
+      userDay: nDay,
       type: 1,
       gallCount: 0,
       userSubscribeCount: 0,
       profileImageLocation: '1',
     };
-    dispatch(joinUser(body)); // then 오류 고쳐야 하는데 잘 모르겠음
-    // .then((response: any) => {
-    //   if (response.payload.joinSuccess) {
-    //     history.replace('/');
-    //   } else {
-    //     alert('Error');
-    //   }
-    // });
     console.log(body);
-    history.replace('/');
+
+    const joinResult = dispatch(joinUser(body));
+
+    if (joinResult.payload.success) {
+      history.replace('/');
+    } else {
+      alert('회원가입에 실패 했습니다.');
+      history.replace('/join');
+    }
   };
+
   return (
     <Container>
       <Form onSubmit={onSubmitHandler}>
         <label>이메일</label>
         <Input
           required
+          name="nEmail"
           type="email"
           placeholder="이메일"
-          value={Email}
-          onChange={onEmailHandler}
+          value={nEmail}
+          onChange={onChangeAccount}
         />
         <label>이름</label>
         <Input
           required
+          name="nName"
           type="text"
           placeholder="이름"
-          value={Name}
-          onChange={onNameHandler}
+          value={nName}
+          onChange={onChangeAccount}
         />
         <label>닉네임</label>
         <Input
           required
+          name="nNickName"
           type="text"
           placeholder="닉네임"
-          value={NickName}
-          onChange={onNickNameHandler}
+          value={nNickName}
+          onChange={onChangeAccount}
         />
         <label>성별</label>
-        <Select onChange={onGenderHandler} value={Gender} required>
+        <Select
+          onChange={onChangeAccount}
+          value={nGender}
+          name="nGender"
+          required
+        >
           <option>성별</option>
           <option value="M">남자</option>
           <option value="F">여자</option>
@@ -209,10 +211,11 @@ const JoinForm: React.FC = () => {
         <label>전화번호</label>
         <Input
           required
+          name="nPhone"
           type="text"
           placeholder="- 빼고 입력"
-          value={Phone}
-          onChange={onPhoneHandler}
+          value={nPhone}
+          onChange={onChangeAccount}
         />
         <label>생년월일</label>
         <div
@@ -223,14 +226,14 @@ const JoinForm: React.FC = () => {
             required
             type="text"
             placeholder="년 (4자)"
-            value={Year}
-            name="Year"
-            onChange={onBirthHandler}
+            value={nYear}
+            name="nYear"
+            onChange={onChangeAccount}
           />
           <BSelect
-            onChange={onBirthHandler}
-            value={Month}
-            name="Month"
+            onChange={onChangeAccount}
+            value={nMonth}
+            name="nMonth"
             required
           >
             <option>월</option>
@@ -251,26 +254,28 @@ const JoinForm: React.FC = () => {
             required
             type="text"
             placeholder="일"
-            value={Day}
-            name="Day"
-            onChange={onBirthHandler}
+            value={nDay}
+            name="nDay"
+            onChange={onChangeAccount}
           />
         </div>
         <label>비밀번호</label>
         <Input
           required
+          name="nPassword"
           type="password"
-          value={Password}
+          value={nPassword}
           placeholder="비밀번호"
-          onChange={onPasswordHandler}
+          onChange={onChangeAccount}
         />
         <label>비밀번호 확인</label>
         <Input
           required
+          name="nConfirmPassword"
           type="password"
-          value={ConfirmPassword}
+          value={nConfirmPassword}
           placeholder="비밀번호 확인"
-          onChange={onConfirmPasswordHandler}
+          onChange={onChangeAccount}
         />
         <label>약관 동의</label>
         <div className="agree_check">

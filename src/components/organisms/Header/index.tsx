@@ -18,7 +18,7 @@ export const Header = (): React.ReactElement => {
         <S.HeaderWrapper header_center>
           <ul>
             <li>
-              <LinkBtn btnLink={ROUTES.HOME} btnType="default">
+              <LinkBtn btnLink={ROUTES.HOME} btntype="default">
                 PhotoLogger
               </LinkBtn>
             </li>
@@ -29,12 +29,12 @@ export const Header = (): React.ReactElement => {
         <S.HeaderWrapper header_right>
           <ul>
             <li>
-              <LinkBtn btnLink={ROUTES.JOIN} btnType="gray">
+              <LinkBtn btnLink={ROUTES.JOIN} btntype="gray">
                 JOIN
               </LinkBtn>
             </li>
             <li>
-              <LinkBtn btnLink={ROUTES.LOGIN} btnType="gray">
+              <LinkBtn btnLink={ROUTES.LOGIN} btntype="gray">
                 LOGIN
               </LinkBtn>
             </li>

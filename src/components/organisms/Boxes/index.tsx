@@ -7,12 +7,12 @@ export interface BoxesProps extends CardProps {
   StrongListText?: string;
   ListDescription?: string;
 }
-export function Boxes({
+export const Boxes = ({
   BoxesType,
   ListText,
   StrongListText,
   ListDescription,
-}: BoxesProps): React.ReactElement {
+}: BoxesProps): React.ReactElement => {
   return (
     <S.Container>
       {BoxesType === 'type01' && (
@@ -38,4 +38,4 @@ export function Boxes({
       )}
     </S.Container>
   );
-}
+};

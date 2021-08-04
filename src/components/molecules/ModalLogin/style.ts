@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 import CheckOn from '../../../assets/check_on.svg';
 
+export const ModalLoginForm = styled.form``;
+
 export const ModalLoginTitle = styled.h2`
   margin: 0 0 20px;
   font-size: 25px;

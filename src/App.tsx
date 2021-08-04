@@ -1,16 +1,15 @@
 import { Switch, Route } from 'react-router-dom';
-import LoginForm from './pages/Login';
+import { NewLoginForm } from './pages/Login';
 import JoinForm from './pages/Join';
 import { Main } from './pages/Main';
-import { GlobalStyles } from './GlobalStyle';
+import '../src/assets/style/reset.css';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <GlobalStyles />
       <Switch>
         <Route path="/" exact component={Main} />
-        <Route path="/login" component={LoginForm} />
+        <Route path="/login" component={NewLoginForm} />
         <Route path="/join" component={JoinForm} />
       </Switch>
     </div>

@@ -10,22 +10,44 @@ export const ModalCommonTitle = styled.h2`
   border-bottom: 1px solid #ebebeb;
   font-size: 22px;
   line-height: 80px;
+  text-align: center;
 `;
 
-export const ModalCommonWrap = styled.div`
-  input[type='checkbox'] {
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    &:checked + label::before {
-      background: url(${CheckOn}) no-repeat center center/13px;
-    }
-  }
+export const ModalJoinForm = styled.form``;
+
+export const ModaleSelectWrap = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
+
+export const ModalCheck = styled(Input)`
+  width: 100px;
+  height: 100px;
+`;
+
+export const ModalRegisterBirth = styled(Input)`
+  width: 30%;
+  height: 40px;
+`;
+
+export const ModalSelect = styled.select`
+  position: relative;
+  overflow: hidden;
+  width: 30%;
+  height: 40px;
+  margin: 0 0 20px;
+  padding: 5px 39px 5px 11px;
+  border: solid 1px #dadada;
+  background: #fff;
+  box-sizing: border-box;
+`;
+
+export const ModalBirthDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ModalCommonWrap = styled.div``;
 
 export const ModalInputWrap = styled.div`
   &::after {
@@ -47,13 +69,17 @@ export const ModalRegisterLabel = styled(Label)`
   cursor: default;
 `;
 
+export const ModalRegisterNickName = styled(Input)`
+  width: calc(100% - 100px);
+`;
+
 export const ModalRegisterInput = styled(Input)`
   float: left;
   width: calc(100% - 100px);
 `;
 
 export const ModalRegisterEmail = styled(Input)`
-  width: 128px;
+  width: calc(100% - 100px);
 `;
 
 export const ModalEmailAt = styled.span`
@@ -69,7 +95,7 @@ export const ModalEmailTail = styled.select`
 `;
 
 export const ModalTelInput = styled(Input)`
-  width: 92px;
+  width: calc(100% - 100px);
 `;
 
 export const ModalTelInputCheck = styled(Input)`
@@ -84,6 +110,18 @@ export const ModalTelAt = styled.span`
 `;
 
 export const ModalTelConfirm = styled(Btn)`
+  width: calc(100% - 100px - 320px - 10px);
+  height: 46px;
+  margin: 0 0 0 10px;
+`;
+
+export const ModalAgreeYes = styled(Btn)`
+  width: calc(100% - 100px - 320px - 10px);
+  height: 46px;
+  margin: 0 0 0 10px;
+`;
+
+export const ModalAgreeNo = styled(Btn)`
   width: calc(100% - 100px - 320px - 10px);
   height: 46px;
   margin: 0 0 0 10px;
