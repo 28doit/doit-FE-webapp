@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../redux/actions/user_actions';
+import validator from 'validator';
 
 export interface ModalItemProps {}
 
@@ -25,6 +26,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
       email: Email,
       password: Password,
     };
+    console.log(validator.isMobilePhone('+821052468981', ['ko-KR']));
 
     const loginResult = dispatch(loginUser(body));
 

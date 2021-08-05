@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { joinUser } from '../../../redux/actions/user_actions';
+import validator from 'validator';
 
 export interface ModalItemProps {}
 
@@ -12,30 +13,30 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const history = useHistory();
 
   const [Account, setAccount] = useState({
-    nEmail: '',
-    nName: '',
-    nNickName: '',
-    nGender: '',
-    nPhone: '',
-    nPassword: '',
-    nConfirmPassword: '',
-    nYear: '',
-    nMonth: '',
-    nDay: '',
+    Email: '',
+    Name: '',
+    NickName: '',
+    Gender: '',
+    Phone: '',
+    Password: '',
+    ConfirmPassword: '',
+    Year: '',
+    Month: '',
+    Day: '',
   });
   const [Check, setCheck] = useState(false);
 
   const {
-    nEmail,
-    nName,
-    nNickName,
-    nGender,
-    nPhone,
-    nPassword,
-    nConfirmPassword,
-    nYear,
-    nMonth,
-    nDay,
+    Email,
+    Name,
+    NickName,
+    Gender,
+    Phone,
+    Password,
+    ConfirmPassword,
+    Year,
+    Month,
+    Day,
   } = Account;
 
   const onChangeAccount = (e: any) => {
@@ -51,25 +52,26 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
-    if (nPassword !== nConfirmPassword) {
+    if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
     let body = {
-      email: nEmail,
-      userName: nName,
-      nickName: nNickName,
+      email: Email,
+      userName: Name,
+      nickName: NickName,
       //sex: Gender === 'M' ? true : false,
       sex: 1,
-      phoneNumber: nPhone,
-      password: nPassword,
-      userYear: nYear,
-      userMonth: nMonth,
-      userDay: nDay,
+      phoneNumber: '+82' + Phone.substring(1, 11),
+      password: Password,
+      userYear: Year,
+      userMonth: Month,
+      userDay: Day,
       type: 1,
       gallCount: 0,
       userSubscribeCount: 0,
       profileImageLocation: '1',
     };
+    console.log(validator.isDate(Year + '-' + Month + '-' + Day));
     console.log(body);
 
     const joinResult = dispatch(joinUser(body));
@@ -91,10 +93,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             <S.ModalRegisterLabel htmlFor="name">이름</S.ModalRegisterLabel>
             <S.ModalRegisterInput
               id="name"
-              name="nName"
+              name="Name"
               inputType="text"
               placeholder="이름"
-              value={nName}
+              value={Name}
               onChange={onChangeAccount}
             />
           </S.ModalInputWrap>
@@ -104,10 +106,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             </S.ModalRegisterLabel>
             <S.ModalRegisterNickName
               id="nickName"
-              name="nNickName"
+              name="NickName"
               inputType="text"
               placeholder="닉네임"
-              value={nNickName}
+              value={NickName}
               onChange={onChangeAccount}
             />
           </S.ModalInputWrap>
@@ -115,10 +117,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             <S.ModalRegisterLabel htmlFor="email">이메일</S.ModalRegisterLabel>
             <S.ModalRegisterEmail
               id="email"
-              name="nEmail"
+              name="Email"
               inputType="email"
               placeholder="이메일"
-              value={nEmail}
+              value={Email}
               onChange={onChangeAccount}
             />
             {/* <S.ModalEmailAt>@</S.ModalEmailAt>
@@ -132,9 +134,9 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             </S.ModalRegisterLabel>
             <S.ModalRegisterInput
               id="password1"
-              name="nPassword"
+              name="Password"
               inputType="password"
-              value={nPassword}
+              value={Password}
               placeholder="비밀번호"
               onChange={onChangeAccount}
             />
@@ -145,9 +147,9 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             </S.ModalRegisterLabel>
             <S.ModalRegisterInput
               id="password2"
-              name="nConfirmPassword"
+              name="ConfirmPassword"
               inputType="password"
-              value={nConfirmPassword}
+              value={ConfirmPassword}
               placeholder="비밀번호 확인"
               onChange={onChangeAccount}
             />
@@ -161,14 +163,14 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 id="birth"
                 inputType="text"
                 placeholder="년 (4자)"
-                value={nYear}
-                name="nYear"
+                value={Year}
+                name="Year"
                 onChange={onChangeAccount}
               />
               <S.ModalSelect
                 onChange={onChangeAccount}
-                value={nMonth}
-                name="nMonth"
+                value={Month}
+                name="Month"
               >
                 <option>월</option>
                 <option value="01">1월</option>
@@ -187,8 +189,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               <S.ModalRegisterBirth
                 inputType="text"
                 placeholder="일"
-                value={nDay}
-                name="nDay"
+                value={Day}
+                name="Day"
                 onChange={onChangeAccount}
               />
             </S.ModalBirthDiv>
@@ -198,10 +200,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             <S.ModalGenderSelect
               id="gender"
               onChange={onChangeAccount}
-              value={nGender}
-              name="nGender"
+              value={Gender}
+              name="Gender"
             >
-              <option>성별</option>
+              <option value="">성별</option>
               <option value="M">남자</option>
               <option value="F">여자</option>
             </S.ModalGenderSelect>
@@ -212,10 +214,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             </S.ModalRegisterLabel>
             <S.ModalTelInput
               id="phone"
-              name="nPhone"
+              name="Phone"
               inputType="text"
               placeholder="- 빼고 입력"
-              value={nPhone}
+              value={Phone}
               onChange={onChangeAccount}
             />
             {/* <S.ModalTelAt>-</S.ModalTelAt> <S.ModalTelInput inputType="tel" />
