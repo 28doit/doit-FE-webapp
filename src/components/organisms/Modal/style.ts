@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const ModalOverlay = styled.div`
+export const ModalLoginOverlay = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 `;
 
-export const ModalInner = styled.div`
+export const ModalLoginInner = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -16,4 +16,20 @@ export const ModalInner = styled.div`
   padding: 50px 35px 40px;
   transform: translate(-50%, -50%);
   background: #fff;
+`;
+
+export const ModalJoinOverlay = styled.div`
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalJoinInner = styled.div`
+  max-width: 600px;
+  width: 90%;
+  padding: 30px 20px;
+  background: #fff;
+  margin: 50px;
 `;

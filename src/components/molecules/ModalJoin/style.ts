@@ -4,36 +4,53 @@ import CheckIcon from '../../../assets/check_square.svg';
 import CheckOn from '../../../assets/check_on.svg';
 
 export const ModalCommonTitle = styled.h2`
-  height: 80px;
-  height: 80px;
+  height: 60px;
   padding: 0 30px;
   border-bottom: 1px solid #ebebeb;
   font-size: 22px;
-  line-height: 80px;
+  line-height: 60px;
   text-align: center;
 `;
 
-export const ModalJoinForm = styled.form``;
+export const ModalJoinForm = styled.form`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
 
 export const ModaleSelectWrap = styled.div`
   display: flex;
   flex-direction: column;
+  width: 80%;
 `;
 
 export const ModalCheck = styled(Input)`
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
 `;
 
 export const ModalRegisterBirth = styled(Input)`
-  width: 30%;
+  width: 25%;
   height: 40px;
 `;
 
 export const ModalSelect = styled.select`
   position: relative;
   overflow: hidden;
-  width: 30%;
+  width: 25%;
+  height: 40px;
+  margin: 0 25px 20px;
+  padding: 5px 39px 5px 11px;
+  border: solid 1px #dadada;
+  background: #fff;
+  box-sizing: border-box;
+`;
+
+export const ModalGenderSelect = styled.select`
+  position: relative;
+  overflow: hidden;
+  width: 25%;
   height: 40px;
   margin: 0 0 20px;
   padding: 5px 39px 5px 11px;
@@ -44,7 +61,13 @@ export const ModalSelect = styled.select`
 
 export const ModalBirthDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+`;
+
+export const ModalTermDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
 `;
 
 export const ModalCommonWrap = styled.div``;
@@ -58,6 +81,7 @@ export const ModalInputWrap = styled.div`
   & + & {
     margin: 20px 0 0;
   }
+  width: 80%;
 `;
 
 export const ModalRegisterLabel = styled(Label)`
@@ -70,16 +94,16 @@ export const ModalRegisterLabel = styled(Label)`
 `;
 
 export const ModalRegisterNickName = styled(Input)`
-  width: calc(100% - 100px);
+  width: 90%;
 `;
 
 export const ModalRegisterInput = styled(Input)`
   float: left;
-  width: calc(100% - 100px);
+  width: 90%;
 `;
 
 export const ModalRegisterEmail = styled(Input)`
-  width: calc(100% - 100px);
+  width: 90%;
 `;
 
 export const ModalEmailAt = styled.span`
@@ -95,7 +119,7 @@ export const ModalEmailTail = styled.select`
 `;
 
 export const ModalTelInput = styled(Input)`
-  width: calc(100% - 100px);
+  width: 90%;
 `;
 
 export const ModalTelInputCheck = styled(Input)`
@@ -115,16 +139,28 @@ export const ModalTelConfirm = styled(Btn)`
   margin: 0 0 0 10px;
 `;
 
+export const ModalPre = styled.pre`
+  background-color: rgb(238, 238, 238);
+  width: 90%;
+  height: 120px;
+  padding: 20px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.5;
+  font-size: 10px;
+`;
+
 export const ModalAgreeYes = styled(Btn)`
-  width: calc(100% - 100px - 320px - 10px);
-  height: 46px;
-  margin: 0 0 0 10px;
+  width: 50%;
+  height: 40px;
+  margin-top: 60px;
 `;
 
 export const ModalAgreeNo = styled(Btn)`
-  width: calc(100% - 100px - 320px - 10px);
-  height: 46px;
-  margin: 0 0 0 10px;
+  width: 50%;
+  height: 40px;
+  margin-top: 60px;
 `;
 
 export const TermsTxt = styled(Label)`

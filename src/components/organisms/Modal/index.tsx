@@ -6,20 +6,20 @@ export interface ModalProps {}
 
 export const LoginModal = ({}: ModalProps): React.ReactElement => {
   return (
-    <S.ModalOverlay>
-      <S.ModalInner>
+    <S.ModalLoginOverlay>
+      <S.ModalLoginInner>
         <LoginItemModal />
-      </S.ModalInner>
-    </S.ModalOverlay>
+      </S.ModalLoginInner>
+    </S.ModalLoginOverlay>
   );
 };
 
 export const RegisterModal = ({}: ModalProps): React.ReactElement => {
   return (
-    <S.ModalOverlay>
-      <S.ModalInner>
+    <S.ModalJoinOverlay>
+      <S.ModalJoinInner>
         <RegisterItemModal />
-      </S.ModalInner>
-    </S.ModalOverlay>
+      </S.ModalJoinInner>
+    </S.ModalJoinOverlay>
   );
 };

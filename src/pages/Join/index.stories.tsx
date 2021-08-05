@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { NewJoinForm } from './index';
 
 export default {
-  title: 'Page/Login',
+  title: 'Page/Join',
 } as Meta;
 
-// const Template: Story = (args) => <NewLoginForm {...args} />;
+const Template: Story = (args) => <NewJoinForm {...args} />;
 
-// export const general = Template.bind({});
+export const general = Template.bind({});
