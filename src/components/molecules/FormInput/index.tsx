@@ -37,7 +37,7 @@ export const FormInput = ({
         </S.FormInputContainer>
       ) : (
         <S.FormInputContainer>
-          <S.FormBtn btntype="border_none">
+          <S.FormBtn btntype="default">
             {buttonContent ? (
               buttonContent
             ) : (
@@ -45,6 +45,9 @@ export const FormInput = ({
             )}
           </S.FormBtn>
           <S.FormInput {...props} />
+          {invalid && (
+            <S.FormCaption {...props}>{captionContent}</S.FormCaption>
+          )}
         </S.FormInputContainer>
       )}
     </>

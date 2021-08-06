@@ -4,6 +4,22 @@ import CheckOn from '../../../assets/check_on.svg';
 
 export const ModalLoginForm = styled.form``;
 
+export const ModalLoginInvalid = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 30px;
+`;
+
+export const ModalLoginValid = styled.span`
+  color: green;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 30px;
+`;
+
 export const ModalLoginTitle = styled.h2`
   margin: 0 0 20px;
   font-size: 25px;
@@ -24,7 +40,6 @@ export const ModalLabel = styled(Label)`
 
 export const ModalLoginCheckWrap = styled.div`
   position: relative;
-  margin: 18px 0;
   font-size: 14px;
   line-height: 22px;
 
@@ -63,7 +78,19 @@ export const ModalLoginCheckWrap = styled.div`
 export const ModalBtn = styled(Btn)`
   width: 100%;
   height: 60px;
-  margin: 10px 0 0;
+  margin: 30px 0 0;
+`;
+
+export const ModalNo = styled.div`
+  width: 100%;
+  height: 60px;
+  margin: 30px 0 0;
+  background-color: #2f4f4f;
+  text-align: center;
+  line-height: 3;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
 `;
 
 export const ModalAddMem = styled.div`

@@ -26,9 +26,9 @@ export const FormBtn = styled(Btn)<Props>`
 `;
 
 export const FormCaption = styled.div<Props>`
-margin: 0.3rem 0;
-font-size: 12px
-color: red;
+  margin: 0.3rem 0;
+  font-size: 12px;
+  color: red;
 `;
 
 export const SearchIcon = styled(Image)`

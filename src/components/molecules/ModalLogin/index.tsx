@@ -26,7 +26,6 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
       email: Email,
       password: Password,
     };
-    console.log(validator.isMobilePhone('+821052468981', ['ko-KR']));
 
     const loginResult = dispatch(loginUser(body));
 
@@ -47,18 +46,36 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
           onChange={onEmailHandler}
           inputType="email"
         />
+        {validator.isEmail(Email) ? (
+          <S.ModalLoginValid>✔</S.ModalLoginValid>
+        ) : (
+          <S.ModalLoginInvalid>
+            * 이메일을 입력해주시기 바랍니다.
+          </S.ModalLoginInvalid>
+        )}
         <S.ModalInput
           inputType="password"
           placeholder="비밀번호를 입력해주세요"
           value={Password}
           onChange={onPasswordHandler}
         />
+        {validator.isEmpty(Password) ? (
+          <S.ModalLoginInvalid>
+            * 비밀번호를 입력해주시기 바랍니다.
+          </S.ModalLoginInvalid>
+        ) : (
+          <S.ModalLoginValid>✔</S.ModalLoginValid>
+        )}
         <S.ModalLoginCheckWrap>
           <S.ModalInput id="idSave" inputType="checkbox" />
           <S.ModalLabel htmlFor="idSave">아이디 저장</S.ModalLabel>
           <S.ModalRePassword>비밀번호 재설정</S.ModalRePassword>
         </S.ModalLoginCheckWrap>
-        <S.ModalBtn btntype="secondary">로그인</S.ModalBtn>
+        {validator.isEmpty(Email) || validator.isEmpty(Password) ? (
+          <S.ModalNo>로그인</S.ModalNo>
+        ) : (
+          <S.ModalBtn btntype="default">로그인</S.ModalBtn>
+        )}
       </S.ModalLoginForm>
       <S.ModalAddMem>
         아직 회원이 아니세요?
