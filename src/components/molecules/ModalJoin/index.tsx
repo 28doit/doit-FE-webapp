@@ -74,11 +74,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       userSubscribeCount: 0,
       profileImageLocation: '',
     };
-    console.log(validator.isDate(Year + '-' + Month + '-' + Day));
     console.log(body);
 
     const joinResult = dispatch(joinUser(body));
-
+    console.log(joinResult.payload);
     if (joinResult.payload.success) {
       history.replace('/');
     } else {
@@ -86,10 +85,6 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       history.replace('/join');
     }
   };
-
-  function a() {
-    return console.log('hi');
-  }
 
   return (
     <>

@@ -14,7 +14,7 @@ export const loginUser = (dataToSubmit: any) => {
 };
 
 export const joinUser = (dataToSubmit: any) => {
-  const joinUrl: any = process.env.REACT_APP_JOIN_API_URL;
+  const joinUrl: any = process.env.REACT_APP_MOCK_POST_URL;
   const request: any = axios
     .post(joinUrl, dataToSubmit)
     .then((response) => response.data);
