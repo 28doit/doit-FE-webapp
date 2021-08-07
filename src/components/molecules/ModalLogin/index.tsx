@@ -3,9 +3,11 @@ import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../redux/actions/user_actions';
 import validator from 'validator';
+
+import { login } from '../../../actions/auth';
 
 export interface ModalItemProps {}
 
@@ -14,6 +16,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const history = useHistory();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+
   const onEmailHandler = (e: any) => {
     setEmail(e.currentTarget.value);
   };
@@ -26,15 +29,9 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
       email: Email,
       password: Password,
     };
-
-    const loginResult = dispatch(loginUser(body));
-
-    if (loginResult.payload.loginSuccess) {
-      history.replace('/');
-    } else {
-      history.replace('/login');
-      alert('비밀번호나 아이디가 일치하지 않습니다.');
-    }
+    dispatch(login(body));
+    //dispatch(loginUser(body));
+    history.replace('/');
   };
   return (
     <>

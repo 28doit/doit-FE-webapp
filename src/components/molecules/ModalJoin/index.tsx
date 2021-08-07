@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { joinUser } from '../../../redux/actions/user_actions';
+import { register } from '../../../actions/auth';
 import validator from 'validator';
 
 export interface ModalItemProps {}
@@ -76,14 +77,9 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     };
     console.log(body);
 
-    const joinResult = dispatch(joinUser(body));
-    console.log(joinResult.payload);
-    if (joinResult.payload.success) {
-      history.replace('/');
-    } else {
-      alert('회원가입에 실패 했습니다.');
-      history.replace('/join');
-    }
+    // dispatch(joinUser(body));
+    dispatch(register(body));
+    history.replace('/login');
   };
 
   return (

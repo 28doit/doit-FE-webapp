@@ -5,8 +5,10 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import promiseMiddleware from 'redux-promise';
-import ReduxThunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import Reducer from './redux/reducers';
+import rootReducer from './reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 // eslint-disable-next-line prettier/prettier
 declare global {
@@ -14,10 +16,14 @@ declare global {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
 }
+const middleware = [thunk];
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(Reducer, composeEnhancers());
-
+// const store = createStore(Reducer, composeEnhancers());
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(...middleware)),
+);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
