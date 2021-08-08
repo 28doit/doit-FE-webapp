@@ -19,7 +19,7 @@ export const Header = (): React.ReactElement => {
           <ul>
             <li>
               <LinkBtn btnLink={ROUTES.HOME} btntype="default">
-                PhotoLogger
+                Photo Logger
               </LinkBtn>
             </li>
           </ul>

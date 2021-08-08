@@ -1,9 +1,10 @@
 import { BaseTemplate } from '../../templates';
+import { MainContainer } from '../../components/index';
 
 export const Main = () => {
   return (
     <BaseTemplate>
-      <h1>Main Page</h1>
+      <MainContainer />
     </BaseTemplate>
   );
 };

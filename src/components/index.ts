@@ -8,5 +8,9 @@ export { Card } from './molecules/Card';
 export { FormInput } from './molecules/FormInput';
 export { LoginItemModal } from './molecules/ModalLogin';
 export { RegisterItemModal } from './molecules/ModalJoin';
+export { KoreaMap } from './molecules/KoreaMap';
+
 export { Header } from './organisms/Header';
 export { LoginModal, RegisterModal } from './organisms/Modal';
+export { MainContainer } from './organisms/MainContainer';
+export { SearchContainer } from './organisms/SearchContainer';

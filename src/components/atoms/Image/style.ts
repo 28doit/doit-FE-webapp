@@ -9,5 +9,4 @@ export const Image = styled.img<ImageProps>`
   width: 100%;
   height: ${(props) => (props.height ? props.height : '100%')};
   border-radius: inherit;
-  vertical-align: middle;
 `;
