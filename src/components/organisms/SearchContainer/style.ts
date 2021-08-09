@@ -4,6 +4,9 @@ import { FormInput } from '../../index';
 export const SearchDiv = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const SearchTitle = styled.div`

@@ -16,6 +16,7 @@ export const ModalLoginInner = styled.div`
   padding: 50px 35px 40px;
   transform: translate(-50%, -50%);
   background: #fff;
+  border-radius: 30px;
 `;
 
 export const ModalJoinOverlay = styled.div`
@@ -32,4 +33,5 @@ export const ModalJoinInner = styled.div`
   padding: 30px 20px;
   background: #fff;
   margin: 50px;
+  border-radius: 30px;
 `;
