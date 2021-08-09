@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 export interface KoreaMapProps {}
 export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
-  const [Where, setWhere] = useState('지역을 클릭해주세요');
-
   const Korea = () => {
     const history = useHistory();
     const [Seoul, setSeoul] = useState(false);
@@ -26,20 +24,24 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
     const [SouthGyeongsang, setSouthGyeongsang] = useState(false);
     const [Jeju, setJeju] = useState(false);
     const [Sejong, setSejong] = useState(false);
+    const [Where, setWhere] = useState('대한민국');
 
     return (
       <svg xmlns="http://www.w3.org/2000/svg">
+        <text x="40%" y="10%" fontSize="32px" fill="#050202" fontWeight="700">
+          {Where}
+        </text>
         <path
           onClick={() => {
             return history.push(`/search?item=서울`);
           }}
           onMouseEnter={() => {
-            setSeoul(true);
+            setSeoul(true), setWhere('서울');
           }}
           onMouseLeave={() => {
             setSeoul(false);
           }}
-          fill={Seoul ? 'white' : '#808080'}
+          fill={Seoul ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -52,12 +54,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=부산`);
           }}
           onMouseEnter={() => {
-            setBusan(true);
+            setBusan(true), setWhere('부산');
           }}
           onMouseLeave={() => {
             setBusan(false);
           }}
-          fill={Busan ? 'white' : '#808080'}
+          fill={Busan ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -70,12 +72,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=대구`);
           }}
           onMouseEnter={() => {
-            setDaegu(true);
+            setDaegu(true), setWhere('대구');
           }}
           onMouseLeave={() => {
-            setDaegu(false);
+            setDaegu(false), setWhere('서울');
           }}
-          fill={Daegu ? 'white' : '#808080'}
+          fill={Daegu ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -88,12 +90,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=인천`);
           }}
           onMouseEnter={() => {
-            setIncheon(true);
+            setIncheon(true), setWhere('인천');
           }}
           onMouseLeave={() => {
             setIncheon(false);
           }}
-          fill={Incheon ? 'white' : '#808080'}
+          fill={Incheon ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -106,12 +108,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=광주`);
           }}
           onMouseEnter={() => {
-            setGwangju(true);
+            setGwangju(true), setWhere('광주');
           }}
           onMouseLeave={() => {
             setGwangju(false);
           }}
-          fill={Gwangju ? 'white' : '#808080'}
+          fill={Gwangju ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -124,12 +126,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=대전`);
           }}
           onMouseEnter={() => {
-            setDaejeon(true);
+            setDaejeon(true), setWhere('대전');
           }}
           onMouseLeave={() => {
             setDaejeon(false);
           }}
-          fill={Daejeon ? 'white' : '#808080'}
+          fill={Daejeon ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -142,12 +144,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=울산`);
           }}
           onMouseEnter={() => {
-            setUlsan(true);
+            setUlsan(true), setWhere('울산');
           }}
           onMouseLeave={() => {
-            setUlsan(false);
+            setUlsan(false), setWhere('서울');
           }}
-          fill={Ulsan ? 'white' : '#808080'}
+          fill={Ulsan ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -160,12 +162,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=경기도`);
           }}
           onMouseEnter={() => {
-            setGyeonggi(true);
+            setGyeonggi(true), setWhere('경기도');
           }}
           onMouseLeave={() => {
             setGyeonggi(false);
           }}
-          fill={Gyeonggi ? 'white' : '#808080'}
+          fill={Gyeonggi ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -178,12 +180,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=강원도`);
           }}
           onMouseEnter={() => {
-            setGangwon(true);
+            setGangwon(true), setWhere('강원도');
           }}
           onMouseLeave={() => {
             setGangwon(false);
           }}
-          fill={Gangwon ? 'white' : '#808080'}
+          fill={Gangwon ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -196,12 +198,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=충청북도`);
           }}
           onMouseEnter={() => {
-            setNorthChungcheong(true);
+            setNorthChungcheong(true), setWhere('충청북도');
           }}
           onMouseLeave={() => {
             setNorthChungcheong(false);
           }}
-          fill={NorthChungcheong ? 'white' : '#808080'}
+          fill={NorthChungcheong ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -214,12 +216,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=충청남도`);
           }}
           onMouseEnter={() => {
-            setSouthChungcheong(true);
+            setSouthChungcheong(true), setWhere('충청남도');
           }}
           onMouseLeave={() => {
             setSouthChungcheong(false);
           }}
-          fill={SouthChungcheong ? 'white' : '#808080'}
+          fill={SouthChungcheong ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -232,12 +234,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=전라북도`);
           }}
           onMouseEnter={() => {
-            setNorthJeolla(true);
+            setNorthJeolla(true), setWhere('전라북도');
           }}
           onMouseLeave={() => {
             setNorthJeolla(false);
           }}
-          fill={NorthJeolla ? 'white' : '#808080'}
+          fill={NorthJeolla ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -250,12 +252,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=전라남도`);
           }}
           onMouseEnter={() => {
-            setSouthJeolla(true);
+            setSouthJeolla(true), setWhere('전라남도');
           }}
           onMouseLeave={() => {
             setSouthJeolla(false);
           }}
-          fill={SouthJeolla ? 'white' : '#808080'}
+          fill={SouthJeolla ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -268,12 +270,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=경상북도`);
           }}
           onMouseEnter={() => {
-            setNorthGyeongsang(true);
+            setNorthGyeongsang(true), setWhere('경상북도');
           }}
           onMouseLeave={() => {
             setNorthGyeongsang(false);
           }}
-          fill={NorthGyeongsang ? 'white' : '#808080'}
+          fill={NorthGyeongsang ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -286,12 +288,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=경상남도`);
           }}
           onMouseEnter={() => {
-            setSouthGyeongsang(true);
+            setSouthGyeongsang(true), setWhere('경상남도');
           }}
           onMouseLeave={() => {
             setSouthGyeongsang(false);
           }}
-          fill={SouthGyeongsang ? 'white' : '#808080'}
+          fill={SouthGyeongsang ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -304,12 +306,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=제주도`);
           }}
           onMouseEnter={() => {
-            setJeju(true);
+            setJeju(true), setWhere('제주도');
           }}
           onMouseLeave={() => {
             setJeju(false);
           }}
-          fill={Jeju ? 'white' : '#808080'}
+          fill={Jeju ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -322,12 +324,12 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
             return history.push(`/search?item=세종`);
           }}
           onMouseEnter={() => {
-            setSejong(true);
+            setSejong(true), setWhere('세종');
           }}
           onMouseLeave={() => {
             setSejong(false);
           }}
-          fill={Sejong ? 'white' : '#808080'}
+          fill={Sejong ? 'white' : '#01346d'}
           stroke="white"
           strokeOpacity="1"
           strokeWidth="0.5"
@@ -341,7 +343,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
 
   return (
     <S.MapDiv>
-      <S.MapName>{Where}</S.MapName>
+      <S.MapName>지역을 선택해주세요</S.MapName>
       <Korea />
     </S.MapDiv>
   );
