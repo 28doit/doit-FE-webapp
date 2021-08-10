@@ -105,3 +105,13 @@
 #### 21.08.09 19:07
 
     - 메인 페이지 지도 수정 - SVG 이미지를 컴포넌트로 변경, 지역 위에 마우스가 올라 갈 경우 색상 변경, 클릭시 해당 지역으로 사진 검색 *해당 위치가 어디인지를 표현 해주어야 함 => (21.08.09 19:38 적용 완료)
+
+#### 21.08.10 20:58
+
+    - jwt mock 서버 통신을 통한 획득 및 로컬 스토리지에 복호화 후 저장까지 완료
+    - 로컬 스토리지의 값 유무에 따라 header의 내용이 변함 -> login, join이 있다가 로그인 상태가 되면 mypage, cart, logout이 나옴
+    - MyPage에서 쓸 MyMenu molecules 구성 완료
+
+    - ※21.08.04의 문제였던 dispatch 오류 해결... 스택오버플로는 신이야!
+    https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit
+    pure한 dispatch를 사용하기 보단 새로운 dispatch기능과 타입을 가지고 있는 useAppThunkDispatch를 만들어서 사용

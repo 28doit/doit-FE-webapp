@@ -1,8 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL =
-  'http://50a0bca4-a26d-4e42-b15a-5cf7163d7619.mock.pstmn.io/accounts/new';
+const API_URL = process.env.REACT_APP_MOCK_POST_URL;
 
 class UserService {
   getPublicContent() {

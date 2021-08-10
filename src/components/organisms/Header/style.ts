@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
+import { LinkBtn } from '../../index';
 
 interface Props {
   header_right?: boolean;
@@ -20,8 +21,9 @@ export const HeaderWrapper = styled.div<Props>`
   display: inline-block;
   li {
     display: inline-block;
+    margin-left: 10px;
     & + li {
-      margin: 20px;
+      margin: 5px;
     }
   }
   cursor: pointer;
@@ -52,4 +54,9 @@ export const NavBox = styled.nav`
   float: right;
   width: calc(100%-400px);
   text-align: right;
+`;
+
+export const HeaderLinkBtn = styled(LinkBtn)`
+  padding: 10px;
+  border-radius: 20px;
 `;

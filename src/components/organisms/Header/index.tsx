@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style';
-import { LinkBtn } from '../../index';
 import ROUTES from '../../../commons/routes';
+import { useSelector } from 'react-redux';
 
 export const Header = (): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
+
   return (
     <S.Container>
       <div className="header_left">
         <S.HeaderWrapper header_left>
           <ul>
-            <li>Best</li>
-            <li>Category</li>
+            <li>
+              <S.HeaderLinkBtn btnLink={ROUTES.JOIN} btntype="gray">
+                인기
+              </S.HeaderLinkBtn>
+            </li>
+            <li>
+              <S.HeaderLinkBtn btnLink={ROUTES.JOIN} btntype="gray">
+                카테고리
+              </S.HeaderLinkBtn>
+            </li>
           </ul>
         </S.HeaderWrapper>
       </div>
@@ -18,28 +28,50 @@ export const Header = (): React.ReactElement => {
         <S.HeaderWrapper header_center>
           <ul>
             <li>
-              <LinkBtn btnLink={ROUTES.HOME} btntype="default">
+              <S.HeaderLinkBtn btnLink={ROUTES.HOME} btntype="default">
                 Photo Logger
-              </LinkBtn>
+              </S.HeaderLinkBtn>
             </li>
           </ul>
         </S.HeaderWrapper>
       </div>
       <div className="header_right">
-        <S.HeaderWrapper header_right>
-          <ul>
-            <li>
-              <LinkBtn btnLink={ROUTES.JOIN} btntype="gray">
-                JOIN
-              </LinkBtn>
-            </li>
-            <li>
-              <LinkBtn btnLink={ROUTES.LOGIN} btntype="gray">
-                LOGIN
-              </LinkBtn>
-            </li>
-          </ul>
-        </S.HeaderWrapper>
+        {currentUser ? (
+          <S.HeaderWrapper header_right>
+            <ul>
+              <li>
+                <S.HeaderLinkBtn btnLink={ROUTES.JOIN} btntype="gray">
+                  장바구니
+                </S.HeaderLinkBtn>
+              </li>
+              <li>
+                <S.HeaderLinkBtn btnLink={ROUTES.MYPAGE} btntype="gray">
+                  내 정보
+                </S.HeaderLinkBtn>
+              </li>
+              <li>
+                <S.HeaderLinkBtn btnLink={ROUTES.LOGIN} btntype="gray">
+                  로그 아웃
+                </S.HeaderLinkBtn>
+              </li>
+            </ul>
+          </S.HeaderWrapper>
+        ) : (
+          <S.HeaderWrapper header_right>
+            <ul>
+              <li>
+                <S.HeaderLinkBtn btnLink={ROUTES.JOIN} btntype="gray">
+                  회원가입
+                </S.HeaderLinkBtn>
+              </li>
+              <li>
+                <S.HeaderLinkBtn btnLink={ROUTES.LOGIN} btntype="gray">
+                  로그인
+                </S.HeaderLinkBtn>
+              </li>
+            </ul>
+          </S.HeaderWrapper>
+        )}
       </div>
     </S.Container>
   );

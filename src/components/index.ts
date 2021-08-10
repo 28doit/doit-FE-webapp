@@ -9,6 +9,7 @@ export { FormInput } from './molecules/FormInput';
 export { LoginItemModal } from './molecules/ModalLogin';
 export { RegisterItemModal } from './molecules/ModalJoin';
 export { KoreaMap } from './molecules/KoreaMap';
+export { MyMenu } from './molecules/MyMenu';
 
 export { Header } from './organisms/Header';
 export { LoginModal, RegisterModal } from './organisms/Modal';

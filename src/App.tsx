@@ -3,6 +3,7 @@ import { NewLoginForm } from './pages/Login';
 import { NewJoinForm } from './pages/Join';
 import { Main } from './pages/Main';
 import { Search } from './pages/Search';
+import { MyPage } from './pages/MyPage';
 import '../src/assets/style/reset.css';
 
 const App: React.FC = () => {
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/login" component={NewLoginForm} />
         <Route path="/join" component={NewJoinForm} />
         <Route path="/search" component={Search} />
+        <Route path="/user/:name" component={MyPage} />
       </Switch>
     </div>
   );

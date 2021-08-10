@@ -4,15 +4,15 @@ import ROUTES from '../../../commons/routes';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../../redux/actions/user_actions';
 import validator from 'validator';
+import { useAppThunkDispatch } from '../../../store';
 
 import { login } from '../../../actions/auth';
 
 export interface ModalItemProps {}
 
 export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useAppThunkDispatch();
   const history = useHistory();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
@@ -29,9 +29,9 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
       email: Email,
       password: Password,
     };
-    dispatch(login(body));
-    //dispatch(loginUser(body));
-    history.replace('/');
+    dispatch(login(body)).then(() => {
+      history.replace('/');
+    });
   };
   return (
     <>

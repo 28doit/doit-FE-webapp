@@ -1,13 +1,16 @@
 import axios from 'axios';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 
-const API_URL =
-  'http://50a0bca4-a26d-4e42-b15a-5cf7163d7619.mock.pstmn.io/accounts/new';
+const API_URL: any = process.env.REACT_APP_MOCK_POST_URL;
 
 class AuthService {
   login(data: any) {
     return axios.post(API_URL, { data }).then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem('user', JSON.stringify(response.data));
+      const decode = jwtDecode<JwtPayload>(response.data);
+
+      // 원래는 response.data.accessToken임
+      if (response.data) {
+        localStorage.setItem('user', JSON.stringify(decode));
       }
 
       return response.data;
