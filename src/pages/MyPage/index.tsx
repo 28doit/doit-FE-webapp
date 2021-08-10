@@ -1,6 +1,5 @@
 import { BaseTemplate } from '../../templates';
 import { MyMenu } from '../../components/index';
-import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 export const MyPage = ({ match }: any) => {
   const renderPage = () => {

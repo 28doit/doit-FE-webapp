@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 
 export const Header = (): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
-
+  console.log(currentUser.user.email);
+  console.log(currentUser.user.userName);
   return (
     <S.Container>
       <div className="header_left">

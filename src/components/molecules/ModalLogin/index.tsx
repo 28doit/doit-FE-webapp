@@ -3,7 +3,6 @@ import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 import { useAppThunkDispatch } from '../../../store';
 
