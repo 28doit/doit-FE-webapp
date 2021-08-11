@@ -1,8 +1,8 @@
 import React from 'react';
 import * as S from './style';
 import { useState } from 'react';
-import { register } from '../../../actions/auth';
-import { useAppThunkDispatch } from '../../../store';
+import { register } from '../../../redux/actions/auth';
+import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 
 export interface ModalItemProps {}

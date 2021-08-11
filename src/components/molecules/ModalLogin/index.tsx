@@ -3,9 +3,9 @@ import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useState } from 'react';
 import validator from 'validator';
-import { useAppThunkDispatch } from '../../../store';
+import { useAppThunkDispatch } from '../../../redux/store';
 
-import { login } from '../../../actions/auth';
+import { login } from '../../../redux/actions/auth';
 
 export interface ModalItemProps {}
 

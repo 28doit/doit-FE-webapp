@@ -3,8 +3,8 @@ import * as S from './style';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { register } from '../../../actions/auth';
-import { useAppThunkDispatch } from '../../../store';
+import { register } from '../../../redux/actions/auth';
+import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 
 export interface ModalItemProps {}

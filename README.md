@@ -118,8 +118,13 @@
 
 #### 21.08.11 16:21
 
-    - EditProfile Molecules 생성 완료
+    - molecules - EditProfile 생성 완료
     - 내 정보 수정 페이지 생성 완료 => 유저의 기존 정보를 초기 화면에 표시
+    - 로그아웃 기능 구현 - localStorage clear 방식
     - login, join 동작 시 페이지를 새로 고침해야지 정상적으로 localStorage에서 데이터를 가져오는 에러 해결
     => https://geonlee.tistory.com/191
     => history.replace('/')가 아닌 window.location.replace('/') 사용
+
+    - MyPage에서의 메뉴별 렌더링 방식은 파라미터를 읽은 후 switch case문을 구별해서 렌더링 하는 방식 사용
+    - 페이지 렌더링 시 스크롤이 고정되어 있던 것을 항상 맨 위로 가게끔 ScrollToTop 생성 및 적용
+    - KoreaMap 그나마 유지보수 하기 쉽게 코드 수정 했음

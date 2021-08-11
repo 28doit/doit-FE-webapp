@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useSelector } from 'react-redux';
-import { logout } from '../../../actions/auth';
-import { useAppThunkDispatch } from '../../../store';
+import { logout } from '../../../redux/actions/auth';
+import { useAppThunkDispatch } from '../../../redux/store';
 import { useHistory } from 'react-router-dom';
 
 export const Header = (): React.ReactElement => {

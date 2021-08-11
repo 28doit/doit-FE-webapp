@@ -5,8 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import rootReducer from './redux/reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import ScrollToTop from './commons/scrollTop';
 
 // eslint-disable-next-line prettier/prettier
 declare global {
@@ -23,6 +24,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
+      <ScrollToTop />
       <App />
     </BrowserRouter>
   </Provider>,
