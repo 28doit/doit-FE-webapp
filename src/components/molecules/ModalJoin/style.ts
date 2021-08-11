@@ -66,7 +66,6 @@ export const ModalRegisterBirth = styled(Input)`
 `;
 
 export const ModalSelect = styled.select`
-  position: relative;
   overflow: hidden;
   width: 25%;
   height: 40px;
@@ -78,7 +77,6 @@ export const ModalSelect = styled.select`
 `;
 
 export const ModalGenderSelect = styled.select`
-  position: relative;
   overflow: hidden;
   width: 25%;
   height: 40px;

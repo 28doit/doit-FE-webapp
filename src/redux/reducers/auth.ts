@@ -20,8 +20,6 @@ const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
-console.log(user);
-
 export default function (state = initialState, action: any) {
   const { type, payload } = action;
 

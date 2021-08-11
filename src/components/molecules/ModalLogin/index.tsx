@@ -4,6 +4,7 @@ import ROUTES from '../../../commons/routes';
 import { useState } from 'react';
 import validator from 'validator';
 import { useAppThunkDispatch } from '../../../redux/store';
+import { ModalLoading } from '../../index';
 
 import { login } from '../../../redux/actions/auth';
 
@@ -13,6 +14,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+  const [Loading, setLoading] = useState(false);
 
   const onEmailHandler = (e: any) => {
     setEmail(e.currentTarget.value);
@@ -22,16 +24,19 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     let body = {
       email: Email,
       password: Password,
     };
     dispatch(login(body)).then(() => {
       window.location.replace('/');
+      setLoading(false);
     });
   };
   return (
-    <>
+    <S.AllWrap>
+      {Loading ? <ModalLoading /> : ''}
       <S.ModalLoginTitle>로그인</S.ModalLoginTitle>
       <S.ModalLoginForm onSubmit={onSubmitHandler}>
         <S.ModalInput
@@ -77,6 +82,6 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
           이메일로 회원가입
         </S.ModalLinkState>
       </S.ModalAddMem>
-    </>
+    </S.AllWrap>
   );
 };

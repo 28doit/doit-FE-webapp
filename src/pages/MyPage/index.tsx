@@ -1,6 +1,5 @@
 import { BaseTemplate } from '../../templates';
-import { MyMenu } from '../../components/index';
-import { EditProfile } from '../../components/organisms/Modal';
+import { MyMenu, EditProfile } from '../../components/index';
 import * as S from './style';
 
 export const MyPage = ({ match }: any) => {

@@ -5,16 +5,15 @@ export const ModalLoginOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ModalLoginInner = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
   max-width: 450px;
   width: 90%;
   padding: 50px 35px 40px;
-  transform: translate(-50%, -50%);
   background: #fff;
   border-radius: 30px;
 `;

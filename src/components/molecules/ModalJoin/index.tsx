@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { register } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
+import bcrypt from 'bcryptjs';
+import { ModalLoading } from '../../index';
 
 export interface ModalItemProps {}
 
@@ -11,6 +13,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const NameRegex = /^[가-힣]+$/;
+  const saltRounds = 10;
 
   const [Account, setAccount] = useState({
     Email: '',
@@ -24,7 +27,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Month: '',
     Day: '',
   });
-
+  const [Loading, setLoading] = useState(false);
   const [Check, setCheck] = useState(false);
 
   const {
@@ -53,34 +56,50 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
-    let body = {
-      email: Email,
-      userName: Name,
-      nickName: NickName,
-      //sex: Gender === 'M' ? true : false,
-      sex: 1,
-      phoneNumber: Phone,
-      password: Password,
-      userYear: Year,
-      userMonth: Month,
-      userDay: Day,
-      type: 1,
-      gallaryCount: 0,
-      userSubscribeCount: 0,
-      profileImageLocation: '',
-    };
-    console.log(body);
 
-    dispatch(register(body)).then(() => {
-      window.location.replace('/login');
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      if (err) {
+        console.log('salt!' + err);
+      }
+      bcrypt.hash(Password, salt, function (err, hash) {
+        if (err) {
+          console.log('hash!' + err);
+        }
+
+        let body = {
+          email: Email,
+          userName: Name,
+          nickName: NickName,
+          //sex: Gender === 'M' ? true : false,
+          sex: 1,
+          phoneNumber: Phone,
+          password: hash,
+          userYear: Year,
+          userMonth: Month,
+          userDay: Day,
+          type: 1,
+          gallaryCount: 0,
+          userSubscribeCount: 0,
+          profileImageLocation: '',
+          salt: salt,
+        };
+        console.log(body);
+
+        dispatch(register(body)).then(() => {
+          window.location.replace('/login');
+          setLoading(false);
+        });
+      });
     });
   };
 
   return (
     <>
+      {Loading ? <ModalLoading /> : ''}
       <S.ModalCommonTitle>회원가입</S.ModalCommonTitle>
       <S.ModalCommonWrap>
         <S.ModalJoinForm onSubmit={onSubmitHandler}>

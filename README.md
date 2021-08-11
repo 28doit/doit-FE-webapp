@@ -116,7 +116,7 @@
     => https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit
     => pure한 dispatch를 사용하기 보단 새로운 dispatch기능과 타입을 가지고 있는 useAppThunkDispatch를 만들어서 사용
 
-#### 21.08.11 16:21
+#### 21.08.11 22:28
 
     - molecules - EditProfile 생성 완료
     - 내 정보 수정 페이지 생성 완료 => 유저의 기존 정보를 초기 화면에 표시
@@ -128,3 +128,11 @@
     - MyPage에서의 메뉴별 렌더링 방식은 파라미터를 읽은 후 switch case문을 구별해서 렌더링 하는 방식 사용
     - 페이지 렌더링 시 스크롤이 고정되어 있던 것을 항상 맨 위로 가게끔 ScrollToTop 생성 및 적용
     - KoreaMap 그나마 유지보수 하기 쉽게 코드 수정 했음
+
+    - bcrypt와 bcryptjs 중 bcryptjs를 사용하게 된 이유
+    => bcrypt는 c++로 제작이 되었고 bcryptjs는 pure JS로 제작 되었다. 알고리즘은 동일하고 속도는 bcrypt가 1.3배 정도 빠르지만 NodeJS, Node-WebKit, Electron 에서만 사용이 가능하다.
+    => bcrypt 쓰면 aws-sdk 에러남;;
+    - bcryptjs를 쓰면서 spring 쪽을 같이 조사했는데 spring과 npm의 bcrypt 알고리즘이 동일하다면 salt값을 안 넘겨주어도 될 거 같다?
+
+    - molecules - ModalLoading 생성 완료
+    - 로그인, 회원 가입 시 통신 하는 시간 동안에 보여줄 Loading 페이지 구현 완료 - 추후 상품 검색에서도 사용 가능

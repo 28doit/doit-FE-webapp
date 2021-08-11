@@ -15,6 +15,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f1c3b8;
 `;
 
 export const HeaderWrapper = styled.div<Props>`

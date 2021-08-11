@@ -11,8 +11,9 @@ export { RegisterItemModal } from './molecules/ModalJoin';
 export { KoreaMap } from './molecules/KoreaMap';
 export { MyMenu } from './molecules/MyMenu';
 export { EditProfileModal } from './molecules/EditProfile';
+export { ModalLoading } from './molecules/ModalLoading';
 
 export { Header } from './organisms/Header';
-export { LoginModal, RegisterModal } from './organisms/Modal';
+export { LoginModal, RegisterModal, EditProfile } from './organisms/Modal';
 export { MainContainer } from './organisms/MainContainer';
 export { SearchContainer } from './organisms/SearchContainer';

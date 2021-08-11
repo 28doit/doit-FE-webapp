@@ -4,11 +4,9 @@ import ROUTES from '../../../commons/routes';
 import { useSelector } from 'react-redux';
 import { logout } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
-import { useHistory } from 'react-router-dom';
 
 export const Header = (): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
-  const history = useHistory();
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const Exit = () => {

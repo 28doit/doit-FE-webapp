@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 import CheckOn from '../../../assets/check_on.svg';
 
+export const AllWrap = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 export const ModalLoginForm = styled.form``;
 
 export const ModalLoginInvalid = styled.span`
@@ -39,7 +44,8 @@ export const ModalLabel = styled(Label)`
 `;
 
 export const ModalLoginCheckWrap = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   font-size: 14px;
   line-height: 22px;
 
@@ -69,7 +75,6 @@ export const ModalLoginCheckWrap = styled.div`
     }
   }
   span {
-    position: absolute;
     right: 0;
     margin: 0;
   }
