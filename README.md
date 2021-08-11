@@ -116,7 +116,7 @@
     => https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit
     => pure한 dispatch를 사용하기 보단 새로운 dispatch기능과 타입을 가지고 있는 useAppThunkDispatch를 만들어서 사용
 
-#### 21.08.10 20:31
+#### 21.08.11 16:21
 
     - EditProfile Molecules 생성 완료
     - 내 정보 수정 페이지 생성 완료 => 유저의 기존 정보를 초기 화면에 표시
