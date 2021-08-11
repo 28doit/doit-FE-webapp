@@ -3,7 +3,7 @@ import { addDecorator } from '@storybook/react';
 import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
-import Reducer from '../src/redux/reducers';
+import Reducer from '../src/reducers';
 import '../src/assets/style/reset.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

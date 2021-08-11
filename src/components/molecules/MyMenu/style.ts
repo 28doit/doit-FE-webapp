@@ -3,7 +3,6 @@ import { LinkBtn } from '../../index';
 
 export const MyMenuContainer = styled.div`
   width: 10%;
-  height: 100%;
   background-color: skyblue;
   padding-top: 30px;
 `;

@@ -10,6 +10,7 @@ export { LoginItemModal } from './molecules/ModalLogin';
 export { RegisterItemModal } from './molecules/ModalJoin';
 export { KoreaMap } from './molecules/KoreaMap';
 export { MyMenu } from './molecules/MyMenu';
+export { EditProfileModal } from './molecules/EditProfile';
 
 export { Header } from './organisms/Header';
 export { LoginModal, RegisterModal } from './organisms/Modal';

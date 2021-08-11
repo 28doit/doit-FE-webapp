@@ -6,7 +6,7 @@ import {
   LOGOUT,
   SET_MESSAGE,
 } from './types';
-
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 import AuthService from '../services/auth.service';
 
 export const register = (data: any) => (dispatch: any) => {
@@ -48,9 +48,10 @@ export const register = (data: any) => (dispatch: any) => {
 export const login = (data: any) => (dispatch: any) => {
   return AuthService.login(data).then(
     (data) => {
+      const decode = JSON.stringify(jwtDecode<JwtPayload>(data));
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { user: data },
+        payload: { user: decode },
       });
 
       return Promise.resolve();

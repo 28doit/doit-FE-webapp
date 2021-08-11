@@ -6,11 +6,11 @@ const API_URL: any = process.env.REACT_APP_MOCK_POST_URL;
 class AuthService {
   login(data: any) {
     return axios.post(API_URL, { data }).then((response) => {
-      const decode = jwtDecode<JwtPayload>(response.data);
+      const decode = JSON.stringify(jwtDecode<JwtPayload>(response.data));
 
       // 원래는 response.data.accessToken임
       if (response.data) {
-        localStorage.setItem('user', JSON.stringify(decode));
+        localStorage.setItem('user', decode);
       }
 
       return response.data;

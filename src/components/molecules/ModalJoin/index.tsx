@@ -1,8 +1,6 @@
 import React from 'react';
 import * as S from './style';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { register } from '../../../actions/auth';
 import { useAppThunkDispatch } from '../../../store';
 import validator from 'validator';
@@ -11,7 +9,6 @@ export interface ModalItemProps {}
 
 export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
-  const history = useHistory();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const NameRegex = /^[가-힣]+$/;
 
@@ -78,7 +75,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     console.log(body);
 
     dispatch(register(body)).then(() => {
-      history.replace('/login');
+      window.location.replace('/login');
     });
   };
 

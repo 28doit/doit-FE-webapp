@@ -113,5 +113,13 @@
     - MyPage에서 쓸 MyMenu molecules 구성 완료
 
     - ※21.08.04의 문제였던 dispatch 오류 해결... 스택오버플로는 신이야!※
-    https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit
+    => https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit
     => pure한 dispatch를 사용하기 보단 새로운 dispatch기능과 타입을 가지고 있는 useAppThunkDispatch를 만들어서 사용
+
+#### 21.08.10 20:31
+
+    - EditProfile Molecules 생성 완료
+    - 내 정보 수정 페이지 생성 완료 => 유저의 기존 정보를 초기 화면에 표시
+    - login, join 동작 시 페이지를 새로 고침해야지 정상적으로 localStorage에서 데이터를 가져오는 에러 해결
+    => https://geonlee.tistory.com/191
+    => history.replace('/')가 아닌 window.location.replace('/') 사용

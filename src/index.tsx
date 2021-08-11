@@ -16,8 +16,6 @@ declare global {
 }
 const middleware = [thunk];
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(Reducer, composeEnhancers());
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(...middleware)),

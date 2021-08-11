@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useSelector } from 'react-redux';
+import { logout } from '../../../actions/auth';
+import { useAppThunkDispatch } from '../../../store';
+import { useHistory } from 'react-router-dom';
 
 export const Header = (): React.ReactElement => {
+  const dispatch = useAppThunkDispatch();
+  const history = useHistory();
   const { user: currentUser } = useSelector((state) => state.auth);
-  console.log(currentUser.user.email);
-  console.log(currentUser.user.userName);
+
+  const Exit = () => {
+    dispatch(logout());
+  };
+
   return (
     <S.Container>
       <div className="header_left">
@@ -51,7 +59,11 @@ export const Header = (): React.ReactElement => {
                 </S.HeaderLinkBtn>
               </li>
               <li>
-                <S.HeaderLinkBtn btnLink={ROUTES.LOGIN} btntype="gray">
+                <S.HeaderLinkBtn
+                  btnLink={ROUTES.HOME}
+                  btnOnClick={Exit}
+                  btntype="gray"
+                >
                   로그 아웃
                 </S.HeaderLinkBtn>
               </li>

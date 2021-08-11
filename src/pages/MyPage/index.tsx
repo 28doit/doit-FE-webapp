@@ -1,11 +1,13 @@
 import { BaseTemplate } from '../../templates';
 import { MyMenu } from '../../components/index';
+import { EditProfile } from '../../components/organisms/Modal';
+import * as S from './style';
 
 export const MyPage = ({ match }: any) => {
   const renderPage = () => {
     switch (match.params.name) {
       case 'edit-profile':
-        return console.log('edit');
+        return <EditProfile />;
       default:
         return console.log('default');
     }
@@ -13,8 +15,10 @@ export const MyPage = ({ match }: any) => {
 
   return (
     <BaseTemplate>
-      <MyMenu />
-      {renderPage()}
+      <S.MyPageWrap>
+        <MyMenu />
+        {renderPage()}
+      </S.MyPageWrap>
     </BaseTemplate>
   );
 };
