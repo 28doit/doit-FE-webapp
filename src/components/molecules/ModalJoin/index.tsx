@@ -6,7 +6,7 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import { ModalLoading } from '../../index';
-
+import { useHistory } from 'react-router';
 export interface ModalItemProps {}
 
 export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
@@ -14,7 +14,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const NameRegex = /^[가-힣]+$/;
   const saltRounds = 10;
-
+  const history = useHistory();
   const [Account, setAccount] = useState({
     Email: '',
     Name: '',
