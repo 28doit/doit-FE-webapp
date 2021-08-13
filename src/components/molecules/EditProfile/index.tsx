@@ -3,9 +3,9 @@ import * as S from './style';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { register } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
+import axios from 'axios';
 
 export interface ModalItemProps {}
 
@@ -14,7 +14,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const history = useHistory();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
-
+  console.log(currentUser);
   const [Account, setAccount] = useState({
     NickName: '',
     Phone: '',
@@ -22,7 +22,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     ConfirmPassword: '',
   });
   const { NickName, Phone, Password, ConfirmPassword } = Account;
-  console.log(currentUser);
+
   const onChangeAccount = (e: any) => {
     setAccount({
       ...Account,
@@ -38,24 +38,13 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     }
 
     let body = {
-      nickName: NickName,
-      phoneNumber: Phone,
-      password: Password,
-      email: currentUser.user.email,
-      userName: currentUser.user.userName,
-      sex: currentUser.user.sex,
-      userYear: currentUser.user.userYear,
-      userMonth: currentUser.user.userMonth,
-      userDay: currentUser.user.userDay,
-      type: 1,
-      gallaryCount: 0,
-      userSubscribeCount: 0,
-      profileImageLocation: '',
+      idx: 2006,
+      password: 'qweqwe',
     };
     console.log(body);
 
-    dispatch(register(body)).then(() => {
-      history.replace('/user/edit-profile');
+    axios.get('/user/2006').then(function (response) {
+      console.log(response.data);
     });
   };
 
@@ -69,7 +58,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             <S.ModalRegisterInput
               id="name"
               inputType="text"
-              placeholder={currentUser.user.userName}
+              placeholder="{currentUser.user.userName}"
               disabled={true}
             />
           </S.ModalInputWrap>
@@ -106,7 +95,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             <S.ModalRegisterEmail
               id="email"
               inputType="email"
-              placeholder={currentUser.user.email}
+              placeholder="{currentUser.user.email}"
               disabled={true}
             />
           </S.ModalInputWrap>
@@ -140,7 +129,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               id="password2"
               name="ConfirmPassword"
               inputType="password"
-              value={ConfirmPassword}
+              value="{ConfirmPassword}"
               placeholder="비밀번호 확인"
               onChange={onChangeAccount}
             />
@@ -163,11 +152,11 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               <S.ModalRegisterBirth
                 id="birth"
                 inputType="text"
-                placeholder={currentUser.user.userYear}
+                placeholder="{currentUser.user.userYear}"
                 disabled={true}
               />
               <S.ModalSelect disabled={true}>
-                <option>{currentUser.user.userMonth}</option>
+                <option></option>
                 <option value="01">1월</option>
                 <option value="02">2월</option>
                 <option value="03">3월</option>
@@ -183,7 +172,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               </S.ModalSelect>
               <S.ModalRegisterBirth
                 inputType="text"
-                placeholder={currentUser.user.userDay}
+                placeholder="{currentUser.user.userDay}"
                 disabled={true}
               />
             </S.ModalBirthDiv>
@@ -191,9 +180,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
           <S.ModaleSelectWrap>
             <S.ModalRegisterLabel htmlFor="gender">성별</S.ModalRegisterLabel>
             <S.ModalGenderSelect id="gender" disabled={true}>
-              <option value="">
-                {currentUser.user.sex === 1 ? '남자' : '여자'}
-              </option>
+              <option value="">"남자"</option>
               <option value="M">남자</option>
               <option value="F">여자</option>
             </S.ModalGenderSelect>
@@ -232,14 +219,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               </S.ModalJoinSelectInvalid>
             )}
           </S.ModalInputWrap>
-          {NickNameRegex.test(NickName) &&
-          validator.isLength(NickName, { min: 4, max: 12 }) &&
-          validator.isStrongPassword(Password) &&
-          validator.equals(Password, ConfirmPassword) &&
-          ConfirmPassword !== '' &&
-          Phone.substr(0, 1) === '0' &&
-          validator.isLength(Phone, { min: 11, max: 11 }) &&
-          validator.isMobilePhone('+82' + Phone.substring(1, 11), ['ko-KR']) ? (
+          {NickNameRegex.test(NickName) ? (
             <S.ModalAgreeYes btntype="submit">수정 완료</S.ModalAgreeYes>
           ) : (
             <S.ModalAgreeNo>형식에 맞게 입력해주세요</S.ModalAgreeNo>

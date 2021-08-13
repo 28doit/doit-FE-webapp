@@ -7,51 +7,81 @@ import {
   SET_MESSAGE,
 } from './types';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
-import AuthService from '../services/auth.service';
+import { login, register, logout } from '../services/auth.service';
 
-export const register = (data: any) => (dispatch: any) => {
-  return AuthService.register(data).then(
-    (response) => {
-      dispatch({
-        type: REGISTER_SUCCESS,
-      });
+export const Nregister =
+  (
+    email: any,
+    name: any,
+    nickName: any,
+    sex: any,
+    phoneNumber: any,
+    password: any,
+    userYear: any,
+    userMonth: any,
+    userDay: any,
+    type: any,
+    gallCount: any,
+    userSubscribeCount: any,
+    profileImageLocation: any,
+  ) =>
+  (dispatch: any) => {
+    return register(
+      email,
+      name,
+      nickName,
+      sex,
+      phoneNumber,
+      password,
+      userYear,
+      userMonth,
+      userDay,
+      type,
+      gallCount,
+      userSubscribeCount,
+      profileImageLocation,
+    ).then(
+      (response) => {
+        dispatch({
+          type: REGISTER_SUCCESS,
+        });
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: response.data.message,
-      });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: response.data.message,
+        });
 
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-      dispatch({
-        type: REGISTER_FAIL,
-      });
+        dispatch({
+          type: REGISTER_FAIL,
+        });
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
 
-      return Promise.reject();
-    },
-  );
-};
+        return Promise.reject();
+      },
+    );
+  };
 
-export const login = (data: any) => (dispatch: any) => {
-  return AuthService.login(data).then(
+export const Nlogin = (email: any, password: any) => (dispatch: any) => {
+  return login(email, password).then(
     (data) => {
-      const decode = JSON.stringify(jwtDecode<JwtPayload>(data));
+      console.log(data);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { user: decode },
+        payload: { user: data },
       });
 
       return Promise.resolve();
@@ -78,8 +108,8 @@ export const login = (data: any) => (dispatch: any) => {
   );
 };
 
-export const logout = () => (dispatch: any) => {
-  AuthService.logout();
+export const Nlogout = () => (dispatch: any) => {
+  logout();
 
   dispatch({
     type: LOGOUT,

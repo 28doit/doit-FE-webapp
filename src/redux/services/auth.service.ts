@@ -3,29 +3,50 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 const API_URL: any = process.env.REACT_APP_MOCK_POST_URL;
 
-class AuthService {
-  login(data: any) {
-    return axios.post(API_URL, { data }).then((response) => {
-      const decode = JSON.stringify(jwtDecode<JwtPayload>(response.data));
+export const login = (email: any, password: any) => {
+  return axios.post('/accounts/login', { email, password }).then((response) => {
+    const decode = JSON.stringify(jwtDecode<JwtPayload>(response.data.token));
 
-      // 원래는 response.data.accessToken임
-      if (response.data) {
-        localStorage.setItem('user', decode);
-      }
+    if (response.data.token) {
+      localStorage.setItem('user', decode);
+    }
 
-      return response.data;
-    });
-  }
+    return response.data;
+  });
+};
 
-  logout() {
-    localStorage.removeItem('user');
-  }
+export const logout = () => {
+  localStorage.removeItem('user');
+};
 
-  register(data: any) {
-    return axios.post(API_URL, {
-      data,
-    });
-  }
-}
-
-export default new AuthService();
+export const register = (
+  email: any,
+  name: any,
+  nickName: any,
+  sex: any,
+  phoneNumber: any,
+  password: any,
+  userYear: any,
+  userMonth: any,
+  userDay: any,
+  type: any,
+  gallCount: any,
+  userSubscribeCount: any,
+  profileImageLocation: any,
+) => {
+  return axios.post('/accounts/new', {
+    email,
+    name,
+    nickName,
+    sex,
+    phoneNumber,
+    password,
+    userYear,
+    userMonth,
+    userDay,
+    type,
+    gallCount,
+    userSubscribeCount,
+    profileImageLocation,
+  });
+};

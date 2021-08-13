@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { useState } from 'react';
-import { register } from '../../../redux/actions/auth';
+import { Nregister } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
@@ -72,9 +72,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
         let body = {
           email: Email,
-          userName: Name,
+          name: Name,
           nickName: NickName,
-          //sex: Gender === 'M' ? true : false,
           sex: 1,
           phoneNumber: Phone,
           password: hash,
@@ -82,16 +81,32 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           userMonth: Month,
           userDay: Day,
           type: 1,
-          gallaryCount: 0,
-          userSubscribeCount: 0,
-          profileImageLocation: '',
-          salt: salt,
+          gallCount: 10,
+          userSubscribeCount: 10,
+          profileImageLocation: 'asd',
         };
+
         console.log(body);
 
-        dispatch(register(body)).then(() => {
-          window.location.replace('/login');
+        dispatch(
+          Nregister(
+            Email,
+            Name,
+            NickName,
+            1,
+            Phone,
+            hash,
+            Year,
+            Month,
+            Day,
+            1,
+            10,
+            10,
+            'asd',
+          ),
+        ).then(() => {
           setLoading(false);
+          history.replace('/login');
         });
       });
     });

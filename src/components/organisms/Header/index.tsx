@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useSelector } from 'react-redux';
-import { logout } from '../../../redux/actions/auth';
+import { Nlogout } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 
 export const Header = (): React.ReactElement => {
@@ -10,7 +10,7 @@ export const Header = (): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const Exit = () => {
-    dispatch(logout());
+    dispatch(Nlogout());
   };
 
   return (
