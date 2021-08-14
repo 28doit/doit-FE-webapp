@@ -93,6 +93,5 @@
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.2",
     "redux-devtools-extension": "^2.13.9"
-  },
-  "proxy": "http://222.104.174.222:8080"
+  }
 }

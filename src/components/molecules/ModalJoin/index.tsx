@@ -57,10 +57,15 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   const onEmailHandler = () => {
     setIsCheck(true);
-    axios.get('url').then((response) => {
-      console.log(response);
-      response ? setEmailDuplicate(true) : setEmailDuplicate(false);
-    });
+    axios
+      .get(
+        'http://50a0bca4-a26d-4e42-b15a-5cf7163d7619.mock.pstmn.io/accounts/new/email_check?email=test@naver.com',
+      )
+      .then((response) => {
+        response.data.email
+          ? setEmailDuplicate(true)
+          : setEmailDuplicate(false);
+      });
   };
 
   const onCheckHandler = () => {
