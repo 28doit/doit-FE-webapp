@@ -5,7 +5,6 @@ import { useState } from 'react';
 import validator from 'validator';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoading } from '../../index';
-import { useHistory } from 'react-router';
 import { Nlogin } from '../../../redux/actions/auth';
 
 export interface ModalItemProps {}
@@ -15,7 +14,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [Loading, setLoading] = useState(false);
-  const history = useHistory();
+
   const onEmailHandler = (e: any) => {
     setEmail(e.currentTarget.value);
   };
@@ -27,7 +26,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
     setLoading(true);
     dispatch(Nlogin(Email, Password)).then(() => {
       setLoading(false);
-      history.replace('/');
+      window.location.replace('/');
     });
   };
 

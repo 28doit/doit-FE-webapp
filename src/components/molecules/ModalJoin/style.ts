@@ -12,6 +12,25 @@ export const ModalCommonTitle = styled.h2`
   text-align: center;
 `;
 
+export const EmailWrap = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+export const CheckEmail = styled.div`
+  display: flex;
+  align-items: center;
+  width: 10%;
+  font-weight: 700;
+  background-color: #f75a58;
+  justify-content: center;
+  margin-left: 5px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
 export const ModalJoinValid = styled.span`
   color: #03c75a;
   font-size: 12px;
@@ -132,7 +151,7 @@ export const ModalRegisterInput = styled(Input)`
 `;
 
 export const ModalRegisterEmail = styled(Input)`
-  width: 90%;
+  width: 80%;
   margin: 0 0 5px;
 `;
 

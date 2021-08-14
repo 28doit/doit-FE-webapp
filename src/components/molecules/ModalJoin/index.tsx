@@ -7,6 +7,8 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import { ModalLoading } from '../../index';
 import { useHistory } from 'react-router';
+import axios from 'axios';
+
 export interface ModalItemProps {}
 
 export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
@@ -27,8 +29,11 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Month: '',
     Day: '',
   });
+
   const [Loading, setLoading] = useState(false);
   const [Check, setCheck] = useState(false);
+  const [EmailDuplicate, setEmailDuplicate] = useState(true);
+  const [IsCheck, setIsCheck] = useState(false);
 
   const {
     Email,
@@ -50,7 +55,15 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     });
   };
 
-  const onCheckHandler = (e: any) => {
+  const onEmailHandler = () => {
+    setIsCheck(true);
+    axios.get('url').then((response) => {
+      console.log(response);
+      response ? setEmailDuplicate(true) : setEmailDuplicate(false);
+    });
+  };
+
+  const onCheckHandler = () => {
     setCheck(!Check);
   };
 
@@ -172,18 +185,33 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           </S.ModalInputWrap>
           <S.ModalInputWrap>
             <S.ModalRegisterLabel htmlFor="email">이메일</S.ModalRegisterLabel>
-            <S.ModalRegisterEmail
-              id="email"
-              name="Email"
-              inputType="email"
-              placeholder="이메일"
-              value={Email}
-              onChange={onChangeAccount}
-            />
+            <S.EmailWrap>
+              <S.ModalRegisterEmail
+                id="email"
+                name="Email"
+                inputType="email"
+                placeholder="이메일"
+                value={Email}
+                onChange={onChangeAccount}
+              />
+              <S.CheckEmail onClick={onEmailHandler}>확인</S.CheckEmail>
+            </S.EmailWrap>
             {validator.isEmail(Email) ? (
-              <S.ModalJoinValid>
-                ✔ 사용할 수 있는 이메일 입니다.
-              </S.ModalJoinValid>
+              IsCheck ? (
+                EmailDuplicate ? (
+                  <S.ModalJoinInvalid>
+                    ❌ 이미 가입 한 이메일 입니다.
+                  </S.ModalJoinInvalid>
+                ) : (
+                  <S.ModalJoinValid>
+                    ✔ 사용할 수 있는 이메일 입니다.
+                  </S.ModalJoinValid>
+                )
+              ) : (
+                <S.ModalJoinInvalid>
+                  ❌ 이메일 중복을 확인해주세요.
+                </S.ModalJoinInvalid>
+              )
             ) : (
               <S.ModalJoinInvalid>❌ 이메일을 입력하세요.</S.ModalJoinInvalid>
             )}
@@ -646,6 +674,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           NickNameRegex.test(NickName) &&
           validator.isLength(NickName, { min: 4, max: 12 }) &&
           validator.isEmail(Email) &&
+          IsCheck === true &&
           validator.isStrongPassword(Password) &&
           validator.equals(Password, ConfirmPassword) &&
           ConfirmPassword !== '' &&
