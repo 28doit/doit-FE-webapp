@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
-import { useState } from 'react';
 import validator from 'validator';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoading } from '../../index';
 import { Nlogin } from '../../../redux/actions/auth';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 export interface ModalItemProps {}
 
 export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    currentUser ? history.replace('/') : '';
+  }, []);
+
+  const history = useHistory();
   const dispatch = useAppThunkDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
@@ -26,7 +34,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
     setLoading(true);
     dispatch(Nlogin(Email, Password)).then(() => {
       setLoading(false);
-      window.location.replace('/');
+      history.replace('/');
     });
   };
 

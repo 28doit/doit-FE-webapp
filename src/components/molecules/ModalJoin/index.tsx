@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './style';
 import { useState } from 'react';
 import { Nregister } from '../../../redux/actions/auth';
@@ -8,14 +8,20 @@ import bcrypt from 'bcryptjs';
 import { ModalLoading } from '../../index';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export interface ModalItemProps {}
 
 export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    currentUser ? window.location.replace('/') : console.log('New!');
+  }, []);
+
   const dispatch = useAppThunkDispatch();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const NameRegex = /^[가-힣]+$/;
-  const saltRounds = 10;
   const history = useHistory();
   const [Account, setAccount] = useState({
     Email: '',
@@ -57,15 +63,12 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   const onEmailHandler = () => {
     setIsCheck(true);
-    axios
-      .get(
-        'http://50a0bca4-a26d-4e42-b15a-5cf7163d7619.mock.pstmn.io/accounts/new/email_check?email=test@naver.com',
-      )
-      .then((response) => {
-        response.data.email
-          ? setEmailDuplicate(true)
-          : setEmailDuplicate(false);
-      });
+    axios.get('accounts/new/email-check?email=' + Email).then((response) => {
+      console.log(response);
+      response.data.isvalue
+        ? setEmailDuplicate(true)
+        : setEmailDuplicate(false);
+    });
   };
 
   const onCheckHandler = () => {
@@ -79,7 +82,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
 
-    bcrypt.genSalt(saltRounds, function (err, salt) {
+    bcrypt.genSalt(10, function (err, salt) {
       if (err) {
         console.log('salt!' + err);
       }
@@ -87,24 +90,6 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
         if (err) {
           console.log('hash!' + err);
         }
-
-        let body = {
-          email: Email,
-          name: Name,
-          nickName: NickName,
-          sex: 1,
-          phoneNumber: Phone,
-          password: hash,
-          userYear: Year,
-          userMonth: Month,
-          userDay: Day,
-          type: 1,
-          gallCount: 10,
-          userSubscribeCount: 10,
-          profileImageLocation: 'asd',
-        };
-
-        console.log(body);
 
         dispatch(
           Nregister(

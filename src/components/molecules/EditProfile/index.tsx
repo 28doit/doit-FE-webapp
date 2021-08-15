@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './style';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export interface ModalItemProps {}
 
 export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
-  const dispatch = useAppThunkDispatch();
   const { user: currentUser } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    //axios 통신으로 백에 토큰이 만료되었는지 물어보면 될 듯
+    currentUser ? console.log('Hi user!') : window.location.replace('/login');
+  }, []);
+
+  const dispatch = useAppThunkDispatch();
   const history = useHistory();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
-  console.log(currentUser);
   const [Account, setAccount] = useState({
     NickName: '',
     Phone: '',

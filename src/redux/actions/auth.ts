@@ -6,7 +6,6 @@ import {
   LOGOUT,
   SET_MESSAGE,
 } from './types';
-import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { login, register, logout } from '../services/auth.service';
 
 export const Nregister =
