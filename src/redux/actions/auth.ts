@@ -4,9 +4,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  SET_MESSAGE,
+  IS_EXPIRED,
+  EXPIRED_ERR,
 } from './types';
-import { login, register, logout } from '../services/auth.service';
+import { login, register, logout, is_expired } from '../services/auth.service';
 
 export const Nregister =
   (
@@ -45,28 +46,11 @@ export const Nregister =
           type: REGISTER_SUCCESS,
         });
 
-        dispatch({
-          type: SET_MESSAGE,
-          payload: response.data.message,
-        });
-
         return Promise.resolve();
       },
       (error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
         dispatch({
           type: REGISTER_FAIL,
-        });
-
-        dispatch({
-          type: SET_MESSAGE,
-          payload: message,
         });
 
         return Promise.reject();
@@ -74,32 +58,47 @@ export const Nregister =
     );
   };
 
-export const Nlogin = (email: any, password: any) => (dispatch: any) => {
-  return login(email, password).then(
-    (data) => {
-      console.log(data);
+export const NisExpired = (token: any, userEmail: any) => (dispatch: any) => {
+  return is_expired(token, userEmail).then(
+    (response) => {
+      console.log(response); // 여기서 조건문 분기로 나누면 되겠다.
       dispatch({
-        type: LOGIN_SUCCESS,
-        payload: { user: data },
+        type: IS_EXPIRED,
+        payload: { ans: response },
       });
-
       return Promise.resolve();
     },
     (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
       dispatch({
-        type: LOGIN_FAIL,
+        type: EXPIRED_ERR,
       });
 
+      return Promise.reject();
+    },
+  );
+};
+
+export const Nlogin = (email: any, password: any) => (dispatch: any) => {
+  return login(email, password).then(
+    (data) => {
+      if (data.name && data.token) {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: { user: data },
+        });
+
+        return Promise.resolve(data);
+      } else {
+        dispatch({
+          type: LOGIN_FAIL,
+        });
+
+        return Promise.resolve(data);
+      }
+    },
+    (error) => {
       dispatch({
-        type: SET_MESSAGE,
-        payload: message,
+        type: LOGIN_FAIL,
       });
 
       return Promise.reject();

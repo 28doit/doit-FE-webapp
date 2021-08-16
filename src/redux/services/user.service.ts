@@ -1,24 +1,25 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = process.env.REACT_APP_MOCK_POST_URL;
+export const getPublicContent = () => {
+  return axios.get('url' + '/all');
+};
 
-class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + '/all');
-  }
+export const getUserInfo = (userEmail: any) => {
+  axios.get('/user/' + userEmail);
+};
 
-  getUserBoard() {
-    return axios.get(API_URL + '/user', { headers: authHeader() });
-  }
+export const getAdminBoard = () => {
+  return axios.get('url' + '/admin', { headers: authHeader() });
+};
 
-  getModeratorBoard() {
-    return axios.get(API_URL + '/mod', { headers: authHeader() });
-  }
-
-  getAdminBoard() {
-    return axios.get(API_URL + '/admin', { headers: authHeader() });
-  }
-}
-
-export default new UserService();
+export const editUserProfile = (
+  userEmail: any,
+  password: any,
+  nickName: any,
+) => {
+  return axios.post('/user/setpassword/' + userEmail, {
+    password: password,
+    nickName: nickName,
+  });
+};

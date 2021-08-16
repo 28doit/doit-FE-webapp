@@ -32,9 +32,14 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    dispatch(Nlogin(Email, Password)).then(() => {
+    dispatch(Nlogin(Email, Password)).then((data) => {
       setLoading(false);
-      history.replace('/');
+      if (data.name && data.token) {
+        history.replace('/');
+      } else {
+        alert('비밀번호 또는 이메일이 틀렸습니다.'); // 이거 나중에 따로 만들어서 쓸 듯?
+        history.replace('/login');
+      }
     });
   };
 

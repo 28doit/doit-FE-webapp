@@ -10,6 +10,14 @@ export const login = (email: any, password: any) => {
   });
 };
 
+export const email_check = (email: any) => {
+  return axios.get('accounts/new/email-check?email=' + email);
+};
+
+export const is_expired = (token: any, userEmail: any) => {
+  return axios.post('url', { token: token, userEmail: userEmail });
+};
+
 export const logout = () => {
   localStorage.removeItem('user');
 };

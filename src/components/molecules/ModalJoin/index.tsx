@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import * as S from './style';
-import { useState } from 'react';
-import { Nregister } from '../../../redux/actions/auth';
-import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import { Nregister } from '../../../redux/actions/auth';
+import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoading } from '../../index';
-import { useHistory } from 'react-router';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { email_check } from '../../../redux/services/auth.service';
 
 export interface ModalItemProps {}
 
@@ -59,12 +58,15 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       ...Account,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+
+    if (e.currentTarget.name === 'Email' && !e.currentTarget.value) {
+      setIsCheck(false);
+    }
   };
 
   const onEmailHandler = () => {
     setIsCheck(true);
-    axios.get('accounts/new/email-check?email=' + Email).then((response) => {
-      console.log(response);
+    email_check(Email).then((response) => {
       response.data.isvalue
         ? setEmailDuplicate(true)
         : setEmailDuplicate(false);

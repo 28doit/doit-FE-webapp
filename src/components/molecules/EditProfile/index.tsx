@@ -5,6 +5,7 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { getUserInfo } from '../../../redux/services/user.service';
 
 export interface ModalItemProps {}
 
@@ -47,9 +48,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     };
     console.log(body);
 
-    axios.get('/user/2006').then(function (response) {
-      console.log(response.data);
-    });
+    getUserInfo(2006);
   };
 
   return (
@@ -195,35 +194,15 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             </S.ModalRegisterLabel>
             <S.ModalTelInput
               id="phone"
-              name="Phone"
               inputType="text"
               placeholder="- 빼고 입력"
-              value={Phone}
-              onChange={onChangeAccount}
+              disabled={true}
             />
-            {Phone.substr(0, 1) !== '0' ? (
-              <S.ModalJoinSelectInvalid>
-                ❌ 휴대폰 번호를 입력하세요.
-              </S.ModalJoinSelectInvalid>
-            ) : validator.isLength(Phone, { min: 11, max: 11 }) ? (
-              validator.isMobilePhone('+82' + Phone.substring(1, 11), [
-                'ko-KR',
-              ]) ? (
-                <S.ModalJoinSelectValid>
-                  ✔ 휴대폰 번호를 입력하셨습니다.
-                </S.ModalJoinSelectValid>
-              ) : (
-                <S.ModalJoinSelectInvalid>
-                  ❌ 휴대폰 번호를 입력하세요.
-                </S.ModalJoinSelectInvalid>
-              )
-            ) : (
-              <S.ModalJoinSelectInvalid>
-                ❌ 휴대폰 번호를 입력하세요.
-              </S.ModalJoinSelectInvalid>
-            )}
           </S.ModalInputWrap>
-          {NickNameRegex.test(NickName) ? (
+          {NickNameRegex.test(NickName) &&
+          validator.isStrongPassword(Password) &&
+          validator.equals(Password, ConfirmPassword) &&
+          ConfirmPassword !== '' ? (
             <S.ModalAgreeYes btntype="submit">수정 완료</S.ModalAgreeYes>
           ) : (
             <S.ModalAgreeNo>형식에 맞게 입력해주세요</S.ModalAgreeNo>
