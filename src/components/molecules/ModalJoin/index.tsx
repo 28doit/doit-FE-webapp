@@ -66,11 +66,17 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   const onEmailHandler = () => {
     setIsCheck(true);
-    email_check(Email).then((response) => {
-      response.data.isvalue
-        ? setEmailDuplicate(true)
-        : setEmailDuplicate(false);
-    });
+    email_check(Email)
+      .then((response) => {
+        response.data.isvalue
+          ? setEmailDuplicate(true)
+          : setEmailDuplicate(false);
+      })
+      .catch(() => {
+        alert(
+          '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+        );
+      });
   };
 
   const onCheckHandler = () => {
@@ -109,10 +115,17 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             10,
             'asd',
           ),
-        ).then(() => {
-          setLoading(false);
-          history.replace('/login');
-        });
+        )
+          .then(() => {
+            setLoading(false);
+            history.replace('/login');
+          })
+          .catch(() => {
+            alert(
+              '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+            );
+            window.location.replace('/join');
+          });
       });
     });
   };
@@ -120,12 +133,12 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   return (
     <>
       {Loading ? <ModalLoading /> : ''}
-      <S.ModalCommonTitle>회원가입</S.ModalCommonTitle>
-      <S.ModalCommonWrap>
-        <S.ModalJoinForm onSubmit={onSubmitHandler}>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="name">이름</S.ModalRegisterLabel>
-            <S.ModalRegisterInput
+      <S.JoinTitle>회원가입</S.JoinTitle>
+      <S.JoinCommonWrap>
+        <S.JoinForm onSubmit={onSubmitHandler}>
+          <S.JoinInputWrap>
+            <S.JoinLabel htmlFor="name">이름</S.JoinLabel>
+            <S.JoinInput
               id="name"
               name="Name"
               inputType="text"
@@ -135,23 +148,17 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             />
             {NameRegex.test(Name) ? (
               validator.isLength(Name, { min: 2, max: 12 }) ? (
-                <S.ModalJoinValid>✔ 통과.</S.ModalJoinValid>
+                <S.JoinValid>✔ 통과.</S.JoinValid>
               ) : (
-                <S.ModalJoinInvalid>
-                  ❌ 한글 이름을 입력하세요.
-                </S.ModalJoinInvalid>
+                <S.JoinInvalid>❌ 한글 이름을 입력하세요.</S.JoinInvalid>
               )
             ) : (
-              <S.ModalJoinInvalid>
-                ❌ 한글 이름을 입력하세요.
-              </S.ModalJoinInvalid>
+              <S.JoinInvalid>❌ 한글 이름을 입력하세요.</S.JoinInvalid>
             )}
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="nickName">
-              닉네임
-            </S.ModalRegisterLabel>
-            <S.ModalRegisterNickName
+          </S.JoinInputWrap>
+          <S.JoinInputWrap>
+            <S.JoinLabel htmlFor="nickName">닉네임</S.JoinLabel>
+            <S.JoinInput
               id="nickName"
               name="NickName"
               inputType="text"
@@ -161,24 +168,22 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             />
             {NickNameRegex.test(NickName) ? (
               validator.isLength(NickName, { min: 4, max: 12 }) ? (
-                <S.ModalJoinValid>
-                  ✔ 사용할 수 있는 닉네임 입니다.
-                </S.ModalJoinValid>
+                <S.JoinValid>✔ 사용할 수 있는 닉네임 입니다.</S.JoinValid>
               ) : (
-                <S.ModalJoinInvalid>
+                <S.JoinInvalid>
                   ❌ 형식에 맞는 닉네임을 입력하세요.
-                </S.ModalJoinInvalid>
+                </S.JoinInvalid>
               )
             ) : (
-              <S.ModalJoinInvalid>
+              <S.JoinInvalid>
                 ❌ 띄어쓰기, 특수문자는 사용 불가합니다.
-              </S.ModalJoinInvalid>
+              </S.JoinInvalid>
             )}
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="email">이메일</S.ModalRegisterLabel>
-            <S.EmailWrap>
-              <S.ModalRegisterEmail
+          </S.JoinInputWrap>
+          <S.JoinInputWrap>
+            <S.JoinLabel htmlFor="email">이메일</S.JoinLabel>
+            <S.JoinEmailWrap>
+              <S.JoinEmailInput
                 id="email"
                 name="Email"
                 inputType="email"
@@ -186,33 +191,25 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 value={Email}
                 onChange={onChangeAccount}
               />
-              <S.CheckEmail onClick={onEmailHandler}>확인</S.CheckEmail>
-            </S.EmailWrap>
+              <S.JoinEmailCheck onClick={onEmailHandler}>확인</S.JoinEmailCheck>
+            </S.JoinEmailWrap>
             {validator.isEmail(Email) ? (
               IsCheck ? (
                 EmailDuplicate ? (
-                  <S.ModalJoinInvalid>
-                    ❌ 이미 가입 한 이메일 입니다.
-                  </S.ModalJoinInvalid>
+                  <S.JoinInvalid>❌ 이미 가입 한 이메일 입니다.</S.JoinInvalid>
                 ) : (
-                  <S.ModalJoinValid>
-                    ✔ 사용할 수 있는 이메일 입니다.
-                  </S.ModalJoinValid>
+                  <S.JoinValid>✔ 사용할 수 있는 이메일 입니다.</S.JoinValid>
                 )
               ) : (
-                <S.ModalJoinInvalid>
-                  ❌ 이메일 중복을 확인해주세요.
-                </S.ModalJoinInvalid>
+                <S.JoinInvalid>❌ 이메일 중복을 확인해주세요.</S.JoinInvalid>
               )
             ) : (
-              <S.ModalJoinInvalid>❌ 이메일을 입력하세요.</S.ModalJoinInvalid>
+              <S.JoinInvalid>❌ 이메일을 입력하세요.</S.JoinInvalid>
             )}
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="password1">
-              비밀번호
-            </S.ModalRegisterLabel>
-            <S.ModalRegisterInput
+          </S.JoinInputWrap>
+          <S.JoinInputWrap>
+            <S.JoinLabel htmlFor="password1">비밀번호</S.JoinLabel>
+            <S.JoinInput
               id="password1"
               name="Password"
               inputType="password"
@@ -221,20 +218,16 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               onChange={onChangeAccount}
             />
             {validator.isStrongPassword(Password) ? (
-              <S.ModalJoinValid>
-                ✔ 사용할 수 있는 비밀번호 입니다.
-              </S.ModalJoinValid>
+              <S.JoinValid>✔ 사용할 수 있는 비밀번호 입니다.</S.JoinValid>
             ) : (
-              <S.ModalJoinInvalid>
+              <S.JoinInvalid>
                 ❌ 형식에 맞는 비밀번호를 입력하세요.
-              </S.ModalJoinInvalid>
+              </S.JoinInvalid>
             )}
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="password2">
-              비밀번호 확인
-            </S.ModalRegisterLabel>
-            <S.ModalRegisterInput
+          </S.JoinInputWrap>
+          <S.JoinInputWrap>
+            <S.JoinLabel htmlFor="password2">비밀번호 확인</S.JoinLabel>
+            <S.JoinInput
               id="password2"
               name="ConfirmPassword"
               inputType="password"
@@ -244,21 +237,17 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             />
             {validator.equals(Password, ConfirmPassword) &&
             ConfirmPassword !== '' ? (
-              <S.ModalJoinSelectValid>
-                ✔ 비밀번호가 일치 합니다.
-              </S.ModalJoinSelectValid>
+              <S.JoinValidSelect>✔ 비밀번호가 일치 합니다.</S.JoinValidSelect>
             ) : (
-              <S.ModalJoinSelectInvalid>
+              <S.JoinInvalidSelect>
                 ❌ 비밀번호가 일치하지 않습니다.
-              </S.ModalJoinSelectInvalid>
+              </S.JoinInvalidSelect>
             )}
-          </S.ModalInputWrap>
-          <S.ModaleSelectWrap>
-            <S.ModalRegisterLabel htmlFor="birth">
-              생년월일
-            </S.ModalRegisterLabel>
-            <S.ModalBirthDiv>
-              <S.ModalRegisterBirth
+          </S.JoinInputWrap>
+          <S.JoinSelectWrap>
+            <S.JoinLabel htmlFor="birth">생년월일</S.JoinLabel>
+            <S.JoinBirthDiv>
+              <S.JoinBirthInput
                 id="birth"
                 inputType="text"
                 placeholder="년 (4자)"
@@ -266,7 +255,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 name="Year"
                 onChange={onChangeAccount}
               />
-              <S.ModalSelect
+              <S.JoinBirthSelect
                 onChange={onChangeAccount}
                 value={Month}
                 name="Month"
@@ -284,38 +273,38 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 <option value="10">10월</option>
                 <option value="11">11월</option>
                 <option value="12">12월</option>
-              </S.ModalSelect>
-              <S.ModalRegisterBirth
+              </S.JoinBirthSelect>
+              <S.JoinBirthInput
                 inputType="text"
                 placeholder="일 (2자)"
                 value={Day}
                 name="Day"
                 onChange={onChangeAccount}
               />
-            </S.ModalBirthDiv>
+            </S.JoinBirthDiv>
             {validator.isAfter(Year, '1899') ? (
               validator.isBefore(Year, '2001') ? (
                 validator.isDate(Year + '-' + Month + '-' + Day) ? (
-                  <S.ModalJoinSelectValid>✔ 정상입니다.</S.ModalJoinSelectValid>
+                  <S.JoinValidSelect>✔ 정상입니다.</S.JoinValidSelect>
                 ) : (
-                  <S.ModalJoinSelectInvalid>
+                  <S.JoinInvalidSelect>
                     ❌ 정상적인 날짜를 입력하세요.
-                  </S.ModalJoinSelectInvalid>
+                  </S.JoinInvalidSelect>
                 )
               ) : (
-                <S.ModalJoinSelectInvalid>
+                <S.JoinInvalidSelect>
                   ❌ 20살 이상만 가입할 수 있습니다.
-                </S.ModalJoinSelectInvalid>
+                </S.JoinInvalidSelect>
               )
             ) : (
-              <S.ModalJoinSelectInvalid>
+              <S.JoinInvalidSelect>
                 ❌ 1900년 이후 가입자만 가입할 수 있습니다.
-              </S.ModalJoinSelectInvalid>
+              </S.JoinInvalidSelect>
             )}
-          </S.ModaleSelectWrap>
-          <S.ModaleSelectWrap>
-            <S.ModalRegisterLabel htmlFor="gender">성별</S.ModalRegisterLabel>
-            <S.ModalGenderSelect
+          </S.JoinSelectWrap>
+          <S.JoinSelectWrap>
+            <S.JoinLabel htmlFor="gender">성별</S.JoinLabel>
+            <S.JoinGenderSelect
               id="gender"
               onChange={onChangeAccount}
               value={Gender}
@@ -324,22 +313,16 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               <option value="">성별</option>
               <option value="M">남자</option>
               <option value="F">여자</option>
-            </S.ModalGenderSelect>
+            </S.JoinGenderSelect>
             {validator.isEmpty(Gender) ? (
-              <S.ModalJoinSelectInvalid>
-                ❌ 성별을 선택하세요.
-              </S.ModalJoinSelectInvalid>
+              <S.JoinInvalidSelect>❌ 성별을 선택하세요.</S.JoinInvalidSelect>
             ) : (
-              <S.ModalJoinSelectValid>
-                ✔ 성별을 선택하셨습니다.
-              </S.ModalJoinSelectValid>
+              <S.JoinValidSelect>✔ 성별을 선택하셨습니다.</S.JoinValidSelect>
             )}
-          </S.ModaleSelectWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="phone">
-              휴대폰 번호
-            </S.ModalRegisterLabel>
-            <S.ModalTelInput
+          </S.JoinSelectWrap>
+          <S.JoinInputWrap>
+            <S.JoinLabel htmlFor="phone">휴대폰 번호</S.JoinLabel>
+            <S.JoinInput
               id="phone"
               name="Phone"
               inputType="text"
@@ -348,33 +331,31 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               onChange={onChangeAccount}
             />
             {Phone.substr(0, 1) !== '0' ? (
-              <S.ModalJoinSelectInvalid>
+              <S.JoinInvalidSelect>
                 ❌ 휴대폰 번호를 입력하세요.
-              </S.ModalJoinSelectInvalid>
+              </S.JoinInvalidSelect>
             ) : validator.isLength(Phone, { min: 11, max: 11 }) ? (
               validator.isMobilePhone('+82' + Phone.substring(1, 11), [
                 'ko-KR',
               ]) ? (
-                <S.ModalJoinSelectValid>
+                <S.JoinValidSelect>
                   ✔ 휴대폰 번호를 입력하셨습니다.
-                </S.ModalJoinSelectValid>
+                </S.JoinValidSelect>
               ) : (
-                <S.ModalJoinSelectInvalid>
+                <S.JoinInvalidSelect>
                   ❌ 휴대폰 번호를 입력하세요.
-                </S.ModalJoinSelectInvalid>
+                </S.JoinInvalidSelect>
               )
             ) : (
-              <S.ModalJoinSelectInvalid>
+              <S.JoinInvalidSelect>
                 ❌ 휴대폰 번호를 입력하세요.
-              </S.ModalJoinSelectInvalid>
+              </S.JoinInvalidSelect>
             )}
-          </S.ModalInputWrap>
-          <S.ModaleSelectWrap>
-            <S.ModalRegisterLabel htmlFor="agree">
-              약관동의
-            </S.ModalRegisterLabel>
-            <S.ModalTermDiv>
-              <S.ModalPre>
+          </S.JoinInputWrap>
+          <S.JoinSelectWrap>
+            <S.JoinLabel htmlFor="agree">약관동의</S.JoinLabel>
+            <S.JoinPreDiv>
+              <S.JoinPre>
                 제1조(목적) 이 약관은 업체 회사(전자상거래 사업자)가 운영하는
                 업체 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
                 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과
@@ -656,10 +637,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 “몰”이 하이퍼링크(예: 하이퍼링크의 대상에는 문자, 그림 및 동화상
                 등이 포함됨)방식 등으로 연결된 경우, 전자를 연결 “몰”(웹
                 사이트)이라고 하고 후자를 피…
-              </S.ModalPre>
-              <S.ModalCheck inputType="checkbox" onClick={onCheckHandler} />
-            </S.ModalTermDiv>
-          </S.ModaleSelectWrap>
+              </S.JoinPre>
+              <S.JoinPreCheck inputType="checkbox" onClick={onCheckHandler} />
+            </S.JoinPreDiv>
+          </S.JoinSelectWrap>
           {Check &&
           NameRegex.test(Name) &&
           validator.isLength(Name, { min: 2, max: 12 }) &&
@@ -677,12 +658,12 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           Phone.substr(0, 1) === '0' &&
           validator.isLength(Phone, { min: 11, max: 11 }) &&
           validator.isMobilePhone('+82' + Phone.substring(1, 11), ['ko-KR']) ? (
-            <S.ModalAgreeYes btntype="submit">회원 가입</S.ModalAgreeYes>
+            <S.JoinFinish btntype="submit">회원 가입</S.JoinFinish>
           ) : (
-            <S.ModalAgreeNo>약관을 동의 해주세요!</S.ModalAgreeNo>
+            <S.JoinNotFinish>약관을 동의 해주세요!</S.JoinNotFinish>
           )}
-        </S.ModalJoinForm>
-      </S.ModalCommonWrap>
+        </S.JoinForm>
+      </S.JoinCommonWrap>
     </>
   );
 };

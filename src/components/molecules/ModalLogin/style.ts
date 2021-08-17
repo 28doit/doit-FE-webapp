@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 import CheckOn from '../../../assets/check_on.svg';
 
-export const AllWrap = styled.div`
+export const LoginAllWrap = styled.div`
   width: 100%;
   height: 100%;
 `;
 
-export const ModalLoginForm = styled.form``;
+export const LoginForm = styled.form``;
 
-export const ModalLoginInvalid = styled.span`
+export const LoginInvalid = styled.span`
   color: red;
   font-size: 12px;
   font-weight: bold;
@@ -17,7 +17,7 @@ export const ModalLoginInvalid = styled.span`
   margin-bottom: 30px;
 `;
 
-export const ModalLoginValid = styled.span`
+export const LoginValid = styled.span`
   color: green;
   font-size: 12px;
   font-weight: bold;
@@ -25,25 +25,25 @@ export const ModalLoginValid = styled.span`
   margin-bottom: 30px;
 `;
 
-export const ModalLoginTitle = styled.h2`
+export const LoginTitle = styled.h2`
   margin: 0 0 20px;
   font-size: 25px;
   text-align: center;
 `;
 
-export const ModalInput = styled(Input)`
+export const LoginInput = styled(Input)`
   & + & {
     margin: 10px 0 0;
   }
   width: 100%;
 `;
 
-export const ModalLabel = styled(Label)`
+export const LoginLabel = styled(Label)`
   margin: 0 0 0 10px;
   color: #888888;
 `;
 
-export const ModalLoginCheckWrap = styled.div`
+export const LoginCheckWrap = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 14px;
@@ -80,13 +80,13 @@ export const ModalLoginCheckWrap = styled.div`
   }
 `;
 
-export const ModalBtn = styled(Btn)`
+export const LoginBtn = styled(Btn)`
   width: 100%;
   height: 60px;
   margin: 30px 0 0;
 `;
 
-export const ModalNo = styled.div`
+export const LoginNo = styled.div`
   width: 100%;
   height: 60px;
   margin: 30px 0 0;
@@ -98,7 +98,7 @@ export const ModalNo = styled.div`
   font-size: 18px;
 `;
 
-export const ModalAddMem = styled.div`
+export const GoToJoin = styled.div`
   padding: 24px 0 40px;
   font-size: 14px;
   text-align: center;
@@ -107,10 +107,10 @@ export const ModalAddMem = styled.div`
   }
 `;
 
-export const ModalLinkState = styled(LinkBtn)`
+export const LoginLinkState = styled(LinkBtn)`
   cursor: pointer;
 `;
 
-export const ModalRePassword = styled.span`
+export const LoginRePassword = styled.span`
   cursor: pointer;
 `;

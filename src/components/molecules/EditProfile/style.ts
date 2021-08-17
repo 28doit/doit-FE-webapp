@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { Input, Label, Btn, LinkBtn } from '../..';
-import CheckIcon from '../../../assets/check_square.svg';
-import CheckOn from '../../../assets/check_on.svg';
+import { Input, Label, Btn } from '../..';
 
-export const ModalCommonTitle = styled.h2`
+export const EditTitle = styled.h2`
   height: 60px;
   padding: 0 30px;
   border-bottom: 1px solid #ebebeb;
@@ -12,61 +10,34 @@ export const ModalCommonTitle = styled.h2`
   text-align: center;
 `;
 
-export const ModalJoinValid = styled.span`
-  color: #03c75a;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-`;
+export const EditCommonWrap = styled.div``;
 
-export const ModalJoinSelectValid = styled.span`
-  color: #03c75a;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 20px;
-`;
-
-export const ModalJoinInvalid = styled.span`
-  color: red;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-`;
-
-export const ModalJoinSelectInvalid = styled.span`
-  color: red;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 20px;
-`;
-
-export const ModalJoinForm = styled.form`
+export const EditForm = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
 `;
 
-export const ModaleSelectWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+export const EditLabel = styled(Label)`
+  float: left;
+  width: 100px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 46px;
+  cursor: default;
 `;
 
-export const ModalCheck = styled(Input)`
-  width: 40px;
-  height: 40px;
-  margin-left: 20px;
-`;
-
-export const ModalRegisterBirth = styled(Input)`
+export const EditBirthInput = styled(Input)`
   width: 25%;
   height: 40px;
 `;
 
-export const ModalSelect = styled.select`
-  position: relative;
+export const EditBirthDiv = styled.div`
+  display: flex;
+  justify-content: start;
+`;
+
+export const EditBirthSelect = styled.select`
   overflow: hidden;
   width: 25%;
   height: 40px;
@@ -77,8 +48,7 @@ export const ModalSelect = styled.select`
   box-sizing: border-box;
 `;
 
-export const ModalGenderSelect = styled.select`
-  position: relative;
+export const EditGenderSelect = styled.select`
   overflow: hidden;
   width: 25%;
   height: 40px;
@@ -89,20 +59,7 @@ export const ModalGenderSelect = styled.select`
   box-sizing: border-box;
 `;
 
-export const ModalBirthDiv = styled.div`
-  display: flex;
-  justify-content: start;
-`;
-
-export const ModalTermDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-`;
-
-export const ModalCommonWrap = styled.div``;
-
-export const ModalInputWrap = styled.div`
+export const EditInputWrap = styled.div`
   &::after {
     display: block;
     content: '';
@@ -114,77 +71,53 @@ export const ModalInputWrap = styled.div`
   width: 80%;
 `;
 
-export const ModalRegisterLabel = styled(Label)`
-  float: left;
-  width: 100px;
-  margin: 0;
-  font-size: 15px;
-  line-height: 46px;
-  cursor: default;
-`;
-
-export const ModalRegisterNickName = styled(Input)`
+export const EditInput = styled(Input)`
   width: 90%;
   margin: 0 0 5px;
 `;
 
-export const ModalRegisterInput = styled(Input)`
-  width: 90%;
+export const EditEmailInput = styled(Input)`
+  width: 80%;
   margin: 0 0 5px;
 `;
 
-export const ModalRegisterEmail = styled(Input)`
-  width: 90%;
-  margin: 0 0 5px;
+export const EditSelectWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 `;
 
-export const ModalEmailAt = styled.span`
+export const EditValid = styled.span`
+  color: #03c75a;
+  font-size: 12px;
+  font-weight: bold;
   display: inline-block;
-  width: 25px;
-  text-align: center;
 `;
 
-export const ModalEmailTail = styled.select`
-  width: calc(100% - 25px - 100px - 128px);
-  height: 46px;
-  border: 1px solid #dddfe1;
-`;
-
-export const ModalTelInput = styled(Input)`
-  width: 90%;
-  margin: 0 0 5px;
-`;
-
-export const ModalTelInputCheck = styled(Input)`
-  width: 320px;
-  margin: 0 0 0 100px;
-`;
-
-export const ModalTelAt = styled.span`
+export const EditInvalid = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
   display: inline-block;
-  width: 22px;
-  text-align: center;
 `;
 
-export const ModalTelConfirm = styled(Btn)`
-  width: calc(100% - 100px - 320px - 10px);
-  height: 46px;
-  margin: 0 0 0 10px;
+export const EditValidSelect = styled.span`
+  color: #03c75a;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
 `;
 
-export const ModalPre = styled.pre`
-  background-color: rgb(238, 238, 238);
-  width: 90%;
-  height: 120px;
-  padding: 20px;
-  overflow-y: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  line-height: 1.5;
-  font-size: 10px;
+export const EditInvalidSelect = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
 `;
 
-export const ModalAgreeYes = styled(Btn)`
+export const EditFinish = styled(Btn)`
   width: 50%;
   height: 30px;
   margin-top: 60px;
@@ -194,7 +127,7 @@ export const ModalAgreeYes = styled(Btn)`
   font-size: 16px;
 `;
 
-export const ModalAgreeNo = styled.div`
+export const EditNotFinish = styled.div`
   width: 50%;
   height: 30px;
   margin-top: 60px;
@@ -204,38 +137,4 @@ export const ModalAgreeNo = styled.div`
   color: #ffffff;
   font-weight: 700;
   font-size: 14px;
-`;
-
-export const TermsTxt = styled(Label)`
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 30px;
-  margin: 30px 0 6px;
-  line-height: 30px;
-  color: #000000;
-  cursor: default;
-  &::after {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    background: url(${CheckIcon}) no-repeat;
-  }
-  input[type='checkbox']:checked + &::after {
-    background: url(${CheckOn}) no-repeat;
-  }
-`;
-
-export const TermsRequired = styled.span`
-  color: #1564f9;
-`;
-
-export const ModalBtn = styled(Btn)`
-  width: 100%;
-  height: 60px;
-  margin: 10px 0 0;
 `;

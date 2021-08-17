@@ -3,9 +3,7 @@ import * as S from './style';
 import { useHistory } from 'react-router-dom';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { getUserInfo } from '../../../redux/services/user.service';
 
 export interface ModalItemProps {}
 
@@ -22,11 +20,10 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const [Account, setAccount] = useState({
     NickName: '',
-    Phone: '',
     Password: '',
     ConfirmPassword: '',
   });
-  const { NickName, Phone, Password, ConfirmPassword } = Account;
+  const { NickName, Password, ConfirmPassword } = Account;
 
   const onChangeAccount = (e: any) => {
     setAccount({
@@ -42,34 +39,26 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
 
-    let body = {
-      idx: 2006,
-      password: 'qweqwe',
-    };
-    console.log(body);
-
-    getUserInfo(2006);
+    //사용자 정보 수정하는 통신 보내면 됨
   };
 
   return (
     <>
-      <S.ModalCommonTitle>내 정보 관리</S.ModalCommonTitle>
-      <S.ModalCommonWrap>
-        <S.ModalJoinForm onSubmit={onSubmitHandler}>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="name">이름</S.ModalRegisterLabel>
-            <S.ModalRegisterInput
+      <S.EditTitle>내 정보 관리</S.EditTitle>
+      <S.EditCommonWrap>
+        <S.EditForm onSubmit={onSubmitHandler}>
+          <S.EditInputWrap>
+            <S.EditLabel htmlFor="name">이름</S.EditLabel>
+            <S.EditInput
               id="name"
               inputType="text"
-              placeholder="{currentUser.user.userName}"
+              placeholder="사용자 이름"
               disabled={true}
             />
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="nickName">
-              닉네임
-            </S.ModalRegisterLabel>
-            <S.ModalRegisterNickName
+          </S.EditInputWrap>
+          <S.EditInputWrap>
+            <S.EditLabel htmlFor="nickName">닉네임</S.EditLabel>
+            <S.EditInput
               id="nickName"
               name="NickName"
               inputType="text"
@@ -79,34 +68,30 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             />
             {NickNameRegex.test(NickName) ? (
               validator.isLength(NickName, { min: 4, max: 12 }) ? (
-                <S.ModalJoinValid>
-                  ✔ 사용할 수 있는 닉네임 입니다.
-                </S.ModalJoinValid>
+                <S.EditValid>✔ 사용할 수 있는 닉네임 입니다.</S.EditValid>
               ) : (
-                <S.ModalJoinInvalid>
+                <S.EditInvalid>
                   ❌ 형식에 맞는 닉네임을 입력하세요.
-                </S.ModalJoinInvalid>
+                </S.EditInvalid>
               )
             ) : (
-              <S.ModalJoinInvalid>
+              <S.EditInvalid>
                 ❌ 띄어쓰기, 특수문자는 사용 불가합니다.
-              </S.ModalJoinInvalid>
+              </S.EditInvalid>
             )}
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="email">이메일</S.ModalRegisterLabel>
-            <S.ModalRegisterEmail
+          </S.EditInputWrap>
+          <S.EditInputWrap>
+            <S.EditLabel htmlFor="email">이메일</S.EditLabel>
+            <S.EditEmailInput
               id="email"
               inputType="email"
-              placeholder="{currentUser.user.email}"
+              placeholder="사용자 이메일"
               disabled={true}
             />
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="password1">
-              비밀번호
-            </S.ModalRegisterLabel>
-            <S.ModalRegisterInput
+          </S.EditInputWrap>
+          <S.EditInputWrap>
+            <S.EditLabel htmlFor="password1">비밀번호</S.EditLabel>
+            <S.EditInput
               id="password1"
               name="Password"
               inputType="password"
@@ -115,20 +100,16 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               onChange={onChangeAccount}
             />
             {validator.isStrongPassword(Password) ? (
-              <S.ModalJoinValid>
-                ✔ 사용할 수 있는 비밀번호 입니다.
-              </S.ModalJoinValid>
+              <S.EditValid>✔ 사용할 수 있는 비밀번호 입니다.</S.EditValid>
             ) : (
-              <S.ModalJoinInvalid>
+              <S.EditInvalid>
                 ❌ 형식에 맞는 비밀번호를 입력하세요.
-              </S.ModalJoinInvalid>
+              </S.EditInvalid>
             )}
-          </S.ModalInputWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="password2">
-              비밀번호 확인
-            </S.ModalRegisterLabel>
-            <S.ModalRegisterInput
+          </S.EditInputWrap>
+          <S.EditInputWrap>
+            <S.EditLabel htmlFor="password2">비밀번호 확인</S.EditLabel>
+            <S.EditInput
               id="password2"
               name="ConfirmPassword"
               inputType="password"
@@ -138,28 +119,24 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             />
             {validator.equals(Password, ConfirmPassword) &&
             ConfirmPassword !== '' ? (
-              <S.ModalJoinSelectValid>
-                ✔ 비밀번호가 일치 합니다.
-              </S.ModalJoinSelectValid>
+              <S.EditValidSelect>✔ 비밀번호가 일치 합니다.</S.EditValidSelect>
             ) : (
-              <S.ModalJoinSelectInvalid>
+              <S.EditInvalidSelect>
                 ❌ 비밀번호가 일치하지 않습니다.
-              </S.ModalJoinSelectInvalid>
+              </S.EditInvalidSelect>
             )}
-          </S.ModalInputWrap>
-          <S.ModaleSelectWrap>
-            <S.ModalRegisterLabel htmlFor="birth">
-              생년월일
-            </S.ModalRegisterLabel>
-            <S.ModalBirthDiv>
-              <S.ModalRegisterBirth
+          </S.EditInputWrap>
+          <S.EditSelectWrap>
+            <S.EditLabel htmlFor="birth">생년월일</S.EditLabel>
+            <S.EditBirthDiv>
+              <S.EditBirthInput
                 id="birth"
                 inputType="text"
-                placeholder="{currentUser.user.userYear}"
+                placeholder="사용자 년"
                 disabled={true}
               />
-              <S.ModalSelect disabled={true}>
-                <option></option>
+              <S.EditBirthSelect disabled={true}>
+                <option>사용자 월</option>
                 <option value="01">1월</option>
                 <option value="02">2월</option>
                 <option value="03">3월</option>
@@ -172,43 +149,41 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
                 <option value="10">10월</option>
                 <option value="11">11월</option>
                 <option value="12">12월</option>
-              </S.ModalSelect>
-              <S.ModalRegisterBirth
+              </S.EditBirthSelect>
+              <S.EditBirthInput
                 inputType="text"
-                placeholder="{currentUser.user.userDay}"
+                placeholder="사용자 일"
                 disabled={true}
               />
-            </S.ModalBirthDiv>
-          </S.ModaleSelectWrap>
-          <S.ModaleSelectWrap>
-            <S.ModalRegisterLabel htmlFor="gender">성별</S.ModalRegisterLabel>
-            <S.ModalGenderSelect id="gender" disabled={true}>
-              <option value="">"남자"</option>
+            </S.EditBirthDiv>
+          </S.EditSelectWrap>
+          <S.EditSelectWrap>
+            <S.EditLabel htmlFor="gender">성별</S.EditLabel>
+            <S.EditGenderSelect id="gender" disabled={true}>
+              <option>사용자 성별</option>
               <option value="M">남자</option>
               <option value="F">여자</option>
-            </S.ModalGenderSelect>
-          </S.ModaleSelectWrap>
-          <S.ModalInputWrap>
-            <S.ModalRegisterLabel htmlFor="phone">
-              휴대폰 번호
-            </S.ModalRegisterLabel>
-            <S.ModalTelInput
+            </S.EditGenderSelect>
+          </S.EditSelectWrap>
+          <S.EditInputWrap>
+            <S.EditLabel htmlFor="phone">휴대폰 번호</S.EditLabel>
+            <S.EditInput
               id="phone"
               inputType="text"
-              placeholder="- 빼고 입력"
+              placeholder="사용자 휴대폰 번호"
               disabled={true}
             />
-          </S.ModalInputWrap>
+          </S.EditInputWrap>
           {NickNameRegex.test(NickName) &&
           validator.isStrongPassword(Password) &&
           validator.equals(Password, ConfirmPassword) &&
           ConfirmPassword !== '' ? (
-            <S.ModalAgreeYes btntype="submit">수정 완료</S.ModalAgreeYes>
+            <S.EditFinish btntype="submit">수정 완료</S.EditFinish>
           ) : (
-            <S.ModalAgreeNo>형식에 맞게 입력해주세요</S.ModalAgreeNo>
+            <S.EditNotFinish>형식에 맞게 입력해주세요</S.EditNotFinish>
           )}
-        </S.ModalJoinForm>
-      </S.ModalCommonWrap>
+        </S.EditForm>
+      </S.EditCommonWrap>
     </>
   );
 };

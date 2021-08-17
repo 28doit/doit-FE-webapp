@@ -32,65 +32,69 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    dispatch(Nlogin(Email, Password)).then((data) => {
-      setLoading(false);
-      if (data.name && data.token) {
-        history.replace('/');
-      } else {
-        alert('비밀번호 또는 이메일이 틀렸습니다.'); // 이거 나중에 따로 만들어서 쓸 듯?
-        history.replace('/login');
-      }
-    });
+    dispatch(Nlogin(Email, Password))
+      .then((data) => {
+        setLoading(false);
+        if (data.name && data.token) {
+          history.replace('/');
+        } else {
+          alert('비밀번호 또는 이메일이 틀렸습니다.');
+          history.replace('/login');
+        }
+      })
+      .catch(() => {
+        alert(
+          '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+        );
+        setLoading(false);
+        window.location.replace('/login');
+      });
   };
 
   return (
-    <S.AllWrap>
+    <S.LoginAllWrap>
       {Loading ? <ModalLoading /> : ''}
-      <S.ModalLoginTitle>로그인</S.ModalLoginTitle>
-      <S.ModalLoginForm onSubmit={onSubmitHandler}>
-        <S.ModalInput
+      <S.LoginTitle>로그인</S.LoginTitle>
+      <S.LoginForm onSubmit={onSubmitHandler}>
+        <S.LoginInput
           placeholder="이메일을 입력해주세요"
           value={Email}
           onChange={onEmailHandler}
           inputType="email"
         />
         {validator.isEmail(Email) ? (
-          <S.ModalLoginValid>✔</S.ModalLoginValid>
+          <S.LoginValid>✔</S.LoginValid>
         ) : (
-          <S.ModalLoginInvalid>
-            * 이메일을 입력해주시기 바랍니다.
-          </S.ModalLoginInvalid>
+          <S.LoginInvalid>* 이메일을 입력해주시기 바랍니다.</S.LoginInvalid>
         )}
-        <S.ModalInput
+        <S.LoginInput
           inputType="password"
           placeholder="비밀번호를 입력해주세요"
           value={Password}
           onChange={onPasswordHandler}
         />
         {validator.isEmpty(Password) ? (
-          <S.ModalLoginInvalid>
-            * 비밀번호를 입력해주시기 바랍니다.
-          </S.ModalLoginInvalid>
+          <S.LoginInvalid>* 비밀번호를 입력해주시기 바랍니다.</S.LoginInvalid>
         ) : (
-          <S.ModalLoginValid>✔</S.ModalLoginValid>
+          <S.LoginValid>✔</S.LoginValid>
         )}
-        <S.ModalLoginCheckWrap>
-          <S.ModalInput id="idSave" inputType="checkbox" />
-          <S.ModalLabel htmlFor="idSave">아이디 저장</S.ModalLabel>
-          <S.ModalRePassword>비밀번호 재설정</S.ModalRePassword>
-        </S.ModalLoginCheckWrap>
+        <S.LoginCheckWrap>
+          <S.LoginInput id="idSave" inputType="checkbox" />
+          <S.LoginLabel htmlFor="idSave">아이디 저장</S.LoginLabel>
+          <S.LoginRePassword>비밀번호 재설정</S.LoginRePassword>
+        </S.LoginCheckWrap>
         {validator.isEmpty(Email) || validator.isEmpty(Password) ? (
-          <S.ModalNo>로그인</S.ModalNo>
+          <S.LoginNo>로그인</S.LoginNo>
         ) : (
-          <S.ModalBtn btntype="default">로그인</S.ModalBtn>
+          <S.LoginBtn btntype="default">로그인</S.LoginBtn>
         )}
-      </S.ModalLoginForm>
-      <S.ModalAddMem>
+      </S.LoginForm>
+      <S.GoToJoin>
         아직 회원이 아니세요?
-        <S.ModalLinkState btntype="gray" btnLink={ROUTES.JOIN}>
+        <S.LoginLinkState btntype="gray" btnLink={ROUTES.JOIN}>
           이메일로 회원가입
-        </S.ModalLinkState>
-      </S.ModalAddMem>
-    </S.AllWrap>
+        </S.LoginLinkState>
+      </S.GoToJoin>
+    </S.LoginAllWrap>
   );
 };
