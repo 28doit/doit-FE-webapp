@@ -86,7 +86,7 @@
     - ※기존의 회원 가입 페이지 atomic으로 재구성 완료※
     - 회원 가입, 로그인 페이지 validator 테스트 적용 결과 => 잘 됨, 바로 사용 가능
     - 지금까지 제작한 StoryBook 팀원들 확인할 수 있게 사이트를 통해 배포
-    사이트: https://photologger.netlify.app
+    [개발한 페이지 보기] (https://photologger.netlify.app)
 
 #### 21.08.06 20:33
 
@@ -113,7 +113,7 @@
     - MyPage에서 쓸 MyMenu molecules 구성 완료
 
     - ※21.08.04의 문제였던 dispatch 오류 해결... 스택오버플로는 신이야!※
-    => https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit
+    => [커스텀 dispatch를 만들어야 하는 이유] (https://stackoverflow.com/questions/63811401/property-then-does-not-exist-on-type-asyncthunkaction-redux-toolkit)
     => pure한 dispatch를 사용하기 보단 새로운 dispatch기능과 타입을 가지고 있는 useAppThunkDispatch를 만들어서 사용
 
 #### 21.08.11 22:28
@@ -122,7 +122,7 @@
     - 내 정보 수정 페이지 생성 완료 => 유저의 기존 정보를 초기 화면에 표시
     - 로그아웃 기능 구현 - localStorage clear 방식
     - login, join 동작 시 페이지를 새로 고침해야지 정상적으로 localStorage에서 데이터를 가져오는 에러 해결
-    => https://geonlee.tistory.com/191
+    => [새로고침 시 함수가 동작되는 경우] (https://geonlee.tistory.com/191)
     => history.replace('/')가 아닌 window.location.replace('/') 사용
 
     - MyPage에서의 메뉴별 렌더링 방식은 파라미터를 읽은 후 switch case문을 구별해서 렌더링 하는 방식 사용
@@ -183,7 +183,7 @@
     - axios 통신 과정에서 예외 처리 추가
     => dispatch then이후 catch를 이용해 서버와의 통신이 안되었을 경우의 조치 추가
 
-    - Card 컴포넌트느 새로 개발 해야 함
+    - Card 컴포넌트 새로 개발 해야 함
 
 #### 21.08.18 19:41
 
@@ -191,10 +191,10 @@
     => 체크 항목 1. JWT가 만료되었는가?, 2. 백에서 발급한 JWT와 userEmail정보가 무결성을 가지고 있는가?
 
     - edit-profile 페이지 useEffect가 아닌 useLayoutEffect를 이용해서 JWT 통신 체크
-    => https://hyojin96.tistory.com/entry/%F0%9F%8D%80-useEffect-VS-useLayoutEffect-%F0%9F%8D%80
+    => [왜 useLayoutEffect를 쓸까?] (https://hyojin96.tistory.com/entry/%F0%9F%8D%80-useEffect-VS-useLayoutEffect-%F0%9F%8D%80)
     => 백에서 만료되었거나 무결성이 위배된다고 오면 로그아웃 후 로그인 페이지로 이동
     => 문제 없을 경우 유저 정보를 받음 그 후 state에 저장
 
     - redux-services-auth 에 JWT 체크하는 통신 추가
     => 리덕스를 이용해 행위을 체크한 후 store에 데이터를 저장하지 않은 이유
-    => 리덕스는 새로고침시 초기화가 되기 때문에 persist-redux나 localStorage에 데이터를 저장 후 가져오는 방식으로 해야하는데, 새로 갈아 엎기는 좀 그렇고 localStorage에 저장은 변동 가능성이 있어서 사용하지 않음 - useState 사용
+    => 리덕스는 새로고침시 초기화가 되기 때문에 redux-persist나 localStorage에 데이터를 저장 후 가져오는 방식으로 해야하는데, 새로 갈아 엎기는 좀 그렇고 localStorage에 저장은 변동 가능성이 있어서 사용하지 않음 - useState 사용
