@@ -8,7 +8,7 @@ export const MyPage = ({ match }: any) => {
       case 'edit-profile':
         return <EditProfile />;
       default:
-        return console.log('default');
+        return '';
     }
   };
 

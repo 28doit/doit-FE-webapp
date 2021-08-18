@@ -12,14 +12,3 @@ export const getUserInfo = (userEmail: any) => {
 export const getAdminBoard = () => {
   return axios.get('url' + '/admin', { headers: authHeader() });
 };
-
-export const editUserProfile = (
-  userEmail: any,
-  password: any,
-  nickName: any,
-) => {
-  return axios.post('/user/setpassword/' + userEmail, {
-    password: password,
-    nickName: nickName,
-  });
-};

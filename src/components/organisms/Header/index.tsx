@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { useSelector } from 'react-redux';

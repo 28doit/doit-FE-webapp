@@ -14,12 +14,24 @@ export const email_check = (email: any) => {
   return axios.get('accounts/new/email-check?email=' + email);
 };
 
-export const is_expired = (token: any, userEmail: any) => {
-  return axios.post('url', { token: token, userEmail: userEmail });
+export const expired_check = (token: any, userEmail: any) => {
+  return axios.get(`/accounts/token-check?token=${token}&email=${userEmail}`);
+};
+
+export const editUserProfile = (
+  userEmail: any,
+  password: any,
+  nickName: any,
+) => {
+  return axios.post('/user/setpassword/' + userEmail, {
+    password: password,
+    nickName: nickName,
+  });
 };
 
 export const logout = () => {
   localStorage.removeItem('user');
+  localStorage.removeItem('ans');
 };
 
 export const register = (
@@ -41,15 +53,15 @@ export const register = (
     email,
     name,
     nickName,
-    sex,
     phoneNumber,
-    password,
+    sex,
+    profileImageLocation,
     userYear,
     userMonth,
     userDay,
+    password,
     type,
     gallCount,
     userSubscribeCount,
-    profileImageLocation,
   });
 };

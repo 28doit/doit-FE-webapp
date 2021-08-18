@@ -4,7 +4,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  IS_EXPIRED,
 } from '../actions/types';
 
 const localData = localStorage.getItem('user');

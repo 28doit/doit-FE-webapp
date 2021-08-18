@@ -1,21 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import * as S from './style';
 import { useHistory } from 'react-router-dom';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import { useSelector } from 'react-redux';
+import { ModalLoading } from '../../index';
+import { expired_check } from '../../../redux/services/auth.service';
+import { Nlogout } from '../../../redux/actions/auth';
 
 export interface ModalItemProps {}
 
 export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
+  const dispatch = useAppThunkDispatch();
+  const [data, setData] = useState({
+    email: '',
+    sex: 1,
+    phone: '',
+    month: '',
+    year: '',
+    day: '',
+    name: '',
+  });
+  const [Loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    //axios 통신으로 백에 토큰이 만료되었는지 물어보면 될 듯
-    currentUser ? console.log('Hi user!') : window.location.replace('/login');
+  useLayoutEffect(() => {
+    const getUser = async () => {
+      setLoading(true);
+      await expired_check(currentUser.token, currentUser.name)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.Token === false) {
+            alert('시간이 만료되었습니다. 다시 로그인 해주세요');
+            dispatch(Nlogout());
+            window.location.replace('/login');
+          } else {
+            const userData = response.data;
+            setData({
+              ...data,
+              ['email']: userData.Email,
+              ['name']: userData.Name,
+              ['sex']: userData.sex,
+              ['year']: userData.Year,
+              ['month']: userData.Month,
+              ['day']: userData.Day,
+              ['phone']: userData.PhoneNumber,
+            });
+          }
+        })
+        .catch(() => {
+          alert(
+            '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+          );
+          setLoading(false);
+          window.location.replace('/user/profile');
+        });
+      setLoading(false);
+    };
+    getUser();
   }, []);
 
-  const dispatch = useAppThunkDispatch();
   const history = useHistory();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const [Account, setAccount] = useState({
@@ -44,6 +88,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
 
   return (
     <>
+      {Loading ? <ModalLoading /> : ''}
       <S.EditTitle>내 정보 관리</S.EditTitle>
       <S.EditCommonWrap>
         <S.EditForm onSubmit={onSubmitHandler}>
@@ -52,7 +97,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             <S.EditInput
               id="name"
               inputType="text"
-              placeholder="사용자 이름"
+              placeholder={data.name}
               disabled={true}
             />
           </S.EditInputWrap>
@@ -82,10 +127,10 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
           </S.EditInputWrap>
           <S.EditInputWrap>
             <S.EditLabel htmlFor="email">이메일</S.EditLabel>
-            <S.EditEmailInput
+            <S.EditInput
               id="email"
               inputType="email"
-              placeholder="사용자 이메일"
+              placeholder={data.email}
               disabled={true}
             />
           </S.EditInputWrap>
@@ -113,7 +158,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               id="password2"
               name="ConfirmPassword"
               inputType="password"
-              value="{ConfirmPassword}"
+              value={ConfirmPassword}
               placeholder="비밀번호 확인"
               onChange={onChangeAccount}
             />
@@ -132,11 +177,11 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               <S.EditBirthInput
                 id="birth"
                 inputType="text"
-                placeholder="사용자 년"
+                placeholder={data.year}
                 disabled={true}
               />
               <S.EditBirthSelect disabled={true}>
-                <option>사용자 월</option>
+                <option>{data.month + '월'}</option>
                 <option value="01">1월</option>
                 <option value="02">2월</option>
                 <option value="03">3월</option>
@@ -152,7 +197,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
               </S.EditBirthSelect>
               <S.EditBirthInput
                 inputType="text"
-                placeholder="사용자 일"
+                placeholder={data.day}
                 disabled={true}
               />
             </S.EditBirthDiv>
@@ -160,7 +205,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
           <S.EditSelectWrap>
             <S.EditLabel htmlFor="gender">성별</S.EditLabel>
             <S.EditGenderSelect id="gender" disabled={true}>
-              <option>사용자 성별</option>
+              <option>{data.sex ? '남자' : '여자'}</option>
               <option value="M">남자</option>
               <option value="F">여자</option>
             </S.EditGenderSelect>
@@ -170,7 +215,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             <S.EditInput
               id="phone"
               inputType="text"
-              placeholder="사용자 휴대폰 번호"
+              placeholder={data.phone}
               disabled={true}
             />
           </S.EditInputWrap>

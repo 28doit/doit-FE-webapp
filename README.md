@@ -180,7 +180,21 @@
     - join, login, edit-profile 페이지 component 전부 수정
     => 사용하지 않는, 스타일은 같은데 추가로 만들어져 있는 등 수정
 
-    - axios 통신 과정에서 예외처리 추가
+    - axios 통신 과정에서 예외 처리 추가
     => dispatch then이후 catch를 이용해 서버와의 통신이 안되었을 경우의 조치 추가
 
     - Card 컴포넌트느 새로 개발 해야 함
+
+#### 21.08.18 19:41
+
+    - 백엔드와 JWT체크 통신 성공 및 적용 완료
+    => 체크 항목 1. JWT가 만료되었는가?, 2. 백에서 발급한 JWT와 userEmail정보가 무결성을 가지고 있는가?
+
+    - edit-profile 페이지 useEffect가 아닌 useLayoutEffect를 이용해서 JWT 통신 체크
+    => https://hyojin96.tistory.com/entry/%F0%9F%8D%80-useEffect-VS-useLayoutEffect-%F0%9F%8D%80
+    => 백에서 만료되었거나 무결성이 위배된다고 오면 로그아웃 후 로그인 페이지로 이동
+    => 문제 없을 경우 유저 정보를 받음 그 후 state에 저장
+
+    - redux-services-auth 에 JWT 체크하는 통신 추가
+    => 리덕스를 이용해 행위을 체크한 후 store에 데이터를 저장하지 않은 이유
+    => 리덕스는 새로고침시 초기화가 되기 때문에 persist-redux나 localStorage에 데이터를 저장 후 가져오는 방식으로 해야하는데, 새로 갈아 엎기는 좀 그렇고 localStorage에 저장은 변동 가능성이 있어서 사용하지 않음 - useState 사용

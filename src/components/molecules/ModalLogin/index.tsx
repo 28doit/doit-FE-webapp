@@ -12,12 +12,14 @@ export interface ModalItemProps {}
 
 export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
+  const history = useHistory();
 
   useEffect(() => {
-    currentUser ? history.replace('/') : '';
+    currentUser
+      ? (history.replace('/'), alert('이미 로그인 한 유저입니다.'))
+      : '';
   }, []);
 
-  const history = useHistory();
   const dispatch = useAppThunkDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');

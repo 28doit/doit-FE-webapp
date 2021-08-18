@@ -76,11 +76,6 @@ export const EditInput = styled(Input)`
   margin: 0 0 5px;
 `;
 
-export const EditEmailInput = styled(Input)`
-  width: 80%;
-  margin: 0 0 5px;
-`;
-
 export const EditSelectWrap = styled.div`
   display: flex;
   flex-direction: column;

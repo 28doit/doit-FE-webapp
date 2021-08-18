@@ -13,15 +13,17 @@ export interface ModalItemProps {}
 
 export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
+  const history = useHistory();
 
   useEffect(() => {
-    currentUser ? window.location.replace('/') : console.log('New!');
+    currentUser
+      ? (history.replace('/'), alert('이미 로그인 한 유저입니다.'))
+      : '';
   }, []);
 
   const dispatch = useAppThunkDispatch();
   const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
   const NameRegex = /^[가-힣]+$/;
-  const history = useHistory();
   const [Account, setAccount] = useState({
     Email: '',
     Name: '',
@@ -104,16 +106,16 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             Email,
             Name,
             NickName,
-            1,
             Phone,
-            hash,
+            1,
+            'asd',
             Year,
             Month,
             Day,
+            hash,
             1,
             10,
             10,
-            'asd',
           ),
         )
           .then(() => {
