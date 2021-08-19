@@ -8,6 +8,7 @@ import { Nregister } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoading } from '../../index';
 import { email_check } from '../../../redux/services/auth.service';
+import ROUTES from '../../../commons/routes';
 
 export interface ModalItemProps {}
 
@@ -17,7 +18,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   useEffect(() => {
     currentUser
-      ? (history.replace('/'), alert('이미 로그인 한 유저입니다.'))
+      ? (history.replace(ROUTES.HOME), alert('이미 로그인 한 유저입니다.'))
       : '';
   }, []);
 
@@ -120,13 +121,13 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
         )
           .then(() => {
             setLoading(false);
-            history.replace('/login');
+            history.replace(ROUTES.LOGIN);
           })
           .catch(() => {
             alert(
               '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
             );
-            window.location.replace('/join');
+            window.location.replace(ROUTES.JOIN);
           });
       });
     });

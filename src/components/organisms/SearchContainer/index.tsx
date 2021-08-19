@@ -3,6 +3,7 @@ import * as S from './style';
 import { useState } from 'react';
 import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
+import ROUTES from '../../../commons/routes';
 
 export interface SearchContainerProps {}
 
@@ -17,7 +18,7 @@ export const SearchContainer =
     };
 
     const goToSearch = () => {
-      return history.push(`/search?item=${searchItem}`);
+      return history.push(ROUTES.SEARCH + searchItem);
     };
 
     return (

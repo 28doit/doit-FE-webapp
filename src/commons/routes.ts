@@ -3,6 +3,7 @@ export default {
   JOIN: '/join',
   LOGIN: '/login',
   LOGOUT: '/logout',
+  SEARCH: '/search?item=',
 
   USER: '/user',
   MYPAGE: '/user/profile',

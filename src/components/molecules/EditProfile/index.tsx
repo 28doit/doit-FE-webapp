@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { ModalLoading } from '../../index';
 import { expired_check } from '../../../redux/services/auth.service';
 import { Nlogout } from '../../../redux/actions/auth';
+import ROUTES from '../../../commons/routes';
 
 export interface ModalItemProps {}
 
@@ -33,7 +34,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
           if (response.data.Token === false) {
             alert('시간이 만료되었습니다. 다시 로그인 해주세요');
             dispatch(Nlogout());
-            window.location.replace('/login');
+            window.location.replace(ROUTES.LOGIN);
           } else {
             const userData = response.data;
             setData({
@@ -53,7 +54,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
           );
           setLoading(false);
-          window.location.replace('/user/profile');
+          window.location.replace(ROUTES.MYPAGE);
         });
       setLoading(false);
     };

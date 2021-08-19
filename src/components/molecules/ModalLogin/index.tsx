@@ -7,6 +7,7 @@ import { ModalLoading } from '../../index';
 import { Nlogin } from '../../../redux/actions/auth';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import axios from 'axios';
 
 export interface ModalItemProps {}
 
@@ -16,7 +17,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
 
   useEffect(() => {
     currentUser
-      ? (history.replace('/'), alert('이미 로그인 한 유저입니다.'))
+      ? (history.replace(ROUTES.HOME), alert('이미 로그인 한 유저입니다.'))
       : '';
   }, []);
 
@@ -34,22 +35,32 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    dispatch(Nlogin(Email, Password))
-      .then((data) => {
-        setLoading(false);
-        if (data.name && data.token) {
-          history.replace('/');
-        } else {
-          alert('비밀번호 또는 이메일이 틀렸습니다.');
-          history.replace('/login');
-        }
+    // dispatch(Nlogin(Email, Password))
+    //   .then((data) => {
+    //     setLoading(false);
+    //     if (data.name && data.token) {
+    //       history.replace(ROUTES.HOME);
+    //     } else {
+    //       alert('비밀번호 또는 이메일이 틀렸습니다.');
+    //       history.replace(ROUTES.LOGIN);
+    //     }
+    //   })
+    //   .catch(() => {
+    //     alert(
+    //       '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+    //     );
+    //     setLoading(false);
+    //     window.location.replace(ROUTES.LOGIN);
+    //   });
+    axios
+      .post('/api/user/findPwd', {
+        email: 'poeynus@gmail.com',
+        name: '선엽',
+        phoneNumber: '01000000000',
       })
-      .catch(() => {
-        alert(
-          '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
-        );
+      .then((response) => {
+        console.log(response);
         setLoading(false);
-        window.location.replace('/login');
       });
   };
 

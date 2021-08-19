@@ -11,7 +11,7 @@ export const login = (email: any, password: any) => {
 };
 
 export const email_check = (email: any) => {
-  return axios.get('accounts/new/email-check?email=' + email);
+  return axios.get('/accounts/new/email-check?email=' + email);
 };
 
 export const expired_check = (token: any, userEmail: any) => {
