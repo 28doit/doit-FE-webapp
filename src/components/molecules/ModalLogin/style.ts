@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 import CheckOn from '../../../assets/check_on.svg';
 
-export const LoginAllWrap = styled.div`
+export const LoginContainer = styled.div`
   width: 100%;
   height: 100%;
 `;
@@ -105,6 +105,7 @@ export const GoToJoin = styled.div`
   span {
     color: #1564f9;
   }
+  cursor: pointer;
 `;
 
 export const LoginLinkState = styled(LinkBtn)`

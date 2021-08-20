@@ -4,6 +4,7 @@ export default {
   LOGIN: '/login',
   LOGOUT: '/logout',
   SEARCH: '/search?item=',
+  REPASSWORD: '/re-password',
 
   USER: '/user',
   MYPAGE: '/user/profile',

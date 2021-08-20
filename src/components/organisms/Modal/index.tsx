@@ -4,10 +4,10 @@ import {
   LoginItemModal,
   RegisterItemModal,
   EditProfileModal,
+  RePasswordModal,
 } from '../../index';
 
 export interface ModalProps {}
-export interface MyPageProps {}
 
 export const LoginModal = ({}: ModalProps): React.ReactElement => {
   return (
@@ -29,12 +29,22 @@ export const RegisterModal = ({}: ModalProps): React.ReactElement => {
   );
 };
 
-export const EditProfile = ({}: MyPageProps): React.ReactElement => {
+export const EditProfile = ({}: ModalProps): React.ReactElement => {
   return (
     <S.EditProfileOverlay>
       <S.EditProfileInner>
         <EditProfileModal />
       </S.EditProfileInner>
     </S.EditProfileOverlay>
+  );
+};
+
+export const RePassword = ({}: ModalProps): React.ReactElement => {
+  return (
+    <S.RePasswordOverlay>
+      <S.RePasswordInner>
+        <RePasswordModal />
+      </S.RePasswordInner>
+    </S.RePasswordOverlay>
   );
 };

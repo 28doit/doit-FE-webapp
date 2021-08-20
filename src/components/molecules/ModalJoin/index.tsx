@@ -38,6 +38,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Day: '',
   });
 
+  const [EmailAuth, setEmailAuth] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [Check, setCheck] = useState(false);
   const [EmailDuplicate, setEmailDuplicate] = useState(true);
@@ -68,11 +69,10 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   const onEmailHandler = () => {
-    setIsCheck(true);
     email_check(Email)
       .then((response) => {
         response.data.isvalue
-          ? setEmailDuplicate(true)
+          ? (setEmailDuplicate(true), setIsCheck(true))
           : setEmailDuplicate(false);
       })
       .catch(() => {
@@ -131,6 +131,23 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           });
       });
     });
+  };
+
+  const EmailCheck = () => {
+    return (
+      <>
+        <S.JoinLabel htmlFor="rePwd">이메일 인증</S.JoinLabel>
+        <S.JoinEmailWrap>
+          <S.RepasswordInput id="rePwd" />
+          <S.JoinReEmailOk>인증</S.JoinReEmailOk>
+        </S.JoinEmailWrap>
+        {EmailAuth ? (
+          <S.JoinValid>✔ 인증 성공</S.JoinValid>
+        ) : (
+          <S.JoinInvalid>❌ 이메일 인증을 완료해주세요</S.JoinInvalid>
+        )}
+      </>
+    );
   };
 
   return (
@@ -194,7 +211,13 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 value={Email}
                 onChange={onChangeAccount}
               />
-              <S.JoinEmailCheck onClick={onEmailHandler}>확인</S.JoinEmailCheck>
+              {IsCheck ? (
+                <S.JoinReEmailCheck>재발급</S.JoinReEmailCheck>
+              ) : (
+                <S.JoinEmailCheck onClick={onEmailHandler}>
+                  확인
+                </S.JoinEmailCheck>
+              )}
             </S.JoinEmailWrap>
             {validator.isEmail(Email) ? (
               IsCheck ? (
@@ -210,6 +233,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               <S.JoinInvalid>❌ 이메일을 입력하세요.</S.JoinInvalid>
             )}
           </S.JoinInputWrap>
+          <S.JoinInputWrap>{IsCheck ? EmailCheck() : ''}</S.JoinInputWrap>
           <S.JoinInputWrap>
             <S.JoinLabel htmlFor="password1">비밀번호</S.JoinLabel>
             <S.JoinInput

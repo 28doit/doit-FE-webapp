@@ -5,7 +5,7 @@ export interface BtnProps {
   children?: React.ReactElement | string;
   disable?: boolean;
   btntype?: string;
-  btnOnClick?: () => void;
+  btnOnClick?: (e: any) => void;
 }
 
 export interface LinkBtnProps extends BtnProps {

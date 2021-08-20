@@ -46,6 +46,34 @@ export const JoinEmailCheck = styled.div`
   cursor: pointer;
 `;
 
+export const JoinReEmailCheck = styled.div`
+  display: flex;
+  align-items: center;
+  width: 10%;
+  font-weight: 700;
+  background-color: #03c75a;
+  justify-content: center;
+  margin-left: 5px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
+export const JoinReEmailOk = styled.div`
+  display: flex;
+  align-items: center;
+  width: 10%;
+  font-weight: 700;
+  background-color: #f75a58;
+  justify-content: center;
+  margin-left: 5px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
 export const JoinBirthInput = styled(Input)`
   width: 25%;
   height: 40px;
@@ -92,6 +120,11 @@ export const JoinInputWrap = styled.div`
 
 export const JoinInput = styled(Input)`
   width: 90%;
+  margin: 0 0 5px;
+`;
+
+export const RepasswordInput = styled(Input)`
+  width: 30%;
   margin: 0 0 5px;
 `;
 

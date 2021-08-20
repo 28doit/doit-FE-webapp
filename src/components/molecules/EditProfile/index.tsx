@@ -27,7 +27,6 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
 
   useLayoutEffect(() => {
     const getUser = async () => {
-      setLoading(true);
       await expired_check(currentUser.token, currentUser.name)
         .then((response) => {
           console.log(response.data);
@@ -58,7 +57,8 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
         });
       setLoading(false);
     };
-    getUser();
+    setLoading(true);
+    currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
   }, []);
 
   const history = useHistory();

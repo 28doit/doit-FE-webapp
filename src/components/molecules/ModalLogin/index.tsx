@@ -7,7 +7,6 @@ import { ModalLoading } from '../../index';
 import { Nlogin } from '../../../redux/actions/auth';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import axios from 'axios';
 
 export interface ModalItemProps {}
 
@@ -32,40 +31,34 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   const onPasswordHandler = (e: any) => {
     setPassword(e.currentTarget.value);
   };
+  const onRePasswordHandler = (e: any) => {
+    e.preventDefault();
+    history.replace('/re-password');
+  };
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    // dispatch(Nlogin(Email, Password))
-    //   .then((data) => {
-    //     setLoading(false);
-    //     if (data.name && data.token) {
-    //       history.replace(ROUTES.HOME);
-    //     } else {
-    //       alert('비밀번호 또는 이메일이 틀렸습니다.');
-    //       history.replace(ROUTES.LOGIN);
-    //     }
-    //   })
-    //   .catch(() => {
-    //     alert(
-    //       '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
-    //     );
-    //     setLoading(false);
-    //     window.location.replace(ROUTES.LOGIN);
-    //   });
-    axios
-      .post('/api/user/findPwd', {
-        email: 'poeynus@gmail.com',
-        name: '선엽',
-        phoneNumber: '01000000000',
-      })
-      .then((response) => {
-        console.log(response);
+    dispatch(Nlogin(Email, Password))
+      .then((data) => {
         setLoading(false);
+        if (data.name && data.token) {
+          history.replace(ROUTES.HOME);
+        } else {
+          alert('비밀번호 또는 이메일이 틀렸습니다.');
+          history.replace(ROUTES.LOGIN);
+        }
+      })
+      .catch(() => {
+        alert(
+          '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+        );
+        setLoading(false);
+        window.location.replace(ROUTES.LOGIN);
       });
   };
 
   return (
-    <S.LoginAllWrap>
+    <S.LoginContainer>
       {Loading ? <ModalLoading /> : ''}
       <S.LoginTitle>로그인</S.LoginTitle>
       <S.LoginForm onSubmit={onSubmitHandler}>
@@ -94,7 +87,9 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
         <S.LoginCheckWrap>
           <S.LoginInput id="idSave" inputType="checkbox" />
           <S.LoginLabel htmlFor="idSave">아이디 저장</S.LoginLabel>
-          <S.LoginRePassword>비밀번호 재설정</S.LoginRePassword>
+          <S.LoginRePassword onClick={onRePasswordHandler}>
+            비밀번호 재설정
+          </S.LoginRePassword>
         </S.LoginCheckWrap>
         {validator.isEmpty(Email) || validator.isEmpty(Password) ? (
           <S.LoginNo>로그인</S.LoginNo>
@@ -108,6 +103,6 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
           이메일로 회원가입
         </S.LoginLinkState>
       </S.GoToJoin>
-    </S.LoginAllWrap>
+    </S.LoginContainer>
   );
 };

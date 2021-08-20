@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-export const login = (email: any, password: any) => {
-  return axios.post('/accounts/login', { email, password }).then((response) => {
-    if (response.data.token) {
-      localStorage.setItem('user', JSON.stringify(response.data));
-    }
-
-    return response.data;
+export const re_password = (name: any, email: any, phone: any) => {
+  return axios.post('/api/user/findPwd', {
+    name: name,
+    email: email,
+    phoneNumber: phone,
   });
 };
 
@@ -29,9 +27,20 @@ export const editUserProfile = (
   });
 };
 
+export const login = (email: any, password: any) => {
+  return axios
+    .post('/accounts/login', { email: email, password: password })
+    .then((response) => {
+      if (response.data.token) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+
+      return response.data;
+    });
+};
+
 export const logout = () => {
   localStorage.removeItem('user');
-  localStorage.removeItem('ans');
 };
 
 export const register = (
@@ -50,18 +59,18 @@ export const register = (
   profileImageLocation: any,
 ) => {
   return axios.post('/accounts/new', {
-    email,
-    name,
-    nickName,
-    phoneNumber,
-    sex,
-    profileImageLocation,
-    userYear,
-    userMonth,
-    userDay,
-    password,
-    type,
-    gallCount,
-    userSubscribeCount,
+    email: email,
+    name: name,
+    nickName: nickName,
+    phoneNumber: phoneNumber,
+    sex: sex,
+    profileImageLocation: profileImageLocation,
+    userYear: userYear,
+    userMonth: userMonth,
+    userDay: userDay,
+    password: password,
+    type: type,
+    gallCount: gallCount,
+    userSubscribeCount: userSubscribeCount,
   });
 };
