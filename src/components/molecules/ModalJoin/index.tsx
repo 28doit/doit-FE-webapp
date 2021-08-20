@@ -9,6 +9,7 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoading } from '../../index';
 import { email_check } from '../../../redux/services/auth.service';
 import ROUTES from '../../../commons/routes';
+import axios from 'axios';
 
 export interface ModalItemProps {}
 
@@ -38,11 +39,12 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Day: '',
   });
 
-  const [EmailAuth, setEmailAuth] = useState(false);
-  const [Loading, setLoading] = useState(false);
-  const [Check, setCheck] = useState(false);
-  const [EmailDuplicate, setEmailDuplicate] = useState(true);
-  const [IsCheck, setIsCheck] = useState(false);
+  const [EmailAuth, setEmailAuth] = useState(false); // onEmailAuthCheckHendler - 이메일 인증 확인 버튼에서 사용
+  const [Loading, setLoading] = useState(false); // 화면 로딩 창
+  const [Check, setCheck] = useState(false); // 약관 동의 체크박스 체크했는지 판별
+  const [EmailDuplicate, setEmailDuplicate] = useState(true); // 중복 이메일인지 판별하는 state - true면 중복, false면 사용 가능
+  const [IsCheck, setIsCheck] = useState(false); // 이메일 중복을 했는지 안했는지 판별하는 state - 중복 확인 후 사용가능하면 true로 변함
+  const [Auth, setAuth] = useState('');
 
   const {
     Email,
@@ -64,8 +66,14 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     });
 
     if (e.currentTarget.name === 'Email' && !e.currentTarget.value) {
+      // 사용자가 이메일을 다시 입력 할 경우 초기화
       setIsCheck(false);
+      setEmailDuplicate(true);
     }
+  };
+
+  const onAuthChangeHandler = (e: any) => {
+    setAuth(e.currentTarget.value);
   };
 
   const onEmailHandler = () => {
@@ -73,12 +81,22 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       .then((response) => {
         response.data.isvalue
           ? (setEmailDuplicate(true), setIsCheck(true))
-          : setEmailDuplicate(false);
+          : (setEmailDuplicate(false), setIsCheck(true));
       })
       .catch(() => {
         alert(
           '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
         );
+      });
+  };
+
+  const onEmailAuthCheckHandler = () => {
+    axios
+      .get('/accounts/new/email_check?email=test@naver.com')
+      .then((response) => {
+        response.data.email
+          ? setEmailAuth(true)
+          : alert('❌ 인증번호가 일치하지 않습니다.');
       });
   };
 
@@ -138,8 +156,14 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       <>
         <S.JoinLabel htmlFor="rePwd">이메일 인증</S.JoinLabel>
         <S.JoinEmailWrap>
-          <S.RepasswordInput id="rePwd" />
-          <S.JoinReEmailOk>인증</S.JoinReEmailOk>
+          <S.RepasswordInput
+            id="rePwd"
+            value={Auth}
+            onChange={onAuthChangeHandler}
+          />
+          <S.JoinReEmailOk onClick={onEmailAuthCheckHandler}>
+            인증
+          </S.JoinReEmailOk>
         </S.JoinEmailWrap>
         {EmailAuth ? (
           <S.JoinValid>✔ 인증 성공</S.JoinValid>
@@ -211,12 +235,12 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 value={Email}
                 onChange={onChangeAccount}
               />
-              {IsCheck ? (
-                <S.JoinReEmailCheck>재발급</S.JoinReEmailCheck>
-              ) : (
+              {EmailDuplicate ? (
                 <S.JoinEmailCheck onClick={onEmailHandler}>
                   확인
                 </S.JoinEmailCheck>
+              ) : (
+                <S.JoinReEmailCheck>재발급</S.JoinReEmailCheck>
               )}
             </S.JoinEmailWrap>
             {validator.isEmail(Email) ? (
@@ -233,7 +257,9 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               <S.JoinInvalid>❌ 이메일을 입력하세요.</S.JoinInvalid>
             )}
           </S.JoinInputWrap>
-          <S.JoinInputWrap>{IsCheck ? EmailCheck() : ''}</S.JoinInputWrap>
+          <S.JoinInputWrap>
+            {EmailDuplicate ? '' : EmailCheck()}
+          </S.JoinInputWrap>
           <S.JoinInputWrap>
             <S.JoinLabel htmlFor="password1">비밀번호</S.JoinLabel>
             <S.JoinInput
