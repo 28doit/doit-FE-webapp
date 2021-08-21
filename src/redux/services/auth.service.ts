@@ -8,14 +8,6 @@ export const re_password = (name: any, email: any, phone: any) => {
   });
 };
 
-export const email_check = (email: any) => {
-  return axios.get('/accounts/new/email-check?email=' + email);
-};
-
-export const expired_check = (token: any, userEmail: any) => {
-  return axios.get(`/accounts/token-check?token=${token}&email=${userEmail}`);
-};
-
 export const editUserProfile = (
   userEmail: any,
   password: any,
@@ -27,9 +19,25 @@ export const editUserProfile = (
   });
 };
 
+export const email_check = (email: any) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM + '/accounts/new/email-check?email=' + email,
+  );
+};
+
+export const expired_check = (token: any, userEmail: any) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM +
+      `/accounts/token-check?token=${token}&email=${userEmail}`,
+  );
+};
+
 export const login = (email: any, password: any) => {
   return axios
-    .post('/accounts/login', { email: email, password: password })
+    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
+      email: email,
+      password: password,
+    })
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem('user', JSON.stringify(response.data));
@@ -58,7 +66,7 @@ export const register = (
   userSubscribeCount: any,
   profileImageLocation: any,
 ) => {
-  return axios.post('/accounts/new', {
+  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', {
     email: email,
     name: name,
     nickName: nickName,

@@ -44,7 +44,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const [Check, setCheck] = useState(false); // 약관 동의 체크박스 체크했는지 판별
   const [EmailDuplicate, setEmailDuplicate] = useState(true); // 중복 이메일인지 판별하는 state - true면 중복, false면 사용 가능
   const [IsCheck, setIsCheck] = useState(false); // 이메일 중복을 했는지 안했는지 판별하는 state - 중복 확인 후 사용가능하면 true로 변함
-  const [Auth, setAuth] = useState('');
+  const [Auth, setAuth] = useState(''); // 사용자가 입력하는 인증 번호
+  const [LastCheck, setLastCheck] = useState(false); // 사용자의 인증이 성공 했는지 안했는지 판별 => true면 회원 가입 가능
 
   const {
     Email,
@@ -236,9 +237,12 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 onChange={onChangeAccount}
               />
               {EmailDuplicate ? (
-                <S.JoinEmailCheck onClick={onEmailHandler}>
-                  확인
-                </S.JoinEmailCheck>
+                (setLastCheck(true),
+                (
+                  <S.JoinEmailCheck onClick={onEmailHandler}>
+                    확인
+                  </S.JoinEmailCheck>
+                ))
               ) : (
                 <S.JoinReEmailCheck>재발급</S.JoinReEmailCheck>
               )}
@@ -708,6 +712,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           validator.isBefore(Year, '2001') &&
           validator.isDate(Year + '-' + Month + '-' + Day) &&
           !validator.isEmpty(Gender) &&
+          LastCheck === true &&
           Phone.substr(0, 1) === '0' &&
           validator.isLength(Phone, { min: 11, max: 11 }) &&
           validator.isMobilePhone('+82' + Phone.substring(1, 11), ['ko-KR']) ? (
