@@ -5,6 +5,7 @@ import {
   RegisterItemModal,
   EditProfileModal,
   RePasswordModal,
+  UploadImageModal,
 } from '../../index';
 
 export interface ModalProps {}
@@ -46,5 +47,15 @@ export const RePassword = ({}: ModalProps): React.ReactElement => {
         <RePasswordModal />
       </S.RePasswordInner>
     </S.RePasswordOverlay>
+  );
+};
+
+export const UploadImage = ({}: ModalProps): React.ReactElement => {
+  return (
+    <S.UploadImageOverlay>
+      <S.UploadImageInner>
+        <UploadImageModal />
+      </S.UploadImageInner>
+    </S.UploadImageOverlay>
   );
 };

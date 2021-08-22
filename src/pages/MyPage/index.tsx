@@ -1,5 +1,5 @@
 import { BaseTemplate } from '../../templates';
-import { MyMenu, EditProfile } from '../../components/index';
+import { MyMenu, EditProfile, UploadImage } from '../../components/index';
 import * as S from './style';
 
 export const MyPage = ({ match }: any) => {
@@ -7,6 +7,8 @@ export const MyPage = ({ match }: any) => {
     switch (match.params.name) {
       case 'edit-profile':
         return <EditProfile />;
+      case 'upload-image':
+        return <UploadImage />;
       default:
         return '';
     }

@@ -69,3 +69,21 @@ export const RePasswordInner = styled.div`
   margin: 50px;
   border-radius: 30px;
 `;
+
+export const UploadImageOverlay = styled.div`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const UploadImageInner = styled.div`
+  width: 90%;
+  height: 80%;
+  padding: 30px 20px;
+  background: #fff;
+  margin: 50px;
+  border-radius: 30px;
+`;

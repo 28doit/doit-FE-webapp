@@ -1,6 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react/types-6-0';
-import { LoginModal, RegisterModal, ModalProps, RePassword } from './index';
+import {
+  ModalProps,
+  LoginModal,
+  RegisterModal,
+  RePassword,
+  EditProfile,
+  UploadImage,
+} from './index';
 
 export default {
   title: 'Organisms/Modal',
@@ -10,4 +17,8 @@ export const Login = () => <LoginModal />;
 
 export const Register = () => <RegisterModal />;
 
+export const Edit = () => <EditProfile />;
+
 export const RePwd = () => <RePassword />;
+
+export const UploadImg = () => <UploadImage />;
