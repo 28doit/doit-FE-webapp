@@ -33,9 +33,25 @@ export const UploadMid = styled.div`
   display: flex;
 `;
 
+export const UploadMidLeft = styled.div`
+  width: 70%;
+  height: 100%
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const UploadMidRight = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+`;
+
 export const UploadBtnImg = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
 `;
 
@@ -43,7 +59,22 @@ export const UploadImageInput = styled(Input)`
   display: none;
 `;
 
-export const UploadImageLabel = styled(Label)``;
+export const UploadPreview = styled.div`
+  width: 80%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const UploadPreviewImg = styled.img`
+  max-width: 100%;
+  max-height: 400px;
+`;
+
+export const UploadImageLabel = styled(Label)`
+  margin-top: 15px;
+`;
 
 export const UploadBot = styled.div`
   width: 100%;
@@ -60,11 +91,13 @@ export const UploadForm = styled.form`
   justify-content: space-around;
 `;
 
-export const UploadDiv = styled.div`
+export const UploadImgInputWrap = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const UploadInputWrap = styled.div``;
@@ -80,11 +113,10 @@ export const UploadSelectWrap = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
 `;
 
 export const UploadSelect = styled.select`
-  width: 200px;
+  width: 220px;
   height: 40px;
   border: solid 1px #dadada;
   background: #fff;
@@ -93,5 +125,5 @@ export const UploadSelect = styled.select`
 `;
 
 export const UploadResultBtn = styled(Btn)`
-  width: 50%;
+  width: 20%;
 `;

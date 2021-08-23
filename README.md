@@ -234,6 +234,17 @@
 #### 21.08.22 11:16
 
     - 이미지 업로드 페이지 구현 중
-    => 배치는 끝났고 handler와 func 몇개만 추가 하면 끝, multipart/form-data 형식으로 전송하게 끔 구성 - 나중에 배열 형태로 보내면 됨
-    => 이미지 불러온 후 미리보기가 가능하게끔 수정 할 예정
+    => 배치는 끝났고 handler와 func 몇 개만 추가 하면 끝, multipart/form-data 형식으로 전송하게 끔 구성 - 나중에 배열 형태로 보내면 됨
+    => 이미지 불러온 후 미리 보기가 가능하게 수정 할 예정
     => 추후 사진 위치 정보를 어떻게 입력하거나 받을 지 구상 할 예정
+
+#### 21.08.23 18:58
+
+    - 이미지 업로드 구현 완료
+    => 버튼을 눌러 업로드 하고, 이미지 업로드 시 전송 전 미리 보기로 볼 수 있게 제공
+    => 사용자가 수동으로 정보를 기입 할 수 있게끔 구현 - 내용은 아직 정하지 않았음
+    => axios POST 통신을 통해서 전송하는데 multipart/form-data 형식으로 분할 해서 전송하게 끔 구현
+    => API 주소만 들어오면 바로 테스트 가능
+    => 우려 되는 부분 - 이번에는 파일이 껴서 object 타입으로 보내는데 백에서 그렇게 받을 수 있을까?
+    - [formData의 값을 console.log로 볼 수 없는 원인](https://velog.io/@josworks27/formData-console.log)
+    - [muiltipar/form-data 참고](https://stackoverflow.com/questions/41610811/react-js-how-to-send-a-multipart-form-data-to-server)

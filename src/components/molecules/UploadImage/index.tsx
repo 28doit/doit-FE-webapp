@@ -1,6 +1,7 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PLUS from '../../../assets/plus.svg';
+import axios from 'axios';
 
 export interface UploadItemProps {}
 
@@ -11,11 +12,53 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
     Third: '',
     Fourth: '',
   });
+  const [ImgObj, setImgObj] = useState({
+    ImgBase64: '',
+    ImgFile: '',
+  });
 
   const { First, Second, Third, Fourth } = ImgInfo;
-
+  const { ImgBase64, ImgFile } = ImgObj;
   const onImgInfoHandler = (e: any) => {
     setImgInfo({ ...ImgInfo, [e.currentTarget.name]: e.currentTarget.value });
+  };
+
+  const onChangeImgHandler = (e: any) => {
+    e.preventDefault();
+    console.log(e.target.files[0]);
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result;
+      if (base64) {
+        setImgObj({
+          ...ImgObj,
+          ['ImgBase64']: base64.toString(),
+        });
+      }
+    };
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+      setImgObj({
+        ...ImgObj,
+        ['ImgFile']: e.target.files[0],
+      });
+    }
+  };
+
+  const onSubmitHandler = (e: any) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('photo', ImgFile);
+    formData.append('exF', First);
+    formData.append('exS', Second);
+    formData.append('exT', Third);
+    formData.append('exH', Fourth);
+
+    axios.post('url', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   };
 
   return (
@@ -25,19 +68,25 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
         <S.UploadPtag>사진(JPG, PNG)</S.UploadPtag>
       </S.UploadTop>
       <S.UploadMid>
-        <S.UploadForm encType="multipart/form-data">
-          <S.UploadInputWrap>
-            <S.UploadImageLabel htmlFor="imageIn">
-              <S.UploadBtnImg src={PLUS} />
-            </S.UploadImageLabel>
-          </S.UploadInputWrap>
-          <S.UploadImageInput
-            id="imageIn"
-            inputType="file"
-            accept="image/*"
-            name="file"
-          />
-          <S.UploadDiv>
+        <S.UploadForm encType="multipart/form-data" onSubmit={onSubmitHandler}>
+          <S.UploadMidLeft>
+            <S.UploadImgInputWrap>
+              <S.UploadPreview>
+                <S.UploadPreviewImg src={ImgBase64} />
+              </S.UploadPreview>
+              <S.UploadImageLabel htmlFor="imageIn">
+                <S.UploadBtnImg src={PLUS} />
+              </S.UploadImageLabel>
+            </S.UploadImgInputWrap>
+            <S.UploadImageInput
+              id="imageIn"
+              inputType="file"
+              inputAccept="image/*"
+              name="file"
+              onChange={onChangeImgHandler}
+            />
+          </S.UploadMidLeft>
+          <S.UploadMidRight>
             <S.UploadInputWrap>
               <S.UploadLabel htmlFor="first">첫 번째</S.UploadLabel>
               <S.UploadInput
@@ -83,7 +132,7 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
               </S.UploadSelect>
             </S.UploadSelectWrap>
             <S.UploadResultBtn>업로드</S.UploadResultBtn>
-          </S.UploadDiv>
+          </S.UploadMidRight>
         </S.UploadForm>
       </S.UploadMid>
       <S.UploadBot>

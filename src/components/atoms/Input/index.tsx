@@ -11,7 +11,7 @@ export interface InputProps {
   value?: string | number;
   height?: string;
   name?: string;
-  accept?: string;
+  inputAccept?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: React.KeyboardEvent) => void;
   onClick?: (e: any) => void;
@@ -20,11 +20,18 @@ export interface InputProps {
 export const Input = ({
   id,
   inputType,
+  inputAccept,
   ...props
 }: InputProps): React.ReactElement => {
   return (
     <>
-      <S.Input type={inputType} id={id} autoComplete="off" {...props} />
+      <S.Input
+        type={inputType}
+        id={id}
+        autoComplete="off"
+        accept={inputAccept}
+        {...props}
+      />
     </>
   );
 };
