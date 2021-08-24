@@ -258,3 +258,5 @@
     3. 작가 보여지는 거 [프로필 사진, 작가 이름 || 보유 사진- 보유 사진 중 4개 가져와서 타일 형식으로 작게 만들고 보여주기]
 
     현재 1번 형태의 카드 완성 - 마우스 오버 시 정보가 나옴 (정보는 axios 통신을 통해 획득)
+
+    - git flow 첫 사용 develope을 만들고 feature에 card_component, cursor_based_pagination branch 생성
