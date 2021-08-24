@@ -263,3 +263,6 @@
 
     - git flow 첫 사용 develope을 만들고 feature에 card_component, cursor_based_pagination branch 생성
     - Netlify 이용한 storybook 배포 잠정 중단 - 에러가 너무 많이 난다.... 수정 시에 많은 시간 투자 필요
+
+    - 백엔드와 이미지 업로드 페이지 통신 시도
+    => 실패, 나중에 확인해보니 데이터 값이 null이 들어감 이게 왜 이런 오류가 나는지는 모르겠는데 일단 해결 했음 문제 확실히 인지 예정
