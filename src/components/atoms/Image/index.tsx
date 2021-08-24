@@ -3,7 +3,7 @@ import * as S from './style';
 
 export interface ImageProps {
   src: any;
-  alt: string;
+  alt?: string;
   height?: string;
 }
 
