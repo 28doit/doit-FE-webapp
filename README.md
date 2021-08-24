@@ -248,3 +248,18 @@
     => 우려 되는 부분 - 이번에는 파일이 껴서 object 타입으로 보내는데 백에서 그렇게 받을 수 있을까?
     - [formData의 값을 console.log로 볼 수 없는 원인](https://velog.io/@josworks27/formData-console.log)
     - [muiltipar/form-data 참고](https://stackoverflow.com/questions/41610811/react-js-how-to-send-a-multipart-form-data-to-server)
+
+#### 21.08.24 19:53
+
+    - Card 컴포넌트 구현 중
+    => 구현 형태
+        1. 그냥 보여지는 거, 마우스 갖다 대면 보여지는 거 [사진 || 작가, 조회수, 좋아요, 구매 수, 구독 버튼]
+        2. 마우스 클릭 후 보여지는 거 [왼쪽: 사진 || 사진 구독 버튼 || 작가 프사, 작가명, 작가 구독 버튼 및 작가 구독자 수 || 댓글 ||   작가의 다른 이미지], [오른쪽: 사진 본 횟수, 사진 구매 수, 사진 구독 수 || 가격, 사진 정보, 구매 버튼 || 주의 사항 || 키워드]
+        3. 작가 보여지는 거 [프로필 사진, 작가 이름 || 보유 사진- 보유 사진 중 4개 가져와서 타일 형식으로 작게 만들고 보여주기]
+    => 현재 1번 형태의 카드 완성 - 마우스 오버 시 정보가 나옴 (정보는 axios 통신을 통해 획득)
+    => [마우스 오버나 엔터 시 움직일 때마다 깜빡이는 경우](https://developpaper.com/question/onmouseover-event-why-does-the-layer-flicker-when-the-mouse-moves/)
+    => 마우스 진입 시 기존의 영역에 새로운 것이 생겨서 마우스 아웃으로 판별하기에 새로운 영역에 이벤트를 끄는 방식으로 css에 pointer-events: none; 속성 넣으면 됨
+    => css에 pointer-events: none; 속성 넣으면 됨
+
+    - git flow 첫 사용 develope을 만들고 feature에 card_component, cursor_based_pagination branch 생성
+    - Netlify 이용한 storybook 배포 잠정 중단 - 에러가 너무 많이 난다.... 수정 시에 많은 시간 투자 필요
