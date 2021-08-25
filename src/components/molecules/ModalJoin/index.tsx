@@ -9,7 +9,6 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoading } from '../../index';
 import { email_check } from '../../../redux/services/auth.service';
 import ROUTES from '../../../commons/routes';
-import axios from 'axios';
 
 export interface ModalItemProps {}
 
@@ -45,7 +44,6 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const [EmailDuplicate, setEmailDuplicate] = useState(true); // 중복 이메일인지 판별하는 state - true면 중복, false면 사용 가능
   const [IsCheck, setIsCheck] = useState(false); // 이메일 중복을 했는지 안했는지 판별하는 state - 중복 확인 후 사용가능하면 true로 변함
   const [Auth, setAuth] = useState(''); // 사용자가 입력하는 인증 번호
-  const [LastCheck, setLastCheck] = useState(false); // 사용자의 인증이 성공 했는지 안했는지 판별 => true면 회원 가입 가능
 
   const {
     Email,
@@ -80,6 +78,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const onEmailHandler = () => {
     email_check(Email)
       .then((response) => {
+        console.log(response);
         response.data.isvalue
           ? (setEmailDuplicate(true), setIsCheck(true))
           : (setEmailDuplicate(false), setIsCheck(true));
@@ -92,13 +91,14 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   const onEmailAuthCheckHandler = () => {
-    axios
-      .get('/accounts/new/email_check?email=test@naver.com')
-      .then((response) => {
-        response.data.email
-          ? setEmailAuth(true)
-          : alert('❌ 인증번호가 일치하지 않습니다.');
-      });
+    // axios
+    //   .get('/accounts/new/email_check?email=test@naver.com')
+    //   .then((response) => {
+    //     response.data.email
+    //       ? setEmailAuth(true)
+    //       : alert('❌ 인증번호가 일치하지 않습니다.');
+    //   });
+    setEmailAuth(true);
   };
 
   const onCheckHandler = () => {
@@ -121,6 +121,22 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           console.log('hash!' + err);
         }
 
+        const data = {
+          email: Email,
+          name: Name,
+          nickName: NickName,
+          phone_Number: Phone,
+          sex: 1,
+          profileImageLocation: 'imgLocation',
+          userYear: Year,
+          userMonth: Month,
+          userDay: Day,
+          password: hash,
+          type: 1,
+          gall_Count: 0,
+          userSubscribeCount: 0,
+        };
+
         dispatch(
           Nregister(
             Email,
@@ -128,19 +144,20 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             NickName,
             Phone,
             1,
-            'asd',
+            'imgLocation',
             Year,
             Month,
             Day,
             hash,
             1,
-            10,
-            10,
+            0,
+            0,
           ),
         )
           .then(() => {
             setLoading(false);
             history.replace(ROUTES.LOGIN);
+            console.log(data);
           })
           .catch(() => {
             alert(
@@ -237,12 +254,9 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
                 onChange={onChangeAccount}
               />
               {EmailDuplicate ? (
-                (setLastCheck(true),
-                (
-                  <S.JoinEmailCheck onClick={onEmailHandler}>
-                    확인
-                  </S.JoinEmailCheck>
-                ))
+                <S.JoinEmailCheck onClick={onEmailHandler}>
+                  확인
+                </S.JoinEmailCheck>
               ) : (
                 <S.JoinReEmailCheck>재발급</S.JoinReEmailCheck>
               )}
@@ -712,7 +726,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           validator.isBefore(Year, '2001') &&
           validator.isDate(Year + '-' + Month + '-' + Day) &&
           !validator.isEmpty(Gender) &&
-          LastCheck === true &&
+          EmailAuth === true &&
           Phone.substr(0, 1) === '0' &&
           validator.isLength(Phone, { min: 11, max: 11 }) &&
           validator.isMobilePhone('+82' + Phone.substring(1, 11), ['ko-KR']) ? (

@@ -14,18 +14,18 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
   });
   const [ImgObj, setImgObj] = useState({
     ImgBase64: '',
-    ImgFile: '',
+    ImgFile: null,
   });
 
   const { First, Second, Third, Fourth } = ImgInfo;
   const { ImgBase64, ImgFile } = ImgObj;
+
   const onImgInfoHandler = (e: any) => {
     setImgInfo({ ...ImgInfo, [e.currentTarget.name]: e.currentTarget.value });
   };
 
   const onChangeImgHandler = (e: any) => {
     e.preventDefault();
-    console.log(e.target.files[0]);
     let reader = new FileReader();
     reader.onloadend = () => {
       const base64 = reader.result;
@@ -33,6 +33,7 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
         setImgObj({
           ...ImgObj,
           ['ImgBase64']: base64.toString(),
+          ['ImgFile']: e.target.files[0],
         });
       }
     };
@@ -47,19 +48,34 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
 
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('photo', ImgFile);
-    formData.append('exF', First);
-    formData.append('exS', Second);
-    formData.append('exT', Third);
-    formData.append('exH', Fourth);
+    let formData = new FormData();
+    formData.append('images', ImgFile || '{}');
 
-    axios.post('url', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    for (let key of formData.keys()) {
+      console.log(key);
+    }
+
+    for (let value of formData.values()) {
+      console.log(value);
+    }
+
+    axios
+      .post('/api/uploader/images', formData, {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
+  useEffect(() => {
+    console.log(ImgFile);
+  }, [ImgFile]);
 
   return (
     <S.UploadWrap>

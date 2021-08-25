@@ -18,6 +18,7 @@ export const CardDefaultWrapper = styled.div<Props>`
 export const CardDefaultImg = styled.img<Props>`
   width: ${(props) => props.cardImgWidth};
   height: ${(props) => props.cardImgHeight};
+  cursor: pointer;
   border-radius: 3%;
 `;
 
@@ -75,4 +76,70 @@ export const ModalAuthorImg = styled.img`
 export const ModalAuthor = styled.div`
   color: white;
   margin-left: 10px;
+`;
+
+export const AuthorBox = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #849db7;
+  border-radius: 3%;
+  box-shadow: 0px 0px 2px #000000;
+  cursor: pointer;
+`;
+
+export const AuthorBoxTop = styled.div`
+  width: 100%;
+  height: 10%;
+  pointer-events: none;
+`;
+
+export const AuthorTopImg = styled.img`
+  width: 30px;
+  hegiht: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+`;
+export const AuthorBoxMid = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+`;
+
+export const AuthorName = styled.div`
+  color: #338fef;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 20px;
+`;
+
+export const AuthorInfo = styled.div`
+  color: #808080;
+  font-weight: 700;
+  font-size: 14px;
+`;
+
+export const AuthorBoxBot = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const AuthorPhotos = styled.div`
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const AuthorPhotosImg = styled.img`
+  width: 48%;
+  height: 48%;
+  margin: 2px;
+  border-radius: 5%;
 `;
