@@ -249,7 +249,7 @@
     - [formData의 값을 console.log로 볼 수 없는 원인](https://velog.io/@josworks27/formData-console.log)
     - [muiltipar/form-data 참고](https://stackoverflow.com/questions/41610811/react-js-how-to-send-a-multipart-form-data-to-server)
 
-#### 21.08.24 19:53
+#### 21.08.24 22:44
 
     - Card 컴포넌트 구현 중
     => 구현 형태
