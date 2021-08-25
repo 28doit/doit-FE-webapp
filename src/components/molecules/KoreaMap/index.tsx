@@ -63,7 +63,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         </text>
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[0]);
+            return history.push(ROUTES.SEARCHITEM + place[0]);
           }}
           onMouseEnter={() => {
             setSeoul(true), setWhere(`${place[0]}`);
@@ -78,7 +78,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[1]);
+            return history.push(ROUTES.SEARCHITEM + place[1]);
           }}
           onMouseEnter={() => {
             setBusan(true), setWhere(`${place[1]}`);
@@ -93,7 +93,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[2]);
+            return history.push(ROUTES.SEARCHITEM + place[2]);
           }}
           onMouseEnter={() => {
             setDaegu(true), setWhere(`${place[2]}`);
@@ -108,7 +108,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[3]);
+            return history.push(ROUTES.SEARCHITEM + place[3]);
           }}
           onMouseEnter={() => {
             setIncheon(true), setWhere(`${place[3]}`);
@@ -123,7 +123,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[4]);
+            return history.push(ROUTES.SEARCHITEM + place[4]);
           }}
           onMouseEnter={() => {
             setGwangju(true), setWhere(`${place[4]}`);
@@ -138,7 +138,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[5]);
+            return history.push(ROUTES.SEARCHITEM + place[5]);
           }}
           onMouseEnter={() => {
             setDaejeon(true), setWhere(`${place[5]}`);
@@ -153,7 +153,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[6]);
+            return history.push(ROUTES.SEARCHITEM + place[6]);
           }}
           onMouseEnter={() => {
             setUlsan(true), setWhere(`${place[6]}`);
@@ -168,7 +168,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[7]);
+            return history.push(ROUTES.SEARCHITEM + place[7]);
           }}
           onMouseEnter={() => {
             setGyeonggi(true), setWhere(`${place[7]}`);
@@ -183,7 +183,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[8]);
+            return history.push(ROUTES.SEARCHITEM + place[8]);
           }}
           onMouseEnter={() => {
             setGangwon(true), setWhere(`${place[8]}`);
@@ -198,7 +198,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[9]);
+            return history.push(ROUTES.SEARCHITEM + place[9]);
           }}
           onMouseEnter={() => {
             setNorthChungcheong(true), setWhere(`${place[9]}`);
@@ -213,7 +213,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[10]);
+            return history.push(ROUTES.SEARCHITEM + place[10]);
           }}
           onMouseEnter={() => {
             setSouthChungcheong(true), setWhere(`${place[10]}`);
@@ -228,7 +228,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[11]);
+            return history.push(ROUTES.SEARCHITEM + place[11]);
           }}
           onMouseEnter={() => {
             setNorthJeolla(true), setWhere(`${place[11]}`);
@@ -243,7 +243,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[12]);
+            return history.push(ROUTES.SEARCHITEM + place[12]);
           }}
           onMouseEnter={() => {
             setSouthJeolla(true), setWhere(`${place[12]}`);
@@ -258,7 +258,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[13]);
+            return history.push(ROUTES.SEARCHITEM + place[13]);
           }}
           onMouseEnter={() => {
             setNorthGyeongsang(true), setWhere(`${place[13]}`);
@@ -273,7 +273,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[14]);
+            return history.push(ROUTES.SEARCHITEM + place[14]);
           }}
           onMouseEnter={() => {
             setSouthGyeongsang(true), setWhere(`${place[14]}`);
@@ -288,7 +288,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[15]);
+            return history.push(ROUTES.SEARCHITEM + place[15]);
           }}
           onMouseEnter={() => {
             setJeju(true), setWhere(`${place[15]}`);
@@ -303,7 +303,7 @@ export const KoreaMap = ({}: KoreaMapProps): React.ReactElement => {
         />
         <path
           onClick={() => {
-            return history.push(ROUTES.SEARCH + place[16]);
+            return history.push(ROUTES.SEARCHITEM + place[16]);
           }}
           onMouseEnter={() => {
             setSejong(true), setWhere(`${place[16]}`);
