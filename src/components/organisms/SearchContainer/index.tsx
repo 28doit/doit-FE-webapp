@@ -18,7 +18,8 @@ export const SearchContainer =
     };
 
     const goToSearch = () => {
-      return history.push(ROUTES.SEARCH + searchItem);
+      console.log(ROUTES.SEARCHITEM + searchItem);
+      return history.push(ROUTES.SEARCHITEM + searchItem);
     };
 
     return (

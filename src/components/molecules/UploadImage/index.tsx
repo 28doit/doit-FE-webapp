@@ -59,7 +59,6 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
       console.log(value);
     }
 
-    /* 
     axios
       .post('/api/uploader/images', formData, {
         headers: {
@@ -71,7 +70,7 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
       })
       .catch((err) => {
         console.log(err);
-      });*/
+      });
   };
 
   useEffect(() => {

@@ -3,7 +3,8 @@ export default {
   JOIN: '/join',
   LOGIN: '/login',
   LOGOUT: '/logout',
-  SEARCH: '/search?item=',
+  SEARCH: '/search',
+  SEARCHITEM: '/search?item=',
   REPASSWORD: '/re-password',
 
   USER: '/user',
@@ -16,7 +17,7 @@ export default {
   MYPAYMENT: '/user/payment-list',
 
   MYSELLERDASH: '/user/dashboard',
-  MYIMGUPLOAD: '/user/upload',
+  MYIMGUPLOAD: '/user/upload-image',
   MYUPLOADLIST: '/user/upload-list',
   MYPOINTCHOICE: '/user/point-choice',
 };

@@ -15,7 +15,7 @@ export const MainContainer = ({}: MainContainerProps): React.ReactElement => {
   };
 
   const goToSearch = () => {
-    return history.push(ROUTES.SEARCH + searchItem);
+    return history.push(ROUTES.SEARCHITEM + searchItem);
   };
 
   return (
