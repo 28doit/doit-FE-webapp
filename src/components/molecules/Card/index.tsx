@@ -22,6 +22,7 @@ export interface CardProps {
   authorSimg?: string; // 작가 카드에서만 사용
   authorTimg?: string; // 작가 카드에서만 사용
   authorHimg?: string; // 작가 카드에서만 사용
+  likeImg?: string; // 좋아하는 이미지에서 사용
 }
 
 export const Card = ({
@@ -40,6 +41,7 @@ export const Card = ({
   authorSimg,
   authorTimg,
   authorHimg,
+  likeImg,
   ...props
 }: CardProps): React.ReactElement => {
   const [Show, SetShow] = useState(false);
@@ -114,7 +116,28 @@ export const Card = ({
           </S.AuthorBox>
         </S.CardDefaultWrapper>
       )}
-      {CardType === 'type03'}
+      {CardType === 'type03' && (
+        <S.CardDefaultWrapper
+          cardImgWidth={imgWidth}
+          cardImgHeight={imgHeight}
+          onMouseOver={() => SetShow(true)}
+          onMouseOut={() => SetShow(false)}
+        >
+          <S.LikeImgBox>
+            {Show && (
+              <>
+                {isSubscribe ? (
+                  <S.LikeImgHeart src={PinkHeart} />
+                ) : (
+                  <S.LikeImgHeart src={BlackHeart} />
+                )}
+              </>
+            )}
+            <S.LikeImg src={likeImg} />
+          </S.LikeImgBox>
+        </S.CardDefaultWrapper>
+      )}
+      {CardType === 'type04'}
     </S.CardContainer>
   );
 };

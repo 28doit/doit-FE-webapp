@@ -85,6 +85,7 @@ export const AuthorBox = styled.div`
   border-radius: 3%;
   box-shadow: 0px 0px 2px #000000;
   cursor: pointer;
+  background-color: #f9f9f9;
 `;
 
 export const AuthorBoxTop = styled.div`
@@ -142,4 +143,38 @@ export const AuthorPhotosImg = styled.img`
   height: 48%;
   margin: 2px;
   border-radius: 5%;
+`;
+
+export const LikeImgBox = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #849db7;
+  border-radius: 3%;
+  box-shadow: 0px 0px 2px #000000;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+export const LikeImg = styled.img`
+  width: 95%;
+  height: 95%;
+  border-radius: 3%;
+`;
+
+export const LikeImgHeart = styled.img`
+  width: 30px;
+  hegiht: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 20px;
+  margin-top: 20px;
+  pointer-events: none;
+  background-color: white;
+  padding: 3px 3px 0;
+  border-radius: 50%;
 `;
