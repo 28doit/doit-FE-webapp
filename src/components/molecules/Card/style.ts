@@ -40,7 +40,7 @@ export const ModalTop = styled.div`
   display: flex;
 `;
 
-export const ModalTopImg = styled.img`
+export const ModalTopImg = styled.div`
   width: 60px;
   hegiht: 60px;
   margin-left: 20px;
@@ -55,7 +55,7 @@ export const ModalMid = styled.div`
   color: white;
 `;
 
-export const ModalMidImg = styled.img`
+export const ModalMidImg = styled.div`
   width: 20px;
   hegiht: 20px;
 `;
@@ -92,13 +92,15 @@ export const AuthorBoxTop = styled.div`
   width: 100%;
   height: 10%;
   pointer-events: none;
+  position: relative;
 `;
 
-export const AuthorTopImg = styled.img`
+export const AuthorTopImg = styled.div`
   width: 30px;
-  hegiht: 30px;
+  height: 30px;
   margin-left: 20px;
   margin-top: 20px;
+  position: absolute;
 `;
 export const AuthorBoxMid = styled.div`
   display: flex;
@@ -165,7 +167,7 @@ export const LikeImg = styled.img`
   border-radius: 3%;
 `;
 
-export const LikeImgHeart = styled.img`
+export const LikeImgHeart = styled.div`
   width: 30px;
   hegiht: 30px;
   position: absolute;
