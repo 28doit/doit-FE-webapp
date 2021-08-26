@@ -39,3 +39,12 @@ Type02.args = {
   authorTimg: test3,
   authorHimg: test4,
 };
+
+export const Type03 = Template.bind({});
+Type03.args = {
+  CardType: 'type03',
+  imgWidth: '330px',
+  imgHeight: '220px',
+  likeImg: test3,
+  isSubscribe: true,
+};
