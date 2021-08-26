@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import * as S from './style';
-import PinkHeart from '../../../assets/pinkHeart.svg';
-import BlackHeart from '../../../assets/blackHeart.svg';
-import ViewImg from '../../../assets/view.svg';
-import DownloadImg from '../../../assets/download.svg';
-import LikeImg from '../../../assets/like.svg';
+import { ReactComponent as Heart } from '../../../assets/pinkHeart.svg';
+import { ReactComponent as ViewImg } from '../../../assets/view.svg';
+import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
+import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 
 export interface CardProps {
   CardType: string;
@@ -61,17 +60,27 @@ export const Card = ({
             <S.DefaultHoverModal>
               <S.ModalTop>
                 {isSubscribe ? (
-                  <S.ModalTopImg src={PinkHeart} />
+                  <S.ModalTopImg>
+                    <Heart width="60" height="60" fill="#d7443e" />
+                  </S.ModalTopImg>
                 ) : (
-                  <S.ModalTopImg src={BlackHeart} />
+                  <S.ModalTopImg>
+                    <Heart width="60" height="60" fill="black" />
+                  </S.ModalTopImg>
                 )}
               </S.ModalTop>
               <S.ModalMid>
-                <S.ModalMidImg src={ViewImg} />
+                <S.ModalMidImg>
+                  <ViewImg width="20" height="20" fill="#f9f9f9" />
+                </S.ModalMidImg>
                 <S.ModalMidP>{viewCount}</S.ModalMidP>
-                <S.ModalMidImg src={DownloadImg} />
+                <S.ModalMidImg>
+                  <DownloadImg width="20" height="20" fill="#f9f9f9" />
+                </S.ModalMidImg>
                 <S.ModalMidP>{downloadCount}</S.ModalMidP>
-                <S.ModalMidImg src={LikeImg} />
+                <S.ModalMidImg>
+                  <LikeImg width="20" height="20" fill="#f9f9f9" />
+                </S.ModalMidImg>
                 <S.ModalMidP>{likeCount}</S.ModalMidP>
               </S.ModalMid>
               <S.ModalBot>
@@ -94,9 +103,13 @@ export const Card = ({
               {Show && (
                 <>
                   {isSubscribe ? (
-                    <S.AuthorTopImg src={PinkHeart} />
+                    <S.AuthorTopImg>
+                      <Heart width="30" height="30" fill="#d7443e" />
+                    </S.AuthorTopImg>
                   ) : (
-                    <S.AuthorTopImg src={BlackHeart} />
+                    <S.AuthorTopImg>
+                      <Heart width="30" height="30" fill="black" />
+                    </S.AuthorTopImg>
                   )}
                 </>
               )}
@@ -127,9 +140,13 @@ export const Card = ({
             {Show && (
               <>
                 {isSubscribe ? (
-                  <S.LikeImgHeart src={PinkHeart} />
+                  <S.LikeImgHeart>
+                    <Heart width="30" height="30" fill="#d7443e" />
+                  </S.LikeImgHeart>
                 ) : (
-                  <S.LikeImgHeart src={BlackHeart} />
+                  <S.LikeImgHeart>
+                    <Heart width="30" height="30" fill="black" />
+                  </S.LikeImgHeart>
                 )}
               </>
             )}
@@ -137,7 +154,6 @@ export const Card = ({
           </S.LikeImgBox>
         </S.CardDefaultWrapper>
       )}
-      {CardType === 'type04'}
     </S.CardContainer>
   );
 };
