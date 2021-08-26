@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Card, CardProps } from './index';
-import test from '../../../assets/simple.jpg';
 import test1 from '../../../assets/test1.jpg';
 import test2 from '../../../assets/test2.jpg';
 import test3 from '../../../assets/test3.jpg';
@@ -15,10 +14,10 @@ const Template: Story<CardProps> = (args) => <Card {...args} />;
 export const Type01 = Template.bind({});
 Type01.args = {
   CardType: 'type01',
-  imgSrc: test,
+  imgSrc: test2,
   imgWidth: '330px',
   imgHeight: '330px',
-  isSubscribe: true,
+  isSubscribe: false,
   author: 'poeynus',
   viewCount: 102,
   downloadCount: 24,
@@ -38,4 +37,13 @@ Type02.args = {
   authorSimg: test2,
   authorTimg: test3,
   authorHimg: test4,
+};
+
+export const Type03 = Template.bind({});
+Type03.args = {
+  CardType: 'type03',
+  imgWidth: '330px',
+  imgHeight: '220px',
+  likeImg: test3,
+  isSubscribe: true,
 };
