@@ -291,5 +291,15 @@
     => 사진을 눌렀을 때 나오는 정보를 표시하는 페이지
     => 댓글, 키워드, 작가의 다른 사진 보기 기능만 만들면 됨
 
+#### 21.08.27 23:06
+
+    - 커서 기반 페이지네이션 구현 중
+    => 라이브러리가 많은데 그중에서 일단 2개를 골라서 2개 다 만들고 마음에 드는 걸로 써보려고 한다.
+    1. https://www.npmjs.com/package/react-infinite-scroll-hook
+    2. https://www.npmjs.com/package/react-window
+
+    => 1번으로 하니 hook전용이라 편한데 세밀한 설정을 건드리기가 너무 까다롭다
+    => 2번은 아직 미구현
+
 </div>
 </details>
