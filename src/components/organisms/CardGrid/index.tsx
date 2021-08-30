@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { Card } from '../../index';
@@ -9,6 +9,15 @@ import ProImg from '../../../assets/cats.svg';
 export interface Item {
   key: number;
   value: string;
+  imgSrc?: any;
+  imgWidth?: string;
+  imgHeight?: string;
+  viewCount?: number;
+  downloadCount?: number;
+  likeCount?: number;
+  isSubscribe?: boolean;
+  author?: string;
+  proFileImg?: any;
 }
 
 interface Response {
@@ -35,11 +44,14 @@ const printCard = () => {
 
 const loadItems = (startCursor = 0): Promise<Response> => {
   return new Promise((resolve) => {
+    console.log("hi");
+    // 여기서 axios 통신으로 사진 데이터 받아오기
+    // state에 저장을 해야하는지 아니면 바로 쓸 수 있는지는 API를 통해 test가 가능해지면 사용가능할 듯
     let newArray: Item[] = [];
-
-    setTimeout(() => {
+    setTimeout(() => {  // 여기 20을 고정 해놓지 말고 백엔드에서 받아와서 길이 측정해서 사용하면 될 듯
       for (let i = startCursor; i < startCursor + 20; i++) {
         const newItem = {
+          // 여기에 받은 값들 저장
           key: i,
           value: `This is item ${i}`,
         };
@@ -52,23 +64,31 @@ const loadItems = (startCursor = 0): Promise<Response> => {
 };
 
 const useLoadItems = () => {
-  const [loading, setLoading] = React.useState(false);
-  const [items, setItems] = React.useState<Item[]>([]);
-  const [hasNextPage, setHasNextPage] = React.useState<boolean>(true);
-  const [error, setError] = React.useState<Error>();
+  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState(false);
+  const [items, setItems] = useState<Item[]>([]);
+  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
+  const [error, setError] = useState<Error>();
 
   async function loadMore() {
-    setLoading(true);
-    try {
-      const { data, hasNextPage: newHasNextPage } = await loadItems(
-        items.length,
-      );
-      setItems((current) => [...current, ...data]);
-      setHasNextPage(newHasNextPage);
-    } catch (err) {
-      setError(err);
-    } finally {
+    setCount(count+1);
+    if(count > 1) {
       setLoading(false);
+      setHasNextPage(false);
+    }
+    else{
+      setLoading(true);
+      try {
+        const { data, hasNextPage: newHasNextPage } = await loadItems(
+          items.length,
+        );
+        setItems((current) => [...current, ...data]);
+        setHasNextPage(newHasNextPage);
+      } catch (err) {
+        setError(err);
+       } finally {
+        setLoading(false);
+      }
     }
   }
 
