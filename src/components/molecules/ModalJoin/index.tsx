@@ -38,12 +38,13 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Day: '',
   });
 
-  const [EmailAuth, setEmailAuth] = useState(false); // onEmailAuthCheckHendler - 이메일 인증 확인 버튼에서 사용
+  // const [EmailAuth, setEmailAuth] = useState(false); // onEmailAuthCheckHendler - 이메일 인증 확인 버튼에서 사용
+  // const [Auth, setAuth] = useState(''); // 사용자가 입력하는 인증 번호
+
   const [Loading, setLoading] = useState(false); // 화면 로딩 창
   const [Check, setCheck] = useState(false); // 약관 동의 체크박스 체크했는지 판별
   const [EmailDuplicate, setEmailDuplicate] = useState(true); // 중복 이메일인지 판별하는 state - true면 중복, false면 사용 가능
   const [IsCheck, setIsCheck] = useState(false); // 이메일 중복을 했는지 안했는지 판별하는 state - 중복 확인 후 사용가능하면 true로 변함
-  const [Auth, setAuth] = useState(''); // 사용자가 입력하는 인증 번호
 
   const {
     Email,
@@ -71,10 +72,6 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     }
   };
 
-  const onAuthChangeHandler = (e: any) => {
-    setAuth(e.currentTarget.value);
-  };
-
   const onEmailHandler = () => {
     email_check(Email)
       .then((response) => {
@@ -90,16 +87,20 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       });
   };
 
-  const onEmailAuthCheckHandler = () => {
-    // axios
-    //   .get('/accounts/new/email_check?email=test@naver.com')
-    //   .then((response) => {
-    //     response.data.email
-    //       ? setEmailAuth(true)
-    //       : alert('❌ 인증번호가 일치하지 않습니다.');
-    //   });
+  /*const onAuthChangeHandler = (e: any) => {
+    setAuth(e.currentTarget.value);
+  };*/
+
+  /*const onEmailAuthCheckHandler = () => {
+    axios
+      .get('/accounts/new/email_check?email=test@naver.com')
+      .then((response) => {
+        response.data.email
+          ? setEmailAuth(true)
+          : alert('❌ 인증번호가 일치하지 않습니다.');
+      });
     setEmailAuth(true);
-  };
+  };*/
 
   const onCheckHandler = () => {
     setCheck(!Check);
@@ -168,7 +169,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       });
     });
   };
-
+  /*
   const EmailCheck = () => {
     return (
       <>
@@ -191,7 +192,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       </>
     );
   };
-
+*/
   return (
     <>
       {Loading ? <ModalLoading /> : ''}
@@ -275,9 +276,11 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               <S.JoinInvalid>❌ 이메일을 입력하세요.</S.JoinInvalid>
             )}
           </S.JoinInputWrap>
+          {/* 이메일 인증 Input
           <S.JoinInputWrap>
             {EmailDuplicate ? '' : EmailCheck()}
           </S.JoinInputWrap>
+          */}
           <S.JoinInputWrap>
             <S.JoinLabel htmlFor="password1">비밀번호</S.JoinLabel>
             <S.JoinInput
@@ -726,7 +729,6 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           validator.isBefore(Year, '2001') &&
           validator.isDate(Year + '-' + Month + '-' + Day) &&
           !validator.isEmpty(Gender) &&
-          EmailAuth === true &&
           Phone.substr(0, 1) === '0' &&
           validator.isLength(Phone, { min: 11, max: 11 }) &&
           validator.isMobilePhone('+82' + Phone.substring(1, 11), ['ko-KR']) ? (
