@@ -45,7 +45,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
           history.replace(ROUTES.HOME);
         } else {
           alert('비밀번호 또는 이메일이 틀렸습니다.');
-          history.replace(ROUTES.LOGIN);
+          window.location.replace(ROUTES.LOGIN);
         }
       })
       .catch(() => {
