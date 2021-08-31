@@ -73,7 +73,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   const onEmailHandler = () => {
-    email_check(Email)
+    /*email_check(Email)
       .then((response) => {
         console.log(response);
         response.data.isvalue
@@ -85,6 +85,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
         );
       });
+      */
+    setEmailDuplicate(false), setIsCheck(true);
   };
 
   /*const onAuthChangeHandler = (e: any) => {
