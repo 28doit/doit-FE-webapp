@@ -41,8 +41,12 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
     dispatch(Nlogin(Email, Password))
       .then((data) => {
         setLoading(false);
-        if (data.name && data.token) {
+        console.log(data);
+        if (data.name && data.token && data.isvalue === 1) {
           history.replace(ROUTES.HOME);
+        } else if (data.isvalue === 2) {
+          alert('이메일로 가서 인증을 완료해주시기 바랍니다.');
+          window.location.replace(ROUTES.LOGIN);
         } else {
           alert('비밀번호 또는 이메일이 틀렸습니다.');
           window.location.replace(ROUTES.LOGIN);
