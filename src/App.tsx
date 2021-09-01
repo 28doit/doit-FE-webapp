@@ -4,6 +4,7 @@ import { NewJoinForm } from './pages/Join';
 import { Main } from './pages/Main';
 import { Search } from './pages/Search';
 import { MyPage } from './pages/MyPage';
+import { Notice } from './pages/NoticeAll';
 import ROUTES from './commons/routes';
 import '../src/assets/style/reset.css';
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path={ROUTES.JOIN} component={NewJoinForm} />
         <Route path={ROUTES.SEARCH} component={Search} />
         <Route path={`${ROUTES.USER}/:name`} component={MyPage} />
+        <Route path={`${ROUTES.NOTICE}/:name`} component={Notice} />
       </Switch>
     </div>
   );
