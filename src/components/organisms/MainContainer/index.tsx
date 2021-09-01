@@ -2,8 +2,8 @@ import React from 'react';
 import * as S from './style';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { KoreaMap } from '../../index';
 import ROUTES from '../../../commons/routes';
+import { CardInfiniteList } from '../../index';
 
 export interface MainContainerProps {}
 
@@ -27,7 +27,7 @@ export const MainContainer = ({}: MainContainerProps): React.ReactElement => {
         formClcik={goToSearch}
         value={searchItem}
       />
-      <KoreaMap />
+      <CardInfiniteList />
     </S.MainDiv>
   );
 };

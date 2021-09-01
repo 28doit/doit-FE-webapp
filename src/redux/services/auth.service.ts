@@ -33,8 +33,9 @@ export const expired_check = (token: any, userEmail: any) => {
 };
 
 export const login = (email: any, password: any) => {
+  console.log(process.env.REACT_APP_BEOM + '/accounts/login');
   return axios
-    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
+    .post('http://222.104.174.222:8080/accounts/login', {
       email: email,
       password: password,
     })
@@ -66,11 +67,11 @@ export const register = (
   gallCount: any,
   userSubscribeCount: any,
 ) => {
-  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', {
+  return axios.post(process.env.REACT_APP_HOON + '/api/accounts/new', {
     email: email,
     name: name,
     nickName: nickName,
-    phone_Number: phoneNumber,
+    phoneNumber: phoneNumber,
     sex: sex,
     profileImageLocation: profileImageLocation,
     userYear: userYear,
@@ -78,7 +79,7 @@ export const register = (
     userDay: userDay,
     password: password,
     type: type,
-    gall_Count: gallCount,
+    gallCount: gallCount,
     userSubscribeCount: userSubscribeCount,
   });
 };

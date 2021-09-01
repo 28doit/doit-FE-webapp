@@ -6,6 +6,7 @@ export default {
   SEARCH: '/search',
   SEARCHITEM: '/search?item=',
   REPASSWORD: '/re-password',
+  NOTICE: '/notice',
 
   USER: '/user',
   MYPAGE: '/user/profile',
