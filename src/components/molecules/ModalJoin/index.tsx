@@ -73,7 +73,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   const onEmailHandler = () => {
-    /*email_check(Email)
+    email_check(Email)
       .then((response) => {
         console.log(response);
         response.data.isvalue
@@ -85,24 +85,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
         );
       });
-      */
     setEmailDuplicate(false), setIsCheck(true);
   };
-
-  /*const onAuthChangeHandler = (e: any) => {
-    setAuth(e.currentTarget.value);
-  };*/
-
-  /*const onEmailAuthCheckHandler = () => {
-    axios
-      .get('/accounts/new/email_check?email=test@naver.com')
-      .then((response) => {
-        response.data.email
-          ? setEmailAuth(true)
-          : alert('❌ 인증번호가 일치하지 않습니다.');
-      });
-    setEmailAuth(true);
-  };*/
 
   const onCheckHandler = () => {
     setCheck(!Check);
@@ -128,7 +112,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           email: Email,
           name: Name,
           nickName: NickName,
-          phone_Number: Phone,
+          phoneNumber: Phone,
           sex: 1,
           profileImageLocation: 'imgLocation',
           userYear: Year,
@@ -136,7 +120,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           userDay: Day,
           password: hash,
           type: 1,
-          gall_Count: 0,
+          gallCount: 0,
           userSubscribeCount: 0,
         };
 
@@ -147,7 +131,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
             NickName,
             Phone,
             1,
-            'imgLocation',
+            'default',
             Year,
             Month,
             Day,
@@ -159,8 +143,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
         )
           .then(() => {
             setLoading(false);
-            history.replace(ROUTES.LOGIN);
             console.log(data);
+            history.replace(`${ROUTES.NOTICE}/join-email`);
           })
           .catch(() => {
             alert(
@@ -171,6 +155,22 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       });
     });
   };
+
+  /*const onAuthChangeHandler = (e: any) => {
+    setAuth(e.currentTarget.value);
+  };*/
+
+  /*const onEmailAuthCheckHandler = () => {
+    axios
+      .get('/accounts/new/email_check?email=test@naver.com')
+      .then((response) => {
+        response.data.email
+          ? setEmailAuth(true)
+          : alert('❌ 인증번호가 일치하지 않습니다.');
+      });
+    setEmailAuth(true);
+  };*/
+
   /*
   const EmailCheck = () => {
     return (

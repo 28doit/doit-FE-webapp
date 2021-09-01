@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { Card } from '../../index';
-import test2 from '../../../assets/test2.jpg';
-import ProImg from '../../../assets/cats.svg';
 import axios from 'axios';
 
 export interface Item {
@@ -26,7 +24,7 @@ interface Response {
   data: Item[];
 }
 
-const loadItems = (startCursor = 0, some: Array<any>): Promise<Response> => {
+const loadItems = (some: Array<any>): Promise<Response> => {
   return new Promise((resolve) => {
     let newArray: Item[] = [];
     setTimeout(() => {  
@@ -65,7 +63,7 @@ const useLoadItems = () => {
     try {
       axios.get("http://localhost:3000/data").then((response)=>{setImgData(response.data)})
       const { data, hasNextPage: newHasNextPage } = await loadItems(
-        items.length, imgData
+        imgData
       );
       setItems((current) => [...current, ...data]);
       setHasNextPage(newHasNextPage);
@@ -89,12 +87,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
     loading,
     hasNextPage,
     onLoadMore: loadMore,
-    // When there is an error, we stop infinite loading.
-    // It can be reactivated by setting "error" state as undefined.
     disabled: !!error,
-    // `rootMargin` is passed to `IntersectionObserver`.
-    // We can use it to trigger 'onLoadMore' when the sentry comes near to become
-    // visible, instead of becoming fully visible on the screen.
     rootMargin: '0px 0px 400px 0px',
   });
   return (

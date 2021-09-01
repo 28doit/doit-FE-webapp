@@ -1,10 +1,11 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+// 나중에 서버 완성하면 추가할 부분
 module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://183.106.127.55:8080',
+      target: 'url',
       changeOrigin: true,
     }),
   );
