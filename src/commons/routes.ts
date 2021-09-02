@@ -15,6 +15,7 @@ export default {
   MYPURCHASE: '/user/purchase-list',
   MYFAVORITE: '/user/favorite',
   MYMESSAGE: '/user/message',
+  NEWPAYMENT: '/user/payment',
   MYPAYMENT: '/user/payment-list',
 
   MYSELLERDASH: '/user/dashboard',

@@ -38,6 +38,9 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
           <S.MyMenuBtn btnLink={ROUTES.MYPAYMENT} btntype="default">
             결제 내역
           </S.MyMenuBtn>
+          <S.MyMenuBtn btnLink={ROUTES.NEWPAYMENT} btntype="default">
+            포인트 충전하기
+          </S.MyMenuBtn>
         </S.MyMenuBox>
         <S.MyMenuBox>
           <S.MyMenuTitle>판매자</S.MyMenuTitle>

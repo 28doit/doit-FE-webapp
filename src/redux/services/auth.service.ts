@@ -8,6 +8,26 @@ export const re_password = (name: any, email: any, phone: any) => {
   });
 };
 
+export const send_payment = (
+  merchant_uid: any,
+  buyer_name: any,
+  buyer_email: any,
+  paid_amount: any,
+  imp_uid: any,
+  token: any,
+  user_email: any,
+) => {
+  return axios.post('url', {
+    merchant_uid: merchant_uid,
+    buyer_name: buyer_name,
+    buyer_email: buyer_email,
+    paid_amount: paid_amount,
+    imp_uid: imp_uid,
+    token: token,
+    user_email: user_email,
+  });
+};
+
 export const editUserProfile = (
   userEmail: any,
   password: any,
@@ -33,9 +53,8 @@ export const expired_check = (token: any, userEmail: any) => {
 };
 
 export const login = (email: any, password: any) => {
-  console.log(process.env.REACT_APP_BEOM + '/accounts/login');
   return axios
-    .post('http://222.104.174.222:8080/accounts/login', {
+    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
       email: email,
       password: password,
     })
