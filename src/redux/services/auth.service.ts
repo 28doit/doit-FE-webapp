@@ -86,19 +86,19 @@ export const register = (
   gallCount: any,
   userSubscribeCount: any,
 ) => {
-  return axios.post(process.env.REACT_APP_HOON + '/api/accounts/new', {
+  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', {
     email: email,
     name: name,
-    nickName: nickName,
-    phoneNumber: phoneNumber,
+    nick_name: nickName,
+    phone_number: phoneNumber,
     sex: sex,
-    profileImageLocation: profileImageLocation,
-    userYear: userYear,
-    userMonth: userMonth,
-    userDay: userDay,
+    profile_image_location: profileImageLocation,
+    user_year: userYear,
+    user_month: userMonth,
+    user_day: userDay,
     password: password,
     type: type,
-    gallCount: gallCount,
-    userSubscribeCount: userSubscribeCount,
+    gall_count: gallCount,
+    user_subscribe_count: userSubscribeCount,
   });
 };

@@ -6,7 +6,6 @@ import { Card } from '../../index';
 import axios from 'axios';
 
 export interface Item {
-  value?: string;
   key: number;
   imgSrc?: any;
   imgWidth?: string;

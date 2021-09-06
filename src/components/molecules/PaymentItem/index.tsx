@@ -25,7 +25,7 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
     name: '',
   });
   const dispatch = useAppThunkDispatch();
-  /* 
+
   useEffect(() => {
     const getUser = async () => {
       await expired_check(currentUser.token, currentUser.name)
@@ -61,7 +61,7 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
     setLoading(true);
     currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
   }, []);
-*/
+
   const [service, setService] = useState({
     first: false,
     second: false,
@@ -277,7 +277,7 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
             <S.InfoTextBox>
               <S.InfoLeftP>충전되는포인트</S.InfoLeftP>
               {money < 9000 ? (
-                <S.InfoRightP>{money}</S.InfoRightP>
+                <S.InfoRightP>{money}P</S.InfoRightP>
               ) : money < 90000 ? (
                 <S.InfoRightP>
                   {money}P + {money * 0.15}P = {money + money * 0.15}P

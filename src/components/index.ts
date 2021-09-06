@@ -25,5 +25,8 @@ export {
   UploadImage,
 } from './organisms/Modal';
 export { MainContainer } from './organisms/MainContainer';
-export { SearchContainer } from './organisms/SearchContainer';
+export {
+  SearchContainer,
+  BestCategoryContainer,
+} from './organisms/SearchContainer';
 export { CardInfiniteList } from './organisms/CardGrid';
