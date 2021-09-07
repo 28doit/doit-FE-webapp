@@ -52,15 +52,18 @@ const useLoadItems = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
-  const [imgCount, setImgCount] = useState(0);  // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
+  const [imgCount, setImgCount] = useState(1);  // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
   const [imgData, setImgData] = useState([]);
   
   async function loadMore() {
     setLoading(true);
-    setImgCount(imgCount+20); // 20개씩 보여줄 거라서 +20 axios 통신 주소에 넣으면 됨
-
     try {
-      axios.get("http://localhost:3000/data").then((response)=>{setImgData(response.data)})
+      axios.get(`http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main${imgCount}`).then((response)=>{
+        setImgData(response.data);
+      }).catch((err) => {
+        console.log(err); 
+        setLoading(false);
+        setHasNextPage(false);})
       const { data, hasNextPage: newHasNextPage } = await loadItems(
         imgData
       );
@@ -71,6 +74,8 @@ const useLoadItems = () => {
       } finally {
       setLoading(false);
     }
+
+    setImgCount(imgCount+1); // 20개씩 보여줄 거라서 + 해서 axios 통신 주소에 넣으면 됨
    
   }
 

@@ -23,6 +23,7 @@ export interface CardProps {
   authorHimg?: string; // 작가 카드에서만 사용
   likeImg?: string; // 좋아하는 이미지에서 사용
   imgCategory?: string; // 카테고리에서만 사용
+  cardOnclick?: (e: any) => void;
 }
 
 export const Card = ({
@@ -43,6 +44,7 @@ export const Card = ({
   authorHimg,
   likeImg,
   imgCategory,
+  cardOnclick,
   ...props
 }: CardProps): React.ReactElement => {
   const [show, setShow] = useState(false);
@@ -57,6 +59,7 @@ export const Card = ({
             src={imgSrc}
             onMouseOver={() => setShow(true)}
             onMouseOut={() => setShow(false)}
+            onClick={cardOnclick}
           />
           {show && (
             <S.DefaultHoverModal>
@@ -99,6 +102,7 @@ export const Card = ({
           cardImgHeight={imgHeight}
           onMouseOver={() => setShow(true)}
           onMouseOut={() => setShow(false)}
+          onClick={cardOnclick}
         >
           <S.AuthorBox>
             <S.AuthorBoxTop>
@@ -137,6 +141,7 @@ export const Card = ({
           cardImgHeight={imgHeight}
           onMouseOver={() => setShow(true)}
           onMouseOut={() => setShow(false)}
+          onClick={cardOnclick}
         >
           <S.LikeImgBox>
             {show && (
@@ -157,7 +162,11 @@ export const Card = ({
         </S.CardDefaultWrapper>
       )}
       {CardType === 'type04' && (
-        <S.CardDefaultWrapper cardImgWidth={imgWidth} cardImgHeight={imgHeight}>
+        <S.CardDefaultWrapper
+          cardImgWidth={imgWidth}
+          cardImgHeight={imgHeight}
+          onClick={cardOnclick}
+        >
           <S.CardCategoryDiv>
             <S.CardCategoryImg
               cardImgWidth={imgWidth}
