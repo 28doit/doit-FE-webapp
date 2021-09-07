@@ -47,3 +47,12 @@ Type03.args = {
   likeImg: test3,
   isSubscribe: true,
 };
+
+export const Type04 = Template.bind({});
+Type04.args = {
+  CardType: 'type04',
+  imgWidth: '330px',
+  imgHeight: '200px',
+  imgSrc: test2,
+  imgCategory: "극장",
+}

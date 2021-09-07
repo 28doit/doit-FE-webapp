@@ -22,6 +22,7 @@ export interface CardProps {
   authorTimg?: string; // 작가 카드에서만 사용
   authorHimg?: string; // 작가 카드에서만 사용
   likeImg?: string; // 좋아하는 이미지에서 사용
+  imgCategory?: string; // 카테고리에서만 사용
 }
 
 export const Card = ({
@@ -41,9 +42,10 @@ export const Card = ({
   authorTimg,
   authorHimg,
   likeImg,
+  imgCategory,
   ...props
 }: CardProps): React.ReactElement => {
-  const [Show, SetShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   return (
     <S.CardContainer>
@@ -53,10 +55,10 @@ export const Card = ({
             cardImgWidth={imgWidth}
             cardImgHeight={imgHeight}
             src={imgSrc}
-            onMouseOver={() => SetShow(true)}
-            onMouseOut={() => SetShow(false)}
+            onMouseOver={() => setShow(true)}
+            onMouseOut={() => setShow(false)}
           />
-          {Show && (
+          {show && (
             <S.DefaultHoverModal>
               <S.ModalTop>
                 {isSubscribe ? (
@@ -95,12 +97,12 @@ export const Card = ({
         <S.CardDefaultWrapper
           cardImgWidth={imgWidth}
           cardImgHeight={imgHeight}
-          onMouseOver={() => SetShow(true)}
-          onMouseOut={() => SetShow(false)}
+          onMouseOver={() => setShow(true)}
+          onMouseOut={() => setShow(false)}
         >
           <S.AuthorBox>
             <S.AuthorBoxTop>
-              {Show && (
+              {show && (
                 <>
                   {isSubscribe ? (
                     <S.AuthorTopImg>
@@ -133,11 +135,11 @@ export const Card = ({
         <S.CardDefaultWrapper
           cardImgWidth={imgWidth}
           cardImgHeight={imgHeight}
-          onMouseOver={() => SetShow(true)}
-          onMouseOut={() => SetShow(false)}
+          onMouseOver={() => setShow(true)}
+          onMouseOut={() => setShow(false)}
         >
           <S.LikeImgBox>
-            {Show && (
+            {show && (
               <>
                 {isSubscribe ? (
                   <S.LikeImgHeart>
@@ -152,6 +154,23 @@ export const Card = ({
             )}
             <S.LikeImg src={likeImg} />
           </S.LikeImgBox>
+        </S.CardDefaultWrapper>
+      )}
+      {CardType === 'type04' && (
+        <S.CardDefaultWrapper cardImgWidth={imgWidth} cardImgHeight={imgHeight}>
+          <S.CardCategoryDiv>
+            <S.CardCategoryImg
+              cardImgWidth={imgWidth}
+              cardImgHeight={imgHeight}
+              src={imgSrc}
+            />
+          </S.CardCategoryDiv>
+          <S.DefaultHoverModal>
+            <S.CardCategoryMid>
+              <S.CardCategoryP>{imgCategory}</S.CardCategoryP>
+              <S.ModalMidP>&nbsp;이미지</S.ModalMidP>
+            </S.CardCategoryMid>
+          </S.DefaultHoverModal>
         </S.CardDefaultWrapper>
       )}
     </S.CardContainer>

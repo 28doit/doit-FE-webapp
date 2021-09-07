@@ -22,6 +22,37 @@ export const CardDefaultImg = styled.img<Props>`
   border-radius: 3%;
 `;
 
+export const CardCategoryDiv = styled.div<Props>`
+width: ${(props) => props.cardImgWidth};
+height: ${(props) => props.cardImgHeight};
+overflow: hidden;
+`;
+
+export const CardCategoryImg = styled.img<Props>`
+  width: ${(props) => props.cardImgWidth};
+  height: ${(props) => props.cardImgHeight};
+  cursor: pointer;
+  border-radius: 3%;
+  transition: transform .3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const CardCategoryMid = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+`;
+
+export const CardCategoryP = styled.p`
+  font-weight: 700;
+  font-size: 20px;
+`;
+
 export const DefaultHoverModal = styled.div`
   position: absolute;
   width: 100%;
