@@ -29,16 +29,16 @@ const loadItems = (some: Array<any>): Promise<Response> => {
     setTimeout(() => {  
       some.map((somet)=>{
         const newItem = {
-          key: somet.key,
-          imgSrc: somet.imgSrc,
-          imgWidth: somet.imgWidth,
-          imgHeight: somet.imgHeight,
+          key: somet.gallaryId,
+          imgSrc: somet.gallaryImageLocation,
+          imgWidth: "330px",
+          imgHeight: "200px",
           isSubscribe: somet.isSubscribe,
-          authot: somet.author,
-          viewCount: somet.viewCount,
-          downloadCount: somet.downloadCount,
-          likeCount: somet.likeCount,
-          profileImg: somet.profileImg
+          authot: somet.idx,
+          viewCount: 1234,
+          downloadCount: 30,
+          likeCount: somet.gallarySubscribeCount,
+          profileImg: somet.gallaryImageLocation
         }
         newArray = [...newArray, newItem];
       })
@@ -52,30 +52,37 @@ const useLoadItems = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
-  const [imgCount, setImgCount] = useState(1);  // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
+  const [imgCount, setImgCount] = useState(40);  // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
   const [imgData, setImgData] = useState([]);
   
   async function loadMore() {
     setLoading(true);
     try {
-      axios.get(`http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main${imgCount}`).then((response)=>{
-        setImgData(response.data);
-      }).catch((err) => {
-        console.log(err); 
+      if(imgCount == 80) {
+        setHasNextPage(false);
         setLoading(false);
-        setHasNextPage(false);})
-      const { data, hasNextPage: newHasNextPage } = await loadItems(
-        imgData
-      );
-      setItems((current) => [...current, ...data]);
-      setHasNextPage(newHasNextPage);
+      }
+      else {
+        // http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main
+        axios.get(process.env.REACT_APP_HOON + `/api/pagination/cursor/${imgCount}`).then((response)=>{
+          console.log(response.data.data);
+          setImgData(response.data.data);
+        }).catch((err) => {
+          console.clear();
+        })
+        const { data, hasNextPage: newHasNextPage } = await loadItems(
+          imgData
+        );
+        setItems((current) => [...current, ...data]);
+        setHasNextPage(newHasNextPage);
+      }
     } catch (err) {
       setError(err);
       } finally {
       setLoading(false);
     }
 
-    setImgCount(imgCount+1); // 20개씩 보여줄 거라서 + 해서 axios 통신 주소에 넣으면 됨
+    setImgCount(imgCount + 20);
    
   }
 

@@ -9,6 +9,7 @@ import ROUTES from '../../../commons/routes';
 import { useSelector } from 'react-redux';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { Nlogout } from '../../../redux/actions/auth';
+import axios from 'axios';
 
 export interface PaymentProps {}
 
@@ -137,7 +138,6 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
         currentUser.name,
       ).then(() => {
         alert('결제 성공');
-        window.location.reload();
       });
     } else {
       alert(`결제 실패: ${error_msg}`);

@@ -17,14 +17,14 @@ export const send_payment = (
   token: any,
   user_email: any,
 ) => {
-  return axios.post('url', {
-    merchant_uid: merchant_uid,
-    buyer_name: buyer_name,
-    buyer_email: buyer_email,
-    paid_amount: paid_amount,
-    imp_uid: imp_uid,
+  return axios.post(process.env.REACT_APP_BEOM + '/payment/check', {
+    mid: merchant_uid,
+    name: buyer_name,
+    //buyer_email: buyer_email,
+    //paid_amount: paid_amount,
+    //imp_uid: imp_uid,
     token: token,
-    user_email: user_email,
+    login_email: user_email,
   });
 };
 
