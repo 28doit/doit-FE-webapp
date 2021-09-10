@@ -23,6 +23,7 @@ Type01.args = {
   downloadCount: 24,
   likeCount: 242,
   proFileImg: ProImg,
+  cardOnclick: () => {console.log("hi")}
 };
 
 export const Type02 = Template.bind({});
@@ -37,6 +38,7 @@ Type02.args = {
   authorSimg: test2,
   authorTimg: test3,
   authorHimg: test4,
+  cardOnclick: () => {console.log("hi")}
 };
 
 export const Type03 = Template.bind({});
@@ -46,4 +48,15 @@ Type03.args = {
   imgHeight: '220px',
   likeImg: test3,
   isSubscribe: true,
+  cardOnclick: () => {console.log("hi")}
 };
+
+export const Type04 = Template.bind({});
+Type04.args = {
+  CardType: 'type04',
+  imgWidth: '330px',
+  imgHeight: '200px',
+  imgSrc: test2,
+  imgCategory: "극장",
+  cardOnclick: () => {console.log("hi")}
+}

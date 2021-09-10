@@ -36,3 +36,34 @@ export const SearchContainer =
       </S.SearchDiv>
     );
   };
+
+export const BestCategoryContainer = ({ match }: any): React.ReactElement => {
+  const [searchItem, setSearchItem] = useState('');
+  const history = useHistory();
+
+  const onSearchHandler = (e: any) => {
+    setSearchItem(e.currentTarget.value);
+  };
+
+  const goToSearch = () => {
+    console.log(ROUTES.SEARCHITEM + searchItem);
+    return history.push(ROUTES.SEARCHITEM + searchItem);
+  };
+
+  return (
+    <S.SearchDiv>
+      {match.params.name === 'best' ? (
+        <S.SearchTitle>인기 상품</S.SearchTitle>
+      ) : (
+        <S.SearchTitle>카테고리: {match.params.name}</S.SearchTitle>
+      )}
+      <S.SearchInput
+        placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
+        onChange={onSearchHandler}
+        value={searchItem}
+        formClcik={goToSearch}
+      />
+      <S.SearchMap>Search</S.SearchMap>
+    </S.SearchDiv>
+  );
+};

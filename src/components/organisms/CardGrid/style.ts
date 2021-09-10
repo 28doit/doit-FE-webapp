@@ -12,10 +12,27 @@ export const List = styled.ul<ListProps>`
   font-size: 16px;
   margin: 0;
   padding: 6px;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 `;
+
+export const HoList = styled.ul<ListProps>`
+display: flex;
+list-style: none;
+font-size: 16px;
+margin: 0;
+padding: 6px;
+`;
+
+export const VeList = styled.ul<ListProps>`
+display: flex;
+list-style: none;
+font-size: 16px;
+margin: 0;
+padding: 6px;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+`;
+
 
 export const ListItem = styled.li`
   margin: 4px;
@@ -46,4 +63,10 @@ export const LoadingRoot = styled.div`
 `;
 export const ListContainer = styled.div`
   background-color: #fafafa;
+`;
+
+export const CategoryContainer = styled.div`
+max-width: 95%;
+overflow: auto;
+background-color: #fafafa;
 `;

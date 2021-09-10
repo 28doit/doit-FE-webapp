@@ -1,5 +1,10 @@
 import { BaseTemplate } from '../../templates';
-import { MyMenu, EditProfile, UploadImage } from '../../components/index';
+import {
+  MyMenu,
+  EditProfile,
+  UploadImage,
+  PaymentItem,
+} from '../../components/index';
 import * as S from './style';
 
 export const MyPage = ({ match }: any) => {
@@ -9,6 +14,8 @@ export const MyPage = ({ match }: any) => {
         return <EditProfile />;
       case 'upload-image':
         return <UploadImage />;
+      case 'payment':
+        return <PaymentItem />;
       default:
         return '';
     }

@@ -18,13 +18,18 @@ export const Header = (): React.ReactElement => {
         <S.HeaderWrapper header_left>
           <ul>
             <li>
-              <S.HeaderLinkBtn btnLink={ROUTES.JOIN} btntype="gray">
+              <S.HeaderLinkBtn btnLink={ROUTES.SEARCH + '/best'} btntype="gray">
                 인기
               </S.HeaderLinkBtn>
             </li>
             <li>
-              <S.HeaderLinkBtn btnLink={ROUTES.JOIN} btntype="gray">
-                카테고리
+              <S.HeaderLinkBtn btnLink={ROUTES.SEARCH + '/best'} btntype="gray">
+                임시
+              </S.HeaderLinkBtn>
+            </li>
+            <li>
+              <S.HeaderLinkBtn btnLink={ROUTES.SEARCH + '/best'} btntype="gray">
+                임시
               </S.HeaderLinkBtn>
             </li>
           </ul>

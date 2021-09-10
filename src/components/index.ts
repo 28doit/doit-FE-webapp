@@ -14,6 +14,7 @@ export { ModalLoading } from './molecules/ModalLoading';
 export { RePasswordModal } from './molecules/ModalRepassword';
 export { UploadImageModal } from './molecules/UploadImage';
 export { NoticeItem } from './molecules/Notice';
+export { PaymentItem } from './molecules/PaymentItem';
 
 export { Header } from './organisms/Header';
 export {
@@ -24,5 +25,8 @@ export {
   UploadImage,
 } from './organisms/Modal';
 export { MainContainer } from './organisms/MainContainer';
-export { SearchContainer } from './organisms/SearchContainer';
-export { CardInfiniteList } from './organisms/CardGrid';
+export {
+  SearchContainer,
+  BestCategoryContainer,
+} from './organisms/SearchContainer';
+export { CardInfiniteList, CategoryGrid } from './organisms/CardGrid';
