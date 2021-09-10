@@ -26,6 +26,7 @@ export const CardCategoryDiv = styled.div<Props>`
 width: ${(props) => props.cardImgWidth};
 height: ${(props) => props.cardImgHeight};
 overflow: hidden;
+border-radius: 3%;
 `;
 
 export const CardCategoryImg = styled.img<Props>`

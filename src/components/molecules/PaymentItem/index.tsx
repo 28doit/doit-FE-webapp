@@ -138,6 +138,7 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
         currentUser.name,
       ).then(() => {
         alert('결제 성공');
+        window.location.reload(true);
       });
     } else {
       alert(`결제 실패: ${error_msg}`);

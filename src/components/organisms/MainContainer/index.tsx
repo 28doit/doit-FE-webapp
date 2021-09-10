@@ -3,7 +3,7 @@ import * as S from './style';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
-import { CardInfiniteList } from '../../index';
+import { CardInfiniteList, CategoryGrid } from '../../index';
 
 export interface MainContainerProps {}
 
@@ -27,7 +27,18 @@ export const MainContainer = ({}: MainContainerProps): React.ReactElement => {
         formClcik={goToSearch}
         value={searchItem}
       />
-      <CardInfiniteList />
+
+      <S.MainHr>요즘 트렌드는 무엇일까?</S.MainHr>
+
+      <S.MainCategoryDiv>
+        <CategoryGrid />
+      </S.MainCategoryDiv>
+
+      <S.MainHr>어떤 이미지가 있을까?</S.MainHr>
+
+      <S.MainCardDiv>
+        <CardInfiniteList />
+      </S.MainCardDiv>
     </S.MainDiv>
   );
 };

@@ -22,6 +22,16 @@ export const Header = (): React.ReactElement => {
                 인기
               </S.HeaderLinkBtn>
             </li>
+            <li>
+              <S.HeaderLinkBtn btnLink={ROUTES.SEARCH + '/best'} btntype="gray">
+                임시
+              </S.HeaderLinkBtn>
+            </li>
+            <li>
+              <S.HeaderLinkBtn btnLink={ROUTES.SEARCH + '/best'} btntype="gray">
+                임시
+              </S.HeaderLinkBtn>
+            </li>
           </ul>
         </S.HeaderWrapper>
       </div>
