@@ -177,7 +177,7 @@ const useLoadCategoryItems = () => {
         setLoading(false);
       }
       else {
-        axios.get("https://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/category").then((response)=>{
+        axios.get(`${process.env.REACT_APP_TEST}/category`).then((response)=>{
           console.log(response.data.data);
           setImgData(response.data.data);
         }).catch((err) => {

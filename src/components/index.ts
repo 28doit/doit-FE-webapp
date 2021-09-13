@@ -15,6 +15,7 @@ export { RePasswordModal } from './molecules/ModalRepassword';
 export { UploadImageModal } from './molecules/UploadImage';
 export { NoticeItem } from './molecules/Notice';
 export { PaymentItem } from './molecules/PaymentItem';
+export { PayLogItem } from './molecules/PayLog';
 
 export { Header } from './organisms/Header';
 export {
