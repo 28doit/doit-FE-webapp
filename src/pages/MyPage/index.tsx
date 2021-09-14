@@ -4,6 +4,7 @@ import {
   EditProfile,
   UploadImage,
   PaymentItem,
+  PayLogItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -16,6 +17,8 @@ export const MyPage = ({ match }: any) => {
         return <UploadImage />;
       case 'payment':
         return <PaymentItem />;
+      case 'paylog':
+        return <PayLogItem />;
       default:
         return '';
     }

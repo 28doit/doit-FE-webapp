@@ -7,7 +7,7 @@ export const PayLogContatiner = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-top: 60px;
   flex-direction: column;
 `;
 
@@ -35,9 +35,21 @@ export const PayLogBtn = styled(Btn)`
 `;
 
 export const PayLogModal = styled.div`
-  width: 800px;
+  margin-top: 40px;
+  width: 840px;
   height: 600px;
   background-color: rgba(0, 0, 0, 0.3);
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: grey;
+  }
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 export const PayDatePicker = styled(DatePicker)`
@@ -47,4 +59,40 @@ export const PayDatePicker = styled(DatePicker)`
   border-radius: 4px;
   border: 1px solid black;
   font-size: 12px;
+`;
+
+export const PayLogCardP = styled.p``;
+
+export const PayLogCardUl = styled.ul``;
+
+export const PayLogCardLI = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f2f2f2;
+`;
+
+export const PayLogPDate = styled.div`
+  width: 15%;
+  text-align: center;
+`;
+
+export const PayLogPMuid = styled.div`
+  width: 60%;
+  text-align: center;
+`;
+
+export const PayLogPMoney = styled.div`
+  width: 15%;
+  text-align: center;
+`;
+
+export const PayLogPResult = styled.div`
+  width: 10%;
+  text-align: center;
+  color: black;
 `;
