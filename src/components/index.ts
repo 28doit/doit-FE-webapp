@@ -16,6 +16,7 @@ export { UploadImageModal } from './molecules/UploadImage';
 export { NoticeItem } from './molecules/Notice';
 export { PaymentItem } from './molecules/PaymentItem';
 export { PayLogItem } from './molecules/PayLog';
+export { ErrItem } from './molecules/NotFound';
 
 export { Header } from './organisms/Header';
 export {

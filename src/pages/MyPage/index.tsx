@@ -5,6 +5,7 @@ import {
   UploadImage,
   PaymentItem,
   PayLogItem,
+  ErrItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -12,24 +13,41 @@ export const MyPage = ({ match }: any) => {
   const renderPage = () => {
     switch (match.params.name) {
       case 'edit-profile':
-        return <EditProfile />;
+        return (
+          <>
+            <MyMenu />
+            <EditProfile />
+          </>
+        );
       case 'upload-image':
-        return <UploadImage />;
+        return (
+          <>
+            <MyMenu />
+            <UploadImage />
+          </>
+        );
       case 'payment':
-        return <PaymentItem />;
+        return (
+          <>
+            <MyMenu />
+            <PaymentItem />
+          </>
+        );
       case 'paylog':
-        return <PayLogItem />;
+        return (
+          <>
+            <MyMenu />
+            <PayLogItem />
+          </>
+        );
       default:
-        return '';
+        return <ErrItem />;
     }
   };
 
   return (
     <BaseTemplate>
-      <S.MyPageWrap>
-        <MyMenu />
-        {renderPage()}
-      </S.MyPageWrap>
+      <S.MyPageWrap>{renderPage()}</S.MyPageWrap>
     </BaseTemplate>
   );
 };
