@@ -17,6 +17,7 @@ export { NoticeItem } from './molecules/Notice';
 export { PaymentItem } from './molecules/PaymentItem';
 export { PayLogItem } from './molecules/PayLog';
 export { ErrItem } from './molecules/NotFound';
+export { FavoriteItem } from './molecules/Favorite';
 
 export { Header } from './organisms/Header';
 export {

@@ -105,14 +105,15 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
           c_status: '상태',
         })}
         <S.PayLogCardUl>
-          {item.map((info: any) =>
-            PayLogCard({
-              c_date: info.date,
-              c_m_uid: info.m_uid,
-              c_money: info.money,
-              c_status: info.satus,
-            }),
-          )}
+          {item &&
+            item.map((info: any) =>
+              PayLogCard({
+                c_date: info.date,
+                c_m_uid: info.m_uid,
+                c_money: info.money,
+                c_status: info.satus,
+              }),
+            )}
         </S.PayLogCardUl>
       </S.PayLogModal>
     </S.PayLogContatiner>
