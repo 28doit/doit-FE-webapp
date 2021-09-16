@@ -24,18 +24,10 @@ const PayLogCard = ({
 }: PayLogCardProps) => {
   return (
     <S.PayLogCardLI key={c_m_uid}>
-      <S.PayLogPDate>
-        <S.PayLogCardP>{c_date}</S.PayLogCardP>
-      </S.PayLogPDate>
-      <S.PayLogPMuid>
-        <S.PayLogCardP>{c_m_uid}</S.PayLogCardP>
-      </S.PayLogPMuid>
-      <S.PayLogPMoney>
-        <S.PayLogCardP>{c_money}</S.PayLogCardP>
-      </S.PayLogPMoney>
-      <S.PayLogPResult>
-        <S.PayLogCardP>{c_status}</S.PayLogCardP>
-      </S.PayLogPResult>
+      <S.PayLogPDate>{c_date}</S.PayLogPDate>
+      <S.PayLogPMuid>{c_m_uid}</S.PayLogPMuid>
+      <S.PayLogPMoney>{c_money}</S.PayLogPMoney>
+      <S.PayLogPResult>{c_status}</S.PayLogPResult>
     </S.PayLogCardLI>
   );
 };
@@ -56,7 +48,6 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
     ) {
       alert('조회할 수 있는 기간은 31일 이내 입니다.');
     } else {
-      console.log(startDate);
       console.log(startDate.toLocaleString('fr-CA').substr(0, 10)); // 나중에 통신 시 사용 할 주소 요소
       console.log(endDate.toLocaleString('fr-CA').substr(0, 10));
       axios.get(`${process.env.REACT_APP_TEST}/paylog`).then((response) => {
@@ -80,8 +71,6 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
             locale={ko}
             dateFormat="yyyy년 MM월 dd일"
           />
-        </S.PayDateBox>
-        <S.PayDateBox>
           <S.PayDatePicker
             selected={endDate}
             onChange={(date: any) => setEndDate(date)}

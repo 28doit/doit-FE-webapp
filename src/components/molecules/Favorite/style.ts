@@ -19,6 +19,7 @@ export const MyFTitle = styled.h2`
 export const MyFBtnBox = styled.div`
   display: flex;
   width: 400px;
+  padding-bottom: 30px;
 `;
 
 export const MyFImgBtnYes = styled(Btn)``;
@@ -34,8 +35,18 @@ export const MyFAuthorBtnNo = styled(Btn)`
 `;
 
 export const MyFBox = styled.div`
-  width: 1300px;
+  width: 1400px;
   height: 800px;
+  padding-top: 30px;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+  }
+
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 export const MyFUl = styled.ul`

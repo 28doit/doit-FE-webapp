@@ -20,6 +20,8 @@ export const PayLogTitle = styled.h2`
 
 export const PayDateContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 400px;
 `;
 
 export const PayDateBox = styled.div`
@@ -46,9 +48,6 @@ export const PayLogModal = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: #2f3542;
   }
-  &::-webkit-scrollbar-track {
-    background-color: grey;
-  }
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
@@ -59,6 +58,7 @@ export const PayDatePicker = styled(DatePicker)`
   border-radius: 4px;
   border: 1px solid black;
   font-size: 12px;
+  margin-right: 60px;
 `;
 
 export const PayLogCardP = styled.p``;

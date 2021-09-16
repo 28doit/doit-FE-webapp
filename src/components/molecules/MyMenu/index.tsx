@@ -32,9 +32,6 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
           <S.MyMenuBtn btnLink={ROUTES.MYFAVORITE} btntype="default">
             구독한 이미지 / 작가
           </S.MyMenuBtn>
-          <S.MyMenuBtn btnLink={ROUTES.MYMESSAGE} btntype="default">
-            메시지 함
-          </S.MyMenuBtn>
           <S.MyMenuBtn btnLink={ROUTES.MYPAYMENT} btntype="default">
             결제 내역
           </S.MyMenuBtn>

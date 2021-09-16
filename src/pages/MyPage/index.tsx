@@ -7,6 +7,7 @@ import {
   PayLogItem,
   ErrItem,
   FavoriteItem,
+  PurchaseItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -46,6 +47,13 @@ export const MyPage = ({ match }: any) => {
           <>
             <MyMenu />
             <FavoriteItem />
+          </>
+        );
+      case 'purchase':
+        return (
+          <>
+            <MyMenu />
+            <PurchaseItem />
           </>
         );
       default:
