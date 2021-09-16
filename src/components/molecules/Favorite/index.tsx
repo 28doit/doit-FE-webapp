@@ -7,15 +7,28 @@ export interface FavoriteProps {}
 
 export const FavoriteImg = (some: any) => {
   return (
-    <S.MyFImgBox>
-      <h1>이미지</h1>
-    </S.MyFImgBox>
+    <S.MyFBox>
+      <S.MyFUl>
+        {some &&
+          some.map((info: any) => (
+            <S.MyFLi key={info.img_id}>
+              <Card
+                CardType="type03"
+                imgWidth="330px"
+                imgHeight="200px"
+                isSubscribe={info.subscribe}
+                likeImg={info.src}
+              />
+            </S.MyFLi>
+          ))}
+      </S.MyFUl>
+    </S.MyFBox>
   );
 };
 
-export const FavoriteAuthor = (some: any): React.ReactElement => {
+export const FavoriteAuthor = (some: any) => {
   return (
-    <S.MyFAuthorBox>
+    <S.MyFBox>
       <S.MyFUl>
         {some &&
           some.map((info: any) => (
@@ -35,28 +48,40 @@ export const FavoriteAuthor = (some: any): React.ReactElement => {
             </S.MyFLi>
           ))}
       </S.MyFUl>
-    </S.MyFAuthorBox>
+    </S.MyFBox>
   );
 };
 
 export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
-  const [item, setItem] = useState([]);
+  const [imgItem, setImgItem] = useState([]);
+  const [authItem, setAuthItem] = useState([]);
   const [favImg, setFavImg] = useState(true);
+
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_TEST + '/favoriteimg').then((response) => {
+      console.log(response);
+      setImgItem(response.data);
+    });
+    axios.get(process.env.REACT_APP_TEST + '/favoriteauth').then((response) => {
+      console.log(response);
+      setAuthItem(response.data);
+    });
+  }, []);
 
   const onFavoriteHandler = () => {
     if (favImg) {
       axios
-        .get(process.env.REACT_APP_TEST + '/favoriteauth')
+        .get(process.env.REACT_APP_TEST + '/favoriteimg')
         .then((response) => {
           console.log(response);
-          setItem(response.data);
+          setImgItem(response.data);
         });
     } else {
       axios
         .get(process.env.REACT_APP_TEST + '/favoriteauth')
         .then((response) => {
           console.log(response);
-          setItem(response.data);
+          setAuthItem(response.data);
         });
     }
     setFavImg(!favImg);
@@ -86,7 +111,7 @@ export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
           </>
         )}
       </S.MyFBtnBox>
-      {favImg ? FavoriteImg(item) : FavoriteAuthor(item)}
+      {favImg ? FavoriteImg(imgItem) : FavoriteAuthor(authItem)}
     </S.MyFContainer>
   );
 };

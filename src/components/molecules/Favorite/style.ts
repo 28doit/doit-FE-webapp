@@ -33,13 +33,7 @@ export const MyFAuthorBtnNo = styled(Btn)`
   background-color: #2f4f4f;
 `;
 
-export const MyFImgBox = styled.div`
-  width: 1200px;
-  height: 800px;
-  background-color: rgba(0, 0, 0, 0.3);
-`;
-
-export const MyFAuthorBox = styled.div`
+export const MyFBox = styled.div`
   width: 1300px;
   height: 800px;
 `;
