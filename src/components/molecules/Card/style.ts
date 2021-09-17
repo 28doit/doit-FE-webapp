@@ -23,10 +23,10 @@ export const CardDefaultImg = styled.img<Props>`
 `;
 
 export const CardCategoryDiv = styled.div<Props>`
-width: ${(props) => props.cardImgWidth};
-height: ${(props) => props.cardImgHeight};
-overflow: hidden;
-border-radius: 3%;
+  width: ${(props) => props.cardImgWidth};
+  height: ${(props) => props.cardImgHeight};
+  overflow: hidden;
+  border-radius: 3%;
 `;
 
 export const CardCategoryImg = styled.img<Props>`
@@ -34,7 +34,7 @@ export const CardCategoryImg = styled.img<Props>`
   height: ${(props) => props.cardImgHeight};
   cursor: pointer;
   border-radius: 3%;
-  transition: transform .3s;
+  transition: transform 0.3s;
   &:hover {
     transform: scale(1.1);
   }
@@ -211,4 +211,49 @@ export const LikeImgHeart = styled.div`
   background-color: white;
   padding: 3px 3px 0;
   border-radius: 50%;
+`;
+
+export const ManageImgBox = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #849db7;
+  border-radius: 3%;
+  box-shadow: 0px 0px 2px #000000;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+`;
+
+export const ManageImg = styled.div`
+  width: 30px;
+  hegiht: 30px;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
+  pointer-events: none;
+  background-color: white;
+  padding: 3px 3px 0;
+  border-radius: 50%;
+`;
+
+export const ManageImgPre = styled.img`
+  width: 95%;
+  height: 75%;
+  border-radius: 3%;
+`;
+
+export const ManageTxt = styled.div`
+  width: 95%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
 `;

@@ -8,6 +8,7 @@ import {
   ErrItem,
   FavoriteItem,
   PurchaseItem,
+  ManagementItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -54,6 +55,13 @@ export const MyPage = ({ match }: any) => {
           <>
             <MyMenu />
             <PurchaseItem />
+          </>
+        );
+      case 'management':
+        return (
+          <>
+            <MyMenu />
+            <ManagementItem />
           </>
         );
       default:

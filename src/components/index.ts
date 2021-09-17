@@ -19,6 +19,7 @@ export { PayLogItem } from './molecules/PayLog';
 export { ErrItem } from './molecules/NotFound';
 export { FavoriteItem } from './molecules/Favorite';
 export { PurchaseItem } from './molecules/Purchase';
+export { ManagementItem } from './molecules/Management';
 
 export { Header } from './organisms/Header';
 export {

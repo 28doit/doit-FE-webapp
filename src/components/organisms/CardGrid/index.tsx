@@ -237,7 +237,7 @@ export const CategoryGrid = ({}: CategoryGridProps): React.ReactElement => {
                     imgHeight="200px"
                     imgCategory={item.category}
                     cardOnclick={() => {
-                      history.replace(`${ROUTES.SEARCH}/${item.category}`);
+                      history.push(`${ROUTES.SEARCH}/${item.category}`);
                     }}
                   />
                 </S.ListItem>
