@@ -8,6 +8,7 @@ import { ModalLoading } from '../../index';
 import { expired_check } from '../../../redux/services/auth.service';
 import { Nlogout } from '../../../redux/actions/auth';
 import ROUTES from '../../../commons/routes';
+import axios from 'axios';
 
 export interface ModalItemProps {}
 
@@ -83,7 +84,6 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
-
     //사용자 정보 수정하는 통신 보내면 됨
   };
 

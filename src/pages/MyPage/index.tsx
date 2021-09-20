@@ -64,6 +64,12 @@ export const MyPage = ({ match }: any) => {
             <ManagementItem />
           </>
         );
+      case 'profile':
+        return (
+          <>
+            <MyMenu />
+          </>
+        );
       default:
         return <ErrItem />;
     }

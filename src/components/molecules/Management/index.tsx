@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as S from './style';
-import { Card } from '../../index';
 import axios from 'axios';
+import { Card } from '../../index';
 
 export interface ManagementProps {}
 

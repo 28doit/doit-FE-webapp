@@ -95,7 +95,7 @@ const useLoadItems = () => {
         setItems((current) => [...current, ...data]);
         setHasNextPage(newHasNextPage);
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err);
     } finally {
       setLoading(false);
@@ -196,7 +196,7 @@ const useLoadCategoryItems = () => {
         setItems((current) => [...current, ...data]);
         setHasNextPage(newHasNextPage);
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err);
     } finally {
       setLoading(false);

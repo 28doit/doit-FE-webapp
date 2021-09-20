@@ -37,7 +37,7 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),
   );
   const [endDate, setEndDate] = useState(
-    new Date(moment().format('YYYY/MM/DD')),
+    new Date(moment().add('1', 'd').format('YYYY/MM/DD')),
   );
   const [item, setItem] = useState([]);
 
@@ -97,10 +97,10 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
           {item &&
             item.map((info: any) =>
               PayLogCard({
-                c_date: info.date,
-                c_m_uid: info.m_uid,
-                c_money: info.money,
-                c_status: info.satus,
+                c_date: info.time,
+                c_m_uid: info.mid,
+                c_money: info.pay,
+                c_status: info.name,
               }),
             )}
         </S.PayLogCardUl>
