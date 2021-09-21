@@ -23,7 +23,9 @@ Type01.args = {
   downloadCount: 24,
   likeCount: 242,
   proFileImg: ProImg,
-  cardOnclick: () => {console.log("hi")}
+  cardOnclick: () => {
+    console.log('hi');
+  },
 };
 
 export const Type02 = Template.bind({});
@@ -38,7 +40,9 @@ Type02.args = {
   authorSimg: test2,
   authorTimg: test3,
   authorHimg: test4,
-  cardOnclick: () => {console.log("hi")}
+  cardOnclick: () => {
+    console.log('hi');
+  },
 };
 
 export const Type03 = Template.bind({});
@@ -48,7 +52,9 @@ Type03.args = {
   imgHeight: '220px',
   likeImg: test3,
   isSubscribe: true,
-  cardOnclick: () => {console.log("hi")}
+  cardOnclick: () => {
+    console.log('hi');
+  },
 };
 
 export const Type04 = Template.bind({});
@@ -57,6 +63,30 @@ Type04.args = {
   imgWidth: '330px',
   imgHeight: '200px',
   imgSrc: test2,
-  imgCategory: "극장",
-  cardOnclick: () => {console.log("hi")}
-}
+  imgCategory: '극장',
+  cardOnclick: () => {
+    console.log('hi');
+  },
+};
+
+export const Type05 = Template.bind({});
+Type05.args = {
+  CardType: 'type05',
+  imgWidth: '280px',
+  imgHeight: '180px',
+  likeImg: test3,
+  cardOnclick: () => {
+    console.log('hi');
+  },
+};
+
+export const Type06 = Template.bind({});
+Type06.args = {
+  CardType: 'type06',
+  imgWidth: '280px',
+  imgHeight: '240px',
+  likeImg: test3,
+  cardOnclick: () => {
+    console.log('hi');
+  },
+};

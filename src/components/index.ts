@@ -15,6 +15,12 @@ export { RePasswordModal } from './molecules/ModalRepassword';
 export { UploadImageModal } from './molecules/UploadImage';
 export { NoticeItem } from './molecules/Notice';
 export { PaymentItem } from './molecules/PaymentItem';
+export { PayLogItem } from './molecules/PayLog';
+export { ErrItem } from './molecules/NotFound';
+export { FavoriteItem } from './molecules/Favorite';
+export { PurchaseItem } from './molecules/Purchase';
+export { ManagementItem } from './molecules/Management';
+export { KaKaoMapItem } from './molecules/KaKaoMap';
 
 export { Header } from './organisms/Header';
 export {

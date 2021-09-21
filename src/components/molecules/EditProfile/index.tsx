@@ -83,7 +83,6 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
-
     //사용자 정보 수정하는 통신 보내면 됨
   };
 

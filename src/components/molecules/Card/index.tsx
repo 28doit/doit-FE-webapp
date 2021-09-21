@@ -4,6 +4,8 @@ import { ReactComponent as Heart } from '../../../assets/pinkHeart.svg';
 import { ReactComponent as ViewImg } from '../../../assets/view.svg';
 import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
 import { ReactComponent as LikeImg } from '../../../assets/like.svg';
+import { ReactComponent as EditImg } from '../../../assets/pencil.svg';
+import { ReactComponent as TrashImg } from '../../../assets/trash.svg';
 
 export interface CardProps {
   CardType: string;
@@ -23,6 +25,8 @@ export interface CardProps {
   authorHimg?: string; // 작가 카드에서만 사용
   likeImg?: string; // 좋아하는 이미지에서 사용
   imgCategory?: string; // 카테고리에서만 사용
+  trashImg?: string; // 이미지 관리에서 사용
+  editImg?: string; // 이미지 관리에서 사용
   cardOnclick?: (e: any) => void;
 }
 
@@ -180,6 +184,50 @@ export const Card = ({
               <S.ModalMidP>&nbsp;이미지</S.ModalMidP>
             </S.CardCategoryMid>
           </S.DefaultHoverModal>
+        </S.CardDefaultWrapper>
+      )}
+      {CardType === 'type05' && (
+        <S.CardDefaultWrapper
+          cardImgWidth={imgWidth}
+          cardImgHeight={imgHeight}
+          onMouseOver={() => setShow(true)}
+          onMouseOut={() => setShow(false)}
+          onClick={cardOnclick}
+        >
+          <S.LikeImgBox>
+            {show && (
+              <>
+                <S.LikeImgHeart>
+                  <EditImg width="30" height="30" />
+                </S.LikeImgHeart>
+                <S.ManageImg>
+                  <TrashImg width="30" height="30" />
+                </S.ManageImg>
+              </>
+            )}
+            <S.LikeImg src={likeImg} />
+          </S.LikeImgBox>
+        </S.CardDefaultWrapper>
+      )}
+      {CardType === 'type06' && (
+        <S.CardDefaultWrapper
+          cardImgWidth={imgWidth}
+          cardImgHeight={imgHeight}
+          onMouseOver={() => setShow(true)}
+          onMouseOut={() => setShow(false)}
+          onClick={cardOnclick}
+        >
+          <S.ManageImgBox>
+            {show && (
+              <>
+                <S.LikeImgHeart>
+                  <TrashImg width="30" height="30" />
+                </S.LikeImgHeart>
+              </>
+            )}
+            <S.ManageImgPre src={likeImg} />
+            <S.ManageTxt>승인 불가 사유 보기 / 수정 하기</S.ManageTxt>
+          </S.ManageImgBox>
         </S.CardDefaultWrapper>
       )}
     </S.CardContainer>

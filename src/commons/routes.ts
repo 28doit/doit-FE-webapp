@@ -12,14 +12,13 @@ export default {
   MYPAGE: '/user/profile',
   MYEDIT: '/user/edit-profile',
 
-  MYPURCHASE: '/user/purchase-list',
+  MYPURCHASE: '/user/purchase',
   MYFAVORITE: '/user/favorite',
-  MYMESSAGE: '/user/message',
   NEWPAYMENT: '/user/payment',
-  MYPAYMENT: '/user/payment-list',
+  MYPAYMENT: '/user/paylog',
 
   MYSELLERDASH: '/user/dashboard',
   MYIMGUPLOAD: '/user/upload-image',
-  MYUPLOADLIST: '/user/upload-list',
+  MYUPLOADLIST: '/user/management',
   MYPOINTCHOICE: '/user/point-choice',
 };

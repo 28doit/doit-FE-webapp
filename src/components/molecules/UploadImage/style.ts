@@ -100,28 +100,19 @@ export const UploadImgInputWrap = styled.div`
   justify-content: space-between;
 `;
 
-export const UploadInputWrap = styled.div``;
-
-export const UploadLabel = styled(Label)``;
-
-export const UploadInput = styled(Input)`
-  margin-bottom: 30px;
-  width: 90%;
-`;
-
-export const UploadSelectWrap = styled.div`
+export const UploadInputWrap = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
 `;
 
-export const UploadSelect = styled.select`
-  width: 220px;
-  height: 40px;
-  border: solid 1px #dadada;
-  background: #fff;
-  box-sizing: border-box;
-  margin-bottom: 30px;
+export const UploadLabel = styled(Label)`
+  margin-bottom: 15px;
+`;
+
+export const UploadInput = styled(Input)`
+  width: 90%;
 `;
 
 export const UploadResultBtn = styled(Btn)`
