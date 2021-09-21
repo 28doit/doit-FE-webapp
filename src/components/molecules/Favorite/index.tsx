@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import { Card } from '../../index';
-import axios from 'axios';
+import { get_favorite } from '../../../redux/services/auth.service';
 
 export interface FavoriteProps {}
 
@@ -58,32 +58,23 @@ export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
   const [favImg, setFavImg] = useState(true);
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_TEST + '/favoriteimg').then((response) => {
-      console.log(response);
-      setImgItem(response.data);
-    });
-    axios.get(process.env.REACT_APP_TEST + '/favoriteauth').then((response) => {
-      console.log(response);
-      setAuthItem(response.data);
+    get_favorite().then((response) => {
+      console.log(response.data);
+      response.data.map((info: any) => {
+        setImgItem(info.img);
+        setAuthItem(info.auth);
+      });
     });
   }, []);
 
   const onFavoriteHandler = () => {
-    if (favImg) {
-      axios
-        .get(process.env.REACT_APP_TEST + '/favoriteimg')
-        .then((response) => {
-          console.log(response);
-          setImgItem(response.data);
-        });
-    } else {
-      axios
-        .get(process.env.REACT_APP_TEST + '/favoriteauth')
-        .then((response) => {
-          console.log(response);
-          setAuthItem(response.data);
-        });
-    }
+    get_favorite().then((response) => {
+      console.log(response.data);
+      response.data.map((info: any) => {
+        setImgItem(info.img);
+        setAuthItem(info.auth);
+      });
+    });
     setFavImg(!favImg);
   };
 

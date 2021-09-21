@@ -50,4 +50,7 @@ export const ManageUl = styled.ul`
   justify-content: flex-start;
 `;
 
-export const ManageLi = styled.li``;
+export const ManageLi = styled.li`
+  padding-left: 40px;
+  padding-bottom: 60px;
+`;

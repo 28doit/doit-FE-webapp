@@ -8,7 +8,10 @@ declare global {
   }
 }
 
-export const KaKaoMapItem = (): React.ReactElement => {
+export const KaKaoMapItem = ({
+  setKakaoMap,
+  setLocation,
+}: any): React.ReactElement => {
   const [center, setCenter] = useState({
     lat: 37.624915253753194,
     lng: 127.15122688059974,
@@ -230,8 +233,19 @@ export const KaKaoMapItem = (): React.ReactElement => {
 
   return (
     <S.KakaoMapContainer>
-      <S.KakaoMapDiv id="map"></S.KakaoMapDiv>
-      <S.KakaoRoadViewDiv id="roadview"></S.KakaoRoadViewDiv>
+      <S.KakaoMapTitle>장소를 찾아 보세요.</S.KakaoMapTitle>
+      <S.KakaoMapWrap>
+        <S.KakaoMapDiv id="map"></S.KakaoMapDiv>
+        <S.KakaoRoadViewDiv id="roadview"></S.KakaoRoadViewDiv>
+      </S.KakaoMapWrap>
+      <S.KakaoMapBtn
+        btnOnClick={() => {
+          setKakaoMap(false);
+          setLocation({ lat: center.lat, lng: center.lng, located: located });
+        }}
+      >
+        장소 저장
+      </S.KakaoMapBtn>
     </S.KakaoMapContainer>
   );
 };

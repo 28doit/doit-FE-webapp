@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as S from './style';
-import axios from 'axios';
 import { Card } from '../../index';
+import { get_management } from '../../../redux/services/auth.service';
 
 export interface ManagementProps {}
 
@@ -62,36 +62,26 @@ export const ManagementItem = ({}: ManagementProps): React.ReactElement => {
       [e.currentTarget.id]: true,
     });
 
-    if (access) {
-      axios.get(process.env.REACT_APP_TEST + '/manage').then((response) => {
-        console.log(response);
-        setAccessItem(response.data);
-      });
-    } else if (inProcess) {
-      axios.get(process.env.REACT_APP_TEST + '/manage').then((response) => {
-        console.log(response);
-        setInProcessItem(response.data);
-      });
-    } else {
-      axios.get(process.env.REACT_APP_TEST + '/manage').then((response) => {
-        console.log(response);
-        setDenyItem(response.data);
-      });
-    }
+    get_management().then((response) => {
+      console.log(response.data);
+      response.data &&
+        response.data.map((info: any) => {
+          setAccessItem(info.access),
+            setInProcessItem(info.inProcess),
+            setDenyItem(info.deny);
+        });
+    });
   };
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_TEST + '/manage').then((response) => {
-      console.log(response);
-      setAccessItem(response.data);
-    });
-    axios.get(process.env.REACT_APP_TEST + '/manage').then((response) => {
-      console.log(response);
-      setInProcessItem(response.data);
-    });
-    axios.get(process.env.REACT_APP_TEST + '/manage').then((response) => {
-      console.log(response);
-      setDenyItem(response.data);
+    get_management().then((response) => {
+      console.log(response.data);
+      response.data &&
+        response.data.map((info: any) => {
+          setAccessItem(info.access),
+            setInProcessItem(info.inProcess),
+            setDenyItem(info.deny);
+        });
     });
   }, []);
 

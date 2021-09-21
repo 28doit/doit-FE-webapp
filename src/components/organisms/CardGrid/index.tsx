@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { Card } from '../../index';
-import axios from 'axios';
 import ROUTES from '../../../commons/routes';
 import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import {
+  get_cursor_based_img,
+  get_category,
+} from '../../../redux/services/auth.service';
 
 export interface Item {
   key: number;
@@ -80,10 +83,7 @@ const useLoadItems = () => {
       } else {
         // http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main
         //process.env.REACT_APP_HOON + `/api/pagination/cursor/${imgCount}`
-        axios
-          .get(
-            `http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main${imgCount}`,
-          )
+        get_cursor_based_img(imgCount)
           .then((response) => {
             console.log(response.data);
             setImgData(response.data);
@@ -181,11 +181,10 @@ const useLoadCategoryItems = () => {
         setHasNextPage(false);
         setLoading(false);
       } else {
-        axios
-          .get(`${process.env.REACT_APP_TEST}/category`)
+        get_category()
           .then((response) => {
-            console.log(response.data.data);
-            setImgData(response.data.data);
+            console.log(response.data);
+            setImgData(response.data);
           })
           .catch((err) => {
             console.clear();

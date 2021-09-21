@@ -102,3 +102,39 @@ export const register = (
     user_subscribe_count: userSubscribeCount,
   });
 };
+
+export const get_purchase = (startDate: any, endDate: any) => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
+};
+
+export const get_pay_log = (startDate: any, endDate: any) => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/paylog`);
+};
+
+export const get_favorite = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + '/favorite');
+};
+
+export const get_management = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + '/manage');
+};
+
+export const post_upload_img = (formData: any) => {
+  return axios.post(
+    process.env.REACT_APP_HOON + '/api/uploader/images',
+    formData,
+    {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    },
+  );
+};
+
+export const get_cursor_based_img = (imgCount: any) => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/cursor${imgCount}`);
+};
+
+export const get_category = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/category`);
+};

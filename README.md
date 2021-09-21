@@ -453,8 +453,24 @@
     - Image Upload 페이지에 사용 할 위치 정보 폼 생성 완료
     => Kakao Map API 사용, 사용자가 클릭 하면 로드뷰와 마커가 해당 위치로 이동하고 주소가 InfoWindow로 뜸
     => Component로 만들었는데 어떻게 적용 할 지 생각 해야 함 - 주소 및 좌표 정보는 state에 저장 되고 있음
+    => 자식의 props 정보를 부모로 올려 보내면 될 거 같음
 
-    - PayLog 페이지 통신 후 업로드 할 변수명 변경 완료
+    - PayLog 페이지 통신 후 업로드 할 변수 명 변경 완료
+
+#### 21.09.21 12:08
+
+    - Image Upload 페이지에 KakaoMap 융합 성공
+    => 자식과 부모의 props 전달로 구현 했음
+    => 키워드 입력 부분은 백엔드와 협의 후 간단하게 수정만 하면 됨
+    => 위치 입력 부분은 Input 칸을 클릭 하면 kakao map이 뜨고 거기서 위치 클릭 후 저장 버튼을 누르면 state에 저장
+    => 디자인은 나중에 하자...
+
+    - mock data 서버 이전 성공
+    => 기존의 postman에서 json-server(local)로 이동 - 한도가 초과되어서 이동 했음
+    => 모든 api 불러오던 주소 변경
+
+    - 모든 axios 통신 auth.services로 이동
+    => 한 곳에서 통신 관리
 
 </div>
 </details>

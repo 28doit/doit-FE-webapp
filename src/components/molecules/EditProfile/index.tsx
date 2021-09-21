@@ -8,7 +8,6 @@ import { ModalLoading } from '../../index';
 import { expired_check } from '../../../redux/services/auth.service';
 import { Nlogout } from '../../../redux/actions/auth';
 import ROUTES from '../../../commons/routes';
-import axios from 'axios';
 
 export interface ModalItemProps {}
 

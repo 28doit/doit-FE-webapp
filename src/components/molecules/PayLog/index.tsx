@@ -4,7 +4,7 @@ import { ko } from 'date-fns/esm/locale';
 import * as S from './style';
 import moment from 'moment';
 import 'moment/locale/ko';
-import axios from 'axios';
+import { get_pay_log } from '../../../redux/services/auth.service';
 
 export interface PayLogProps {}
 
@@ -37,9 +37,15 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),
   );
   const [endDate, setEndDate] = useState(
-    new Date(moment().add('1', 'd').format('YYYY/MM/DD')),
+    new Date(moment().format('YYYY/MM/DD')),
   );
   const [item, setItem] = useState([]);
+
+  const addDaysToDate = (date: any) => {
+    var res = new Date(date);
+    res.setDate(res.getDate() + 1);
+    return res;
+  };
 
   const onBtnHandler = (e: any) => {
     if (
@@ -49,8 +55,11 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
       alert('조회할 수 있는 기간은 31일 이내 입니다.');
     } else {
       console.log(startDate.toLocaleString('fr-CA').substr(0, 10)); // 나중에 통신 시 사용 할 주소 요소
-      console.log(endDate.toLocaleString('fr-CA').substr(0, 10));
-      axios.get(`${process.env.REACT_APP_TEST}/paylog`).then((response) => {
+      console.log(addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10));
+      get_pay_log(
+        startDate.toLocaleString('fr-CA').substr(0, 10),
+        endDate.toLocaleString('fr-CA').substr(0, 10),
+      ).then((response) => {
         console.log(response);
         setItem(response.data);
       });
@@ -100,7 +109,7 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
                 c_date: info.time,
                 c_m_uid: info.mid,
                 c_money: info.pay,
-                c_status: info.name,
+                c_status: info.status /* info.name*/,
               }),
             )}
         </S.PayLogCardUl>
