@@ -35,4 +35,4 @@ export {
   SearchContainer,
   BestCategoryContainer,
 } from './organisms/SearchContainer';
-export { CardInfiniteList, CategoryGrid } from './organisms/CardGrid';
+export { CardInfiniteList, CategoryGridItems } from './organisms/CardGrid';

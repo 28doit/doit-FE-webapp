@@ -12,14 +12,14 @@ interface PayLogCardProps {
   c_date?: string;
   c_m_uid?: string;
   c_money?: string;
-  c_status?: string;
+  c_name?: string;
 }
 
 const PayLogCard = ({
   c_date,
   c_m_uid,
   c_money,
-  c_status,
+  c_name,
   ...props
 }: PayLogCardProps) => {
   return (
@@ -27,7 +27,7 @@ const PayLogCard = ({
       <S.PayLogPDate>{c_date}</S.PayLogPDate>
       <S.PayLogPMuid>{c_m_uid}</S.PayLogPMuid>
       <S.PayLogPMoney>{c_money}</S.PayLogPMoney>
-      <S.PayLogPResult>{c_status}</S.PayLogPResult>
+      <S.PayLogPName>{c_name}</S.PayLogPName>
     </S.PayLogCardLI>
   );
 };
@@ -100,7 +100,7 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
           c_date: '날짜',
           c_m_uid: '구매 번호',
           c_money: '구매 금액',
-          c_status: '상태',
+          c_name: '이름',
         })}
         <S.PayLogCardUl>
           {item &&
@@ -109,7 +109,7 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
                 c_date: info.time,
                 c_m_uid: info.mid,
                 c_money: info.pay,
-                c_status: info.status /* info.name*/,
+                c_name: info.name /* info.name*/,
               }),
             )}
         </S.PayLogCardUl>

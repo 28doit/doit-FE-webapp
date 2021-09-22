@@ -37,6 +37,7 @@ export const ModalJoinInner = styled.div`
 
 export const EditProfileOverlay = styled.div`
   width: 90%;
+  height: 120%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
@@ -72,7 +73,7 @@ export const RePasswordInner = styled.div`
 
 export const UploadImageOverlay = styled.div`
   width: 100%;
-  height: 100%;
+  height: 120%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;

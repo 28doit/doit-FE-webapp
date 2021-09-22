@@ -1,5 +1,10 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components';
 import { FormInput } from '../../index';
+
+interface hrProps {
+  top?: string;
+}
 
 export const MainDiv = styled.div`
   width: 100%;
@@ -7,6 +12,7 @@ export const MainDiv = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `;
 
 export const MainTitle = styled.div`
@@ -25,11 +31,16 @@ export const MainCategoryDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 470px;
 `;
 
-export const MainCardDiv = styled.div``;
+export const MainCardDiv = styled.div`
+  top: 900px;
+  position: absolute;
+`;
 
-export const MainHr = styled.div`
+export const MainHr = styled.div<hrProps>`
   width: 95%;
   display: flex;
   flex-basis: 100%;
@@ -38,6 +49,8 @@ export const MainHr = styled.div`
   font-size: 24px;
   margin: 80px 0 40px 0;
   font-weight: 700;
+  position: absolute;
+  top: ${(props) => props.top};
 
   &:after {
     content: '';

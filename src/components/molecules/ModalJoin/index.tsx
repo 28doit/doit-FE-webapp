@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import * as S from './style';
+import PLUS from '../../../assets/plus.svg';
+import PURPLE from '../../../assets/purple.jpg';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import { Nregister } from '../../../redux/actions/auth';
@@ -36,6 +38,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Year: '',
     Month: '',
     Day: '',
+    ImgBase64: PURPLE,
+    ImgFile: null,
   });
 
   // const [EmailAuth, setEmailAuth] = useState(false); // onEmailAuthCheckHendler - 이메일 인증 확인 버튼에서 사용
@@ -57,7 +61,31 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
     Year,
     Month,
     Day,
+    ImgBase64,
+    ImgFile,
   } = Account;
+
+  const onChangeImgHandler = (e: any) => {
+    e.preventDefault();
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result;
+      if (base64) {
+        setAccount({
+          ...Account,
+          ['ImgBase64']: base64.toString(),
+          ['ImgFile']: e.target.files[0],
+        });
+      }
+    };
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+      setAccount({
+        ...Account,
+        ['ImgFile']: e.target.files[0],
+      });
+    }
+  };
 
   const onChangeAccount = (e: any) => {
     setAccount({
@@ -85,7 +113,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
         );
       });
-    setEmailDuplicate(false), setIsCheck(true);
+    //setEmailDuplicate(false), setIsCheck(true);
   };
 
   const onCheckHandler = () => {
@@ -95,6 +123,7 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
+    let formData = new FormData();
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
@@ -113,8 +142,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           name: Name,
           nickName: NickName,
           phoneNumber: Phone,
-          sex: 1,
-          profileImageLocation: 'imgLocation',
+          sex: Gender,
+          profileImageLocation: ImgFile,
           userYear: Year,
           userMonth: Month,
           userDay: Day,
@@ -124,26 +153,25 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
           userSubscribeCount: 0,
         };
 
-        dispatch(
-          Nregister(
-            Email,
-            Name,
-            NickName,
-            Phone,
-            1,
-            'default',
-            Year,
-            Month,
-            Day,
-            hash,
-            1,
-            0,
-            0,
-          ),
-        )
+        formData.append('email', Email);
+        formData.append('name', Name);
+        formData.append('nick_name', NickName);
+        formData.append('phone_number', Phone);
+        formData.append('sex', Gender);
+        formData.append('images', ImgFile || '{}');
+        formData.append('user_year', Year);
+        formData.append('user_month', Month);
+        formData.append('user_day', Day);
+        formData.append('password', Password);
+        formData.append('type', '1');
+        formData.append('gall_count', '0');
+        formData.append('user_subscribe_count', '0');
+
+        console.log(data);
+
+        dispatch(Nregister(formData))
           .then(() => {
             setLoading(false);
-            console.log(data);
             history.replace(`${ROUTES.NOTICE}/join-email`);
           })
           .catch(() => {
@@ -200,6 +228,21 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
       {Loading ? <ModalLoading /> : ''}
       <S.JoinTitle>회원가입</S.JoinTitle>
       <S.JoinCommonWrap>
+        <S.JoinImgWrap>
+          <S.JoinImgPreview>
+            <S.JoinImgPreviewImg src={ImgBase64} />
+          </S.JoinImgPreview>
+          <S.JoinImgLabel htmlFor="imageIn">
+            <S.JoinImgBtn src={PLUS} />
+          </S.JoinImgLabel>
+        </S.JoinImgWrap>
+        <S.JoinImgInput
+          id="imageIn"
+          inputType="file"
+          inputAccept="image/*"
+          name="file"
+          onChange={onChangeImgHandler}
+        />
         <S.JoinForm onSubmit={onSubmitHandler}>
           <S.JoinInputWrap>
             <S.JoinLabel htmlFor="name">이름</S.JoinLabel>
@@ -387,8 +430,8 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
               name="Gender"
             >
               <option value="">성별</option>
-              <option value="M">남자</option>
-              <option value="F">여자</option>
+              <option value="1">남자</option>
+              <option value="0">여자</option>
             </S.JoinGenderSelect>
             {validator.isEmpty(Gender) ? (
               <S.JoinInvalidSelect>❌ 성별을 선택하세요.</S.JoinInvalidSelect>

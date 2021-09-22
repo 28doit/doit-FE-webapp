@@ -91,7 +91,7 @@ export const PayLogPMoney = styled.div`
   text-align: center;
 `;
 
-export const PayLogPResult = styled.div`
+export const PayLogPName = styled.div`
   width: 10%;
   text-align: center;
   color: black;

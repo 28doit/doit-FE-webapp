@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { CardInfiniteList, CategoryGrid } from './index';
+import { CardInfiniteList, CategoryGridItems } from './index';
 
 export default {
   title: 'organisms/CardGrid',
@@ -8,8 +8,7 @@ export default {
 
 const Template: Story = (args) => <CardInfiniteList {...args} />;
 
-const TemplateS: Story = (args) => <CategoryGrid {...args} />;
-
+const TemplateS: Story = (args) => <CategoryGridItems {...args} />;
 
 export const general = Template.bind({});
 

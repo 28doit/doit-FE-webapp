@@ -601,140 +601,160 @@
       "mid": "mid_1491553506653_test@asd.com",
       "time": "20210712",
       "pay": 3300,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 2,
       "mid": "mid_2491553506653_test@asd.com",
       "time": "20210812",
       "pay": 1100,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 3,
       "mid": "mid_3491553506653_test@asd.com",
       "time": "20210910",
       "pay": 55000,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 4,
       "mid": "mid_4491553506653_test@asd.com",
       "time": "20210911",
       "pay": 33000,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 5,
       "mid": "mid_165491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 6,
       "mid": "mid_155491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 7,
       "mid": "mid_15491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 8,
       "mid": "mid_25491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 9,
       "mid": "mid_35491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 10,
       "mid": "mid_45491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 11,
       "mid": "mid_55491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 12,
       "mid": "mid_65491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 13,
       "mid": "mid_75491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 14,
       "mid": "mid_85491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 15,
       "mid": "mid_95491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 16,
       "mid": "mid_105491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 17,
       "mid": "mid_115491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 18,
       "mid": "mid_125491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 19,
       "mid": "mid_135491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 20,
       "mid": "mid_145491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     }
   ],
   "favorite": [

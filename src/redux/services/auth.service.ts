@@ -71,35 +71,11 @@ export const logout = () => {
   localStorage.removeItem('user');
 };
 
-export const register = (
-  email: any,
-  name: any,
-  nickName: any,
-  phoneNumber: any,
-  sex: any,
-  profileImageLocation: any,
-  userYear: any,
-  userMonth: any,
-  userDay: any,
-  password: any,
-  type: any,
-  gallCount: any,
-  userSubscribeCount: any,
-) => {
-  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', {
-    email: email,
-    name: name,
-    nick_name: nickName,
-    phone_number: phoneNumber,
-    sex: sex,
-    profile_image_location: profileImageLocation,
-    user_year: userYear,
-    user_month: userMonth,
-    user_day: userDay,
-    password: password,
-    type: type,
-    gall_count: gallCount,
-    user_subscribe_count: userSubscribeCount,
+export const register = (formData: any) => {
+  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', formData, {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
   });
 };
 

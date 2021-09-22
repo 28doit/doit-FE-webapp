@@ -3,7 +3,7 @@ import * as S from './style';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
-import { CardInfiniteList, CategoryGrid } from '../../index';
+import { CardInfiniteList, CategoryGridItems } from '../../index';
 
 export interface MainContainerProps {}
 
@@ -28,13 +28,13 @@ export const MainContainer = ({}: MainContainerProps): React.ReactElement => {
         value={searchItem}
       />
 
-      <S.MainHr>요즘 트렌드는 무엇일까?</S.MainHr>
+      <S.MainHr top="300px">요즘 트렌드는 무엇일까?</S.MainHr>
 
       <S.MainCategoryDiv>
-        <CategoryGrid />
+        <CategoryGridItems />
       </S.MainCategoryDiv>
 
-      <S.MainHr>어떤 이미지가 있을까?</S.MainHr>
+      <S.MainHr top="700px">어떤 이미지가 있을까?</S.MainHr>
 
       <S.MainCardDiv>
         <CardInfiniteList />
