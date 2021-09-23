@@ -114,3 +114,15 @@ export const get_cursor_based_img = (imgCount: any) => {
 export const get_category = () => {
   return axios.get(process.env.REACT_APP_LOCAL + `/category`);
 };
+
+export const get_profit = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/profit`);
+};
+
+export const post_profit_bank = () => {
+  return axios.post(process.env.REACT_APP_LOCAL + `/test`);
+};
+
+export const post_profit_point = () => {
+  return axios.post(process.env.REACT_APP_LOCAL + `/test2`);
+};

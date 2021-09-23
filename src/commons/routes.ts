@@ -20,5 +20,5 @@ export default {
   MYSELLERDASH: '/user/dashboard',
   MYIMGUPLOAD: '/user/upload-image',
   MYUPLOADLIST: '/user/management',
-  MYPOINTCHOICE: '/user/point-choice',
+  MYEXCHANGE: '/user/profit',
 };

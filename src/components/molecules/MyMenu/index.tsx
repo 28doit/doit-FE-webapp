@@ -50,7 +50,7 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
           <S.MyMenuBtn btnLink={ROUTES.MYUPLOADLIST} btntype="default">
             이미지 관리
           </S.MyMenuBtn>
-          <S.MyMenuBtn btnLink={ROUTES.MYPOINTCHOICE} btntype="default">
+          <S.MyMenuBtn btnLink={ROUTES.MYEXCHANGE} btntype="default">
             출금 및 전환 신청
           </S.MyMenuBtn>
         </S.MyMenuBox>

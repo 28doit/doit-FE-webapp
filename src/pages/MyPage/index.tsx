@@ -9,6 +9,7 @@ import {
   FavoriteItem,
   PurchaseItem,
   ManagementItem,
+  ExchangeItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -62,6 +63,13 @@ export const MyPage = ({ match }: any) => {
           <>
             <MyMenu />
             <ManagementItem />
+          </>
+        );
+      case 'profit':
+        return (
+          <>
+            <MyMenu />
+            <ExchangeItem />
           </>
         );
       case 'profile':

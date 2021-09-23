@@ -37,9 +37,9 @@ export const PayLogBtn = styled(Btn)`
 `;
 
 export const PayLogModal = styled.div`
-  margin-top: 40px;
   width: 840px;
   height: 600px;
+  margin-top: 40px;
   background-color: rgba(0, 0, 0, 0.3);
   overflow: scroll;
   &::-webkit-scrollbar {

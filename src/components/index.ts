@@ -21,6 +21,7 @@ export { FavoriteItem } from './molecules/Favorite';
 export { PurchaseItem } from './molecules/Purchase';
 export { ManagementItem } from './molecules/Management';
 export { KaKaoMapItem } from './molecules/KaKaoMap';
+export { ExchangeItem } from './molecules/Exchange';
 
 export { Header } from './organisms/Header';
 export {
