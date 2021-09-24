@@ -5,6 +5,7 @@ import * as S from './style';
 import moment from 'moment';
 import 'moment/locale/ko';
 import { get_pay_log } from '../../../redux/services/auth.service';
+import { useSelector } from 'react-redux';
 
 export interface PayLogProps {}
 
@@ -33,6 +34,7 @@ const PayLogCard = ({
 };
 
 export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
   const [startDate, setStartDate] = useState(
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),
   );
@@ -57,8 +59,9 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
       console.log(startDate.toLocaleString('fr-CA').substr(0, 10)); // 나중에 통신 시 사용 할 주소 요소
       console.log(addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10));
       get_pay_log(
+        currentUser.token,
         startDate.toLocaleString('fr-CA').substr(0, 10),
-        endDate.toLocaleString('fr-CA').substr(0, 10),
+        addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10),
       ).then((response) => {
         console.log(response);
         setItem(response.data);

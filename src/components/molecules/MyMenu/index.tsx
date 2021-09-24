@@ -51,7 +51,7 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
             이미지 관리
           </S.MyMenuBtn>
           <S.MyMenuBtn btnLink={ROUTES.MYEXCHANGE} btntype="default">
-            출금 및 전환 신청
+            출금 신청
           </S.MyMenuBtn>
         </S.MyMenuBox>
       </S.MyMenuContainer>

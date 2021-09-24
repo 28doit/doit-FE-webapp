@@ -83,8 +83,11 @@ export const get_purchase = (startDate: any, endDate: any) => {
   return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
 };
 
-export const get_pay_log = (startDate: any, endDate: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/paylog`);
+export const get_pay_log = (token: any, startDate: any, endDate: any) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM +
+      `/payment/history?token=${token}&start_history=${startDate}&end_history=${endDate}`,
+  );
 };
 
 export const get_favorite = () => {
@@ -121,8 +124,4 @@ export const get_profit = () => {
 
 export const post_profit_bank = () => {
   return axios.post(process.env.REACT_APP_LOCAL + `/test`);
-};
-
-export const post_profit_point = () => {
-  return axios.post(process.env.REACT_APP_LOCAL + `/test2`);
 };

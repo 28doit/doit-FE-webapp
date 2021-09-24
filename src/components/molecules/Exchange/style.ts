@@ -7,6 +7,7 @@ export const ExContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 60px;
 `;
 
 export const ExTitle = styled.h2`
@@ -14,12 +15,6 @@ export const ExTitle = styled.h2`
   font-weight: 700;
   text-align: center;
   padding: 30px 0;
-`;
-
-export const ExBtnBox = styled.div`
-  display: flex;
-  width: 400px;
-  padding-bottom: 30px;
 `;
 
 export const ExChangeBox = styled.div`
@@ -41,22 +36,9 @@ export const ExChangeBtn = styled(Btn)`
   margin: 0;
 `;
 
-export const ExProToBankYes = styled(Btn)``;
-
-export const ExProToBankNo = styled(Btn)`
-  background-color: #2f4f4f;
-`;
-
-export const ExProToPoYes = styled(Btn)``;
-
-export const ExProToPoNo = styled(Btn)`
-  background-color: #2f4f4f;
-`;
-
 export const ExListBox = styled.div`
-  width: 1400px;
-  height: 800px;
-  margin-top: 40px;
+  width: 840px;
+  height: 600px;
   background-color: rgba(0, 0, 0, 0.3);
   overflow: scroll;
   &::-webkit-scrollbar {
@@ -74,4 +56,52 @@ export const ExListUl = styled.ul`
   flex-flow: wrap;
 `;
 
-export const ExListLi = styled.li``;
+export const ExListLi = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f2f2f2;
+`;
+
+export const ExLiDate = styled.div`
+  width: 15%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const ExLiBank = styled.div`
+  width: 15%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const ExLiMoney = styled.div`
+  width: 15%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const ExLiStatus = styled.div`
+  width: 10%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const ExInfoBox = styled.div`
+  display: flex;
+  width: 840px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+`;
