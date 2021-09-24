@@ -28,15 +28,16 @@ export const send_payment = (
   });
 };
 
-export const editUserProfile = (
-  userEmail: any,
-  password: any,
-  nickName: any,
-) => {
-  return axios.post('/user/setpassword/' + userEmail, {
-    password: password,
-    nickName: nickName,
-  });
+export const editUserProfile = (formData: any) => {
+  return axios.post(
+    process.env.REACT_APP_HOON + `/api/uploader/profileimage`,
+    formData,
+    {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    },
+  );
 };
 
 export const email_check = (email: any) => {
@@ -72,7 +73,7 @@ export const logout = () => {
 };
 
 export const register = (formData: any) => {
-  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', formData, {
+  return axios.post(process.env.REACT_APP_HOON + '/accounts/new', formData, {
     headers: {
       'content-type': 'multipart/form-data',
     },

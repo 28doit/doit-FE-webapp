@@ -101,19 +101,19 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   const onEmailHandler = () => {
-    email_check(Email)
-      .then((response) => {
-        console.log(response);
-        response.data.isvalue
-          ? (setEmailDuplicate(true), setIsCheck(true))
-          : (setEmailDuplicate(false), setIsCheck(true));
-      })
-      .catch(() => {
-        alert(
-          '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
-        );
-      });
-    //setEmailDuplicate(false), setIsCheck(true);
+    // email_check(Email)
+    //   .then((response) => {
+    //     console.log(response);
+    //     response.data.isvalue
+    //       ? (setEmailDuplicate(true), setIsCheck(true))
+    //       : (setEmailDuplicate(false), setIsCheck(true));
+    //   })
+    //   .catch(() => {
+    //     alert(
+    //       '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+    //     );
+    //   });
+    setEmailDuplicate(false), setIsCheck(true);
   };
 
   const onCheckHandler = () => {
@@ -155,17 +155,17 @@ export const RegisterItemModal = ({}: ModalItemProps): React.ReactElement => {
 
         formData.append('email', Email);
         formData.append('name', Name);
-        formData.append('nick_name', NickName);
-        formData.append('phone_number', Phone);
+        formData.append('nickName', NickName);
+        formData.append('phoneNumber', Phone);
         formData.append('sex', Gender);
         formData.append('images', ImgFile || '{}');
-        formData.append('user_year', Year);
-        formData.append('user_month', Month);
-        formData.append('user_day', Day);
+        formData.append('userYear', Year);
+        formData.append('userMonth', Month);
+        formData.append('userDay', Day);
         formData.append('password', Password);
         formData.append('type', '1');
-        formData.append('gall_count', '0');
-        formData.append('user_subscribe_count', '0');
+        formData.append('gallaryCount', '0');
+        formData.append('userSubscribeCount', '0');
 
         console.log(data);
 

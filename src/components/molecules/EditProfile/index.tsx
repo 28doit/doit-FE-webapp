@@ -5,7 +5,10 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import { useSelector } from 'react-redux';
 import { ModalLoading } from '../../index';
-import { expired_check } from '../../../redux/services/auth.service';
+import {
+  expired_check,
+  editUserProfile,
+} from '../../../redux/services/auth.service';
 import { Nlogout } from '../../../redux/actions/auth';
 import ROUTES from '../../../commons/routes';
 import PLUS from '../../../assets/plus.svg';
@@ -24,8 +27,6 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     year: '',
     day: '',
     name: '',
-    ImgBase64: PURPLE,
-    ImgFile: null,
   });
   const [Loading, setLoading] = useState(false);
 
@@ -72,8 +73,9 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     Password: '',
     ConfirmPassword: '',
     NImgFile: null,
+    ImgBase64: PURPLE,
   });
-  const { NickName, Password, ConfirmPassword, NImgFile } = Account;
+  const { NickName, Password, ConfirmPassword, NImgFile, ImgBase64 } = Account;
 
   const onChangeImgHandler = (e: any) => {
     e.preventDefault();
@@ -81,18 +83,18 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     reader.onloadend = () => {
       const base64 = reader.result;
       if (base64) {
-        setData({
-          ...data,
+        setAccount({
+          ...Account,
           ['ImgBase64']: base64.toString(),
-          ['ImgFile']: e.target.files[0],
+          ['NImgFile']: e.target.files[0],
         });
       }
     };
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
-      setData({
-        ...data,
-        ['ImgFile']: e.target.files[0],
+      setAccount({
+        ...Account,
+        ['NImgFile']: e.target.files[0],
       });
     }
   };
@@ -104,12 +106,25 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     });
   };
 
-  const onSubmitHandler = async (e: any) => {
+  const onSubmitHandler = (e: any) => {
     e.preventDefault();
+    let formData = new FormData();
+    formData.append('images', NImgFile || '{}');
+    formData.append('idx', '2006');
+    formData.append('nickName', NickName);
+    formData.append('password', Password);
 
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
+
+    editUserProfile(formData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     //사용자 정보 수정하는 통신 보내면 됨
   };
 
@@ -120,7 +135,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
       <S.EditCommonWrap>
         <S.EditImgWrap>
           <S.EditImgPreview>
-            <S.EditImgPreviewImg src={data.ImgBase64} />
+            <S.EditImgPreviewImg src={ImgBase64} />
           </S.EditImgPreview>
           <S.EditImgLabel htmlFor="imageIn">
             <S.EditImgBtn src={PLUS} />
