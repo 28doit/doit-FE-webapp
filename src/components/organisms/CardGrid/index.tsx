@@ -53,11 +53,11 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           imgWidth: '330px',
           imgHeight: '200px',
           isSubscribe: somet.isSubscribe,
-          authot: somet.author,
+          author: somet.author,
           viewCount: somet.viewCount,
           downloadCount: somet.downloadCount,
           likeCount: somet.likeCount,
-          profileImg: somet.imgSrc,
+          profileImg: somet.profileImg,
         };
         newArray = [...newArray, newItem];
       });
