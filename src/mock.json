@@ -601,140 +601,160 @@
       "mid": "mid_1491553506653_test@asd.com",
       "time": "20210712",
       "pay": 3300,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 2,
       "mid": "mid_2491553506653_test@asd.com",
       "time": "20210812",
       "pay": 1100,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 3,
       "mid": "mid_3491553506653_test@asd.com",
       "time": "20210910",
       "pay": 55000,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 4,
       "mid": "mid_4491553506653_test@asd.com",
       "time": "20210911",
       "pay": 33000,
-      "status": "성공"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 5,
       "mid": "mid_165491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 6,
       "mid": "mid_155491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 7,
       "mid": "mid_15491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 8,
       "mid": "mid_25491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 9,
       "mid": "mid_35491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 10,
       "mid": "mid_45491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 11,
       "mid": "mid_55491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 12,
       "mid": "mid_65491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 13,
       "mid": "mid_75491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 14,
       "mid": "mid_85491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 15,
       "mid": "mid_95491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 16,
       "mid": "mid_105491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 17,
       "mid": "mid_115491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 18,
       "mid": "mid_125491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 19,
       "mid": "mid_135491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     },
     {
       "id": 20,
       "mid": "mid_145491553506653_test@asd.com",
       "time": "20210912",
       "pay": 110000,
-      "status": "실패"
+      "pay_card": "KB국민카드",
+      "name": "이정범"
     }
   ],
   "favorite": [
@@ -1039,6 +1059,125 @@
       "type": "JPG",
       "time": "2021-09-14 20:51:56",
       "author": "poeynus9"
+    }
+  ],
+  "profit": [
+    {
+      "id": 1,
+      "date": "20210712",
+      "bank": "KB국민은행",
+      "money": "5000",
+      "status": "입금 완료"
+    },
+    {
+      "id": 2,
+      "date": "20210712",
+      "bank": "KB국민은행",
+      "money": "5500",
+      "status": "입금 완료"
+    },
+    {
+      "id": 3,
+      "date": "20210112",
+      "bank": "KB국민은행",
+      "money": "6000",
+      "status": "입금 완료"
+    },
+    {
+      "id": 4,
+      "date": "20210212",
+      "bank": "KB국민은행",
+      "money": "7500",
+      "status": "입금 완료"
+    },
+    {
+      "id": 5,
+      "date": "20210312",
+      "bank": "KB국민은행",
+      "money": "7000",
+      "status": "입금 완료"
+    },
+    {
+      "id": 6,
+      "date": "20210412",
+      "bank": "KB국민은행",
+      "money": "9000",
+      "status": "입금 완료"
+    },
+    {
+      "id": 7,
+      "date": "20210512",
+      "bank": "KB국민은행",
+      "money": "10000",
+      "status": "입금 완료"
+    },
+    {
+      "id": 8,
+      "date": "20210612",
+      "bank": "KB국민은행",
+      "money": "5000",
+      "status": "입금 대기"
+    },
+    {
+      "id": 9,
+      "date": "20210912",
+      "bank": "KB국민은행",
+      "money": "5500",
+      "status": "입금 대기"
+    }
+  ],
+  "dash": [
+    {
+      "user": [
+        {
+          "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzqORtG1gBb-jptUXHBJ02VwEiVZ1N7LpqNQ&usqp=CAU",
+          "nickName": "poeynus",
+          "rate": 1024,
+          "sale": 51500,
+          "ing": 5,
+          "fan": 35
+        }
+      ],
+      "img": [
+        {
+          "key": 1,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt8clL28TFGTuy48fQX5c5Khp0fb6UgohFVA&usqp=CAU"
+        },
+        {
+          "key": 2,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtl_6pduRtiWY9jZCTbeShCU4pEvWqGmOftA&usqp=CAU"
+        },
+        {
+          "key": 3,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVMNQJdngDkz5V4nuzyA0FF0Vq6q6XLUaL7g&usqp=CAU"
+        },
+        {
+          "key": 4,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowxB7pPQI6OREBBXGgvJufYgrudQlHPd0hQ&usqp=CAU"
+        },
+        {
+          "key": 5,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
+        },
+        {
+          "key": 6,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
+        },
+        {
+          "key": 7,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
+        },
+        {
+          "key": 8,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
+          
+        },
+        {
+          "key": 9,
+          "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
+          
+        }
+      ]
     }
   ]
 }

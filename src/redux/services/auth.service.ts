@@ -28,15 +28,16 @@ export const send_payment = (
   });
 };
 
-export const editUserProfile = (
-  userEmail: any,
-  password: any,
-  nickName: any,
-) => {
-  return axios.post('/user/setpassword/' + userEmail, {
-    password: password,
-    nickName: nickName,
-  });
+export const editUserProfile = (formData: any) => {
+  return axios.post(
+    process.env.REACT_APP_HOON + `/api/uploader/profileimage`,
+    formData,
+    {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    },
+  );
 };
 
 export const email_check = (email: any) => {
@@ -71,35 +72,11 @@ export const logout = () => {
   localStorage.removeItem('user');
 };
 
-export const register = (
-  email: any,
-  name: any,
-  nickName: any,
-  phoneNumber: any,
-  sex: any,
-  profileImageLocation: any,
-  userYear: any,
-  userMonth: any,
-  userDay: any,
-  password: any,
-  type: any,
-  gallCount: any,
-  userSubscribeCount: any,
-) => {
-  return axios.post(process.env.REACT_APP_BEOM + '/accounts/new', {
-    email: email,
-    name: name,
-    nick_name: nickName,
-    phone_number: phoneNumber,
-    sex: sex,
-    profile_image_location: profileImageLocation,
-    user_year: userYear,
-    user_month: userMonth,
-    user_day: userDay,
-    password: password,
-    type: type,
-    gall_count: gallCount,
-    user_subscribe_count: userSubscribeCount,
+export const register = (formData: any) => {
+  return axios.post(process.env.REACT_APP_HOON + '/accounts/new', formData, {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
   });
 };
 
@@ -107,8 +84,11 @@ export const get_purchase = (startDate: any, endDate: any) => {
   return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
 };
 
-export const get_pay_log = (startDate: any, endDate: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/paylog`);
+export const get_pay_log = (token: any, startDate: any, endDate: any) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM +
+      `/payment/history?token=${token}&start_history=${startDate}&end_history=${endDate}`,
+  );
 };
 
 export const get_favorite = () => {
@@ -137,4 +117,16 @@ export const get_cursor_based_img = (imgCount: any) => {
 
 export const get_category = () => {
   return axios.get(process.env.REACT_APP_LOCAL + `/category`);
+};
+
+export const get_profit = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/profit`);
+};
+
+export const post_profit_bank = () => {
+  return axios.post(process.env.REACT_APP_LOCAL + `/test`);
+};
+
+export const get_dash = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/dash`);
 };

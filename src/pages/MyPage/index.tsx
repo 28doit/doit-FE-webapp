@@ -9,6 +9,8 @@ import {
   FavoriteItem,
   PurchaseItem,
   ManagementItem,
+  ExchangeItem,
+  DashBoardItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -64,10 +66,18 @@ export const MyPage = ({ match }: any) => {
             <ManagementItem />
           </>
         );
-      case 'profile':
+      case 'profit':
         return (
           <>
             <MyMenu />
+            <ExchangeItem />
+          </>
+        );
+      case 'dashboard':
+        return (
+          <>
+            <MyMenu />
+            <DashBoardItem />
           </>
         );
       default:

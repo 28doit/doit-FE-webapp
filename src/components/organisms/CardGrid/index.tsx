@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { Card } from '../../index';
@@ -53,11 +53,11 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           imgWidth: '330px',
           imgHeight: '200px',
           isSubscribe: somet.isSubscribe,
-          authot: somet.author,
+          author: somet.author,
           viewCount: somet.viewCount,
           downloadCount: somet.downloadCount,
           likeCount: somet.likeCount,
-          profileImg: somet.imgSrc,
+          profileImg: somet.profileImg,
         };
         newArray = [...newArray, newItem];
       });
@@ -146,102 +146,40 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
   );
 };
 
-const loadCategoryItems = (some: Array<any>): Promise<Response> => {
-  return new Promise((resolve) => {
-    let newArray: Item[] = [];
-    setTimeout(() => {
-      some &&
-        some.map((somet) => {
-          const newItem = {
-            key: somet.key,
-            imgSrc: somet.src,
-            imgWidth: '330px',
-            imgHeight: '200px',
-            category: somet.category,
-          };
-          newArray = [...newArray, newItem];
-        });
-      resolve({ hasNextPage: true, data: newArray });
-    }, 1000);
-  });
-};
-
-const useLoadCategoryItems = () => {
-  const [loading, setLoading] = useState(false);
-  const [items, setItems] = useState<Item[]>([]);
-  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
-  const [error, setError] = useState<Error>();
-  const [imgCount, setImgCount] = useState(40); // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
-  const [imgData, setImgData] = useState([]);
-
-  async function loadMore() {
-    setLoading(true);
-    try {
-      if (imgCount == 80) {
-        setHasNextPage(false);
-        setLoading(false);
-      } else {
-        get_category()
-          .then((response) => {
-            console.log(response.data);
-            setImgData(response.data);
-          })
-          .catch((err) => {
-            console.clear();
-          });
-        const { data, hasNextPage: newHasNextPage } = await loadCategoryItems(
-          imgData,
-        );
-        setItems((current) => [...current, ...data]);
-        setHasNextPage(newHasNextPage);
-      }
-    } catch (err: any) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
-
-    setImgCount(imgCount + 20);
-  }
-
-  return { loading, items, hasNextPage, error, loadMore };
-};
-
-export interface CategoryGridProps {}
-
-export const CategoryGrid = ({}: CategoryGridProps): React.ReactElement => {
-  const { loading, items, hasNextPage, error, loadMore } =
-    useLoadCategoryItems();
+export const CategoryGridItems = () => {
+  const [cItem, setCItem] = useState([]);
   const history = useHistory();
-  const [infiniteRef] = useInfiniteScroll({
-    loading,
-    hasNextPage,
-    onLoadMore: loadMore,
-    disabled: !!error,
-    rootMargin: '0px 400px 0px 0px',
-  });
+  useEffect(() => {
+    get_category()
+      .then((response) => {
+        console.log(response.data);
+        setCItem(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
       <S.CategoryContainer>
         <ScrollContainer>
           <S.HoList>
-            {items &&
-              items.map((item) => (
-                <S.ListItem key={item.key}>
+            {cItem &&
+              cItem.map((info: any) => (
+                <S.ListItem key={info.key}>
                   <Card
                     CardType="type04"
-                    imgSrc={item.imgSrc}
+                    imgSrc={info.src}
                     imgWidth="330px"
                     imgHeight="200px"
-                    imgCategory={item.category}
+                    imgCategory={info.category}
                     cardOnclick={() => {
-                      history.push(`${ROUTES.SEARCH}/${item.category}`);
+                      history.push(`${ROUTES.SEARCH}/${info.category}`);
                     }}
                   />
                 </S.ListItem>
               ))}
-            {hasNextPage && <div ref={infiniteRef}></div>}
           </S.HoList>
         </ScrollContainer>
       </S.CategoryContainer>

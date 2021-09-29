@@ -41,7 +41,7 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
         </S.MyMenuBox>
         <S.MyMenuBox>
           <S.MyMenuTitle>판매자</S.MyMenuTitle>
-          <S.MyMenuBtn btnLink={ROUTES.MYSELLERDASH} btntype="default">
+          <S.MyMenuBtn btnLink={ROUTES.MYDASH} btntype="default">
             판매자 대시보드
           </S.MyMenuBtn>
           <S.MyMenuBtn btnLink={ROUTES.MYIMGUPLOAD} btntype="default">
@@ -50,8 +50,8 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
           <S.MyMenuBtn btnLink={ROUTES.MYUPLOADLIST} btntype="default">
             이미지 관리
           </S.MyMenuBtn>
-          <S.MyMenuBtn btnLink={ROUTES.MYPOINTCHOICE} btntype="default">
-            출금 및 전환 신청
+          <S.MyMenuBtn btnLink={ROUTES.MYEXCHANGE} btntype="default">
+            출금 신청
           </S.MyMenuBtn>
         </S.MyMenuBox>
       </S.MyMenuContainer>

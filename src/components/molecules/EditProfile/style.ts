@@ -133,3 +133,33 @@ export const EditNotFinish = styled.div`
   font-weight: 700;
   font-size: 14px;
 `;
+
+export const EditImgWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  margin-top: 30px;
+`;
+
+export const EditImgPreview = styled.div`
+  border-radius: 50%;
+`;
+
+export const EditImgLabel = styled(Label)``;
+
+export const EditImgBtn = styled.img`
+  width: 45px;
+  margin-left: 10px;
+  margin-top 40px;
+`;
+
+export const EditImgInput = styled(Input)`
+  display: none;
+`;
+
+export const EditImgPreviewImg = styled.img`
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border-radius: 50%;
+`;

@@ -9,16 +9,14 @@ export default {
   NOTICE: '/notice',
 
   USER: '/user',
-  MYPAGE: '/user/profile',
   MYEDIT: '/user/edit-profile',
-
   MYPURCHASE: '/user/purchase',
   MYFAVORITE: '/user/favorite',
   NEWPAYMENT: '/user/payment',
   MYPAYMENT: '/user/paylog',
 
-  MYSELLERDASH: '/user/dashboard',
+  MYDASH: '/user/dashboard',
   MYIMGUPLOAD: '/user/upload-image',
   MYUPLOADLIST: '/user/management',
-  MYPOINTCHOICE: '/user/point-choice',
+  MYEXCHANGE: '/user/profit',
 };

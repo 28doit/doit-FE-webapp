@@ -214,3 +214,33 @@ export const JoinNotFinish = styled.div`
   font-weight: 700;
   font-size: 14px;
 `;
+
+export const JoinImgWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  margin-top: 30px;
+`;
+
+export const JoinImgPreview = styled.div`
+  border-radius: 50%;
+`;
+
+export const JoinImgLabel = styled(Label)``;
+
+export const JoinImgBtn = styled.img`
+  width: 45px;
+  margin-left: 10px;
+  margin-top 40px;
+`;
+
+export const JoinImgInput = styled(Input)`
+  display: none;
+`;
+
+export const JoinImgPreviewImg = styled.img`
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border-radius: 50%;
+`;

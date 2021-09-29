@@ -5,9 +5,14 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
 import { useSelector } from 'react-redux';
 import { ModalLoading } from '../../index';
-import { expired_check } from '../../../redux/services/auth.service';
+import {
+  expired_check,
+  editUserProfile,
+} from '../../../redux/services/auth.service';
 import { Nlogout } from '../../../redux/actions/auth';
 import ROUTES from '../../../commons/routes';
+import PLUS from '../../../assets/plus.svg';
+import PURPLE from '../../../assets/purple.jpg';
 
 export interface ModalItemProps {}
 
@@ -53,7 +58,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
           );
           setLoading(false);
-          window.location.replace(ROUTES.MYPAGE);
+          window.location.replace(ROUTES.MYDASH);
         });
       setLoading(false);
     };
@@ -67,8 +72,32 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     NickName: '',
     Password: '',
     ConfirmPassword: '',
+    NImgFile: null,
+    ImgBase64: PURPLE,
   });
-  const { NickName, Password, ConfirmPassword } = Account;
+  const { NickName, Password, ConfirmPassword, NImgFile, ImgBase64 } = Account;
+
+  const onChangeImgHandler = (e: any) => {
+    e.preventDefault();
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result;
+      if (base64) {
+        setAccount({
+          ...Account,
+          ['ImgBase64']: base64.toString(),
+          ['NImgFile']: e.target.files[0],
+        });
+      }
+    };
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+      setAccount({
+        ...Account,
+        ['NImgFile']: e.target.files[0],
+      });
+    }
+  };
 
   const onChangeAccount = (e: any) => {
     setAccount({
@@ -77,13 +106,25 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     });
   };
 
-  const onSubmitHandler = async (e: any) => {
+  const onSubmitHandler = (e: any) => {
     e.preventDefault();
+    let formData = new FormData();
+    formData.append('images', NImgFile || '{}');
+    formData.append('idx', '2006');
+    formData.append('nickName', NickName);
+    formData.append('password', Password);
 
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
-    //사용자 정보 수정하는 통신 보내면 됨
+
+    editUserProfile(formData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -91,6 +132,21 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
       {Loading ? <ModalLoading /> : ''}
       <S.EditTitle>내 정보 관리</S.EditTitle>
       <S.EditCommonWrap>
+        <S.EditImgWrap>
+          <S.EditImgPreview>
+            <S.EditImgPreviewImg src={ImgBase64} />
+          </S.EditImgPreview>
+          <S.EditImgLabel htmlFor="imageIn">
+            <S.EditImgBtn src={PLUS} />
+          </S.EditImgLabel>
+        </S.EditImgWrap>
+        <S.EditImgInput
+          id="imageIn"
+          inputType="file"
+          inputAccept="image/*"
+          name="file"
+          onChange={onChangeImgHandler}
+        />
         <S.EditForm onSubmit={onSubmitHandler}>
           <S.EditInputWrap>
             <S.EditLabel htmlFor="name">이름</S.EditLabel>

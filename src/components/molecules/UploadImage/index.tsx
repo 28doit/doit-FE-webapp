@@ -54,17 +54,20 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
     e.preventDefault();
     let formData = new FormData();
     formData.append('images', ImgFile || '{}');
-    formData.append('lat', lat.toString());
-    formData.append('lng', lng.toString());
-    formData.append('located', located);
+    formData.append('idx', '2006');
+    formData.append('gallaryAdress', located);
+    formData.append('gallaryTime', '2021-09-25 20:11:11');
+    formData.append('gallarySeseon', '1');
+    formData.append('gallaryDireactionX', lat.toString());
+    formData.append('gallaryDireactionY', lng.toString());
 
-    for (let key of formData.keys()) {
-      console.log(key);
-    }
+    // for (let key of formData.keys()) {
+    //   console.log(key);
+    // }
 
-    for (let value of formData.values()) {
-      console.log(value);
-    }
+    // for (let value of formData.values()) {
+    //   console.log(value);
+    // }
 
     post_upload_img(formData)
       .then((response) => {

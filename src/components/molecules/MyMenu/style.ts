@@ -5,6 +5,7 @@ export const MyMenuContainer = styled.div`
   width: 10%;
   background-color: skyblue;
   padding-top: 30px;
+  height: 117%;
 `;
 
 export const MyMenuBox = styled.div`
