@@ -41,7 +41,7 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
         </S.MyMenuBox>
         <S.MyMenuBox>
           <S.MyMenuTitle>판매자</S.MyMenuTitle>
-          <S.MyMenuBtn btnLink={ROUTES.MYSELLERDASH} btntype="default">
+          <S.MyMenuBtn btnLink={ROUTES.MYDASH} btntype="default">
             판매자 대시보드
           </S.MyMenuBtn>
           <S.MyMenuBtn btnLink={ROUTES.MYIMGUPLOAD} btntype="default">

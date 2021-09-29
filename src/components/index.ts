@@ -22,6 +22,7 @@ export { PurchaseItem } from './molecules/Purchase';
 export { ManagementItem } from './molecules/Management';
 export { KaKaoMapItem } from './molecules/KaKaoMap';
 export { ExchangeItem } from './molecules/Exchange';
+export { DashBoardItem } from './molecules/DashBoard';
 
 export { Header } from './organisms/Header';
 export {

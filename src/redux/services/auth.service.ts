@@ -126,3 +126,7 @@ export const get_profit = () => {
 export const post_profit_bank = () => {
   return axios.post(process.env.REACT_APP_LOCAL + `/test`);
 };
+
+export const get_dash = () => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/dash`);
+};

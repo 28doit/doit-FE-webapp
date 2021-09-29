@@ -6,29 +6,37 @@ export const DashBoardContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 30px;
 `;
 
 export const DashBoardTop = styled.div`
-  width: 100%;
+  width: 95%;
   display: flex;
-  background-color: #6f6768;
+  align-items: center;
+  justify-content: center;
+  background-color: #72787f;
+  margin-bottom: 60px;
+  padding: 30px 0;
 `;
 
 export const TopProfileImg = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
 `;
 
 export const TopNikName = styled.div`
   font-size: 24px;
   font-weight: 700;
+  margin-left: 20px;
 `;
 
 export const DashBoardMid = styled.div`
-  width: 100%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 60px;
 `;
 
 export const MidBox = styled.div`
@@ -39,6 +47,7 @@ export const MidBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 5%;
 `;
 
 export const MidP = styled.p`
@@ -55,10 +64,24 @@ export const MidIng = styled.div``;
 export const MidFan = styled.div``;
 
 export const DashBoardBot = styled.div`
-  width: 100%;
+  width: 95%;
   background-color: #f3f0f0;
 `;
 
-export const BotUl = styled.ul``;
+export const BotUl = styled.ul`
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+`;
 
-export const BotLi = styled.li``;
+export const BotLi = styled.li`
+  margin-right: 30px;
+  margin-bottom: 30px;
+`;
+
+export const TopMid = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;

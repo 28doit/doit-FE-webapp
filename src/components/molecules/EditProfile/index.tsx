@@ -58,7 +58,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
             '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
           );
           setLoading(false);
-          window.location.replace(ROUTES.MYPAGE);
+          window.location.replace(ROUTES.MYDASH);
         });
       setLoading(false);
     };

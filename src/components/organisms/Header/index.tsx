@@ -56,7 +56,7 @@ export const Header = (): React.ReactElement => {
                 </S.HeaderLinkBtn>
               </li>
               <li>
-                <S.HeaderLinkBtn btnLink={ROUTES.MYPAGE} btntype="gray">
+                <S.HeaderLinkBtn btnLink={ROUTES.MYDASH} btntype="gray">
                   내 정보
                 </S.HeaderLinkBtn>
               </li>
