@@ -4,9 +4,12 @@ export default {
   LOGIN: '/login',
   LOGOUT: '/logout',
   SEARCH: '/search',
+  CATEGORY: '/category',
   SEARCHITEM: '/search?item=',
+  CATEGORYITEM: '/category?item=',
   REPASSWORD: '/re-password',
   NOTICE: '/notice',
+  IMGDETAIL: '/img',
 
   USER: '/user',
   MYEDIT: '/user/edit-profile',

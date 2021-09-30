@@ -130,3 +130,7 @@ export const post_profit_bank = () => {
 export const get_dash = () => {
   return axios.get(process.env.REACT_APP_LOCAL + `/dash`);
 };
+
+export const get_img_detail = (galleryId: any) => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/imde`);
+};

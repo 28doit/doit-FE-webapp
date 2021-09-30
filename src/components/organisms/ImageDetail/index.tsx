@@ -3,41 +3,73 @@ import { ReactComponent as Heart } from '../../../assets/pinkHeart.svg';
 import { ReactComponent as ViewImg } from '../../../assets/view.svg';
 import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
 import { ReactComponent as LikeImg } from '../../../assets/like.svg';
+import { useLayoutEffect, useState } from 'react';
+import { get_img_detail } from '../../../redux/services/auth.service';
+import queryString from 'query-string';
 
-export interface ImageDetailProps {
-  imgSrc?: string;
-  isSubscribe?: boolean;
-  proFileImg?: string;
-  isAuthSubScribe?: boolean;
-  author?: string;
-  likePeople?: string;
-  viewCount?: number;
-  downloadCount?: number;
-  likeCount?: number;
-  resolution?: string;
-  imgSize?: string;
-  uploadDate?: string;
-  cameraInfo?: string;
-  locationInfo?: string;
-}
+export interface ImageDetailProps {}
 
 export const ImageDetail = ({
-  imgSrc,
-  isSubscribe,
-  proFileImg,
-  isAuthSubScribe,
-  author,
-  likePeople,
-  viewCount,
-  downloadCount,
-  likeCount,
-  resolution,
-  imgSize,
-  uploadDate,
-  cameraInfo,
-  locationInfo,
   ...args
 }: ImageDetailProps): React.ReactElement => {
+  const query = queryString.parse(location.search);
+  const [imgData, setImgData] = useState({
+    imgSrc: '',
+    isSubscribe: '',
+    profileImg: '',
+    isAuthSubScribe: false,
+    author: false,
+    likePeople: 0,
+    viewCount: 0,
+    downloadCount: 0,
+    likeCount: 0,
+    resolution: '',
+    imgSize: '',
+    uploadDate: '',
+    cameraInfo: '',
+    locationInfo: '',
+  });
+  const {
+    imgSrc,
+    isSubscribe,
+    profileImg,
+    isAuthSubScribe,
+    author,
+    likePeople,
+    viewCount,
+    downloadCount,
+    likeCount,
+    resolution,
+    imgSize,
+    uploadDate,
+    cameraInfo,
+    locationInfo,
+  } = imgData;
+
+  useLayoutEffect(() => {
+    get_img_detail(query.id).then((response) => {
+      console.log(response.data);
+      console.log(query.id);
+      const data = response.data;
+      setImgData({
+        imgSrc: data.imgSrc,
+        isSubscribe: data.isSubscribe,
+        profileImg: data.profileImg,
+        isAuthSubScribe: data.isAuthSubScribe,
+        author: data.author,
+        likePeople: data.likePeople,
+        viewCount: data.viewCount,
+        downloadCount: data.downloadCount,
+        likeCount: data.likeCount,
+        resolution: data.resolution,
+        imgSize: data.imgSize,
+        uploadDate: data.uploadDate,
+        cameraInfo: data.cameraInfo,
+        locationInfo: data.locationInfo,
+      });
+    });
+  }, []);
+
   return (
     <S.ImgDetailContainer>
       <S.ImgDetailLeft>
@@ -45,7 +77,7 @@ export const ImageDetail = ({
           <S.LeftTopImg src={imgSrc} />
           <S.LeftTopBoxWrap>
             <S.LeftTopAuthorBox>
-              <S.AuthorBoxProfile src={proFileImg} />
+              <S.AuthorBoxProfile src={profileImg} />
               <S.AuthorBoxName>{author}</S.AuthorBoxName>
               {isAuthSubScribe ? (
                 <S.LeftTopLike>
@@ -99,7 +131,7 @@ export const ImageDetail = ({
         <S.LeftHr />
         <S.RightS>
           <S.RightSBox>
-            <S.RightSBoxName>JPG \5,000</S.RightSBoxName>
+            <S.RightSBoxName>JPG \500</S.RightSBoxName>
             <S.RightSBoxP>해상도: {resolution}</S.RightSBoxP>
             <S.RightSBoxP>용량: {imgSize}</S.RightSBoxP>
             <S.RightSBoxP>업로드 날짜: {uploadDate}</S.RightSBoxP>

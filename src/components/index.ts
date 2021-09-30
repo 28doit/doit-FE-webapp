@@ -38,3 +38,4 @@ export {
   BestCategoryContainer,
 } from './organisms/SearchContainer';
 export { CardInfiniteList, CategoryGridItems } from './organisms/CardGrid';
+export { ImageDetail } from './organisms/ImageDetail';

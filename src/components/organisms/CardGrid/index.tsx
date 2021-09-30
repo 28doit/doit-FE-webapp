@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { Card } from '../../index';
@@ -118,6 +118,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
     disabled: !!error,
     rootMargin: '0px 0px 400px 0px',
   });
+  const history = useHistory();
   return (
     <>
       <S.ListContainer>
@@ -136,6 +137,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
                   downloadCount={item.downloadCount}
                   likeCount={item.likeCount}
                   proFileImg={item.proFileImg}
+                  cardOnclick={() => {history.push(`/img?id=${item.key}`)}}
                 />
               </S.ListItem>
             ))}
@@ -149,7 +151,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
 export const CategoryGridItems = () => {
   const [cItem, setCItem] = useState([]);
   const history = useHistory();
-  useEffect(() => {
+  useLayoutEffect(() => {
     get_category()
       .then((response) => {
         console.log(response.data);
@@ -175,7 +177,7 @@ export const CategoryGridItems = () => {
                     imgHeight="200px"
                     imgCategory={info.category}
                     cardOnclick={() => {
-                      history.push(`${ROUTES.SEARCH}/${info.category}`);
+                      history.push(`${ROUTES.CATEGORYITEM}${info.category}`);
                     }}
                   />
                 </S.ListItem>
