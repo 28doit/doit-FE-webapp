@@ -523,5 +523,15 @@
     - 사진 클릭시 사진 정보 페이지로 이동하게끔 작동 시키기
 
     - 이제 본격적인 디자인 손질 들어갑니다잉
+
+#### 21.09.30 10:43
+
+    - Img Card와 Image Detail 연결 성공
+    => 이제 Card 클릭 시 Image Detail 페이지로 이동
+    => axios Card에서 Image Detail로 Image ID를 보내주고 useLayoutEffect를 사용해서 데이터를 가져옴
+
+    - 기존의 Category Url 수정
+    => /search/{catery 명} path parameter에서 /category?item= query string 형태로 변경 
+    => routes 수정 - category, img
 </div>
 </details>
