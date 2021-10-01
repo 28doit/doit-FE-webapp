@@ -533,5 +533,18 @@
     - 기존의 Category Url 수정
     => /search/{catery 명} path parameter에서 /category?item= query string 형태로 변경 
     => routes 수정 - category, img
+
+</div>
+</details>
+
+<details>
+<summary>10월의 기록 보기</summary>
+<div markdown="4">
+
+#### 21.10.01 09:52
+
+    - 오늘 부터 Css 칼질 들어갑니다.
+    => 반응형을 고려한 디자인, 기존의 px 단위들을 em, rem, % 단위로 변경
+    => 최대한 깔끔하게 꾸며 봅시다.
 </div>
 </details>
