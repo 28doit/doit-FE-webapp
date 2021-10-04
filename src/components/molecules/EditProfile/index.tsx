@@ -128,163 +128,165 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   return (
-    <>
-      {Loading ? <ModalLoading /> : ''}
-      <S.EditTitle>내 정보 관리</S.EditTitle>
-      <S.EditCommonWrap>
-        <S.EditImgWrap>
-          <S.EditImgPreview>
-            <S.EditImgPreviewImg src={ImgBase64} />
-          </S.EditImgPreview>
-          <S.EditImgLabel htmlFor="imageIn">
-            <S.EditImgBtn src={PLUS} />
-          </S.EditImgLabel>
-        </S.EditImgWrap>
-        <S.EditImgInput
-          id="imageIn"
-          inputType="file"
-          inputAccept="image/*"
-          name="file"
-          onChange={onChangeImgHandler}
-        />
-        <S.EditForm onSubmit={onSubmitHandler}>
-          <S.EditInputWrap>
-            <S.EditLabel htmlFor="name">이름</S.EditLabel>
-            <S.EditInput
-              id="name"
-              inputType="text"
-              placeholder={data.name}
-              disabled={true}
-            />
-          </S.EditInputWrap>
-          <S.EditInputWrap>
-            <S.EditLabel htmlFor="nickName">닉네임</S.EditLabel>
-            <S.EditInput
-              id="nickName"
-              name="NickName"
-              inputType="text"
-              placeholder="4자 ~ 12자 영문, 숫자, 한글"
-              value={NickName}
-              onChange={onChangeAccount}
-            />
-            {NickNameRegex.test(NickName) ? (
-              validator.isLength(NickName, { min: 4, max: 12 }) ? (
-                <S.EditValid>✔ 사용할 수 있는 닉네임 입니다.</S.EditValid>
+    <S.EditProfileOverlay>
+      <S.EditProfileInner>
+        {Loading ? <ModalLoading /> : ''}
+        <S.EditTitle>내 정보 관리</S.EditTitle>
+        <S.EditCommonWrap>
+          <S.EditImgWrap>
+            <S.EditImgPreview>
+              <S.EditImgPreviewImg src={ImgBase64} />
+            </S.EditImgPreview>
+            <S.EditImgLabel htmlFor="imageIn">
+              <S.EditImgBtn src={PLUS} />
+            </S.EditImgLabel>
+          </S.EditImgWrap>
+          <S.EditImgInput
+            id="imageIn"
+            inputType="file"
+            inputAccept="image/*"
+            name="file"
+            onChange={onChangeImgHandler}
+          />
+          <S.EditForm onSubmit={onSubmitHandler}>
+            <S.EditInputWrap>
+              <S.EditLabel htmlFor="name">이름</S.EditLabel>
+              <S.EditInput
+                id="name"
+                inputType="text"
+                placeholder={data.name}
+                disabled={true}
+              />
+            </S.EditInputWrap>
+            <S.EditInputWrap>
+              <S.EditLabel htmlFor="nickName">닉네임</S.EditLabel>
+              <S.EditInput
+                id="nickName"
+                name="NickName"
+                inputType="text"
+                placeholder="4자 ~ 12자 영문, 숫자, 한글"
+                value={NickName}
+                onChange={onChangeAccount}
+              />
+              {NickNameRegex.test(NickName) ? (
+                validator.isLength(NickName, { min: 4, max: 12 }) ? (
+                  <S.EditValid>✔ 사용할 수 있는 닉네임 입니다.</S.EditValid>
+                ) : (
+                  <S.EditInvalid>
+                    ❌ 형식에 맞는 닉네임을 입력하세요.
+                  </S.EditInvalid>
+                )
               ) : (
                 <S.EditInvalid>
-                  ❌ 형식에 맞는 닉네임을 입력하세요.
+                  ❌ 띄어쓰기, 특수문자는 사용 불가합니다.
                 </S.EditInvalid>
-              )
-            ) : (
-              <S.EditInvalid>
-                ❌ 띄어쓰기, 특수문자는 사용 불가합니다.
-              </S.EditInvalid>
-            )}
-          </S.EditInputWrap>
-          <S.EditInputWrap>
-            <S.EditLabel htmlFor="email">이메일</S.EditLabel>
-            <S.EditInput
-              id="email"
-              inputType="email"
-              placeholder={data.email}
-              disabled={true}
-            />
-          </S.EditInputWrap>
-          <S.EditInputWrap>
-            <S.EditLabel htmlFor="password1">비밀번호</S.EditLabel>
-            <S.EditInput
-              id="password1"
-              name="Password"
-              inputType="password"
-              value={Password}
-              placeholder="비밀번호"
-              onChange={onChangeAccount}
-            />
-            {validator.isStrongPassword(Password) ? (
-              <S.EditValid>✔ 사용할 수 있는 비밀번호 입니다.</S.EditValid>
-            ) : (
-              <S.EditInvalid>
-                ❌ 형식에 맞는 비밀번호를 입력하세요.
-              </S.EditInvalid>
-            )}
-          </S.EditInputWrap>
-          <S.EditInputWrap>
-            <S.EditLabel htmlFor="password2">비밀번호 확인</S.EditLabel>
-            <S.EditInput
-              id="password2"
-              name="ConfirmPassword"
-              inputType="password"
-              value={ConfirmPassword}
-              placeholder="비밀번호 확인"
-              onChange={onChangeAccount}
-            />
-            {validator.equals(Password, ConfirmPassword) &&
+              )}
+            </S.EditInputWrap>
+            <S.EditInputWrap>
+              <S.EditLabel htmlFor="email">이메일</S.EditLabel>
+              <S.EditInput
+                id="email"
+                inputType="email"
+                placeholder={data.email}
+                disabled={true}
+              />
+            </S.EditInputWrap>
+            <S.EditInputWrap>
+              <S.EditLabel htmlFor="password1">비밀번호</S.EditLabel>
+              <S.EditInput
+                id="password1"
+                name="Password"
+                inputType="password"
+                value={Password}
+                placeholder="비밀번호"
+                onChange={onChangeAccount}
+              />
+              {validator.isStrongPassword(Password) ? (
+                <S.EditValid>✔ 사용할 수 있는 비밀번호 입니다.</S.EditValid>
+              ) : (
+                <S.EditInvalid>
+                  ❌ 형식에 맞는 비밀번호를 입력하세요.
+                </S.EditInvalid>
+              )}
+            </S.EditInputWrap>
+            <S.EditInputWrap>
+              <S.EditLabel htmlFor="password2">비밀번호 확인</S.EditLabel>
+              <S.EditInput
+                id="password2"
+                name="ConfirmPassword"
+                inputType="password"
+                value={ConfirmPassword}
+                placeholder="비밀번호 확인"
+                onChange={onChangeAccount}
+              />
+              {validator.equals(Password, ConfirmPassword) &&
+              ConfirmPassword !== '' ? (
+                <S.EditValidSelect>✔ 비밀번호가 일치 합니다.</S.EditValidSelect>
+              ) : (
+                <S.EditInvalidSelect>
+                  ❌ 비밀번호가 일치하지 않습니다.
+                </S.EditInvalidSelect>
+              )}
+            </S.EditInputWrap>
+            <S.EditSelectWrap>
+              <S.EditLabel htmlFor="birth">생년월일</S.EditLabel>
+              <S.EditBirthDiv>
+                <S.EditBirthInput
+                  id="birth"
+                  inputType="text"
+                  placeholder={data.year}
+                  disabled={true}
+                />
+                <S.EditBirthSelect disabled={true}>
+                  <option>{data.month + '월'}</option>
+                  <option value="01">1월</option>
+                  <option value="02">2월</option>
+                  <option value="03">3월</option>
+                  <option value="04">4월</option>
+                  <option value="05">5월</option>
+                  <option value="06">6월</option>
+                  <option value="07">7월</option>
+                  <option value="08">8월</option>
+                  <option value="09">9월</option>
+                  <option value="10">10월</option>
+                  <option value="11">11월</option>
+                  <option value="12">12월</option>
+                </S.EditBirthSelect>
+                <S.EditBirthInput
+                  inputType="text"
+                  placeholder={data.day}
+                  disabled={true}
+                />
+              </S.EditBirthDiv>
+            </S.EditSelectWrap>
+            <S.EditSelectWrap>
+              <S.EditLabel htmlFor="gender">성별</S.EditLabel>
+              <S.EditGenderSelect id="gender" disabled={true}>
+                <option>{data.sex ? '남자' : '여자'}</option>
+                <option value="M">남자</option>
+                <option value="F">여자</option>
+              </S.EditGenderSelect>
+            </S.EditSelectWrap>
+            <S.EditInputWrap>
+              <S.EditLabel htmlFor="phone">휴대폰 번호</S.EditLabel>
+              <S.EditInput
+                id="phone"
+                inputType="text"
+                placeholder={data.phone}
+                disabled={true}
+              />
+            </S.EditInputWrap>
+            {NickNameRegex.test(NickName) &&
+            validator.isStrongPassword(Password) &&
+            validator.equals(Password, ConfirmPassword) &&
             ConfirmPassword !== '' ? (
-              <S.EditValidSelect>✔ 비밀번호가 일치 합니다.</S.EditValidSelect>
+              <S.EditFinish btntype="submit">수정 완료</S.EditFinish>
             ) : (
-              <S.EditInvalidSelect>
-                ❌ 비밀번호가 일치하지 않습니다.
-              </S.EditInvalidSelect>
+              <S.EditNotFinish>형식에 맞게 입력해주세요</S.EditNotFinish>
             )}
-          </S.EditInputWrap>
-          <S.EditSelectWrap>
-            <S.EditLabel htmlFor="birth">생년월일</S.EditLabel>
-            <S.EditBirthDiv>
-              <S.EditBirthInput
-                id="birth"
-                inputType="text"
-                placeholder={data.year}
-                disabled={true}
-              />
-              <S.EditBirthSelect disabled={true}>
-                <option>{data.month + '월'}</option>
-                <option value="01">1월</option>
-                <option value="02">2월</option>
-                <option value="03">3월</option>
-                <option value="04">4월</option>
-                <option value="05">5월</option>
-                <option value="06">6월</option>
-                <option value="07">7월</option>
-                <option value="08">8월</option>
-                <option value="09">9월</option>
-                <option value="10">10월</option>
-                <option value="11">11월</option>
-                <option value="12">12월</option>
-              </S.EditBirthSelect>
-              <S.EditBirthInput
-                inputType="text"
-                placeholder={data.day}
-                disabled={true}
-              />
-            </S.EditBirthDiv>
-          </S.EditSelectWrap>
-          <S.EditSelectWrap>
-            <S.EditLabel htmlFor="gender">성별</S.EditLabel>
-            <S.EditGenderSelect id="gender" disabled={true}>
-              <option>{data.sex ? '남자' : '여자'}</option>
-              <option value="M">남자</option>
-              <option value="F">여자</option>
-            </S.EditGenderSelect>
-          </S.EditSelectWrap>
-          <S.EditInputWrap>
-            <S.EditLabel htmlFor="phone">휴대폰 번호</S.EditLabel>
-            <S.EditInput
-              id="phone"
-              inputType="text"
-              placeholder={data.phone}
-              disabled={true}
-            />
-          </S.EditInputWrap>
-          {NickNameRegex.test(NickName) &&
-          validator.isStrongPassword(Password) &&
-          validator.equals(Password, ConfirmPassword) &&
-          ConfirmPassword !== '' ? (
-            <S.EditFinish btntype="submit">수정 완료</S.EditFinish>
-          ) : (
-            <S.EditNotFinish>형식에 맞게 입력해주세요</S.EditNotFinish>
-          )}
-        </S.EditForm>
-      </S.EditCommonWrap>
-    </>
+          </S.EditForm>
+        </S.EditCommonWrap>
+      </S.EditProfileInner>
+    </S.EditProfileOverlay>
   );
 };

@@ -83,71 +83,75 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
   }, [ImgFile]);
 
   return (
-    <S.UploadWrap>
-      {kakaoMap ? (
-        <KaKaoMapItem setKakaoMap={setKakaoMap} setLocation={setLocation} />
-      ) : (
-        ''
-      )}
-      <S.UploadTop>
-        <S.UploadTitle>버튼을 눌러 파일을 업로드 하세요</S.UploadTitle>
-        <S.UploadPtag>사진(JPG, PNG)</S.UploadPtag>
-      </S.UploadTop>
-      <S.UploadMid>
-        <S.UploadForm encType="multipart/form-data">
-          <S.UploadMidLeft>
-            <S.UploadImgInputWrap>
-              <S.UploadPreview>
-                <S.UploadPreviewImg src={ImgBase64} />
-              </S.UploadPreview>
-              <S.UploadImageLabel htmlFor="imageIn">
-                <S.UploadBtnImg src={PLUS} />
-              </S.UploadImageLabel>
-            </S.UploadImgInputWrap>
-            <S.UploadImageInput
-              id="imageIn"
-              inputType="file"
-              inputAccept="image/*"
-              name="file"
-              onChange={onChangeImgHandler}
-            />
-          </S.UploadMidLeft>
-          <S.UploadMidRight>
-            <S.UploadInputWrap>
-              <S.UploadLabel htmlFor="first">검색 키워드</S.UploadLabel>
-              <S.UploadInput
-                id="first"
-                name="First"
-                placeholder="검색 키워드"
-                value={ImgInfo}
-                onChange={onImgInfoHandler}
-              />
-            </S.UploadInputWrap>
-            <S.UploadInputWrap>
-              <S.UploadLabel htmlFor="second">촬영 장소</S.UploadLabel>
-              <S.UploadInput
-                id="second"
-                name="Second"
-                placeholder="장소 찾기"
-                value={located}
-                onChange={onImgInfoHandler}
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setKakaoMap(true);
-                }}
-              />
-            </S.UploadInputWrap>
-            <S.UploadResultBtn btnOnClick={onSubmitHandler}>
-              업로드
-            </S.UploadResultBtn>
-          </S.UploadMidRight>
-        </S.UploadForm>
-      </S.UploadMid>
-      <S.UploadBot>
-        <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
-        <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
-        <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
-      </S.UploadBot>
-    </S.UploadWrap>
+    <S.UploadImageOverlay>
+      <S.UploadImageInner>
+        <S.UploadWrap>
+          {kakaoMap ? (
+            <KaKaoMapItem setKakaoMap={setKakaoMap} setLocation={setLocation} />
+          ) : (
+            ''
+          )}
+          <S.UploadTop>
+            <S.UploadTitle>버튼을 눌러 파일을 업로드 하세요</S.UploadTitle>
+            <S.UploadPtag>사진(JPG, PNG)</S.UploadPtag>
+          </S.UploadTop>
+          <S.UploadMid>
+            <S.UploadForm encType="multipart/form-data">
+              <S.UploadMidLeft>
+                <S.UploadImgInputWrap>
+                  <S.UploadPreview>
+                    <S.UploadPreviewImg src={ImgBase64} />
+                  </S.UploadPreview>
+                  <S.UploadImageLabel htmlFor="imageIn">
+                    <S.UploadBtnImg src={PLUS} />
+                  </S.UploadImageLabel>
+                </S.UploadImgInputWrap>
+                <S.UploadImageInput
+                  id="imageIn"
+                  inputType="file"
+                  inputAccept="image/*"
+                  name="file"
+                  onChange={onChangeImgHandler}
+                />
+              </S.UploadMidLeft>
+              <S.UploadMidRight>
+                <S.UploadInputWrap>
+                  <S.UploadLabel htmlFor="first">검색 키워드</S.UploadLabel>
+                  <S.UploadInput
+                    id="first"
+                    name="First"
+                    placeholder="검색 키워드"
+                    value={ImgInfo}
+                    onChange={onImgInfoHandler}
+                  />
+                </S.UploadInputWrap>
+                <S.UploadInputWrap>
+                  <S.UploadLabel htmlFor="second">촬영 장소</S.UploadLabel>
+                  <S.UploadInput
+                    id="second"
+                    name="Second"
+                    placeholder="장소 찾기"
+                    value={located}
+                    onChange={onImgInfoHandler}
+                    onClick={(e: any) => {
+                      e.preventDefault();
+                      setKakaoMap(true);
+                    }}
+                  />
+                </S.UploadInputWrap>
+                <S.UploadResultBtn btnOnClick={onSubmitHandler}>
+                  업로드
+                </S.UploadResultBtn>
+              </S.UploadMidRight>
+            </S.UploadForm>
+          </S.UploadMid>
+          <S.UploadBot>
+            <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
+            <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
+            <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
+          </S.UploadBot>
+        </S.UploadWrap>
+      </S.UploadImageInner>
+    </S.UploadImageOverlay>
   );
 };

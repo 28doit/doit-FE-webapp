@@ -1,6 +1,23 @@
 import styled from 'styled-components';
 import { Input, Label, Btn } from '../..';
 
+export const EditProfileOverlay = styled.div`
+  width: 90%;
+  height: 120%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EditProfileInner = styled.div`
+  max-width: 600px;
+  width: 100%;
+  padding: 30px 20px;
+  background: #fff;
+  margin: 50px;
+`;
+
 export const EditTitle = styled.h2`
   height: 60px;
   padding: 0 30px;

@@ -1,6 +1,23 @@
 import styled from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 
+export const RePasswordOverlay = styled.div`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RePasswordInner = styled.div`
+  max-width: 600px;
+  width: 90%;
+  padding: 30px 20px;
+  background: #fff;
+  margin: 50px;
+`;
+
 export const RePasswordContainer = styled.div``;
 
 export const RePasswordForm = styled.form`

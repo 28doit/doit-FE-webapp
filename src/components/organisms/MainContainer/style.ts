@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FormInput } from '../../index';
 import TITLE from "../../../assets/title.png";
 
@@ -37,18 +37,19 @@ export const PC_Input = styled(FormInput)`
   border: 0.3rem solid black;
 `;
 
-export const PC_CategoryBox = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 47rem;
-`;
-
-export const PC_CardBox = styled.div`
-  top: 90rem;
-  position: absolute;
+export const PC_Box = styled.div<{box: string}>`
+${(props) => props.box === "category" && css`
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+top: 47rem;
+`}
+${(props) => props.box === "card" && css`
+top: 90rem;
+position: absolute;
+`}
 `;
 
 export const PC_Hr = styled.div<hrProps>`

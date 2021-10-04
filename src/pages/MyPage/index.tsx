@@ -1,8 +1,8 @@
 import { BaseTemplate } from '../../templates';
 import {
   MyMenu,
-  EditProfile,
-  UploadImage,
+  EditProfileModal,
+  UploadImageModal,
   PaymentItem,
   PayLogItem,
   ErrItem,
@@ -21,14 +21,14 @@ export const MyPage = ({ match }: any) => {
         return (
           <>
             <MyMenu />
-            <EditProfile />
+            <EditProfileModal />
           </>
         );
       case 'upload-image':
         return (
           <>
             <MyMenu />
-            <UploadImage />
+            <UploadImageModal />
           </>
         );
       case 'payment':

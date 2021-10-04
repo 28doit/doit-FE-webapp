@@ -1,6 +1,22 @@
 import styled, { css } from 'styled-components';
 import { Input, Label, Btn } from '../..';
 
+export const PC_Overlay = styled.div`
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PC_Inner = styled.div`
+  max-width: 60rem;
+  width: 90%;
+  padding: 3rem 2rem;
+  background: #fff;
+  margin: 5rem;
+`;
+
 export const PC_Title = styled.h2`
   border-bottom: 0.1rem solid #ebebeb;
   padding: 0 3rem 0 3rem;

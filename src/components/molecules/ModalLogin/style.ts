@@ -2,6 +2,22 @@ import styled from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 import CheckOn from '../../../assets/check_on.svg';
 
+export const ModalLoginOverlay = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalLoginInner = styled.div`
+  max-width: 450px;
+  width: 90%;
+  padding: 50px 35px 40px;
+  background: #fff;
+`;
 export const LoginContainer = styled.div`
   width: 100%;
   height: 100%;

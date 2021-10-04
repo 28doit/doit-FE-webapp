@@ -1,6 +1,23 @@
 import styled from 'styled-components';
 import { Btn, Input, Label } from '../../index';
 
+export const UploadImageOverlay = styled.div`
+  width: 100%;
+  height: 120%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const UploadImageInner = styled.div`
+  width: 90%;
+  height: 80%;
+  padding: 30px 20px;
+  background: #fff;
+  margin: 50px;
+`;
+
 export const UploadWrap = styled.div`
   width: 100%;
   height: 100%;

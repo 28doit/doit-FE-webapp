@@ -40,15 +40,15 @@ export const MainContainer = ({}: MainContainerProps): React.ReactElement => {
           </S.PC_Top>
           <S.PC_Hr top="300px">요즘 트렌드는 무엇일까?</S.PC_Hr>
 
-          <S.PC_CategoryBox>
+          <S.PC_Box box="category">
             <CategoryGridItems />
-          </S.PC_CategoryBox>
+          </S.PC_Box>
 
           <S.PC_Hr top="700px">어떤 이미지가 있을까?</S.PC_Hr>
 
-          <S.PC_CardBox>
+          <S.PC_Box box="card">
             <CardInfiniteList />
-          </S.PC_CardBox>
+          </S.PC_Box>
         </S.PC_Container>
       </PC>
     </>
