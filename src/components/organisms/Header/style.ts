@@ -50,6 +50,6 @@ background-color: #0197ea;
 border-radius: 2rem;
 padding: 0;
 margin: 0;
-font-family: dohyeon;
+font-family: hs;
 font-size: 2rem;
 `

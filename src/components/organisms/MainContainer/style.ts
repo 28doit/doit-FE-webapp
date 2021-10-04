@@ -28,7 +28,7 @@ background-size: cover;
 export const PC_Title = styled.div`
   text-align: center;
   font-size: 4rem;
-  font-family: dohyeon;
+  font-family: elice;
   padding-top: 8rem;
   color: #041e7d;
 `;
@@ -60,7 +60,7 @@ export const PC_Hr = styled.div<hrProps>`
   color: #222222;
   font-size: 2.4rem;
   margin: 8rem 0 4rem 0;
-  font-family: dohyeon;
+  font-family: hs;
   font-weight: 700;
   position: absolute;
   top: ${(props) => props.top};

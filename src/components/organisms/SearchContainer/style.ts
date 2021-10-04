@@ -12,7 +12,7 @@ export const PC_Container = styled.div`
 export const PC_Title = styled.div`
   text-align: center;
   font-size: 4rem;
-  font-family: dohyeon;
+  font-family: hs;
   padding-top: 8rem;
 `;
 

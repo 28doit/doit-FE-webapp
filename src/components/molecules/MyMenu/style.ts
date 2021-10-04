@@ -1,42 +1,47 @@
 import styled from 'styled-components';
 import { LinkBtn } from '../../index';
 
-export const MyMenuContainer = styled.div`
+export const PC_Container = styled.div`
   width: 10%;
-  background-color: skyblue;
-  padding-top: 30px;
-  height: 117%;
+  min-width: 20rem;
+  background-color: #112378;
+  padding-top: 3rem;
 `;
 
-export const MyMenuBox = styled.div`
+export const PC_Box = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 60px;
+  margin-top: 6rem;
 `;
 
-export const MyMenuBtn = styled(LinkBtn)`
-  font-size: 16px;
-  background-color: skyblue;
+export const PC_Btn = styled(LinkBtn)`
+  font-size: 1.6rem;
+  background-color: #112378;
   margin: 0;
-  color: #666666;
+  color: #ffffff;
 `;
 
-export const MyMenuSmallBox = styled.div`
+export const PC_SmallBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const SmallBoxDiv = styled.div`
+export const PC_SmallDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
-  padding: 10px;
+  padding: 1rem;
 `;
 
-export const SmallBoxText = styled.div`
-  font-size: 14px;
+export const PC_SmallText = styled.div`
+  font-size: 1.4rem;
+  color: #ffffff;
 `;
 
-export const MyMenuTitle = styled.div`
+export const PC_Title = styled.div`
   font-weight: 700;
   text-align: center;
+  color: #ffffff;
+  font-family: elice;
+  font-size: 2.5rem;
+  color: #fbeccf;
 `;

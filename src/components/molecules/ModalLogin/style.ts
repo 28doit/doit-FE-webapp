@@ -81,7 +81,7 @@ export const PC_Title = styled.h2`
   margin: 0 0 2rem;
   font-size: 3rem;
   text-align: center;
-  font-family: dohyeon;
+  font-family: elice;
 `;
 
 export const PC_Input = styled(Input)`
@@ -94,6 +94,7 @@ export const PC_Input = styled(Input)`
 export const PC_Label = styled(Label)`
   margin: 0 0 0 1rem;
   color: #888888;
+  font-family: elice;
 `;
 
 export const PC_CheckWrap = styled.div`
@@ -101,6 +102,7 @@ export const PC_CheckWrap = styled.div`
   justify-content: space-between;
   font-size: 1.4rem;
   line-height: 2.2rem;
+  font-family: elice;
 
   input[type='checkbox'] {
     width: 0.1rem;
@@ -142,4 +144,5 @@ export const PC_Btn = styled(Btn)`
 
 export const PC_LinkState = styled(LinkBtn)`
   cursor: pointer;
+  font-family: elice;
 `;
