@@ -1,63 +1,55 @@
 /* eslint-disable prettier/prettier */
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { LinkBtn } from '../../index';
 
-interface Props {
-  header_right?: boolean;
-  header_left?: boolean;
-  header_center?: boolean;
-}
-
-export const Container = styled.div`
-  width: 100%;
-  height: 70px;
-  border: 1px solid #ebebeb;
+export const PC_Container = styled.div`
+  height: 5%;
+  max-height: 8rem;
+  border: 0.3rem solid #ebebeb;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f1c3b8;
+  background-color: #ffffff;
+  padding: 1rem 0 1rem 0;
 `;
 
-export const HeaderWrapper = styled.div<Props>`
-  display: inline-block;
-  li {
-    display: inline-block;
-    margin-left: 10px;
-    & + li {
-      margin: 5px;
-    }
-  }
-  cursor: pointer;
-  ${(props) =>
-    props.header_left &&
-    css`
-      & + div {
-        margin: 0 0 0 22px;
-      }
-    `}
-  ${(props) =>
-    props.header_center &&
-    css`
-      & + div {
-        margin: 0 0 0 22px;
-      }
-    `}
-    ${(props) =>
-    props.header_right &&
-    css`
-      & + div {
-        margin: 0 0 0 9.1%;
-      }
-    `};
+export const PC_Left = styled.div`
+width: 33%;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+margin: 0 0 0 2rem;
 `;
 
-export const NavBox = styled.nav`
-  float: right;
-  width: calc(100%-400px);
-  text-align: right;
+export const PC_Center = styled.div`
+width: 33%;
+display: flex;
+align-items: center;
+justify-content: center;`;
+
+export const PC_Right = styled.div`
+width: 33%;
+margin: 0 20px 0 0;
+display: flex;
+align-items: center;
+justify-content: flex-end;`;
+
+export const PC_LinkBtn = styled(LinkBtn)`
+width: 10%;
+min-width: 40px;
+background-color: #0197ea;
+border-radius: 2rem;
+padding: 0.8rem;
+margin: 0 1rem 0 0;
 `;
 
-export const HeaderLinkBtn = styled(LinkBtn)`
-  padding: 10px;
-  border-radius: 20px;
-`;
+export const PC_LogoBtn = styled(LinkBtn)`
+width: 30%;
+min-width: 20rem;
+background-color: #0197ea;
+border-radius: 2rem;
+padding: 0;
+margin: 0;
+font-family: dohyeon;
+font-size: 2rem;
+`

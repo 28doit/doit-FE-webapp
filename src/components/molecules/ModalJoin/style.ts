@@ -1,246 +1,276 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Input, Label, Btn } from '../..';
 
-export const JoinTitle = styled.h2`
-  height: 60px;
-  padding: 0 30px;
-  border-bottom: 1px solid #ebebeb;
-  font-size: 22px;
-  line-height: 60px;
+export const PC_Title = styled.h2`
+  border-bottom: 0.1rem solid #ebebeb;
+  padding: 0 3rem 0 3rem;
+  color: #041e7d;
+  line-height: 6rem;
   text-align: center;
+  font-size: 3rem;
+  font-family: dohyeon;
 `;
 
-export const JoinCommonWrap = styled.div``;
+export const PC_Conatiner = styled.div``;
 
-export const JoinForm = styled.form`
+export const PC_Form = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
 `;
 
-export const JoinLabel = styled(Label)`
-  float: left;
-  width: 100px;
+export const PC_Submit = styled(Btn)`
+  width: 50%;
+  height: 3rem;
+  margin-top: 6rem;
+  line-height: 0;
   margin: 0;
-  font-size: 15px;
-  line-height: 46px;
-  cursor: default;
+  margin-top: 6rem;
+  font-size: 1.6rem;
+  font-family: dohyeon;
 `;
 
-export const JoinEmailWrap = styled.div`
-  width: 100%;
-  display: flex;
+export const PC_NoSubmit = styled.div`
+  width: 50%;
+  height: 3rem;
+  margin-top: 6rem;
+  background-color: #2f4f4f;
+  text-align: center;
+  line-height: 2.5;
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-family: dohyeon;
 `;
 
-export const JoinEmailCheck = styled.div`
+export const PC_EmailCheck = styled.div`
   display: flex;
   align-items: center;
   width: 10%;
-  font-weight: 700;
   background-color: #f75a58;
   justify-content: center;
-  margin-left: 5px;
+  margin: 0 0 0 0.5rem;
   color: white;
-  border-radius: 10px;
-  font-size: 14px;
+  border-radius: 1rem;
+  font-size: 1.4rem;
   cursor: pointer;
 `;
 
-export const JoinReEmailCheck = styled.div`
-  display: flex;
-  align-items: center;
-  width: 10%;
-  font-weight: 700;
-  background-color: #03c75a;
-  justify-content: center;
-  margin-left: 5px;
-  color: white;
-  border-radius: 10px;
-  font-size: 14px;
-  cursor: pointer;
+export const PC_Label =
+  styled(Label) <
+  { lab_type: string } >
+  `
+  ${(props) => props.lab_type === 'img' && css``}
+  ${(props) =>
+    props.lab_type === 'input' &&
+    css`
+      float: left;
+      width: 10rem;
+      margin: 0;
+      font-size: 1.5rem;
+      line-height: 4rem;
+      cursor: default;
+      font-family: dohyeon;
+    `}
 `;
 
-export const JoinReEmailOk = styled.div`
-  display: flex;
-  align-items: center;
-  width: 10%;
-  font-weight: 700;
-  background-color: #f75a58;
-  justify-content: center;
-  margin-left: 5px;
-  color: white;
-  border-radius: 10px;
-  font-size: 14px;
-  cursor: pointer;
+export const PC_Box =
+  styled.div <
+  { box: string } >
+  `
+  ${(props) =>
+    props.box === 'birth' &&
+    css`
+      display: flex;
+      justify-content: start;
+    `}
+  ${(props) =>
+    props.box === 'pre' &&
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: start;
+    `}
+  ${(props) =>
+    props.box === 'img' &&
+    css`
+      border-radius: 50%;
+    `}
 `;
 
-export const JoinBirthInput = styled(Input)`
-  width: 25%;
-  height: 40px;
+export const PC_Select =
+  styled.select <
+  { s_type: string } >
+  `
+  ${(props) =>
+    props.s_type === 'gender' &&
+    css`
+      margin: 0 0 1.5rem;
+    `}
+  ${(props) =>
+    props.s_type === 'birth' &&
+    css`
+      margin: 0 2.5rem 1.5rem;
+    `}
+    overflow: hidden;
+    width: 25%;
+    height: 4rem;
+    padding: 0.5rem 3.9rem 0.5rem 1.1rem;
+    border: solid 1px #dadada;
+    background: #fff;
+    box-sizing: border-box;
 `;
 
-export const JoinBirthDiv = styled.div`
-  display: flex;
-  justify-content: start;
+export const PC_Wrap =
+  styled.div <
+  { wrap_type: string } >
+  `
+  ${(props) =>
+    props.wrap_type === 'default' &&
+    css`
+      &::after {
+        display: block;
+        content: '';
+        clear: both;
+      }
+      & + & {
+        margin: 2rem 0 0;
+      }
+      width: 80%;
+    `}
+  ${(props) =>
+    props.wrap_type === 'email' &&
+    css`
+      width: 100%;
+      display: flex;
+    `}
+  ${(props) =>
+    props.wrap_type === 'select' &&
+    css`
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+    `}
+    ${(props) =>
+      props.wrap_type === 'img' &&
+      css`
+        display: flex;
+        align-items: center;
+        margin-left: 10rem;
+        margin-top: 3rem;
+      `}
 `;
 
-export const JoinBirthSelect = styled.select`
-  overflow: hidden;
-  width: 25%;
-  height: 40px;
-  margin: 0 25px 15px;
-  padding: 5px 39px 5px 11px;
-  border: solid 1px #dadada;
-  background: #fff;
-  box-sizing: border-box;
+export const PC_Input =
+  styled(Input) <
+  { input_type: string } >
+  `
+  ${(props) =>
+    props.input_type === 'default' &&
+    css`
+      width: 90%;
+      margin: 0 0 0.5rem;
+    `}
+  ${(props) =>
+    props.input_type === 'birth' &&
+    css`
+      width: 25%;
+      height: 4rem;
+    `}
+  ${(props) =>
+    props.input_type === 'img' &&
+    css`
+      display: none;
+    `}
+  ${(props) =>
+    props.input_type === 'email' &&
+    css`
+      width: 80%;
+      margin: 0 0 0.5rem;
+    `}
+  ${(props) =>
+    props.input_type === 'precheck' &&
+    css`
+      width: 4rem;
+      height: 4rem;
+      margin-left: 2rem;
+    `}
 `;
 
-export const JoinGenderSelect = styled.select`
-  overflow: hidden;
-  width: 25%;
-  height: 40px;
-  margin: 0 0 15px;
-  padding: 5px 39px 5px 11px;
-  border: solid 1px #dadada;
-  background: #fff;
-  box-sizing: border-box;
-`;
-
-export const JoinInputWrap = styled.div`
-  &::after {
-    display: block;
-    content: '';
-    clear: both;
-  }
-  & + & {
-    margin: 20px 0 0;
-  }
-  width: 80%;
-`;
-
-export const JoinInput = styled(Input)`
-  width: 90%;
-  margin: 0 0 5px;
-`;
-
-export const RepasswordInput = styled(Input)`
-  width: 30%;
-  margin: 0 0 5px;
-`;
-
-export const JoinEmailInput = styled(Input)`
-  width: 80%;
-  margin: 0 0 5px;
-`;
-
-export const JoinSelectWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-`;
-
-export const JoinPreDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-`;
-
-export const JoinPre = styled.pre`
+export const PC_Pre = styled.pre`
   background-color: rgb(238, 238, 238);
   width: 90%;
-  height: 120px;
-  padding: 20px;
+  height: 12rem;
+  padding: 2rem;
   overflow-y: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
   line-height: 1.5;
-  font-size: 10px;
+  font-size: 1rem;
 `;
 
-export const JoinPreCheck = styled(Input)`
-  width: 40px;
-  height: 40px;
-  margin-left: 20px;
+export const PC_Valid =
+  styled.span <
+  { v_type: string } >
+  `
+  ${(props) =>
+    props.v_type === 'default' &&
+    css`
+      color: #03c75a;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: inline-block;
+    `}
+  ${(props) =>
+    props.v_type === 'select' &&
+    css`
+      color: #03c75a;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 2rem;
+    `}
 `;
 
-export const JoinValid = styled.span`
-  color: #03c75a;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
+export const PC_Invalid =
+  styled.span <
+  { nv_type: string } >
+  `
+  ${(props) =>
+    props.nv_type === 'default' &&
+    css`
+      color: red;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: inline-block;
+    `}
+  ${(props) =>
+    props.nv_type === 'select' &&
+    css`
+      color: red;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 2rem;
+    `}
 `;
 
-export const JoinInvalid = styled.span`
-  color: red;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-`;
-
-export const JoinValidSelect = styled.span`
-  color: #03c75a;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 20px;
-`;
-
-export const JoinInvalidSelect = styled.span`
-  color: red;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 20px;
-`;
-
-export const JoinFinish = styled(Btn)`
-  width: 50%;
-  height: 30px;
-  margin-top: 60px;
-  line-height: 0;
-  margin: 0;
-  margin-top: 60px;
-  font-size: 16px;
-`;
-
-export const JoinNotFinish = styled.div`
-  width: 50%;
-  height: 30px;
-  margin-top: 60px;
-  background-color: #2f4f4f;
-  text-align: center;
-  line-height: 2;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 14px;
-`;
-
-export const JoinImgWrap = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 100px;
-  margin-top: 30px;
-`;
-
-export const JoinImgPreview = styled.div`
-  border-radius: 50%;
-`;
-
-export const JoinImgLabel = styled(Label)``;
-
-export const JoinImgBtn = styled.img`
-  width: 45px;
-  margin-left: 10px;
-  margin-top 40px;
-`;
-
-export const JoinImgInput = styled(Input)`
-  display: none;
-`;
-
-export const JoinImgPreviewImg = styled.img`
-  width: 100px;
-  height: 100px;
-  background-color: black;
-  border-radius: 50%;
+export const PC_Img =
+  styled.img <
+  { img_type: string } >
+  `
+  ${(props) =>
+    props.img_type === 'btn' &&
+    css`
+  width: 4.5rem;
+  margin-left: 1rem;
+  margin-top 4rem;
+  `}
+  ${(props) =>
+    props.img_type === 'preview' &&
+    css`
+      width: 10rem;
+      height: 10rem;
+      background-color: black;
+      border-radius: 50%;
+    `}
 `;

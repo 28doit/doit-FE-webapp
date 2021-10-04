@@ -18,7 +18,7 @@ export const ImageDetail = ({
     isSubscribe: '',
     profileImg: '',
     isAuthSubScribe: false,
-    author: false,
+    author: '',
     likePeople: 0,
     viewCount: 0,
     downloadCount: 0,

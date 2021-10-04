@@ -551,5 +551,18 @@
     => 반응형으로 많은 레이아웃 수정이 필요한 페이지 - MyPage, ImageDetaile
     => 미디어 쿼리는 3가지 분기점으로 나눠서 진행 - https://hohoya33.tistory.com/127
     => font-size는 기본을 62.5%로 적용 후 개별의 페이지 마다 em을 사용
+
+#### 21.10.04 21:25
+
+    - npm react-responive 설치
+    => react에서 반응형을 쉽게 할 수 있는 모듈 설치
+    => src/MediaQuery.tsx 생성 - phone, tablet, pc로 구분
+    => PC 먼저 다 만들고 Tablet 마지막에 Mobile로 작업
+    => 1차 완료: css의 어느정도의 틀 2차 완료: 완전 끝
+    
+    - PC 버전 
+    => Header, Main, Join 1차 완료
+
+    - 이거 코드 처음부터 다시 수정하는 것도 재미있네 ㅋㅋ
 </div>
 </details>
