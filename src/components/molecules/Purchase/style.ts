@@ -1,112 +1,136 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Btn } from '../../index';
 import DatePicker from 'react-datepicker';
 
-export const PurchaseContainer = styled.div`
+export const PC_Overlay = styled.div`
+  width: 100%;
+  background: #868e96;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PC_Inner = styled.div`
+  width: 90%;
+  height: 80%;
+  padding: 3rem 2rem;
+  background: #fff;
+  margin: 5rem;
+`;
+
+export const PC_Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  margin-top: 60px;
   flex-direction: column;
 `;
 
-export const PurchaseTitle = styled.div`
-  font-size: 22px;
-  font-weight: 700;
+export const PC_Title = styled.div`
+  font-size: 3rem;
   text-align: center;
-  padding: 30px 0;
+  padding: 3rem 0;
+  font-family: elice;
 `;
 
-export const PurchaseDateContainer = styled.div`
+export const PC_DateContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: 40rem;
 `;
 
-export const PurchaseDateBox = styled.div`
+export const PC_DateBox = styled.div`
   display: flex;
-  width: 120px;
-  margin-bottom: 10px;
+  width: 12rem;
+  margin-bottom: 1rem;
 `;
 
-export const PurchaseDatePicker = styled(DatePicker)`
-  margin-top: 30px;
-  width: 100px;
-  height: 38px;
-  border-radius: 4px;
-  border: 1px solid black;
-  font-size: 12px;
-  margin-right: 60px;
+export const PC_DatePicker = styled(DatePicker)`
+  margin-top: 3rem;
+  width: 10rem;
+  height: 3.8rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid black;
+  font-size: 1.2rem;
+  font-family: elice;
+  margin-right: 6rem;
 `;
 
-export const PurchaseBtn = styled(Btn)`
-  margin-top: 24px;
-  width: 100px;
-  border-radius: 4px;
+export const PC_Btn = styled(Btn)`
+  margin-top: 2.4rem;
+  width: 10rem;
+  border-radius: 0.4rem;
 `;
 
-export const PurchaseModal = styled.div`
-  margin-top: 40px;
-  width: 1000px;
-  height: 800px;
+export const PC_Modal = styled.div`
+  margin-top: 4rem;
+  width: 85%;
+  height: 80%;
   background-color: rgba(0, 0, 0, 0.3);
   overflow: scroll;
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #2f3542;
   }
 
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 1.4rem 2.8rem rgba(0, 0, 0, 0.25),
+    0 1rem 1rem rgba(0, 0, 0, 0.22);
 `;
 
-export const PurchaseUl = styled.ul``;
+export const PC_Ul = styled.ul``;
 
-export const PurchaseLi = styled.li`
+export const PC_Li = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  height: 250px;
-  font-size: 18px;
-  font-weight: 700;
+  height: 25rem;
+  font-size: 1.8rem;
+  font-family: elice;
   color: #f2f2f2;
 `;
 
-export const PurchasePreview = styled.img`
+export const PC_Preview = styled.img`
   width: 20%;
   text-align: center;
 `;
 
-export const PurchaseExtension = styled.div`
-  width: 10%;
-  text-align: center;
+export const PC_Info =
+  styled.div <
+  { li_type: string } >
+  `
+${(props) =>
+  props.li_type === 'extension' &&
+  css`
+    width: 10%;
+  `}
+${(props) =>
+  props.li_type === 'when' &&
+  css`
+    width: 15%;
+  `}
+${(props) =>
+  props.li_type === 'author' &&
+  css`
+    width: 10%;
+    color: black;
+  `}
+text-align: center;
 `;
 
-export const PurchaseWhen = styled.div`
-  width: 15%;
-  text-align: center;
-`;
-
-export const PurchaseAuthor = styled.div`
-  width: 10%;
-  text-align: center;
-  color: black;
-`;
-
-export const PurchaseTxtBox = styled.div`
+export const PC_TxtBox = styled.div`
   width: 100%;
-  height: 40px;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
 `;
 
-export const PurchaseTxt = styled.div`
+export const PC_Txt = styled.div`
   text-align: center;
   color: white;
-  font-weight: 700;
-  font-size: 18px;
+  font-size: 1.8rem;
+  font-family: elice;
 `;

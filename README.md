@@ -571,6 +571,7 @@
 #### 21.10.05 01:30
 
     - PC
-    => PayLog 1차 완료
+    => PayLog, Purchase 1차 완료
+    => 어색 했었던 css도 수정 중
 </div>
 </details>

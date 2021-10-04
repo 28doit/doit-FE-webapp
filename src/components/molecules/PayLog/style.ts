@@ -52,7 +52,7 @@ export const PC_Btn = styled(Btn)`
 `;
 
 export const PC_Modal = styled.div`
-  width: 80rem;
+  width: 70%;
   height: 80%;
   margin-top: 4rem;
   background-color: rgba(0, 0, 0, 0.3);

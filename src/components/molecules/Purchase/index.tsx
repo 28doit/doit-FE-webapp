@@ -5,6 +5,7 @@ import 'moment/locale/ko';
 import * as S from './style';
 import 'react-datepicker/dist/react-datepicker.css';
 import { get_purchase } from '../../../redux/services/auth.service';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface PurchaseProps {}
 
@@ -25,12 +26,12 @@ const PurchaseCard = ({
   ...props
 }: PurchaseCardProps) => {
   return (
-    <S.PurchaseLi key={gallId}>
-      <S.PurchasePreview src={preview} />
-      <S.PurchaseExtension>{extension}</S.PurchaseExtension>
-      <S.PurchaseWhen>{when}</S.PurchaseWhen>
-      <S.PurchaseAuthor>{author}</S.PurchaseAuthor>
-    </S.PurchaseLi>
+    <S.PC_Li key={gallId}>
+      <S.PC_Preview src={preview} />
+      <S.PC_Info li_type="extension">{extension}</S.PC_Info>
+      <S.PC_Info li_type="when">{when}</S.PC_Info>
+      <S.PC_Info li_type="author">{author}</S.PC_Info>
+    </S.PC_Li>
   );
 };
 
@@ -70,54 +71,68 @@ export const PurchaseItem = ({}: PurchaseProps): React.ReactElement => {
   };
 
   return (
-    <S.PurchaseContainer>
-      <S.PurchaseTitle>구매한 이미지</S.PurchaseTitle>
-      <S.PurchaseDateContainer>
-        <S.PurchaseDateBox>
-          <S.PurchaseDatePicker
-            selected={startDate}
-            onChange={(date: any) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-          />
-          <S.PurchaseDatePicker
-            selected={endDate}
-            onChange={(date: any) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-          />
-        </S.PurchaseDateBox>
-        <S.PurchaseDateBox>
-          <S.PurchaseBtn btnOnClick={onBtnHandler}>조회 하기</S.PurchaseBtn>
-        </S.PurchaseDateBox>
-      </S.PurchaseDateContainer>
-      <S.PurchaseModal>
-        <S.PurchaseTxtBox>
-          <S.PurchaseTxt>이미지</S.PurchaseTxt>
-          <S.PurchaseTxt>확장자</S.PurchaseTxt>
-          <S.PurchaseTxt>날짜</S.PurchaseTxt>
-          <S.PurchaseTxt>작가</S.PurchaseTxt>
-        </S.PurchaseTxtBox>
-        <S.PurchaseUl>
-          {item &&
-            item.map((info: any) =>
-              PurchaseCard({
-                gallId: info.gall_id,
-                extension: info.type,
-                when: info.time,
-                author: info.author,
-                preview: info.src,
-              }),
-            )}
-        </S.PurchaseUl>
-      </S.PurchaseModal>
-    </S.PurchaseContainer>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Container>
+              <S.PC_Title>구매한 이미지</S.PC_Title>
+              <S.PC_DateContainer>
+                <S.PC_DateBox>
+                  <S.PC_DatePicker
+                    selected={startDate}
+                    onChange={(date: any) => setStartDate(date)}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    locale={ko}
+                    dateFormat="yyyy년 MM월 dd일"
+                  />
+                  <S.PC_DatePicker
+                    selected={endDate}
+                    onChange={(date: any) => setEndDate(date)}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    locale={ko}
+                    dateFormat="yyyy년 MM월 dd일"
+                  />
+                </S.PC_DateBox>
+                <S.PC_DateBox>
+                  <S.PC_Btn btnOnClick={onBtnHandler}>조회 하기</S.PC_Btn>
+                </S.PC_DateBox>
+              </S.PC_DateContainer>
+              <S.PC_Modal>
+                <S.PC_TxtBox>
+                  <S.PC_Txt>이미지</S.PC_Txt>
+                  <S.PC_Txt>확장자</S.PC_Txt>
+                  <S.PC_Txt>날짜</S.PC_Txt>
+                  <S.PC_Txt>작가</S.PC_Txt>
+                </S.PC_TxtBox>
+                <S.PC_Ul>
+                  {item &&
+                    item.map((info: any) =>
+                      PurchaseCard({
+                        gallId: info.gall_id,
+                        extension: info.type,
+                        when: info.time,
+                        author: info.author,
+                        preview: info.src,
+                      }),
+                    )}
+                </S.PC_Ul>
+              </S.PC_Modal>
+            </S.PC_Container>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };
