@@ -4,7 +4,7 @@ import { Input, Label, Btn } from '../..';
 export const EditProfileOverlay = styled.div`
   width: 90%;
   height: 120%;
-  background: rgba(0, 0, 0, 0.6);
+  background: #868e96;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -3,7 +3,7 @@ import { Input, Label, Btn } from '../..';
 
 export const PC_Overlay = styled.div`
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: #868e96;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,13 +44,14 @@ export const PC_Submit = styled(Btn)`
   margin-top: 6rem;
   font-size: 1.6rem;
   font-family: dohyeon;
+  background-color: #0197ea;
 `;
 
 export const PC_NoSubmit = styled.div`
   width: 50%;
   height: 3rem;
   margin-top: 6rem;
-  background-color: #2f4f4f;
+  background-color: #041e7d;
   text-align: center;
   line-height: 2.5;
   color: #ffffff;

@@ -7,6 +7,7 @@ import { ModalLoading } from '../../index';
 import { Nlogin } from '../../../redux/actions/auth';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface ModalItemProps {}
 
@@ -62,57 +63,69 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   return (
-    <S.ModalLoginOverlay>
-      <S.ModalLoginInner>
-        <S.LoginContainer>
-          {Loading ? <ModalLoading /> : ''}
-          <S.LoginTitle>로그인</S.LoginTitle>
-          <S.LoginForm onSubmit={onSubmitHandler}>
-            <S.LoginInput
-              placeholder="이메일을 입력해주세요"
-              value={Email}
-              onChange={onEmailHandler}
-              inputType="email"
-            />
-            {validator.isEmail(Email) ? (
-              <S.LoginValid>✔</S.LoginValid>
-            ) : (
-              <S.LoginInvalid>* 이메일을 입력해주시기 바랍니다.</S.LoginInvalid>
-            )}
-            <S.LoginInput
-              inputType="password"
-              placeholder="비밀번호를 입력해주세요"
-              value={Password}
-              onChange={onPasswordHandler}
-            />
-            {validator.isEmpty(Password) ? (
-              <S.LoginInvalid>
-                * 비밀번호를 입력해주시기 바랍니다.
-              </S.LoginInvalid>
-            ) : (
-              <S.LoginValid>✔</S.LoginValid>
-            )}
-            <S.LoginCheckWrap>
-              <S.LoginInput id="idSave" inputType="checkbox" />
-              <S.LoginLabel htmlFor="idSave">아이디 저장</S.LoginLabel>
-              <S.LoginRePassword onClick={onRePasswordHandler}>
-                비밀번호 재설정
-              </S.LoginRePassword>
-            </S.LoginCheckWrap>
-            {validator.isEmpty(Email) || validator.isEmpty(Password) ? (
-              <S.LoginNo>로그인</S.LoginNo>
-            ) : (
-              <S.LoginBtn btntype="default">로그인</S.LoginBtn>
-            )}
-          </S.LoginForm>
-          <S.GoToJoin>
-            아직 회원이 아니세요?
-            <S.LoginLinkState btntype="gray" btnLink={ROUTES.JOIN}>
-              이메일로 회원가입
-            </S.LoginLinkState>
-          </S.GoToJoin>
-        </S.LoginContainer>
-      </S.ModalLoginInner>
-    </S.ModalLoginOverlay>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Container>
+              {Loading ? <ModalLoading /> : ''}
+              <S.PC_Title>로그인</S.PC_Title>
+              <S.PC_Form onSubmit={onSubmitHandler}>
+                <S.PC_Input
+                  placeholder="이메일을 입력해주세요"
+                  value={Email}
+                  onChange={onEmailHandler}
+                  inputType="email"
+                />
+                {validator.isEmail(Email) ? (
+                  <S.PC_Span s_type="valid">✔</S.PC_Span>
+                ) : (
+                  <S.PC_Span s_type="invalid">
+                    * 이메일을 입력해주시기 바랍니다.
+                  </S.PC_Span>
+                )}
+                <S.PC_Input
+                  inputType="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  value={Password}
+                  onChange={onPasswordHandler}
+                />
+                {validator.isEmpty(Password) ? (
+                  <S.PC_Span s_type="invalid">
+                    * 비밀번호를 입력해주시기 바랍니다.
+                  </S.PC_Span>
+                ) : (
+                  <S.PC_Span s_type="valid">✔</S.PC_Span>
+                )}
+                <S.PC_CheckWrap>
+                  <S.PC_Input id="idSave" inputType="checkbox" />
+                  <S.PC_Label htmlFor="idSave">아이디 저장</S.PC_Label>
+                  <S.PC_Span onClick={onRePasswordHandler} s_type="repwd">
+                    비밀번호 재설정
+                  </S.PC_Span>
+                </S.PC_CheckWrap>
+                {validator.isEmpty(Email) || validator.isEmpty(Password) ? (
+                  <S.PC_No>로그인</S.PC_No>
+                ) : (
+                  <S.PC_Btn btntype="default">로그인</S.PC_Btn>
+                )}
+              </S.PC_Form>
+              <S.PC_Join>
+                아직 회원이 아니세요?
+                <S.PC_LinkState btntype="gray" btnLink={ROUTES.JOIN}>
+                  이메일로 회원가입
+                </S.PC_LinkState>
+              </S.PC_Join>
+            </S.PC_Container>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };

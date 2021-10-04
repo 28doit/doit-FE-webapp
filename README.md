@@ -561,7 +561,10 @@
     => 1차 완료: css의 어느정도의 틀 2차 완료: 완전 끝
     
     - PC 
-    => Header, Main, Join 1차 완료
+    => Header, Main, Join, Login 1차 완료
+    
+    - organsim - modal 삭제
+    => 쓸데 없이 중첩 되는 구조여서 분해하고 별도로 옮겼음
 
     - 이거 코드 처음부터 다시 수정하는 것도 재미있네 ㅋㅋ
 
