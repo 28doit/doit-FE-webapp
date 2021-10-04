@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
 import { CardInfiniteList } from '../../index';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface SearchContainerProps {}
 
@@ -54,17 +55,27 @@ export const BestCategoryContainer = (): React.ReactElement => {
   };
 
   return (
-    <S.PC_Container>
-      <S.PC_Title>카테고리: {query.item}</S.PC_Title>
-      <S.PC_Input
-        placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
-        onChange={onSearchHandler}
-        value={searchItem}
-        formClcik={goToSearch}
-      />
-      <S.PC_CardBox>
-        <CardInfiniteList />
-      </S.PC_CardBox>
-    </S.PC_Container>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Container>
+          <S.PC_Title>카테고리: {query.item}</S.PC_Title>
+          <S.PC_Input
+            placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
+            onChange={onSearchHandler}
+            value={searchItem}
+            formClcik={goToSearch}
+          />
+          <S.PC_CardBox>
+            <CardInfiniteList />
+          </S.PC_CardBox>
+        </S.PC_Container>
+      </PC>
+    </>
   );
 };

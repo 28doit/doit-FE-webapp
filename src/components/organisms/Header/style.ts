@@ -46,10 +46,11 @@ margin: 0 1rem 0 0;
 export const PC_LogoBtn = styled(LinkBtn)`
 width: 30%;
 min-width: 20rem;
-background-color: #0197ea;
+color: #0197ea;
+background-color: #ffffff;
 border-radius: 2rem;
 padding: 0;
 margin: 0;
 font-family: hs;
-font-size: 2rem;
+font-size: 2.8rem;
 `

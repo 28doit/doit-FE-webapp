@@ -52,6 +52,7 @@ export const PC_Span =
   styled.span <
   { s_type: string } >
   `
+  font-size: 1.2rem;
   ${(props) =>
     props.s_type === 'invalid' &&
     css`

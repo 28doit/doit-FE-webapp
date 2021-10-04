@@ -38,18 +38,17 @@ export const PC_Input = styled(FormInput)`
 `;
 
 export const PC_Box = styled.div<{box: string}>`
-${(props) => props.box === "category" && css`
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-position: absolute;
-top: 47rem;
-`}
-${(props) => props.box === "card" && css`
-top: 90rem;
-position: absolute;
-`}
+  ${(props) => props.box === "category" && css`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 47rem;
+  `}
+  ${(props) => props.box === "card" && css`
+  top: 90rem;
+  `}
+  position: absolute;
 `;
 
 export const PC_Hr = styled.div<hrProps>`

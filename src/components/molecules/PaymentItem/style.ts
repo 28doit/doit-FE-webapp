@@ -1,5 +1,21 @@
-import styled from 'styled-components';
-import { Btn, Input } from '../../index';
+import styled, { css } from 'styled-components';
+import { Btn } from '../../index';
+
+export const PC_Overlay = styled.div`
+  width: 100%;
+  background: #868e96;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PC_Inner = styled.div`
+  width: 90%;
+  height: 80%;
+  padding: 3rem 2rem;
+  background: #fff;
+  margin: 5rem;
+`;
 
 export const PaymentContainer = styled.div`
   width: 100%;

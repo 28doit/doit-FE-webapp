@@ -24,7 +24,7 @@ export const PC_Title = styled.h2`
   line-height: 6rem;
   text-align: center;
   font-size: 3rem;
-  font-family: dohyeon;
+  font-family: elice;
 `;
 
 export const PC_Conatiner = styled.div``;
@@ -229,21 +229,14 @@ export const PC_Valid =
   styled.span <
   { v_type: string } >
   `
-  ${(props) =>
-    props.v_type === 'default' &&
-    css`
-      color: #03c75a;
-      font-size: 1.2rem;
+  color: #03c75a;
+  font-size: 1.2rem;
       font-weight: bold;
       display: inline-block;
-    `}
+  ${(props) => props.v_type === 'default' && css``}
   ${(props) =>
     props.v_type === 'select' &&
     css`
-      color: #03c75a;
-      font-size: 1.2rem;
-      font-weight: bold;
-      display: inline-block;
       margin-bottom: 2rem;
     `}
 `;
@@ -252,21 +245,14 @@ export const PC_Invalid =
   styled.span <
   { nv_type: string } >
   `
-  ${(props) =>
-    props.nv_type === 'default' &&
-    css`
-      color: red;
+  color: red;
       font-size: 1.2rem;
       font-weight: bold;
       display: inline-block;
-    `}
+  ${(props) => props.nv_type === 'default' && css``}
   ${(props) =>
     props.nv_type === 'select' &&
     css`
-      color: red;
-      font-size: 1.2rem;
-      font-weight: bold;
-      display: inline-block;
       margin-bottom: 2rem;
     `}
 `;
