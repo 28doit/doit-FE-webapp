@@ -80,9 +80,9 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
           <S.PC_Inner>
             <S.PC_Contatiner>
               <S.PC_Title>결제 내역</S.PC_Title>
-              <S.PayDateContainer>
-                <S.PayDateBox>
-                  <S.PayDatePicker
+              <S.PC_DateContainer>
+                <S.PC_DateBox>
+                  <S.PC_DatePicker
                     selected={startDate}
                     onChange={(date: any) => setStartDate(date)}
                     selectsStart
@@ -91,7 +91,7 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
                     locale={ko}
                     dateFormat="yyyy년 MM월 dd일"
                   />
-                  <S.PayDatePicker
+                  <S.PC_DatePicker
                     selected={endDate}
                     onChange={(date: any) => setEndDate(date)}
                     selectsEnd
@@ -101,18 +101,20 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
                     locale={ko}
                     dateFormat="yyyy년 MM월 dd일"
                   />
-                </S.PayDateBox>
-                <S.PayDateBox>
+                </S.PC_DateBox>
+                <S.PC_DateBox>
                   <S.PC_Btn btnOnClick={onBtnHandler}>조회 하기</S.PC_Btn>
-                </S.PayDateBox>
-              </S.PayDateContainer>
+                </S.PC_DateBox>
+              </S.PC_DateContainer>
               <S.PC_Modal>
-                {PayLogCard({
-                  c_date: '날짜',
-                  c_m_uid: '구매 번호',
-                  c_money: '구매 금액',
-                  c_name: '이름',
-                })}
+                <S.PC_CardUl>
+                  {PayLogCard({
+                    c_date: '날짜',
+                    c_m_uid: '구매 번호',
+                    c_money: '구매 금액',
+                    c_name: '이름',
+                  })}
+                </S.PC_CardUl>
                 <S.PC_CardUl>
                   {item &&
                     item.map((info: any) =>

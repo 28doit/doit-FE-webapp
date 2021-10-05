@@ -26,7 +26,7 @@ const PurchaseCard = ({
   ...props
 }: PurchaseCardProps) => {
   return (
-    <S.PC_Li key={gallId}>
+    <S.PC_Li key={gallId} v="info">
       <S.PC_Preview src={preview} />
       <S.PC_Info li_type="extension">{extension}</S.PC_Info>
       <S.PC_Info li_type="when">{when}</S.PC_Info>
@@ -110,12 +110,14 @@ export const PurchaseItem = ({}: PurchaseProps): React.ReactElement => {
                 </S.PC_DateBox>
               </S.PC_DateContainer>
               <S.PC_Modal>
-                <S.PC_TxtBox>
-                  <S.PC_Txt>이미지</S.PC_Txt>
-                  <S.PC_Txt>확장자</S.PC_Txt>
-                  <S.PC_Txt>날짜</S.PC_Txt>
-                  <S.PC_Txt>작가</S.PC_Txt>
-                </S.PC_TxtBox>
+                <S.PC_Ul>
+                  <S.PC_Li key={1} v="default">
+                    <S.PC_Info li_type="preview">사진</S.PC_Info>
+                    <S.PC_Info li_type="extension">확장자</S.PC_Info>
+                    <S.PC_Info li_type="when">시간</S.PC_Info>
+                    <S.PC_Info li_type="author">작가</S.PC_Info>
+                  </S.PC_Li>
+                </S.PC_Ul>
                 <S.PC_Ul>
                   {item &&
                     item.map((info: any) =>

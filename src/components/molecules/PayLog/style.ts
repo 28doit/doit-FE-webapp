@@ -33,13 +33,13 @@ export const PC_Title = styled.h2`
   padding: 3rem 0;
 `;
 
-export const PayDateContainer = styled.div`
+export const PC_DateContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 40rem;
 `;
 
-export const PayDateBox = styled.div`
+export const PC_DateBox = styled.div`
   display: flex;
   width: 12rem;
   margin-bottom: 1rem;
@@ -67,7 +67,7 @@ export const PC_Modal = styled.div`
     0 1rem 1rem rgba(0, 0, 0, 0.22);
 `;
 
-export const PayDatePicker = styled(DatePicker)`
+export const PC_DatePicker = styled(DatePicker)`
   margin-top: 3rem;
   width: 10rem;
   height: 3.8rem;

@@ -4,6 +4,7 @@ import * as S from './style';
 import { re_password } from '../../../redux/services/auth.service';
 import ROUTES from '../../../commons/routes';
 import { ModalLoading } from '../../index';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface ModalItemProps {}
 
@@ -44,69 +45,80 @@ export const RePasswordModal = ({}: ModalItemProps): React.ReactElement => {
   };
 
   return (
-    <S.RePasswordOverlay>
-      <S.RePasswordInner>
-        <S.RePasswordContainer>
-          {Loading ? <ModalLoading /> : ''}
-          {ReOk ? <RePasswordSuccessModal /> : ''}
-          <S.RePasswordTitle>비밀번호 재설정</S.RePasswordTitle>
-          <S.RePasswordForm onSubmit={onSubmitHandler}>
-            <S.RePasswordInputWrap>
-              <S.RePasswordLabel htmlFor="reName">이름</S.RePasswordLabel>
-              <S.RePasswordInput
-                id="reName"
-                name="Name"
-                value={Name}
-                placeholder="이름을 입력해주세요"
-                inputType="text"
-                onChange={onChangeUser}
-              />
-            </S.RePasswordInputWrap>
-            <S.RePasswordInputWrap>
-              <S.RePasswordLabel htmlFor="reEmail">이메일</S.RePasswordLabel>
-              <S.RePasswordInput
-                id="reEmail"
-                name="Email"
-                value={Email}
-                placeholder="이메일을 입력하세요"
-                inputType="text"
-                onChange={onChangeUser}
-              />
-            </S.RePasswordInputWrap>
-            <S.RePasswordInputWrap>
-              <S.RePasswordLabel htmlFor="rePhone">전화 번호</S.RePasswordLabel>
-              <S.RePasswordInput
-                id="rePhone"
-                name="Phone"
-                value={Phone}
-                placeholder="- 빼고 입력"
-                inputType="text"
-                onChange={onChangeUser}
-              />
-            </S.RePasswordInputWrap>
-            <S.RePasswordBtn btntype="default">확인</S.RePasswordBtn>
-          </S.RePasswordForm>
-        </S.RePasswordContainer>
-      </S.RePasswordInner>
-    </S.RePasswordOverlay>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Container>
+              {Loading ? <ModalLoading /> : ''}
+              {ReOk ? <PC_SuccessModal /> : ''}
+              <S.PC_Title>비밀번호 재설정</S.PC_Title>
+              <S.PC_Form onSubmit={onSubmitHandler}>
+                <S.PC_Box box="input">
+                  <S.PC_Label htmlFor="reName">이름</S.PC_Label>
+                  <S.PC_Input
+                    id="reName"
+                    name="Name"
+                    value={Name}
+                    placeholder="이름을 입력해주세요"
+                    inputType="text"
+                    onChange={onChangeUser}
+                  />
+                </S.PC_Box>
+                <S.PC_Box box="input">
+                  <S.PC_Label htmlFor="reEmail">이메일</S.PC_Label>
+                  <S.PC_Input
+                    id="reEmail"
+                    name="Email"
+                    value={Email}
+                    placeholder="이메일을 입력하세요"
+                    inputType="text"
+                    onChange={onChangeUser}
+                  />
+                </S.PC_Box>
+                <S.PC_Box box="input">
+                  <S.PC_Label htmlFor="rePhone">전화 번호</S.PC_Label>
+                  <S.PC_Input
+                    id="rePhone"
+                    name="Phone"
+                    value={Phone}
+                    placeholder="- 빼고 입력"
+                    inputType="text"
+                    onChange={onChangeUser}
+                  />
+                </S.PC_Box>
+                <S.PC_Btn b_type="default" btntype="default">
+                  확인
+                </S.PC_Btn>
+              </S.PC_Form>
+            </S.PC_Container>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };
 
-export const RePasswordSuccessModal =
-  ({}: ModalItemProps): React.ReactElement => {
-    const history = useHistory();
-    const onReOkHandler = (e: any) => {
-      e.preventDefault();
-      history.replace(ROUTES.LOGIN);
-    };
-    return (
-      <S.SuccessBackground>
-        <S.SuccessBox>
-          이메일을 확인해주세요!
-          <S.SuccessBtn btnOnClick={onReOkHandler}>
-            로그인 화면으로
-          </S.SuccessBtn>
-        </S.SuccessBox>
-      </S.SuccessBackground>
-    );
+export const PC_SuccessModal = ({}: ModalItemProps): React.ReactElement => {
+  const history = useHistory();
+  const onReOkHandler = (e: any) => {
+    e.preventDefault();
+    history.replace(ROUTES.LOGIN);
   };
+  return (
+    <S.PC_Background>
+      <S.PC_Box box="success">
+        이메일을 확인해주세요!
+        <S.PC_Btn b_type="success" btnOnClick={onReOkHandler}>
+          로그인 화면으로
+        </S.PC_Btn>
+      </S.PC_Box>
+    </S.PC_Background>
+  );
+};

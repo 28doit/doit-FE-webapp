@@ -81,19 +81,31 @@ export const PC_Modal = styled.div`
 
 export const PC_Ul = styled.ul``;
 
-export const PC_Li = styled.li`
+export const PC_Li =
+  styled.li <
+  { v: string } >
+  `
+  ${(props) =>
+    props.v === 'default' &&
+    css`
+      height: 5rem;
+    `}
+  ${(props) =>
+    props.v === 'info' &&
+    css`
+      height: 25rem;
+    `}
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  height: 25rem;
   font-size: 1.8rem;
   font-family: elice;
   color: #f2f2f2;
 `;
 
 export const PC_Preview = styled.img`
-  width: 20%;
+  width: 18%;
   text-align: center;
 `;
 
@@ -117,20 +129,10 @@ ${(props) =>
     width: 10%;
     color: black;
   `}
+  ${(props) =>
+    props.li_type === 'preview' &&
+    css`
+      width: 20%;
+    `}
 text-align: center;
-`;
-
-export const PC_TxtBox = styled.div`
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-export const PC_Txt = styled.div`
-  text-align: center;
-  color: white;
-  font-size: 1.8rem;
-  font-family: elice;
 `;
