@@ -136,4 +136,5 @@ export const InfoHr = styled.hr``;
 
 export const Pay = styled(Btn)`
   width: 200px;
+  background-color: #0197ea;
 `;

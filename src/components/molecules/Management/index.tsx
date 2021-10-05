@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as S from './style';
 import { Card } from '../../index';
 import { get_management } from '../../../redux/services/auth.service';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface ManagementProps {}
 
@@ -10,14 +11,14 @@ const ManageResult = (some: any) => {
     <>
       {some &&
         some.map((info: any) => (
-          <S.ManageLi key={info.gall_id}>
+          <S.PC_Li key={info.gall_id}>
             <Card
               CardType="type05"
               imgWidth="280px"
               imgHeight="180px"
               likeImg={info.src}
             />
-          </S.ManageLi>
+          </S.PC_Li>
         ))}
     </>
   );
@@ -28,14 +29,14 @@ const ManageDeny = (some: any) => {
     <>
       {some &&
         some.map((info: any) => (
-          <S.ManageLi key={info.gall_id}>
+          <S.PC_Li key={info.gall_id}>
             <Card
               CardType="type06"
               imgWidth="280px"
               imgHeight="240px"
               likeImg={info.src}
             />
-          </S.ManageLi>
+          </S.PC_Li>
         ))}
     </>
   );
@@ -86,44 +87,82 @@ export const ManagementItem = ({}: ManagementProps): React.ReactElement => {
   }, []);
 
   return (
-    <S.ManageContainer>
-      <S.ManageTitle>이미지 관리</S.ManageTitle>
-      <S.ManageBtnBox>
-        {access ? (
-          <S.ManageCheckBtnYes btnOnClick={onServiceHandler} btnId="access">
-            승인
-          </S.ManageCheckBtnYes>
-        ) : (
-          <S.ManageCheckBtnNo btnOnClick={onServiceHandler} btnId="access">
-            승인
-          </S.ManageCheckBtnNo>
-        )}
-        {inProcess ? (
-          <S.ManageCheckBtnYes btnOnClick={onServiceHandler} btnId="inProcess">
-            심사 중
-          </S.ManageCheckBtnYes>
-        ) : (
-          <S.ManageCheckBtnNo btnOnClick={onServiceHandler} btnId="inProcess">
-            심사 중
-          </S.ManageCheckBtnNo>
-        )}
-        {deny ? (
-          <S.ManageCheckBtnYes btnOnClick={onServiceHandler} btnId="deny">
-            승인 불가
-          </S.ManageCheckBtnYes>
-        ) : (
-          <S.ManageCheckBtnNo btnOnClick={onServiceHandler} btnId="deny">
-            승인 불가
-          </S.ManageCheckBtnNo>
-        )}
-      </S.ManageBtnBox>
-      <S.ManageResultBox>
-        <S.ManageUl>
-          {access ? ManageResult(accessItem) : ''}
-          {inProcess ? ManageResult(inProcessItem) : ''}
-          {deny ? ManageDeny(denyItem) : ''}
-        </S.ManageUl>
-      </S.ManageResultBox>
-    </S.ManageContainer>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Container>
+              <S.PC_Title>이미지 관리</S.PC_Title>
+              <S.PC_Box box="btn">
+                {access ? (
+                  <S.PC_Btn
+                    b_type="yes"
+                    btnOnClick={onServiceHandler}
+                    btnId="access"
+                  >
+                    승인
+                  </S.PC_Btn>
+                ) : (
+                  <S.PC_Btn
+                    b_type="no"
+                    btnOnClick={onServiceHandler}
+                    btnId="access"
+                  >
+                    승인
+                  </S.PC_Btn>
+                )}
+                {inProcess ? (
+                  <S.PC_Btn
+                    b_type="yes"
+                    btnOnClick={onServiceHandler}
+                    btnId="inProcess"
+                  >
+                    심사 중
+                  </S.PC_Btn>
+                ) : (
+                  <S.PC_Btn
+                    b_type="no"
+                    btnOnClick={onServiceHandler}
+                    btnId="inProcess"
+                  >
+                    심사 중
+                  </S.PC_Btn>
+                )}
+                {deny ? (
+                  <S.PC_Btn
+                    b_type="yes"
+                    btnOnClick={onServiceHandler}
+                    btnId="deny"
+                  >
+                    승인 불가
+                  </S.PC_Btn>
+                ) : (
+                  <S.PC_Btn
+                    b_type="no"
+                    btnOnClick={onServiceHandler}
+                    btnId="deny"
+                  >
+                    승인 불가
+                  </S.PC_Btn>
+                )}
+              </S.PC_Box>
+              <S.PC_Box box="result">
+                <S.PC_Ul>
+                  {access ? ManageResult(accessItem) : ''}
+                  {inProcess ? ManageResult(inProcessItem) : ''}
+                  {deny ? ManageDeny(denyItem) : ''}
+                </S.PC_Ul>
+              </S.PC_Box>
+            </S.PC_Container>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };

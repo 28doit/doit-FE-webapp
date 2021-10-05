@@ -34,4 +34,5 @@ export const PC_P = styled.p`
 
 export const PC_Btn = styled(Btn)`
   width: 30%;
+  background-color: #0197ea;
 `;

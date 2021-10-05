@@ -12,7 +12,7 @@ export const PC_Overlay = styled.div`
 
 export const PC_Inner = styled.div`
   width: 90%;
-  height: 80%;
+  height: 90%;
   padding: 3rem 2rem;
   background: #fff;
   margin: 5rem;
@@ -60,6 +60,7 @@ export const PC_Btn = styled(Btn)`
   margin-top: 2.4rem;
   width: 10rem;
   border-radius: 0.4rem;
+  background-color: #0197ea;
 `;
 
 export const PC_Modal = styled.div`
