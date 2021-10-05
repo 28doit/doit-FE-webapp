@@ -571,7 +571,7 @@
 #### 21.10.05 01:30
 
     - PC
-    => PayLog, Purchase, RePassword, 404 1차 완료
+    => PayLog, Purchase, RePassword, 404, Notice 1차 완료
     => 어색 했었던 css도 수정 중
 </div>
 </details>
