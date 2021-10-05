@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoadingBackground = styled.div`
+export const PC_Background = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,12 +12,14 @@ export const LoadingBackground = styled.div`
   align-items: center;
 `;
 
-export const LoadingBox = styled.div`
+export const PC_Box = styled.div`
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  width: 600px;
-  height: 300px;
+  border-radius: 1rem;
+  width: 60rem;
+  height: 30rem;
+  font-family: elice;
+  font-size: 3rem;
 `;

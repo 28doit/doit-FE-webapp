@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import { Card } from '../../index';
 import { get_favorite } from '../../../redux/services/auth.service';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface FavoriteProps {}
 
 export const FavoriteImg = (some: any) => {
   return (
-    <S.MyFBox>
-      <S.MyFUl>
+    <S.PC_Box box="info">
+      <S.PC_Ul>
         {some &&
           some.map((info: any) => (
-            <S.MyFLi key={info.img_id}>
+            <S.PC_Li key={info.img_id}>
               <Card
                 CardType="type03"
                 imgWidth="330px"
@@ -19,20 +20,20 @@ export const FavoriteImg = (some: any) => {
                 isSubscribe={info.subscribe}
                 likeImg={info.src}
               />
-            </S.MyFLi>
+            </S.PC_Li>
           ))}
-      </S.MyFUl>
-    </S.MyFBox>
+      </S.PC_Ul>
+    </S.PC_Box>
   );
 };
 
 export const FavoriteAuthor = (some: any) => {
   return (
-    <S.MyFBox>
-      <S.MyFUl>
+    <S.PC_Box box="info">
+      <S.PC_Ul>
         {some &&
           some.map((info: any) => (
-            <S.MyFLi key={info.author}>
+            <S.PC_Li key={info.author}>
               <Card
                 CardType="type02"
                 imgWidth="330px"
@@ -45,10 +46,10 @@ export const FavoriteAuthor = (some: any) => {
                 authorTimg={info.timg}
                 authorHimg={info.himg}
               />
-            </S.MyFLi>
+            </S.PC_Li>
           ))}
-      </S.MyFUl>
-    </S.MyFBox>
+      </S.PC_Ul>
+    </S.PC_Box>
   );
 };
 
@@ -79,30 +80,44 @@ export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
   };
 
   return (
-    <S.MyFContainer>
-      <S.MyFTitle>좋아요</S.MyFTitle>
-      <S.MyFBtnBox>
-        {favImg ? (
-          <>
-            <S.MyFImgBtnYes btnOnClick={onFavoriteHandler}>
-              좋아하는 이미지
-            </S.MyFImgBtnYes>
-            <S.MyFAuthorBtnNo btnOnClick={onFavoriteHandler}>
-              좋아하는 작가
-            </S.MyFAuthorBtnNo>
-          </>
-        ) : (
-          <>
-            <S.MyFImgBtnNo btnOnClick={onFavoriteHandler}>
-              좋아하는 이미지
-            </S.MyFImgBtnNo>
-            <S.MyFAuthorBtnYes btnOnClick={onFavoriteHandler}>
-              좋아하는 작가
-            </S.MyFAuthorBtnYes>
-          </>
-        )}
-      </S.MyFBtnBox>
-      {favImg ? FavoriteImg(imgItem) : FavoriteAuthor(authItem)}
-    </S.MyFContainer>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Container>
+              <S.PC_Title>좋아요</S.PC_Title>
+              <S.PC_Box box="btn">
+                {favImg ? (
+                  <>
+                    <S.PC_Btn b_type="imgy" btnOnClick={onFavoriteHandler}>
+                      좋아하는 이미지
+                    </S.PC_Btn>
+                    <S.PC_Btn b_type="authn" btnOnClick={onFavoriteHandler}>
+                      좋아하는 작가
+                    </S.PC_Btn>
+                  </>
+                ) : (
+                  <>
+                    <S.PC_Btn b_type="imgn" btnOnClick={onFavoriteHandler}>
+                      좋아하는 이미지
+                    </S.PC_Btn>
+                    <S.PC_Btn b_type="authy" btnOnClick={onFavoriteHandler}>
+                      좋아하는 작가
+                    </S.PC_Btn>
+                  </>
+                )}
+              </S.PC_Box>
+              {favImg ? FavoriteImg(imgItem) : FavoriteAuthor(authItem)}
+            </S.PC_Container>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };

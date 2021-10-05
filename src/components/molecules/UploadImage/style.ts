@@ -1,37 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Btn, Input, Label } from '../../index';
 
-export const UploadImageOverlay = styled.div`
+export const PC_Overlay = styled.div`
   width: 100%;
-  height: 120%;
   background: #868e96;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const UploadImageInner = styled.div`
+export const PC_Inner = styled.div`
   width: 90%;
-  height: 80%;
-  padding: 30px 20px;
+  height: 90%;
+  padding: 3rem 2rem;
   background: #fff;
-  margin: 50px;
+  margin: 5rem;
 `;
 
-export const UploadWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const UploadTitle = styled.h2`
-  margin: 0 0 20px;
-  font-size: 25px;
+export const PC_Title = styled.h2`
+  margin: 0 0 2rem;
+  font-size: 3rem;
+  font-family: elice;
   text-align: center;
 `;
 
-export const UploadTop = styled.div`
+export const PC_Top = styled.div`
   width: 100%;
   height: 10%;
   display: flex;
@@ -40,17 +33,15 @@ export const UploadTop = styled.div`
   flex-direction: column;
 `;
 
-export const UploadPtag = styled.p`
-  font-weight: 700;
-`;
+export const PC_Ptag = styled.p``;
 
-export const UploadMid = styled.div`
+export const PC_Mid = styled.div`
   width: 100%;
   height: 60%;
   display: flex;
 `;
 
-export const UploadMidLeft = styled.div`
+export const PC_MidLeft = styled.div`
   width: 70%;
   height: 100%
   display: flex;
@@ -58,7 +49,7 @@ export const UploadMidLeft = styled.div`
   justify-content: center;
 `;
 
-export const UploadMidRight = styled.div`
+export const PC_MidRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,34 +57,26 @@ export const UploadMidRight = styled.div`
   width: 30%;
 `;
 
-export const UploadBtnImg = styled.img`
-  width: 60px;
-  height: 60px;
+export const PC_BtnImg = styled.img`
+  width: 6rem;
+  height: 6rem;
   cursor: pointer;
 `;
 
-export const UploadImageInput = styled(Input)`
-  display: none;
-`;
-
-export const UploadPreview = styled.div`
+export const PC_Preview = styled.div`
   width: 80%;
-  height: 400px;
+  height: 40rem;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const UploadPreviewImg = styled.img`
+export const PC_PreviewImg = styled.img`
   max-width: 100%;
-  max-height: 400px;
+  max-height: 40rem;
 `;
 
-export const UploadImageLabel = styled(Label)`
-  margin-top: 15px;
-`;
-
-export const UploadBot = styled.div`
+export const PC_Bot = styled.div`
   width: 100%;
   height: 20%;
   display: flex;
@@ -101,37 +84,72 @@ export const UploadBot = styled.div`
   align-items: center;
 `;
 
-export const UploadForm = styled.form`
+export const PC_Form = styled.form`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-around;
 `;
 
-export const UploadImgInputWrap = styled.div`
+export const PC_Wrap =
+  styled.div <
+  { w_type: string } >
+  `
+  ${(props) =>
+    props.w_type === 'default' &&
+    css`
+      height: 100%;
+    `}
+  ${(props) =>
+    props.w_type === 'img' &&
+    css`
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+    `}
+  ${(props) =>
+    props.w_type === 'input' &&
+    css`
+      align-items: center;
+    `}
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 `;
 
-export const UploadInputWrap = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+export const PC_Label =
+  styled(Label) <
+  { l_type: string } >
+  `
+  ${(props) =>
+    props.l_type === 'default' &&
+    css`
+      margin: 0 0 1.5rem 0;
+    `}
+  ${(props) =>
+    props.l_type === 'img' &&
+    css`
+      margin: 1.5rem 0 0 0;
+    `}
 `;
 
-export const UploadLabel = styled(Label)`
-  margin-bottom: 15px;
+export const PC_Input =
+  styled(Input) <
+  { i_type: string } >
+  `
+  ${(props) =>
+    props.i_type === 'default' &&
+    css`
+      width: 90%;
+    `}
+  ${(props) =>
+    props.i_type === 'img' &&
+    css`
+      display: none;
+    `}
 `;
 
-export const UploadInput = styled(Input)`
-  width: 90%;
-`;
-
-export const UploadResultBtn = styled(Btn)`
+export const PC_Btn = styled(Btn)`
   width: 20%;
+  background-color: #0197ea;
 `;

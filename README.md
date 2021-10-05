@@ -568,10 +568,17 @@
 
     - 이거 코드 처음부터 다시 수정하는 것도 재미있네 ㅋㅋ
 
-#### 21.10.05 01:30
+#### 21.10.05 11:03
 
     - PC
     => PayLog, Purchase, RePassword, 404, Notice, Management 1차 완료
     => 어색 했었던 css도 수정 중
+
+#### 21.10.06 00:30
+
+    - PC
+    => Exchange, Favorite 1차 완료
+
+    - Upload Image 50% 정도 완료
 </div>
 </details>

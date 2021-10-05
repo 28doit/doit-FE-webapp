@@ -55,7 +55,7 @@ export const PC_Btn = styled(Btn)`
 export const PC_Modal = styled.div`
   width: 70%;
   height: 80%;
-  margin-top: 4rem;
+  margin: 4rem 0 0 0;
   background-color: rgba(0, 0, 0, 0.3);
   overflow: scroll;
   &::-webkit-scrollbar {

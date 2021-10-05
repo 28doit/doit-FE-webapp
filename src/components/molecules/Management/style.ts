@@ -86,6 +86,5 @@ export const PC_Ul = styled.ul`
 `;
 
 export const PC_Li = styled.li`
-  padding-left: 4rem;
-  padding-bottom: 6rem;
+  padding: 0 6rem 6rem 2.5rem;
 `;

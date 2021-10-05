@@ -111,7 +111,7 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
                   {PayLogCard({
                     c_date: '날짜',
                     c_m_uid: '구매 번호',
-                    c_money: '구매 금액',
+                    c_money: '금액',
                     c_name: '이름',
                   })}
                 </S.PC_CardUl>
