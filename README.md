@@ -574,7 +574,7 @@
     => PayLog, Purchase, RePassword, 404, Notice, Management 1차 완료
     => 어색 했었던 css도 수정 중
 
-#### 21.10.06 00:30
+#### 21.10.06 11:25
 
     - PC
     => Exchange, Favorite, UploadImage, DashBoard, FormInput, EditProfile 1차 완료
