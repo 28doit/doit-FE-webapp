@@ -68,6 +68,7 @@ export const PC_Img = styled.img`
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
+  border: 0.3rem solid #ffffff;
 `;
 
 export const PC_Nickname = styled.div`

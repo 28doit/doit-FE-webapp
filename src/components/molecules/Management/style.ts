@@ -47,7 +47,6 @@ export const PC_Box =
     props.box === 'result' &&
     css`
       width: 98%;
-      height: 95%;
       padding-top: 3rem;
       overflow: scroll;
       &::-webkit-scrollbar {

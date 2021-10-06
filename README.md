@@ -550,7 +550,7 @@
     => 최대한 깔끔하게 꾸며 봅시다.
     => 반응형으로 많은 레이아웃 수정이 필요한 페이지 - MyPage, ImageDetaile
     => 미디어 쿼리는 3가지 분기점으로 나눠서 진행 - https://hohoya33.tistory.com/127
-    => font-size는 기본을 62.5%로 적용 후 개별의 페이지 마다 em을 사용
+    => font-size는 기본을 62.5%로 적용 후 개별의 페이지 마다 rem을 사용
 
 #### 21.10.04 21:25
 
@@ -577,7 +577,11 @@
 #### 21.10.06 00:30
 
     - PC
-    => Exchange, Favorite, UploadImage, DashBoard 1차 완료
+    => Exchange, Favorite, UploadImage, DashBoard, FormInput, EditProfile 1차 완료
 
+    => 남은 것
+    - atoms
+    - molecules - Card, Purchase 
+    - organisms
 </div>
 </details>
