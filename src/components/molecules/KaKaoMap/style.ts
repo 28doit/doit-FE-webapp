@@ -1,42 +1,56 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Btn } from '../../index';
 
-export const KakaoMapContainer = styled.div`
-  width: 100%;
-  height: 100%;
+export const PC_Fix = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PC_Container = styled.div`
+  width: 80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  background: #898e96;
 `;
 
-export const KakaoMapTitle = styled.h2`
+export const PC_Title = styled.h2`
   color: white;
-  font-size: 22px;
+  font-size: 3rem;
   font-weight: 700;
   text-align: center;
-  padding: 30px 0;
+  padding: 3rem 0;
 `;
 
-export const KakaoMapWrap = styled.div`
+export const PC_Wrap = styled.div`
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const KakaoMapDiv = styled.div`
-  width: 800px;
-  height: 600px;
+export const PC_Map =
+  styled.div <
+  { m_type: string } >
+  `
+  ${(props) => props.m_type === 'map' && css``}
+  ${(props) => props.m_type === 'loadview' && css``}
+  width: 100%;
+  height: 100%;
 `;
 
-export const KakaoRoadViewDiv = styled.div`
-  width: 800px;
-  height: 600px;
-`;
-
-export const KakaoMapBtn = styled(Btn)`
-  margin-top: 24px;
-  width: 100px;
-  border-radius: 4px;
+export const PC_Btn = styled(Btn)`
+  margin-top: 2.4rem;
+  width: 10rem;
+  background-color: #0197ea;
 `;

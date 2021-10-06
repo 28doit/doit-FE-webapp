@@ -577,7 +577,7 @@
 #### 21.10.06 00:30
 
     - PC
-    => Exchange, Favorite, UploadImage 1차 완료
+    => Exchange, Favorite, UploadImage, DashBoard 1차 완료
 
 </div>
 </details>

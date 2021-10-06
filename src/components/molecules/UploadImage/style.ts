@@ -84,7 +84,6 @@ export const PC_Mid =
     `}
   display: flex;
   align-items: center;
-  justify-content: center;
 `;
 
 export const PC_Img =
@@ -133,7 +132,8 @@ export const PC_Wrap =
   ${(props) =>
     props.w_type === 'input' &&
     css`
-      align-items: center;
+      margin: 4rem 0 0 0;
+      justify-content: space-between;
     `}
   width: 100%;
   display: flex;
