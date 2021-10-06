@@ -577,8 +577,7 @@
 #### 21.10.06 00:30
 
     - PC
-    => Exchange, Favorite 1차 완료
+    => Exchange, Favorite, UploadImage 1차 완료
 
-    - Upload Image 50% 정도 완료
 </div>
 </details>

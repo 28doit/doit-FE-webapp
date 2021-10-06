@@ -24,43 +24,10 @@ export const PC_Title = styled.h2`
   text-align: center;
 `;
 
-export const PC_Top = styled.div`
-  width: 100%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export const PC_Ptag = styled.p``;
-
-export const PC_Mid = styled.div`
-  width: 100%;
-  height: 60%;
-  display: flex;
-`;
-
-export const PC_MidLeft = styled.div`
-  width: 70%;
-  height: 100%
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const PC_MidRight = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 30%;
-`;
-
-export const PC_BtnImg = styled.img`
-  width: 6rem;
-  height: 6rem;
-  cursor: pointer;
+export const PC_P = styled.p`
+  font-size: 2.5rem;
+  font-family: elice;
+  text-align: center;
 `;
 
 export const PC_Preview = styled.div`
@@ -71,17 +38,73 @@ export const PC_Preview = styled.div`
   align-items: center;
 `;
 
-export const PC_PreviewImg = styled.img`
-  max-width: 100%;
-  max-height: 40rem;
+export const PC_Box =
+  styled.div <
+  { where: string } >
+  `
+  ${(props) =>
+    props.where === 'top' &&
+    css`
+      height: 10%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    `}
+  ${(props) =>
+    props.where === 'mid' &&
+    css`
+      height: 60%;
+    `}
+  ${(props) =>
+    props.where === 'bot' &&
+    css`
+      height: 20%;
+      justify-content: space-around;
+      align-items: center;
+    `}
+  width: 100%;
+  display: flex;
 `;
 
-export const PC_Bot = styled.div`
-  width: 100%;
-  height: 20%;
+export const PC_Mid =
+  styled.div <
+  { mid: string } >
+  `
+  ${(props) =>
+    props.mid === 'left' &&
+    css`
+      width: 70%;
+      height: 100%;
+    `}
+  ${(props) =>
+    props.mid === 'right' &&
+    css`
+      flex-direction: column;
+      width: 30%;
+    `}
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
+`;
+
+export const PC_Img =
+  styled.img <
+  { img_type: string } >
+  `
+  ${(props) =>
+    props.img_type === 'btn' &&
+    css`
+      width: 6rem;
+      height: 6rem;
+      cursor: pointer;
+    `}
+  ${(props) =>
+    props.img_type === 'preview' &&
+    css`
+      max-width: 100%;
+      max-height: 40rem;
+    `}
+  
 `;
 
 export const PC_Form = styled.form`
@@ -105,7 +128,7 @@ export const PC_Wrap =
     css`
       height: 100%;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
     `}
   ${(props) =>
     props.w_type === 'input' &&
@@ -150,6 +173,6 @@ export const PC_Input =
 `;
 
 export const PC_Btn = styled(Btn)`
-  width: 20%;
+  width: 10rem;
   background-color: #0197ea;
 `;

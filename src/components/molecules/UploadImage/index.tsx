@@ -103,19 +103,19 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
               ) : (
                 ''
               )}
-              <S.PC_Top>
+              <S.PC_Box where="top">
                 <S.PC_Title>버튼을 눌러 파일을 업로드 하세요</S.PC_Title>
-                <S.PC_Ptag>사진(JPG, PNG)</S.PC_Ptag>
-              </S.PC_Top>
-              <S.PC_Mid>
+                <S.PC_P>사진(JPG, PNG)</S.PC_P>
+              </S.PC_Box>
+              <S.PC_Box where="mid">
                 <S.PC_Form encType="multipart/form-data">
-                  <S.PC_MidLeft>
+                  <S.PC_Mid mid="left">
                     <S.PC_Wrap w_type="img">
                       <S.PC_Preview>
-                        <S.PC_PreviewImg src={ImgBase64} />
+                        <S.PC_Img src={ImgBase64} img_type="preview" />
                       </S.PC_Preview>
                       <S.PC_Label l_type="img" htmlFor="imageIn">
-                        <S.PC_BtnImg src={PLUS} />
+                        <S.PC_Img src={PLUS} img_type="btn" />
                       </S.PC_Label>
                     </S.PC_Wrap>
                     <S.PC_Input
@@ -126,8 +126,8 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
                       name="file"
                       onChange={onChangeImgHandler}
                     />
-                  </S.PC_MidLeft>
-                  <S.PC_MidRight>
+                  </S.PC_Mid>
+                  <S.PC_Mid mid="right">
                     <S.PC_Wrap w_type="input">
                       <S.PC_Label l_type="default" htmlFor="first">
                         검색 키워드
@@ -159,14 +159,14 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
                       />
                     </S.PC_Wrap>
                     <S.PC_Btn btnOnClick={onSubmitHandler}>업로드</S.PC_Btn>
-                  </S.PC_MidRight>
+                  </S.PC_Mid>
                 </S.PC_Form>
-              </S.PC_Mid>
-              <S.PC_Bot>
-                <S.PC_Ptag>나중에 그림 설명 같은거 넣을 예정</S.PC_Ptag>
-                <S.PC_Ptag>나중에 그림 설명 같은거 넣을 예정</S.PC_Ptag>
-                <S.PC_Ptag>나중에 그림 설명 같은거 넣을 예정</S.PC_Ptag>
-              </S.PC_Bot>
+              </S.PC_Box>
+              <S.PC_Box where="bot">
+                <S.PC_P>설명 1</S.PC_P>
+                <S.PC_P>설명 2</S.PC_P>
+                <S.PC_P>설명 3</S.PC_P>
+              </S.PC_Box>
             </S.PC_Wrap>
           </S.PC_Inner>
         </S.PC_Overlay>
