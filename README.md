@@ -568,20 +568,20 @@
 
     - 이거 코드 처음부터 다시 수정하는 것도 재미있네 ㅋㅋ
 
-#### 21.10.05 11:03
+#### 21.10.05 23:03
 
     - PC
     => PayLog, Purchase, RePassword, 404, Notice, Management 1차 완료
     => 어색 했었던 css도 수정 중
 
-#### 21.10.06 11:25
+#### 21.10.06 23:25
 
     - PC
-    => Exchange, Favorite, UploadImage, DashBoard, FormInput, EditProfile 1차 완료
+    => Exchange, Favorite, UploadImage, DashBoard, FormInput, EditProfile, PaymentItem 1차 완료
 
     => 남은 것
     - atoms
-    - molecules - Card, Purchase 
+    - molecules - Card 
     - organisms
 </div>
 </details>

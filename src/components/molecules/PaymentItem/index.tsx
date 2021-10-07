@@ -154,162 +154,177 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
       </Tablet>
       <PC>
         {Loading ? <ModalLoading /> : ''}
-        <S.PaymentContainer>
-          <S.PaymentBox>
-            <S.PaymentTitle>결제하실 상품을 선택해주세요</S.PaymentTitle>
-            <S.PaymentTextBox>
-              <S.TextBoxP>상품 선택</S.TextBoxP>
-              <S.TextRedBoxP>*부가세 10% 별도</S.TextRedBoxP>
-            </S.PaymentTextBox>
-            <S.ServiceBox>
-              <S.ServiceSelect
-                id="first"
-                className="1000"
-                onClick={onServiceCheckHandler}
-              >
-                {first ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 1,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 1,000 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="second"
-                className="3000"
-                onClick={onServiceCheckHandler}
-              >
-                {second ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 3,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 3,000 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="third"
-                className="5000"
-                onClick={onServiceCheckHandler}
-              >
-                {third ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 5,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 5,000 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="fourth"
-                className="10000"
-                onClick={onServiceCheckHandler}
-              >
-                {fourth ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 10,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 11,500 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="fifth"
-                className="30000"
-                onClick={onServiceCheckHandler}
-              >
-                {fifth ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 30,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 34,500 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="sixth"
-                className="50000"
-                onClick={onServiceCheckHandler}
-              >
-                {sixth ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 50,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 57,500 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="seventh"
-                className="100000"
-                onClick={onServiceCheckHandler}
-              >
-                {seventh ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 100,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 120,000 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="eighth"
-                className="300000"
-                onClick={onServiceCheckHandler}
-              >
-                {eighth ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 300,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 360,000 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-              <S.ServiceSelect
-                id="ninth"
-                className="500000"
-                onClick={onServiceCheckHandler}
-              >
-                {ninth ? (
-                  <S.ServiceYes></S.ServiceYes>
-                ) : (
-                  <S.ServiceNo></S.ServiceNo>
-                )}
-                <S.ServiceBoxTopP>\ 500,000 결제</S.ServiceBoxTopP>
-                <S.ServiceBoxBotP>P 600,000 충전</S.ServiceBoxBotP>
-              </S.ServiceSelect>
-            </S.ServiceBox>
-            <S.InfoBox>
-              <S.InfoTextBox>
-                <S.InfoLeftP>충전되는포인트</S.InfoLeftP>
-                {money < 9000 ? (
-                  <S.InfoRightP>{money}P</S.InfoRightP>
-                ) : money < 90000 ? (
-                  <S.InfoRightP>
-                    {money}P + {money * 0.15}P = {money + money * 0.15}P
-                  </S.InfoRightP>
-                ) : (
-                  <S.InfoRightP>
-                    {money}P + {money * 0.2}P = {money + money * 0.2}P
-                  </S.InfoRightP>
-                )}
-              </S.InfoTextBox>
-              <S.InfoHr />
-              <S.InfoTextBox>
-                <S.InfoLeftP>부가세(10%)</S.InfoLeftP>
-                <S.InfoRightP>+ {money / 10}원</S.InfoRightP>
-              </S.InfoTextBox>
-              <S.InfoHr />
-              <S.InfoTextBox>
-                <S.InfoLeftP>최종결제금액</S.InfoLeftP>
-                <S.InfoRightP>{money + money / 10}원</S.InfoRightP>
-              </S.InfoTextBox>
-              <S.InfoHr />
-            </S.InfoBox>
-            <S.Pay btnOnClick={onClickPayment}>결제하기</S.Pay>
-          </S.PaymentBox>
-        </S.PaymentContainer>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Container>
+              <S.PC_Box box="default">
+                <S.PC_Title>결제하실 상품을 선택해주세요</S.PC_Title>
+                <S.PC_Wrap wrap="text">
+                  <S.PC_P where="t_l">상품 선택</S.PC_P>
+                  <S.PC_P where="t_r">*부가세 10% 별도</S.PC_P>
+                </S.PC_Wrap>
+                <S.PC_Box box="service">
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="first"
+                    className="1000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {first ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 1,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 1,000 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="second"
+                    className="3000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {second ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 3,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 3,000 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="third"
+                    className="5000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {third ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 5,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 5,000 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="fourth"
+                    className="10000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {fourth ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 10,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 11,500 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="fifth"
+                    className="30000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {fifth ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 30,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 34,500 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="sixth"
+                    className="50000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {sixth ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 50,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 57,500 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="seventh"
+                    className="100000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {seventh ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 100,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 120,000 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="eighth"
+                    className="300000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {eighth ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 300,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 360,000 충전</S.PC_P>
+                  </S.PC_Wrap>
+                  <S.PC_Wrap
+                    wrap="service"
+                    id="ninth"
+                    className="500000"
+                    onClick={onServiceCheckHandler}
+                  >
+                    {ninth ? (
+                      <S.PC_Click c_type="yes"></S.PC_Click>
+                    ) : (
+                      <S.PC_Click c_type="no"></S.PC_Click>
+                    )}
+                    <S.PC_P where="s_t">\ 500,000 결제</S.PC_P>
+                    <S.PC_P where="s_b">P 600,000 충전</S.PC_P>
+                  </S.PC_Wrap>
+                </S.PC_Box>
+                <S.PC_Box box="info">
+                  <S.PC_Wrap wrap="info">
+                    <S.PC_Result where="left">충전되는포인트</S.PC_Result>
+                    {money < 9000 ? (
+                      <S.PC_Result where="right">{money}P</S.PC_Result>
+                    ) : money < 90000 ? (
+                      <S.PC_Result where="right">
+                        {money}P + {money * 0.15}P = {money + money * 0.15}P
+                      </S.PC_Result>
+                    ) : (
+                      <S.PC_Result where="right">
+                        {money}P + {money * 0.2}P = {money + money * 0.2}P
+                      </S.PC_Result>
+                    )}
+                  </S.PC_Wrap>
+                  <S.PC_Hr />
+                  <S.PC_Wrap wrap="info">
+                    <S.PC_Result where="left">부가세(10%)</S.PC_Result>
+                    <S.PC_Result where="right">+ {money / 10}원</S.PC_Result>
+                  </S.PC_Wrap>
+                  <S.PC_Hr />
+                  <S.PC_Wrap wrap="info">
+                    <S.PC_Result where="left">최종결제금액</S.PC_Result>
+                    <S.PC_Result where="right">
+                      {money + money / 10}원
+                    </S.PC_Result>
+                  </S.PC_Wrap>
+                  <S.PC_Hr />
+                </S.PC_Box>
+                <S.PC_Btn btnOnClick={onClickPayment}>결제하기</S.PC_Btn>
+              </S.PC_Box>
+            </S.PC_Container>
+          </S.PC_Inner>
+        </S.PC_Overlay>
       </PC>
     </>
   );
