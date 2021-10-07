@@ -14,8 +14,6 @@ import {
 export interface Item {
   key: number;
   imgSrc?: any;
-  imgWidth?: string;
-  imgHeight?: string;
   viewCount?: number;
   downloadCount?: number;
   likeCount?: number;
@@ -50,8 +48,6 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           */
           key: somet.key,
           imgSrc: somet.imgSrc,
-          imgWidth: '330px',
-          imgHeight: '200px',
           isSubscribe: somet.isSubscribe,
           author: somet.author,
           viewCount: somet.viewCount,
@@ -129,8 +125,6 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
                 <Card
                   CardType="type01"
                   imgSrc={item.imgSrc}
-                  imgWidth={item.imgWidth}
-                  imgHeight={item.imgHeight}
                   isSubscribe={item.isSubscribe}
                   author={item.author}
                   viewCount={item.viewCount}
@@ -173,8 +167,6 @@ export const CategoryGridItems = () => {
                   <Card
                     CardType="type04"
                     imgSrc={info.src}
-                    imgWidth="330px"
-                    imgHeight="200px"
                     imgCategory={info.category}
                     cardOnclick={() => {
                       history.push(`${ROUTES.CATEGORYITEM}${info.category}`);

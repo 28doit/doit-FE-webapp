@@ -10,8 +10,6 @@ import { ReactComponent as TrashImg } from '../../../assets/trash.svg';
 export interface CardProps {
   CardType: string;
   imgSrc?: string;
-  imgWidth?: string;
-  imgHeight?: string;
   viewCount?: number;
   downloadCount?: number;
   likeCount?: number;
@@ -33,8 +31,6 @@ export interface CardProps {
 export const Card = ({
   CardType,
   imgSrc,
-  imgWidth,
-  imgHeight,
   viewCount,
   downloadCount,
   likeCount,
@@ -54,12 +50,11 @@ export const Card = ({
   const [show, setShow] = useState(false);
 
   return (
-    <S.CardContainer>
+    <S.PC_Container>
       {CardType === 'type01' && (
-        <S.CardDefaultWrapper cardImgWidth={imgWidth} cardImgHeight={imgHeight}>
-          <S.CardDefaultImg
-            cardImgWidth={imgWidth}
-            cardImgHeight={imgHeight}
+        <S.PC_Wrap w_type="t_1">
+          <S.PC_Img
+            i_type="default"
             src={imgSrc}
             onMouseOver={() => setShow(true)}
             onMouseOut={() => setShow(false)}
@@ -82,44 +77,43 @@ export const Card = ({
                 <S.ModalMidImg>
                   <ViewImg width="20" height="20" fill="#f9f9f9" />
                 </S.ModalMidImg>
-                <S.ModalMidP>{viewCount}</S.ModalMidP>
+                <S.PC_P p_type="default">{viewCount}</S.PC_P>
                 <S.ModalMidImg>
                   <DownloadImg width="20" height="20" fill="#f9f9f9" />
                 </S.ModalMidImg>
-                <S.ModalMidP>{downloadCount}</S.ModalMidP>
+                <S.PC_P p_type="default">{downloadCount}</S.PC_P>
                 <S.ModalMidImg>
                   <LikeImg width="20" height="20" fill="#f9f9f9" />
                 </S.ModalMidImg>
-                <S.ModalMidP>{likeCount}</S.ModalMidP>
+                <S.PC_P p_type="default">{likeCount}</S.PC_P>
               </S.ModalMid>
               <S.ModalBot>
-                <S.ModalAuthorImg src={proFileImg} />
+                <S.PC_Img i_type="author" src={proFileImg} />
                 <S.ModalAuthor>{author}</S.ModalAuthor>
               </S.ModalBot>
             </S.DefaultHoverModal>
           )}
-        </S.CardDefaultWrapper>
+        </S.PC_Wrap>
       )}
       {CardType === 'type02' && (
-        <S.CardDefaultWrapper
-          cardImgWidth={imgWidth}
-          cardImgHeight={imgHeight}
+        <S.PC_Wrap
+          w_type="t_2"
           onMouseOver={() => setShow(true)}
           onMouseOut={() => setShow(false)}
           onClick={cardOnclick}
         >
-          <S.AuthorBox>
+          <S.PC_Box box="author">
             <S.AuthorBoxTop>
               {show && (
                 <>
                   {isSubscribe ? (
-                    <S.AuthorTopImg>
+                    <S.PC_ImgBox img_box="author">
                       <Heart width="30" height="30" fill="#d7443e" />
-                    </S.AuthorTopImg>
+                    </S.PC_ImgBox>
                   ) : (
-                    <S.AuthorTopImg>
+                    <S.PC_ImgBox img_box="author">
                       <Heart width="30" height="30" fill="black" />
-                    </S.AuthorTopImg>
+                    </S.PC_ImgBox>
                   )}
                 </>
               )}
@@ -130,106 +124,95 @@ export const Card = ({
             </S.AuthorBoxMid>
             <S.AuthorBoxBot>
               <S.AuthorPhotos>
-                <S.AuthorPhotosImg src={authorFimg} />
-                <S.AuthorPhotosImg src={authorSimg} />
-                <S.AuthorPhotosImg src={authorTimg} />
-                <S.AuthorPhotosImg src={authorHimg} />
+                <S.PC_Img i_type="a_photos" src={authorFimg} />
+                <S.PC_Img i_type="a_photos" src={authorSimg} />
+                <S.PC_Img i_type="a_photos" src={authorTimg} />
+                <S.PC_Img i_type="a_photos" src={authorHimg} />
               </S.AuthorPhotos>
             </S.AuthorBoxBot>
-          </S.AuthorBox>
-        </S.CardDefaultWrapper>
+          </S.PC_Box>
+        </S.PC_Wrap>
       )}
       {CardType === 'type03' && (
-        <S.CardDefaultWrapper
-          cardImgWidth={imgWidth}
-          cardImgHeight={imgHeight}
+        <S.PC_Wrap
+          w_type="t_3"
           onMouseOver={() => setShow(true)}
           onMouseOut={() => setShow(false)}
           onClick={cardOnclick}
         >
-          <S.LikeImgBox>
+          <S.PC_Box box="like">
             {show && (
               <>
                 {isSubscribe ? (
-                  <S.LikeImgHeart>
+                  <S.PC_ImgBox img_box="like">
                     <Heart width="30" height="30" fill="#d7443e" />
-                  </S.LikeImgHeart>
+                  </S.PC_ImgBox>
                 ) : (
-                  <S.LikeImgHeart>
+                  <S.PC_ImgBox img_box="like">
                     <Heart width="30" height="30" fill="black" />
-                  </S.LikeImgHeart>
+                  </S.PC_ImgBox>
                 )}
               </>
             )}
-            <S.LikeImg src={likeImg} />
-          </S.LikeImgBox>
-        </S.CardDefaultWrapper>
+            <S.PC_Img i_type="like" src={likeImg} />
+          </S.PC_Box>
+        </S.PC_Wrap>
       )}
       {CardType === 'type04' && (
-        <S.CardDefaultWrapper
-          cardImgWidth={imgWidth}
-          cardImgHeight={imgHeight}
-          onClick={cardOnclick}
-        >
-          <S.CardCategoryDiv>
-            <S.CardCategoryImg
-              cardImgWidth={imgWidth}
-              cardImgHeight={imgHeight}
-              src={imgSrc}
-            />
-          </S.CardCategoryDiv>
+        <S.PC_Wrap w_type="t_4" onClick={cardOnclick}>
+          <S.CardCategoryImgBox>
+            <S.PC_Img i_type="category" src={imgSrc} />
+          </S.CardCategoryImgBox>
           <S.DefaultHoverModal>
             <S.CardCategoryMid>
-              <S.CardCategoryP>{imgCategory}</S.CardCategoryP>
-              <S.ModalMidP>&nbsp;이미지</S.ModalMidP>
+              <S.PC_P p_type="category">{imgCategory}</S.PC_P>
+              <S.PC_P p_type="default">&nbsp;이미지</S.PC_P>
             </S.CardCategoryMid>
           </S.DefaultHoverModal>
-        </S.CardDefaultWrapper>
+        </S.PC_Wrap>
       )}
       {CardType === 'type05' && (
-        <S.CardDefaultWrapper
-          cardImgWidth={imgWidth}
-          cardImgHeight={imgHeight}
+        <S.PC_Wrap
+          w_type="t_5"
           onMouseOver={() => setShow(true)}
           onMouseOut={() => setShow(false)}
           onClick={cardOnclick}
         >
-          <S.LikeImgBox>
+          <S.PC_Box box="like">
             {show && (
               <>
-                <S.LikeImgHeart>
+                <S.PC_ImgBox img_box="like">
                   <EditImg width="30" height="30" />
-                </S.LikeImgHeart>
-                <S.ManageImg>
+                </S.PC_ImgBox>
+                <S.PC_ImgBox img_box="manage">
                   <TrashImg width="30" height="30" />
-                </S.ManageImg>
+                </S.PC_ImgBox>
               </>
             )}
-            <S.LikeImg src={likeImg} />
-          </S.LikeImgBox>
-        </S.CardDefaultWrapper>
+            <S.PC_Img i_type="like" src={likeImg} />
+          </S.PC_Box>
+        </S.PC_Wrap>
       )}
       {CardType === 'type06' && (
-        <S.CardDefaultWrapper
-          cardImgWidth={imgWidth}
-          cardImgHeight={imgHeight}
+        <S.PC_Wrap
+          w_type="t_6"
           onMouseOver={() => setShow(true)}
           onMouseOut={() => setShow(false)}
           onClick={cardOnclick}
         >
-          <S.ManageImgBox>
+          <S.PC_Box box="manage">
             {show && (
               <>
-                <S.LikeImgHeart>
+                <S.PC_ImgBox img_box="like">
                   <TrashImg width="30" height="30" />
-                </S.LikeImgHeart>
+                </S.PC_ImgBox>
               </>
             )}
-            <S.ManageImgPre src={likeImg} />
+            <S.PC_Img i_type="manage" src={likeImg} />
             <S.ManageTxt>승인 불가 사유 보기 / 수정 하기</S.ManageTxt>
-          </S.ManageImgBox>
-        </S.CardDefaultWrapper>
+          </S.PC_Box>
+        </S.PC_Wrap>
       )}
-    </S.CardContainer>
+    </S.PC_Container>
   );
 };

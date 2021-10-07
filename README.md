@@ -577,11 +577,17 @@
 #### 21.10.06 23:25
 
     - PC
-    => Exchange, Favorite, UploadImage, DashBoard, FormInput, EditProfile, PaymentItem 1차 완료
+    => Exchange, Favorite, UploadImage, DashBoard, FormInput, PaymentItem 1차 완료
 
     => 남은 것
     - atoms
     - molecules - Card 
     - organisms
+
+#### 21.10.07 23:12
+
+    - PC
+    => EditProfile, PaymentItem 1차 완료
+    => Card 60% 정도 완성 - 내용이 많아서 조금 오래 걸린다.
 </div>
 </details>

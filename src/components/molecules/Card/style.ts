@@ -1,43 +1,190 @@
-/* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 
-export interface Props {
-  cardImgHeight?: string;
-  cardImgWidth?: string;
-}
+export const PC_Container = styled.div``;
 
-export const CardContainer = styled.div``;
-
-export const CardDefaultWrapper = styled.div<Props>`
-  position: relative;
-  width: ${(props) => props.cardImgWidth};
-  height: ${(props) => props.cardImgHeight};
+export const PC_Wrap =
+  styled.div <
+  { w_type: string } >
+  `
+  ${(props) =>
+    props.w_type == 't_1' &&
+    css`
+      width: 330px;
+      height: 200px;
+      position: relative;
+    `}
+  ${(props) =>
+    props.w_type == 't_2' &&
+    css`
+      width: 330px;
+      height: 330px;
+      position: relative;
+    `}
+  ${(props) =>
+    props.w_type == 't_3' &&
+    css`
+      width: 330px;
+      height: 200px;
+      position: relative;
+    `}
+  ${(props) =>
+    props.w_type == 't_4' &&
+    css`
+      width: 330px;
+      height: 200px;
+      position: relative;
+    `}
+  ${(props) =>
+    props.w_type == 't_5' &&
+    css`
+      width: 280px;
+      height: 180px;
+      position: relative;
+    `}
+  ${(props) =>
+    props.w_type == 't_6' &&
+    css`
+      width: 280px;
+      height: 240px;
+      position: relative;
+    `}
 `;
 
-export const CardDefaultImg = styled.img<Props>`
-  width: ${(props) => props.cardImgWidth};
-  height: ${(props) => props.cardImgHeight};
-  cursor: pointer;
+export const PC_Img =
+  styled.img <
+  { i_type: string } >
+  `
+${(props) =>
+  props.i_type === 'like' &&
+  css`
+    width: 95%;
+    height: 95%;
+    border-radius: 3%;
+  `}
+${(props) =>
+  props.i_type === 'manage' &&
+  css`
+    width: 95%;
+    height: 75%;
+    border-radius: 3%;
+  `}
+${(props) =>
+  props.i_type === 'a_photos' &&
+  css`
+    width: 48%;
+    height: 48%;
+    margin: 2px;
+    border-radius: 5%;
+  `}
+${(props) =>
+  props.i_type === 'default' &&
+  css`
+    width: 330px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 3%;
+  `}
+${(props) =>
+  props.i_type === 'category' &&
+  css`
+    width: 330px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 3%;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  `}
+${(props) =>
+  props.i_type === 'author' &&
+  css`
+    width: 20px;
+    hegiht: 20px;
+  `}
+`;
+
+export const PC_P =
+  styled.p <
+  { p_type: string } >
+  `
+${(props) => props.p_type === 'default' && css``}
+${(props) =>
+  props.p_type === 'category' &&
+  css`
+    font-weight: 700;
+    font-size: 20px;
+  `}
+`;
+
+export const PC_Box =
+  styled.div <
+  { box: string } >
+  `
+  ${(props) => props.box === 'author' && css``}
+  ${(props) =>
+    props.box === 'like' &&
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    `}
+  ${(props) =>
+    props.box === 'manage' &&
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-direction: column;
+    `}
+  width: 100%;
+  height: 100%;
+  border: 1px solid #849db7;
   border-radius: 3%;
+  box-shadow: 0px 0px 2px #000000;
+  cursor: pointer;
+  background-color: #f9f9f9;
 `;
 
-export const CardCategoryDiv = styled.div<Props>`
-  width: ${(props) => props.cardImgWidth};
-  height: ${(props) => props.cardImgHeight};
+export const PC_ImgBox =
+  styled.div <
+  { img_box: string } >
+  `
+${(props) => props.img_box === 'author' && css``}
+${(props) =>
+  props.img_box === 'like' &&
+  css`
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-color: white;
+    padding: 3px 3px 0;
+    border-radius: 50%;
+  `}
+${(props) =>
+  props.img_box === 'manage' &&
+  css`
+    top: 0;
+    left: 40px;
+    pointer-events: none;
+    background-color: white;
+    padding: 3px 3px 0;
+    border-radius: 50%;
+  `}
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+  position: absolute;
+`;
+
+export const CardCategoryImgBox = styled.div`
+  width: 330px;
+  height: 200px;
   overflow: hidden;
   border-radius: 3%;
-`;
-
-export const CardCategoryImg = styled.img<Props>`
-  width: ${(props) => props.cardImgWidth};
-  height: ${(props) => props.cardImgHeight};
-  cursor: pointer;
-  border-radius: 3%;
-  transition: transform 0.3s;
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const CardCategoryMid = styled.div`
@@ -47,11 +194,6 @@ export const CardCategoryMid = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-`;
-
-export const CardCategoryP = styled.p`
-  font-weight: 700;
-  font-size: 20px;
 `;
 
 export const DefaultHoverModal = styled.div`
@@ -92,32 +234,15 @@ export const ModalMidImg = styled.div`
   hegiht: 20px;
 `;
 
-export const ModalMidP = styled.p``;
-
 export const ModalBot = styled.div`
   margin-top: 20px;
   margin-left: 20px;
   display: flex;
 `;
 
-export const ModalAuthorImg = styled.img`
-  width: 20px;
-  hegiht: 20px;
-`;
-
 export const ModalAuthor = styled.div`
   color: white;
   margin-left: 10px;
-`;
-
-export const AuthorBox = styled.div`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #849db7;
-  border-radius: 3%;
-  box-shadow: 0px 0px 2px #000000;
-  cursor: pointer;
-  background-color: #f9f9f9;
 `;
 
 export const AuthorBoxTop = styled.div`
@@ -127,13 +252,6 @@ export const AuthorBoxTop = styled.div`
   position: relative;
 `;
 
-export const AuthorTopImg = styled.div`
-  width: 30px;
-  height: 30px;
-  margin-left: 20px;
-  margin-top: 20px;
-  position: absolute;
-`;
 export const AuthorBoxMid = styled.div`
   display: flex;
   flex-direction: column;
@@ -170,82 +288,6 @@ export const AuthorPhotos = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-`;
-
-export const AuthorPhotosImg = styled.img`
-  width: 48%;
-  height: 48%;
-  margin: 2px;
-  border-radius: 5%;
-`;
-
-export const LikeImgBox = styled.div`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #849db7;
-  border-radius: 3%;
-  box-shadow: 0px 0px 2px #000000;
-  cursor: pointer;
-  background-color: #f9f9f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-export const LikeImg = styled.img`
-  width: 95%;
-  height: 95%;
-  border-radius: 3%;
-`;
-
-export const LikeImgHeart = styled.div`
-  width: 30px;
-  hegiht: 30px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: 20px;
-  margin-top: 20px;
-  pointer-events: none;
-  background-color: white;
-  padding: 3px 3px 0;
-  border-radius: 50%;
-`;
-
-export const ManageImgBox = styled.div`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #849db7;
-  border-radius: 3%;
-  box-shadow: 0px 0px 2px #000000;
-  cursor: pointer;
-  background-color: #f9f9f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-direction: column;
-`;
-
-export const ManageImg = styled.div`
-  width: 30px;
-  hegiht: 30px;
-  position: absolute;
-  top: 0;
-  left: 40px;
-  margin-left: 20px;
-  margin-top: 20px;
-  pointer-events: none;
-  background-color: white;
-  padding: 3px 3px 0;
-  border-radius: 50%;
-`;
-
-export const ManageImgPre = styled.img`
-  width: 95%;
-  height: 75%;
-  border-radius: 3%;
 `;
 
 export const ManageTxt = styled.div`

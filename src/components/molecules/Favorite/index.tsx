@@ -15,8 +15,6 @@ export const FavoriteImg = (some: any) => {
             <S.PC_Li key={info.img_id}>
               <Card
                 CardType="type03"
-                imgWidth="330px"
-                imgHeight="200px"
                 isSubscribe={info.subscribe}
                 likeImg={info.src}
               />
@@ -36,8 +34,6 @@ export const FavoriteAuthor = (some: any) => {
             <S.PC_Li key={info.author}>
               <Card
                 CardType="type02"
-                imgWidth="330px"
-                imgHeight="330px"
                 isSubscribe={info.subscribe}
                 author={info.author}
                 authorPhotos={info.photos}

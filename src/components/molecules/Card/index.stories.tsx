@@ -15,8 +15,6 @@ export const Type01 = Template.bind({});
 Type01.args = {
   CardType: 'type01',
   imgSrc: test2,
-  imgWidth: '330px',
-  imgHeight: '330px',
   isSubscribe: false,
   author: 'poeynus',
   viewCount: 102,
@@ -31,8 +29,6 @@ Type01.args = {
 export const Type02 = Template.bind({});
 Type02.args = {
   CardType: 'type02',
-  imgWidth: '330px',
-  imgHeight: '330px',
   author: 'poeynus',
   authorPhotos: '33',
   isSubscribe: true,
@@ -48,8 +44,6 @@ Type02.args = {
 export const Type03 = Template.bind({});
 Type03.args = {
   CardType: 'type03',
-  imgWidth: '330px',
-  imgHeight: '220px',
   likeImg: test3,
   isSubscribe: true,
   cardOnclick: () => {
@@ -60,8 +54,6 @@ Type03.args = {
 export const Type04 = Template.bind({});
 Type04.args = {
   CardType: 'type04',
-  imgWidth: '330px',
-  imgHeight: '200px',
   imgSrc: test2,
   imgCategory: '극장',
   cardOnclick: () => {
@@ -72,8 +64,6 @@ Type04.args = {
 export const Type05 = Template.bind({});
 Type05.args = {
   CardType: 'type05',
-  imgWidth: '280px',
-  imgHeight: '180px',
   likeImg: test3,
   cardOnclick: () => {
     console.log('hi');
@@ -83,8 +73,6 @@ Type05.args = {
 export const Type06 = Template.bind({});
 Type06.args = {
   CardType: 'type06',
-  imgWidth: '280px',
-  imgHeight: '240px',
   likeImg: test3,
   cardOnclick: () => {
     console.log('hi');

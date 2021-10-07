@@ -12,12 +12,7 @@ const ManageResult = (some: any) => {
       {some &&
         some.map((info: any) => (
           <S.PC_Li key={info.gall_id}>
-            <Card
-              CardType="type05"
-              imgWidth="280px"
-              imgHeight="180px"
-              likeImg={info.src}
-            />
+            <Card CardType="type05" likeImg={info.src} />
           </S.PC_Li>
         ))}
     </>
@@ -30,12 +25,7 @@ const ManageDeny = (some: any) => {
       {some &&
         some.map((info: any) => (
           <S.PC_Li key={info.gall_id}>
-            <Card
-              CardType="type06"
-              imgWidth="280px"
-              imgHeight="240px"
-              likeImg={info.src}
-            />
+            <Card CardType="type06" likeImg={info.src} />
           </S.PC_Li>
         ))}
     </>

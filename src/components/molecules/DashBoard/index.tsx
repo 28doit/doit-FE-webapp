@@ -63,8 +63,6 @@ export const DashBoardItem = (): React.ReactElement => {
                         <Card
                           CardType="type05"
                           likeImg={info.imgSrc}
-                          imgWidth="280px"
-                          imgHeight="180px"
                           cardOnclick={() => {
                             console.log('hi');
                           }}
