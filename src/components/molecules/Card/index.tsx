@@ -61,37 +61,37 @@ export const Card = ({
             onClick={cardOnclick}
           />
           {show && (
-            <S.DefaultHoverModal>
-              <S.ModalTop>
+            <S.PC_Modal m_type="default">
+              <S.PC_Modal m_type="top">
                 {isSubscribe ? (
-                  <S.ModalTopImg>
+                  <S.PC_ModalBox mb_type="t_img">
                     <Heart width="60" height="60" fill="#d7443e" />
-                  </S.ModalTopImg>
+                  </S.PC_ModalBox>
                 ) : (
-                  <S.ModalTopImg>
+                  <S.PC_ModalBox mb_type="t_img">
                     <Heart width="60" height="60" fill="black" />
-                  </S.ModalTopImg>
+                  </S.PC_ModalBox>
                 )}
-              </S.ModalTop>
-              <S.ModalMid>
-                <S.ModalMidImg>
+              </S.PC_Modal>
+              <S.PC_Modal m_type="mid">
+                <S.PC_ModalBox mb_type="m_img">
                   <ViewImg width="20" height="20" fill="#f9f9f9" />
-                </S.ModalMidImg>
+                </S.PC_ModalBox>
                 <S.PC_P p_type="default">{viewCount}</S.PC_P>
-                <S.ModalMidImg>
+                <S.PC_ModalBox mb_type="m_img">
                   <DownloadImg width="20" height="20" fill="#f9f9f9" />
-                </S.ModalMidImg>
+                </S.PC_ModalBox>
                 <S.PC_P p_type="default">{downloadCount}</S.PC_P>
-                <S.ModalMidImg>
+                <S.PC_ModalBox mb_type="m_img">
                   <LikeImg width="20" height="20" fill="#f9f9f9" />
-                </S.ModalMidImg>
+                </S.PC_ModalBox>
                 <S.PC_P p_type="default">{likeCount}</S.PC_P>
-              </S.ModalMid>
-              <S.ModalBot>
+              </S.PC_Modal>
+              <S.PC_Modal m_type="bot">
                 <S.PC_Img i_type="author" src={proFileImg} />
-                <S.ModalAuthor>{author}</S.ModalAuthor>
-              </S.ModalBot>
-            </S.DefaultHoverModal>
+                <S.PC_ModalBox mb_type="b_author">{author}</S.PC_ModalBox>
+              </S.PC_Modal>
+            </S.PC_Modal>
           )}
         </S.PC_Wrap>
       )}
@@ -103,7 +103,7 @@ export const Card = ({
           onClick={cardOnclick}
         >
           <S.PC_Box box="author">
-            <S.AuthorBoxTop>
+            <S.PC_AuthorBox ab_type="top">
               {show && (
                 <>
                   {isSubscribe ? (
@@ -117,19 +117,21 @@ export const Card = ({
                   )}
                 </>
               )}
-            </S.AuthorBoxTop>
-            <S.AuthorBoxMid>
-              <S.AuthorName>{author}</S.AuthorName>
-              <S.AuthorInfo>보유사진: {authorPhotos}장</S.AuthorInfo>
-            </S.AuthorBoxMid>
-            <S.AuthorBoxBot>
-              <S.AuthorPhotos>
+            </S.PC_AuthorBox>
+            <S.PC_AuthorBox ab_type="mid">
+              <S.PC_AuthorInfo ai_type="name">{author}</S.PC_AuthorInfo>
+              <S.PC_AuthorInfo ai_type="photos">
+                보유사진: {authorPhotos}장
+              </S.PC_AuthorInfo>
+            </S.PC_AuthorBox>
+            <S.PC_AuthorBox ab_type="bot">
+              <S.PC_AuthorInfo ai_type="img">
                 <S.PC_Img i_type="a_photos" src={authorFimg} />
                 <S.PC_Img i_type="a_photos" src={authorSimg} />
                 <S.PC_Img i_type="a_photos" src={authorTimg} />
                 <S.PC_Img i_type="a_photos" src={authorHimg} />
-              </S.AuthorPhotos>
-            </S.AuthorBoxBot>
+              </S.PC_AuthorInfo>
+            </S.PC_AuthorBox>
           </S.PC_Box>
         </S.PC_Wrap>
       )}
@@ -160,15 +162,15 @@ export const Card = ({
       )}
       {CardType === 'type04' && (
         <S.PC_Wrap w_type="t_4" onClick={cardOnclick}>
-          <S.CardCategoryImgBox>
+          <S.PC_CategoryBox c_type="img">
             <S.PC_Img i_type="category" src={imgSrc} />
-          </S.CardCategoryImgBox>
-          <S.DefaultHoverModal>
-            <S.CardCategoryMid>
+          </S.PC_CategoryBox>
+          <S.PC_Modal m_type="default">
+            <S.PC_CategoryBox c_type="info">
               <S.PC_P p_type="category">{imgCategory}</S.PC_P>
               <S.PC_P p_type="default">&nbsp;이미지</S.PC_P>
-            </S.CardCategoryMid>
-          </S.DefaultHoverModal>
+            </S.PC_CategoryBox>
+          </S.PC_Modal>
         </S.PC_Wrap>
       )}
       {CardType === 'type05' && (
@@ -209,7 +211,7 @@ export const Card = ({
               </>
             )}
             <S.PC_Img i_type="manage" src={likeImg} />
-            <S.ManageTxt>승인 불가 사유 보기 / 수정 하기</S.ManageTxt>
+            <S.PC_Deny>승인 불가 사유 보기 / 수정 하기</S.PC_Deny>
           </S.PC_Box>
         </S.PC_Wrap>
       )}
