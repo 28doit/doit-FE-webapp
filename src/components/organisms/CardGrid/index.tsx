@@ -37,8 +37,6 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           /*
           key: somet.gallaryId,
           imgSrc: somet.gallaryImageLocation,
-          imgWidth: "330px",
-          imgHeight: "200px",
           isSubscribe: somet.isSubscribe,
           authot: somet.idx,
           viewCount: 1234,
@@ -117,11 +115,11 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
   const history = useHistory();
   return (
     <>
-      <S.ListContainer>
-        <S.VeList>
+      <S.PC_Container c_type="list">
+        <S.PC_VeList>
           {items &&
             items.map((item) => (
-              <S.ListItem key={item.key}>
+              <S.PC_Li key={item.key}>
                 <Card
                   CardType="type01"
                   imgSrc={item.imgSrc}
@@ -133,11 +131,11 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
                   proFileImg={item.proFileImg}
                   cardOnclick={() => {history.push(`/img?id=${item.key}`)}}
                 />
-              </S.ListItem>
+              </S.PC_Li>
             ))}
           {hasNextPage && <div ref={infiniteRef}></div>}
-        </S.VeList>
-      </S.ListContainer>
+        </S.PC_VeList>
+      </S.PC_Container>
     </>
   );
 };
@@ -158,12 +156,12 @@ export const CategoryGridItems = () => {
 
   return (
     <>
-      <S.CategoryContainer>
+      <S.PC_Container c_type="category">
         <ScrollContainer>
-          <S.HoList>
+          <S.PC_HoList>
             {cItem &&
               cItem.map((info: any) => (
-                <S.ListItem key={info.key}>
+                <S.PC_Li key={info.key}>
                   <Card
                     CardType="type04"
                     imgSrc={info.src}
@@ -172,11 +170,11 @@ export const CategoryGridItems = () => {
                       history.push(`${ROUTES.CATEGORYITEM}${info.category}`);
                     }}
                   />
-                </S.ListItem>
+                </S.PC_Li>
               ))}
-          </S.HoList>
+          </S.PC_HoList>
         </ScrollContainer>
-      </S.CategoryContainer>
+      </S.PC_Container>
     </>
   );
 };

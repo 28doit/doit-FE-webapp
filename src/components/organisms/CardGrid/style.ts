@@ -1,71 +1,48 @@
-/* eslint-disable prettier/prettier */
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 interface ListProps {
   direction?: 'vertical' | 'horizontal';
 }
 
-export const List = styled.ul<ListProps>`
-  display: ${({ direction }) =>
-    direction === 'horizontal' ? 'flex' : 'block'};
-  list-style: none;
-  font-size: 16px;
-  margin: 0;
-  padding: 6px;
-`;
-
-export const HoList = styled.ul<ListProps>`
+export const PC_HoList =
+  styled.ul <
+  ListProps >
+  `
   display: flex;
   list-style: none;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin: 0;
-  padding: 6px;
+  padding: 0.6rem;
 `;
 
-export const VeList = styled.ul<ListProps>`
+export const PC_VeList =
+  styled.ul <
+  ListProps >
+  `
   display: flex;
   list-style: none;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin: 0;
-  padding: 6px;
+  padding: 0.6rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 `;
 
-export const ListItem = styled.li`
-  margin: 4px;
+export const PC_Li = styled.li`
+  margin: 0.4rem;
 `;
 
-const gradientAnimation = keyframes`
-    0% {
-          background-position: 0% 50%;
-      }
-      50% {
-          background-position: 100% 50%;
-      }
-      100% {
-          background-position: 0% 50%;
-      }
-  `;
-
-export const LoadingRoot = styled.div`
-  animation: ${gradientAnimation} 2s linear infinite;
-  background: linear-gradient(45deg, #298fee, #11c958, #a120bb, #d6612a);
-  background-size: 600% 600%;
-  color: #fff;
-  padding: 8px;
-  width: 300px;
-  height: 300px;
-  text-align: center;
-  vertical-align: 100px;
-`;
-export const ListContainer = styled.div`
-  background-color: #fafafa;
-`;
-
-export const CategoryContainer = styled.div`
-  max-width: 95%;
-  overflow: auto;
-  background-color: #fafafa;
+export const PC_Container =
+  styled.div <
+  { c_type: string } >
+  `
+${(props) => props.c_type === 'list' && css``}
+${(props) =>
+  props.c_type === 'category' &&
+  css`
+    max-width: 95%;
+    overflow: auto;
+  `}
+background-color: #fafafa;
 `;

@@ -593,12 +593,11 @@
 #### 21.10.08 11:21
 
     - PC
-    => Card, ImageDetail 완성
+    => Card, ImageDetail, CardGrid, atoms 완성
     => Card의 % 단위의 축소로는 어려움이 생겨서 rem 고정 값을 사용
     => 태블릿이랑 모바일은 다른 rem 고정 값을 사용해서 보여 줘야 할 듯
 
     - 남은 것
-    => organisms - CardGrid
-    => atoms
+    => Tablet, Mobile 에서의 렌더링
 </div>
 </details>
