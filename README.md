@@ -579,10 +579,10 @@
     - PC
     => Exchange, Favorite, UploadImage, DashBoard, FormInput, PaymentItem 1차 완료
 
-    => 남은 것
-    - atoms
-    - molecules - Card 
-    - organisms
+    - 남은 것
+    => atoms
+    => molecules - Card 
+    => organisms
 
 #### 21.10.07 23:12
 
@@ -590,11 +590,15 @@
     => EditProfile, PaymentItem 1차 완료
     => Card 60% 정도 완성 - 내용이 많아서 조금 오래 걸린다.
 
-#### 21.10.08 01:21
+#### 21.10.08 11:21
 
     - PC
-    => Card 완성
-    => % 단위의 축소로는 어려움이 생겨서 rem 고정 값을 사용
+    => Card, ImageDetail 완성
+    => Card의 % 단위의 축소로는 어려움이 생겨서 rem 고정 값을 사용
     => 태블릿이랑 모바일은 다른 rem 고정 값을 사용해서 보여 줘야 할 듯
+
+    - 남은 것
+    => organisms - CardGrid
+    => atoms
 </div>
 </details>
