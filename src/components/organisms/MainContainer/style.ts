@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FormInput } from '../../index';
+import TITLE from "../../../assets/title.png";
 
 interface hrProps {
   top?: string;
 }
 
-export const MainDiv = styled.div`
+export const PC_Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -15,39 +16,50 @@ export const MainDiv = styled.div`
   position: relative;
 `;
 
-export const MainTitle = styled.div`
+export const PC_Top = styled.div`
+width: 100%;
+display: flex;
+align-items: center;
+flex-direction: column;
+background-image: url(${TITLE});
+background-size: cover;
+`;
+
+export const PC_Title = styled.div`
   text-align: center;
-  font-size: 40px;
-  font-weight: 700;
-  padding-top: 40px;
+  font-size: 4rem;
+  font-family: elice;
+  padding-top: 8rem;
+  color: #041e7d;
 `;
 
-export const MainInput = styled(FormInput)`
-  border: 3px solid black;
+export const PC_Input = styled(FormInput)`
+  border: 0.3rem solid black;
 `;
 
-export const MainCategoryDiv = styled.div`
+export const PC_Box = styled.div<{box: string}>`
+  ${(props) => props.box === "category" && css`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 47rem;
+  `}
+  ${(props) => props.box === "card" && css`
+  top: 90rem;
+  `}
   position: absolute;
-  top: 470px;
 `;
 
-export const MainCardDiv = styled.div`
-  top: 900px;
-  position: absolute;
-`;
-
-export const MainHr = styled.div<hrProps>`
+export const PC_Hr = styled.div<hrProps>`
   width: 95%;
   display: flex;
   flex-basis: 100%;
   align-items: center;
   color: #222222;
-  font-size: 24px;
-  margin: 80px 0 40px 0;
+  font-size: 2.4rem;
+  margin: 8rem 0 4rem 0;
+  font-family: hs;
   font-weight: 700;
   position: absolute;
   top: ${(props) => props.top};
@@ -56,19 +68,15 @@ export const MainHr = styled.div<hrProps>`
     content: '';
     flex-grow: 1;
     background: rgba(0, 0, 0, 0.35);
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin: 0px 16px;
+    height: 0.1rem;
+    margin: 0px 0 1.6rem 0;
   }
 
   &:before {
     content: '';
     flex-grow: 1;
     background: rgba(0, 0, 0, 0.35);
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin: 0px 16px;
+    height: 0.1rem;
+    margin: 0px 0 1.6rem 0;
   }
 `;

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import * as S from './style';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 declare global {
   interface Window {
@@ -232,20 +233,32 @@ export const KaKaoMapItem = ({
   };
 
   return (
-    <S.KakaoMapContainer>
-      <S.KakaoMapTitle>장소를 찾아 보세요.</S.KakaoMapTitle>
-      <S.KakaoMapWrap>
-        <S.KakaoMapDiv id="map"></S.KakaoMapDiv>
-        <S.KakaoRoadViewDiv id="roadview"></S.KakaoRoadViewDiv>
-      </S.KakaoMapWrap>
-      <S.KakaoMapBtn
-        btnOnClick={() => {
-          setKakaoMap(false);
-          setLocation({ lat: center.lat, lng: center.lng, located: located });
-        }}
-      >
-        장소 저장
-      </S.KakaoMapBtn>
-    </S.KakaoMapContainer>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Fix>
+          <S.PC_Container>
+            <S.PC_Title>장소를 찾아 보세요.</S.PC_Title>
+            <S.PC_Wrap>
+              <S.PC_Map m_type="map" id="map"></S.PC_Map>
+              <S.PC_Map m_type="loadview" id="roadview"></S.PC_Map>
+            </S.PC_Wrap>
+            <S.PC_Btn
+              btnOnClick={() => {
+                setKakaoMap(false);
+                setLocation({ lat: center.lat, lng: center.lng, located: located });
+              }}
+            >
+              장소 저장
+            </S.PC_Btn>
+          </S.PC_Container>
+        </S.PC_Fix>
+      </PC>
+    </>
   );
 };

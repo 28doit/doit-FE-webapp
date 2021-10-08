@@ -9,10 +9,10 @@ export const Search = () => {
   );
 };
 
-export const BestCategorySearch = ({ match }: any) => {
+export const BestCategorySearch = () => {
   return (
     <BaseTemplate>
-      <BestCategoryContainer match={match} />
+      <BestCategoryContainer />
     </BaseTemplate>
   );
 };

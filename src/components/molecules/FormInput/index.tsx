@@ -28,32 +28,16 @@ export const FormInput = ({
   ...props
 }: FormInputProps): React.ReactElement => {
   return (
-    <>
-      {children && htmlFor ? (
-        <S.FormInputContainer>
-          <S.FormLabel htmlFor={htmlFor} {...props}>
-            {children}
-          </S.FormLabel>
-          <S.FormInput id={htmlFor} {...props} />
-          {invalid && (
-            <S.FormCaption {...props}>{captionContent}</S.FormCaption>
-          )}
-        </S.FormInputContainer>
-      ) : (
-        <S.FormInputContainer>
-          <S.FormInput {...props} />
-          {invalid && (
-            <S.FormCaption {...props}>{captionContent}</S.FormCaption>
-          )}
-          <S.FormBtn btntype="default" btnOnClick={formClcik}>
-            {buttonContent ? (
-              buttonContent
-            ) : (
-              <S.SearchIcon src={BIcon} alt="검색 아이콘" />
-            )}
-          </S.FormBtn>
-        </S.FormInputContainer>
-      )}
-    </>
+    <S.FormInputContainer>
+      <S.FormInput {...props} />
+      {invalid && <S.FormCaption {...props}>{captionContent}</S.FormCaption>}
+      <S.FormBtn btntype="default" btnOnClick={formClcik}>
+        {buttonContent ? (
+          buttonContent
+        ) : (
+          <S.SearchIcon src={BIcon} alt="검색 아이콘" />
+        )}
+      </S.FormBtn>
+    </S.FormInputContainer>
   );
 };

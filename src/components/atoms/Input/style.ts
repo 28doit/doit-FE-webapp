@@ -7,8 +7,8 @@ interface InputProps {
 }
 
 export const Input = styled.input<InputProps>`
-  height: ${(props) => (props.height ? props.height : '33px')};
-  border-radius: 2px;
+  height: ${(props) => (props.height ? props.height : '3.3rem')};
+  border-radius: 0.2rem;
   background: #ffffff;
 
   &:focus {
@@ -22,6 +22,6 @@ export const Input = styled.input<InputProps>`
   ${(props) =>
     props.invalid &&
     css`
-      border: 1px solid red;
+      border: 0.1rem solid red;
     `}
 `;

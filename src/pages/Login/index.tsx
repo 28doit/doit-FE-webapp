@@ -1,10 +1,10 @@
 import { BaseTemplate } from '../../templates';
-import { LoginModal, RePassword } from '../../components/index';
+import { LoginItemModal, RePasswordModal } from '../../components/index';
 
 export const NewLoginForm = () => {
   return (
     <BaseTemplate>
-      <LoginModal />
+      <LoginItemModal />
     </BaseTemplate>
   );
 };
@@ -12,7 +12,7 @@ export const NewLoginForm = () => {
 export const RePasswordForm = () => {
   return (
     <BaseTemplate>
-      <RePassword />
+      <RePasswordModal />
     </BaseTemplate>
   );
 };

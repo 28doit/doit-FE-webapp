@@ -4,6 +4,8 @@ import { useState } from 'react';
 import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
+import { CardInfiniteList } from '../../index';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface SearchContainerProps {}
 
@@ -23,24 +25,26 @@ export const SearchContainer =
     };
 
     return (
-      <S.SearchDiv>
-        <S.SearchTitle>검색 결과: {query.item} </S.SearchTitle>
-        <S.SearchInput
+      <S.PC_Container>
+        <S.PC_Title>검색 결과: {query.item} </S.PC_Title>
+        <S.PC_Input
           placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
           onChange={onSearchHandler}
           value={searchItem}
           formClcik={goToSearch}
         />
         <h3>{searchItem}</h3>
-        <S.SearchMap>Search</S.SearchMap>
-      </S.SearchDiv>
+        <S.PC_CardBox>
+          <CardInfiniteList />
+        </S.PC_CardBox>
+      </S.PC_Container>
     );
   };
 
-export const BestCategoryContainer = ({ match }: any): React.ReactElement => {
+export const BestCategoryContainer = (): React.ReactElement => {
   const [searchItem, setSearchItem] = useState('');
   const history = useHistory();
-
+  const query = queryString.parse(location.search);
   const onSearchHandler = (e: any) => {
     setSearchItem(e.currentTarget.value);
   };
@@ -51,19 +55,27 @@ export const BestCategoryContainer = ({ match }: any): React.ReactElement => {
   };
 
   return (
-    <S.SearchDiv>
-      {match.params.name === 'best' ? (
-        <S.SearchTitle>인기 상품</S.SearchTitle>
-      ) : (
-        <S.SearchTitle>카테고리: {match.params.name}</S.SearchTitle>
-      )}
-      <S.SearchInput
-        placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
-        onChange={onSearchHandler}
-        value={searchItem}
-        formClcik={goToSearch}
-      />
-      <S.SearchMap>Search</S.SearchMap>
-    </S.SearchDiv>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Container>
+          <S.PC_Title>카테고리: {query.item}</S.PC_Title>
+          <S.PC_Input
+            placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
+            onChange={onSearchHandler}
+            value={searchItem}
+            formClcik={goToSearch}
+          />
+          <S.PC_CardBox>
+            <CardInfiniteList />
+          </S.PC_CardBox>
+        </S.PC_Container>
+      </PC>
+    </>
   );
 };

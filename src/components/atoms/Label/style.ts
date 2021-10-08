@@ -6,7 +6,7 @@ interface LabelProps {
 }
 
 export const Label = styled.label<LabelProps>`
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #414141;
   ${(props) =>
     props.required &&

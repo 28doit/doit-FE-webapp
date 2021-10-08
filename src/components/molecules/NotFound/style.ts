@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Btn } from '../../index';
 
-export const ErrContainer = styled.div`
+export const PC_Container = styled.div`
   width: 100%;
   height: 80%;
   display: flex;
@@ -10,19 +10,19 @@ export const ErrContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ErrImg = styled.img`
-  width: 600px;
-  height: 400px;
-  margin-bottom: 60px;
+export const PC_Img = styled.img`
+  width: 60rem;
+  height: 40rem;
+  margin-bottom: 6rem;
 `;
 
-export const ErrTxt = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
+export const PC_Txt = styled.div`
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-family: elice;
 `;
 
-export const ReturnHome = styled(Btn)`
-  width: 200px;
-  margin-top: 60px;
+export const PC_Btn = styled(Btn)`
+  width: 20rem;
+  margin-top: 6rem;
 `;

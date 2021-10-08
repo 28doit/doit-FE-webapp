@@ -1,120 +1,178 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Btn, Input, Label } from '../../index';
 
-export const UploadWrap = styled.div`
+export const PC_Overlay = styled.div`
   width: 100%;
-  height: 100%;
+  background: #868e96;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const UploadTitle = styled.h2`
-  margin: 0 0 20px;
-  font-size: 25px;
+export const PC_Inner = styled.div`
+  width: 90%;
+  height: 90%;
+  padding: 3rem 2rem;
+  background: #fff;
+  margin: 5rem;
+`;
+
+export const PC_Title = styled.h2`
+  margin: 0 0 2rem;
+  font-size: 3rem;
+  font-family: elice;
   text-align: center;
 `;
 
-export const UploadTop = styled.div`
-  width: 100%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+export const PC_P = styled.p`
+  font-size: 2.5rem;
+  font-family: elice;
+  text-align: center;
 `;
 
-export const UploadPtag = styled.p`
-  font-weight: 700;
-`;
-
-export const UploadMid = styled.div`
-  width: 100%;
-  height: 60%;
-  display: flex;
-`;
-
-export const UploadMidLeft = styled.div`
-  width: 70%;
-  height: 100%
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const UploadMidRight = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 30%;
-`;
-
-export const UploadBtnImg = styled.img`
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-`;
-
-export const UploadImageInput = styled(Input)`
-  display: none;
-`;
-
-export const UploadPreview = styled.div`
+export const PC_Preview = styled.div`
   width: 80%;
-  height: 400px;
+  height: 40rem;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const UploadPreviewImg = styled.img`
-  max-width: 100%;
-  max-height: 400px;
-`;
-
-export const UploadImageLabel = styled(Label)`
-  margin-top: 15px;
-`;
-
-export const UploadBot = styled.div`
+export const PC_Box =
+  styled.div <
+  { where: string } >
+  `
+  ${(props) =>
+    props.where === 'top' &&
+    css`
+      height: 10%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    `}
+  ${(props) =>
+    props.where === 'mid' &&
+    css`
+      height: 60%;
+    `}
+  ${(props) =>
+    props.where === 'bot' &&
+    css`
+      height: 20%;
+      justify-content: space-around;
+      align-items: center;
+    `}
   width: 100%;
-  height: 20%;
   display: flex;
-  justify-content: space-around;
+`;
+
+export const PC_Mid =
+  styled.div <
+  { mid: string } >
+  `
+  ${(props) =>
+    props.mid === 'left' &&
+    css`
+      width: 70%;
+      height: 100%;
+    `}
+  ${(props) =>
+    props.mid === 'right' &&
+    css`
+      flex-direction: column;
+      width: 30%;
+    `}
+  display: flex;
   align-items: center;
 `;
 
-export const UploadForm = styled.form`
+export const PC_Img =
+  styled.img <
+  { img_type: string } >
+  `
+  ${(props) =>
+    props.img_type === 'btn' &&
+    css`
+      width: 6rem;
+      height: 6rem;
+      cursor: pointer;
+    `}
+  ${(props) =>
+    props.img_type === 'preview' &&
+    css`
+      max-width: 100%;
+      max-height: 40rem;
+    `}
+  
+`;
+
+export const PC_Form = styled.form`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-around;
 `;
 
-export const UploadImgInputWrap = styled.div`
+export const PC_Wrap =
+  styled.div <
+  { w_type: string } >
+  `
+  ${(props) =>
+    props.w_type === 'default' &&
+    css`
+      height: 100%;
+    `}
+  ${(props) =>
+    props.w_type === 'img' &&
+    css`
+      height: 100%;
+      align-items: center;
+      justify-content: space-evenly;
+    `}
+  ${(props) =>
+    props.w_type === 'input' &&
+    css`
+      margin: 4rem 0 0 0;
+      justify-content: space-between;
+    `}
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 `;
 
-export const UploadInputWrap = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+export const PC_Label =
+  styled(Label) <
+  { l_type: string } >
+  `
+  ${(props) =>
+    props.l_type === 'default' &&
+    css`
+      margin: 0 0 1.5rem 0;
+    `}
+  ${(props) =>
+    props.l_type === 'img' &&
+    css`
+      margin: 1.5rem 0 0 0;
+    `}
 `;
 
-export const UploadLabel = styled(Label)`
-  margin-bottom: 15px;
+export const PC_Input =
+  styled(Input) <
+  { i_type: string } >
+  `
+  ${(props) =>
+    props.i_type === 'default' &&
+    css`
+      width: 90%;
+    `}
+  ${(props) =>
+    props.i_type === 'img' &&
+    css`
+      display: none;
+    `}
 `;
 
-export const UploadInput = styled(Input)`
-  width: 90%;
-`;
-
-export const UploadResultBtn = styled(Btn)`
-  width: 20%;
+export const PC_Btn = styled(Btn)`
+  width: 10rem;
+  background-color: #0197ea;
 `;

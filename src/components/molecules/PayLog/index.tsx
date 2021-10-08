@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'moment/locale/ko';
 import { get_pay_log } from '../../../redux/services/auth.service';
 import { useSelector } from 'react-redux';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface PayLogProps {}
 
@@ -24,12 +25,12 @@ const PayLogCard = ({
   ...props
 }: PayLogCardProps) => {
   return (
-    <S.PayLogCardLI key={c_m_uid}>
-      <S.PayLogPDate>{c_date}</S.PayLogPDate>
-      <S.PayLogPMuid>{c_m_uid}</S.PayLogPMuid>
-      <S.PayLogPMoney>{c_money}</S.PayLogPMoney>
-      <S.PayLogPName>{c_name}</S.PayLogPName>
-    </S.PayLogCardLI>
+    <S.PC_CardLI key={c_m_uid}>
+      <S.PC_Info li_type="date">{c_date}</S.PC_Info>
+      <S.PC_Info li_type="muid">{c_m_uid}</S.PC_Info>
+      <S.PC_Info li_type="money">{c_money}</S.PC_Info>
+      <S.PC_Info li_type="name">{c_name}</S.PC_Info>
+    </S.PC_CardLI>
   );
 };
 
@@ -56,67 +57,80 @@ export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
     ) {
       alert('조회할 수 있는 기간은 31일 이내 입니다.');
     } else {
-      console.log(startDate.toLocaleString('fr-CA').substr(0, 10)); // 나중에 통신 시 사용 할 주소 요소
-      console.log(addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10));
       get_pay_log(
         currentUser.token,
         startDate.toLocaleString('fr-CA').substr(0, 10),
         addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10),
       ).then((response) => {
-        console.log(response);
         setItem(response.data);
       });
     }
   };
 
   return (
-    <S.PayLogContatiner>
-      <S.PayLogTitle>결제 내역</S.PayLogTitle>
-      <S.PayDateContainer>
-        <S.PayDateBox>
-          <S.PayDatePicker
-            selected={startDate}
-            onChange={(date: any) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-          />
-          <S.PayDatePicker
-            selected={endDate}
-            onChange={(date: any) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-          />
-        </S.PayDateBox>
-        <S.PayDateBox>
-          <S.PayLogBtn btnOnClick={onBtnHandler}>조회 하기</S.PayLogBtn>
-        </S.PayDateBox>
-      </S.PayDateContainer>
-      <S.PayLogModal>
-        {PayLogCard({
-          c_date: '날짜',
-          c_m_uid: '구매 번호',
-          c_money: '구매 금액',
-          c_name: '이름',
-        })}
-        <S.PayLogCardUl>
-          {item &&
-            item.map((info: any) =>
-              PayLogCard({
-                c_date: info.time,
-                c_m_uid: info.mid,
-                c_money: info.pay,
-                c_name: info.name /* info.name*/,
-              }),
-            )}
-        </S.PayLogCardUl>
-      </S.PayLogModal>
-    </S.PayLogContatiner>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Contatiner>
+              <S.PC_Title>결제 내역</S.PC_Title>
+              <S.PC_DateContainer>
+                <S.PC_DateBox>
+                  <S.PC_DatePicker
+                    selected={startDate}
+                    onChange={(date: any) => setStartDate(date)}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    locale={ko}
+                    dateFormat="yyyy년 MM월 dd일"
+                  />
+                  <S.PC_DatePicker
+                    selected={endDate}
+                    onChange={(date: any) => setEndDate(date)}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    locale={ko}
+                    dateFormat="yyyy년 MM월 dd일"
+                  />
+                </S.PC_DateBox>
+                <S.PC_DateBox>
+                  <S.PC_Btn btnOnClick={onBtnHandler}>조회 하기</S.PC_Btn>
+                </S.PC_DateBox>
+              </S.PC_DateContainer>
+              <S.PC_Modal>
+                <S.PC_CardUl>
+                  {PayLogCard({
+                    c_date: '날짜',
+                    c_m_uid: '구매 번호',
+                    c_money: '금액',
+                    c_name: '이름',
+                  })}
+                </S.PC_CardUl>
+                <S.PC_CardUl>
+                  {item &&
+                    item.map((info: any) =>
+                      PayLogCard({
+                        c_date: info.time,
+                        c_m_uid: info.mid,
+                        c_money: info.pay,
+                        c_name: info.name,
+                      }),
+                    )}
+                </S.PC_CardUl>
+              </S.PC_Modal>
+            </S.PC_Contatiner>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };

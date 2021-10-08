@@ -253,3 +253,18 @@ svg {
 .MapWalker.m15 .angleBack {
   background-position: -730px -2px;
 }
+html { font-size: 62.5%; }
+
+@font-face {
+  font-family: 'hs';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSGaeulSenggak20.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'elice';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

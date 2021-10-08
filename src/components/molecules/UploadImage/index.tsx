@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PLUS from '../../../assets/plus.svg';
 import { post_upload_img } from '../../../redux/services/auth.service';
 import { KaKaoMapItem } from '../../index';
+import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface UploadItemProps {}
 
@@ -83,71 +84,93 @@ export const UploadImageModal = ({}: UploadItemProps): React.ReactElement => {
   }, [ImgFile]);
 
   return (
-    <S.UploadWrap>
-      {kakaoMap ? (
-        <KaKaoMapItem setKakaoMap={setKakaoMap} setLocation={setLocation} />
-      ) : (
-        ''
-      )}
-      <S.UploadTop>
-        <S.UploadTitle>버튼을 눌러 파일을 업로드 하세요</S.UploadTitle>
-        <S.UploadPtag>사진(JPG, PNG)</S.UploadPtag>
-      </S.UploadTop>
-      <S.UploadMid>
-        <S.UploadForm encType="multipart/form-data">
-          <S.UploadMidLeft>
-            <S.UploadImgInputWrap>
-              <S.UploadPreview>
-                <S.UploadPreviewImg src={ImgBase64} />
-              </S.UploadPreview>
-              <S.UploadImageLabel htmlFor="imageIn">
-                <S.UploadBtnImg src={PLUS} />
-              </S.UploadImageLabel>
-            </S.UploadImgInputWrap>
-            <S.UploadImageInput
-              id="imageIn"
-              inputType="file"
-              inputAccept="image/*"
-              name="file"
-              onChange={onChangeImgHandler}
-            />
-          </S.UploadMidLeft>
-          <S.UploadMidRight>
-            <S.UploadInputWrap>
-              <S.UploadLabel htmlFor="first">검색 키워드</S.UploadLabel>
-              <S.UploadInput
-                id="first"
-                name="First"
-                placeholder="검색 키워드"
-                value={ImgInfo}
-                onChange={onImgInfoHandler}
-              />
-            </S.UploadInputWrap>
-            <S.UploadInputWrap>
-              <S.UploadLabel htmlFor="second">촬영 장소</S.UploadLabel>
-              <S.UploadInput
-                id="second"
-                name="Second"
-                placeholder="장소 찾기"
-                value={located}
-                onChange={onImgInfoHandler}
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setKakaoMap(true);
-                }}
-              />
-            </S.UploadInputWrap>
-            <S.UploadResultBtn btnOnClick={onSubmitHandler}>
-              업로드
-            </S.UploadResultBtn>
-          </S.UploadMidRight>
-        </S.UploadForm>
-      </S.UploadMid>
-      <S.UploadBot>
-        <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
-        <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
-        <S.UploadPtag>나중에 그림 설명 같은거 넣을 예정</S.UploadPtag>
-      </S.UploadBot>
-    </S.UploadWrap>
+    <>
+      <Mobile>
+        <div>모바일</div>
+      </Mobile>
+      <Tablet>
+        <div>태블릿</div>
+      </Tablet>
+      <PC>
+        <S.PC_Overlay>
+          <S.PC_Inner>
+            <S.PC_Wrap w_type="default">
+              {kakaoMap ? (
+                <KaKaoMapItem
+                  setKakaoMap={setKakaoMap}
+                  setLocation={setLocation}
+                />
+              ) : (
+                ''
+              )}
+              <S.PC_Box where="top">
+                <S.PC_Title>버튼을 눌러 파일을 업로드 하세요</S.PC_Title>
+                <S.PC_P>사진(JPG, PNG)</S.PC_P>
+              </S.PC_Box>
+              <S.PC_Box where="mid">
+                <S.PC_Form encType="multipart/form-data">
+                  <S.PC_Mid mid="left">
+                    <S.PC_Wrap w_type="img">
+                      <S.PC_Preview>
+                        <S.PC_Img src={ImgBase64} img_type="preview" />
+                      </S.PC_Preview>
+                      <S.PC_Label l_type="img" htmlFor="imageIn">
+                        <S.PC_Img src={PLUS} img_type="btn" />
+                      </S.PC_Label>
+                    </S.PC_Wrap>
+                    <S.PC_Input
+                      i_type="img"
+                      id="imageIn"
+                      inputType="file"
+                      inputAccept="image/*"
+                      name="file"
+                      onChange={onChangeImgHandler}
+                    />
+                  </S.PC_Mid>
+                  <S.PC_Mid mid="right">
+                    <S.PC_Wrap w_type="input">
+                      <S.PC_Label l_type="default" htmlFor="first">
+                        검색 키워드
+                      </S.PC_Label>
+                      <S.PC_Input
+                        i_type="default"
+                        id="first"
+                        name="First"
+                        placeholder="검색 키워드"
+                        value={ImgInfo}
+                        onChange={onImgInfoHandler}
+                      />
+                    </S.PC_Wrap>
+                    <S.PC_Wrap w_type="input">
+                      <S.PC_Label l_type="default" htmlFor="second">
+                        촬영 장소
+                      </S.PC_Label>
+                      <S.PC_Input
+                        i_type="default"
+                        id="second"
+                        name="Second"
+                        placeholder="장소 찾기"
+                        value={located}
+                        onChange={onImgInfoHandler}
+                        onClick={(e: any) => {
+                          e.preventDefault();
+                          setKakaoMap(true);
+                        }}
+                      />
+                    </S.PC_Wrap>
+                    <S.PC_Btn btnOnClick={onSubmitHandler}>업로드</S.PC_Btn>
+                  </S.PC_Mid>
+                </S.PC_Form>
+              </S.PC_Box>
+              <S.PC_Box where="bot">
+                <S.PC_P>설명 1</S.PC_P>
+                <S.PC_P>설명 2</S.PC_P>
+                <S.PC_P>설명 3</S.PC_P>
+              </S.PC_Box>
+            </S.PC_Wrap>
+          </S.PC_Inner>
+        </S.PC_Overlay>
+      </PC>
+    </>
   );
 };

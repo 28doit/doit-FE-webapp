@@ -7,12 +7,11 @@ interface BtnProps {
 }
 
 const BtnCSS = css<BtnProps>`
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 49px;
+  font-size: 1.8rem;
+  line-height: 4.9rem;
   width: 100%;
-  height: 49px;
-  margin: 16px 0 7px;
+  height: 4.9rem;
+  margin: 1.6rem 0 0.7rem;
   cursor: pointer;
   text-align: center;
   color: #fff;

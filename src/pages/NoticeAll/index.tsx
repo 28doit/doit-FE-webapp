@@ -1,6 +1,5 @@
 import { BaseTemplate } from '../../templates';
-import { NoticeItem } from '../../components/index';
-import * as S from './style';
+import { NoticeItem, ErrItem } from '../../components/index';
 
 export const Notice = ({ match }: any) => {
   const renderPage = () => {
@@ -8,7 +7,7 @@ export const Notice = ({ match }: any) => {
       case 'join-email':
         return <NoticeItem />;
       default:
-        return '';
+        return <ErrItem />;
     }
   };
 

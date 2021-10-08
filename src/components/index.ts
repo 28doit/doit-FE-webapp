@@ -25,16 +25,10 @@ export { ExchangeItem } from './molecules/Exchange';
 export { DashBoardItem } from './molecules/DashBoard';
 
 export { Header } from './organisms/Header';
-export {
-  LoginModal,
-  RegisterModal,
-  EditProfile,
-  RePassword,
-  UploadImage,
-} from './organisms/Modal';
 export { MainContainer } from './organisms/MainContainer';
 export {
   SearchContainer,
   BestCategoryContainer,
 } from './organisms/SearchContainer';
 export { CardInfiniteList, CategoryGridItems } from './organisms/CardGrid';
+export { ImageDetail } from './organisms/ImageDetail';

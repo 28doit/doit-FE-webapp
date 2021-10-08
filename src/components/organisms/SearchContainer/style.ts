@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FormInput } from '../../index';
 
-export const SearchDiv = styled.div`
+export const PC_Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -9,15 +9,15 @@ export const SearchDiv = styled.div`
   flex-direction: column;
 `;
 
-export const SearchTitle = styled.div`
+export const PC_Title = styled.div`
   text-align: center;
-  font-size: 40px;
-  font-weight: 700;
-  padding-top: 40px;
+  font-size: 4rem;
+  font-family: hs;
+  padding-top: 8rem;
 `;
 
-export const SearchInput = styled(FormInput)`
-  border: 3px solid black;
+export const PC_Input = styled(FormInput)`
+  border: 0.3rem solid black;
 `;
 
-export const SearchMap = styled.div``;
+export const PC_CardBox = styled.div``;

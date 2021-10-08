@@ -523,5 +523,82 @@
     - 사진 클릭시 사진 정보 페이지로 이동하게끔 작동 시키기
 
     - 이제 본격적인 디자인 손질 들어갑니다잉
+
+#### 21.09.30 10:43
+
+    - Img Card와 Image Detail 연결 성공
+    => 이제 Card 클릭 시 Image Detail 페이지로 이동
+    => axios Card에서 Image Detail로 Image ID를 보내주고 useLayoutEffect를 사용해서 데이터를 가져옴
+
+    - 기존의 Category Url 수정
+    => /search/{catery 명} path parameter에서 /category?item= query string 형태로 변경 
+    => routes 수정 - category, img
+
+</div>
+</details>
+
+---
+
+<details>
+<summary>10월의 기록 보기</summary>
+<div markdown="4">
+
+#### 21.10.01 09:52
+
+    - 오늘 부터 Css 칼질 들어갑니다.
+    => 반응형을 고려한 디자인, 기존의 px 단위들을 em, rem, % 단위로 변경
+    => 최대한 깔끔하게 꾸며 봅시다.
+    => 반응형으로 많은 레이아웃 수정이 필요한 페이지 - MyPage, ImageDetaile
+    => 미디어 쿼리는 3가지 분기점으로 나눠서 진행 - https://hohoya33.tistory.com/127
+    => font-size는 기본을 62.5%로 적용 후 개별의 페이지 마다 rem을 사용
+
+#### 21.10.04 21:25
+
+    - npm react-responive 설치
+    => react에서 반응형을 쉽게 할 수 있는 모듈 설치
+    => src/MediaQuery.tsx 생성 - phone, tablet, pc로 구분
+    => PC 먼저 다 만들고 Tablet 마지막에 Mobile로 작업
+    => 1차 완료: css의 어느정도의 틀 2차 완료: 완전 끝
+    
+    - PC 
+    => Header, Main, Join, Login, MyMenu 1차 완료
+    
+    - organsim - modal 삭제
+    => 쓸데 없이 중첩 되는 구조여서 분해하고 별도로 옮겼음
+
+    - 이거 코드 처음부터 다시 수정하는 것도 재미있네 ㅋㅋ
+
+#### 21.10.05 23:03
+
+    - PC
+    => PayLog, Purchase, RePassword, 404, Notice, Management 1차 완료
+    => 어색 했었던 css도 수정 중
+
+#### 21.10.06 23:25
+
+    - PC
+    => Exchange, Favorite, UploadImage, DashBoard, FormInput, PaymentItem 1차 완료
+
+    - 남은 것
+    => atoms
+    => molecules - Card 
+    => organisms
+
+#### 21.10.07 23:12
+
+    - PC
+    => EditProfile, PaymentItem 1차 완료
+    => Card 60% 정도 완성 - 내용이 많아서 조금 오래 걸린다.
+
+#### 21.10.08 11:21
+
+    - PC
+    => Card, ImageDetail, CardGrid, atoms 완성
+    => Card의 % 단위의 축소로는 어려움이 생겨서 rem 고정 값을 사용
+    => 태블릿이랑 모바일은 다른 rem 고정 값을 사용해서 보여 줘야 할 듯
+
+    - 남은 것
+    => Tablet, Mobile 에서의 렌더링
+    => Card % 단위 축소를 해결해야 할 듯
 </div>
 </details>

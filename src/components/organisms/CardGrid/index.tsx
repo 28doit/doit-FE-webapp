@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { Card } from '../../index';
@@ -14,8 +14,6 @@ import {
 export interface Item {
   key: number;
   imgSrc?: any;
-  imgWidth?: string;
-  imgHeight?: string;
   viewCount?: number;
   downloadCount?: number;
   likeCount?: number;
@@ -39,8 +37,6 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           /*
           key: somet.gallaryId,
           imgSrc: somet.gallaryImageLocation,
-          imgWidth: "330px",
-          imgHeight: "200px",
           isSubscribe: somet.isSubscribe,
           authot: somet.idx,
           viewCount: 1234,
@@ -50,8 +46,6 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           */
           key: somet.key,
           imgSrc: somet.imgSrc,
-          imgWidth: '330px',
-          imgHeight: '200px',
           isSubscribe: somet.isSubscribe,
           author: somet.author,
           viewCount: somet.viewCount,
@@ -118,30 +112,30 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
     disabled: !!error,
     rootMargin: '0px 0px 400px 0px',
   });
+  const history = useHistory();
   return (
     <>
-      <S.ListContainer>
-        <S.VeList>
+      <S.PC_Container c_type="list">
+        <S.PC_VeList>
           {items &&
             items.map((item) => (
-              <S.ListItem key={item.key}>
+              <S.PC_Li key={item.key}>
                 <Card
                   CardType="type01"
                   imgSrc={item.imgSrc}
-                  imgWidth={item.imgWidth}
-                  imgHeight={item.imgHeight}
                   isSubscribe={item.isSubscribe}
                   author={item.author}
                   viewCount={item.viewCount}
                   downloadCount={item.downloadCount}
                   likeCount={item.likeCount}
                   proFileImg={item.proFileImg}
+                  cardOnclick={() => {history.push(`/img?id=${item.key}`)}}
                 />
-              </S.ListItem>
+              </S.PC_Li>
             ))}
           {hasNextPage && <div ref={infiniteRef}></div>}
-        </S.VeList>
-      </S.ListContainer>
+        </S.PC_VeList>
+      </S.PC_Container>
     </>
   );
 };
@@ -149,7 +143,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
 export const CategoryGridItems = () => {
   const [cItem, setCItem] = useState([]);
   const history = useHistory();
-  useEffect(() => {
+  useLayoutEffect(() => {
     get_category()
       .then((response) => {
         console.log(response.data);
@@ -162,27 +156,25 @@ export const CategoryGridItems = () => {
 
   return (
     <>
-      <S.CategoryContainer>
+      <S.PC_Container c_type="category">
         <ScrollContainer>
-          <S.HoList>
+          <S.PC_HoList>
             {cItem &&
               cItem.map((info: any) => (
-                <S.ListItem key={info.key}>
+                <S.PC_Li key={info.key}>
                   <Card
                     CardType="type04"
                     imgSrc={info.src}
-                    imgWidth="330px"
-                    imgHeight="200px"
                     imgCategory={info.category}
                     cardOnclick={() => {
-                      history.push(`${ROUTES.SEARCH}/${info.category}`);
+                      history.push(`${ROUTES.CATEGORYITEM}${info.category}`);
                     }}
                   />
-                </S.ListItem>
+                </S.PC_Li>
               ))}
-          </S.HoList>
+          </S.PC_HoList>
         </ScrollContainer>
-      </S.CategoryContainer>
+      </S.PC_Container>
     </>
   );
 };
