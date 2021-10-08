@@ -599,5 +599,6 @@
 
     - 남은 것
     => Tablet, Mobile 에서의 렌더링
+    => Card % 단위 축소를 해결해야 할 듯
 </div>
 </details>
