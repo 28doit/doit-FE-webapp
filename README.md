@@ -602,3 +602,6 @@
     => Card % 단위 축소를 해결해야 할 듯
 </div>
 </details>
+
+
+test
