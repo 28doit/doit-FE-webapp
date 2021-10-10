@@ -601,9 +601,10 @@
     => Tablet, Mobile 에서의 렌더링
     => Card % 단위 축소를 해결해야 할 듯
 
-    - mac test
+    - mac tests
 </div>
 </details>
 
 
+>>>>>>> cb964f29271342dd4e891238d46d0dbd7d3da915
 test
