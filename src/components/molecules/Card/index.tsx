@@ -6,7 +6,10 @@ import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
 import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 import { ReactComponent as EditImg } from '../../../assets/pencil.svg';
 import { ReactComponent as TrashImg } from '../../../assets/trash.svg';
-import axios from 'axios';
+import {
+  post_like_img,
+  post_like_author,
+} from '../../../redux/services/auth.service';
 
 export interface CardProps {
   CardType: string;
@@ -51,9 +54,16 @@ export const Card = ({
   const [show, setShow] = useState(false);
   const [like, setLike] = useState(isSubscribe);
 
-  const toggleLike = (e: any) => {
-    // axios.post("") 여기에 통신 넣기
-    setLike(!like);
+  const imgLike = (e: any) => {
+    post_like_img(2006, 23).then(() => {
+      setLike(!like);
+    });
+  };
+
+  const authorLike = (e: any) => {
+    post_like_author(2006, 2010).then(() => {
+      setLike(!like);
+    });
   };
 
   return (
@@ -73,7 +83,7 @@ export const Card = ({
                     width="60"
                     height="60"
                     fill={like ? '#d7443e' : 'black'}
-                    onClick={toggleLike}
+                    onClick={imgLike}
                   />
                 </S.PC_ModalBox>
               </S.PC_Modal>
@@ -108,19 +118,14 @@ export const Card = ({
         >
           <S.PC_Box box="author">
             <S.PC_AuthorBox ab_type="top">
-              {show && (
-                <>
-                  {isSubscribe ? (
-                    <S.PC_ImgBox img_box="author">
-                      <Heart width="30" height="30" fill="#d7443e" />
-                    </S.PC_ImgBox>
-                  ) : (
-                    <S.PC_ImgBox img_box="author">
-                      <Heart width="30" height="30" fill="black" />
-                    </S.PC_ImgBox>
-                  )}
-                </>
-              )}
+              <S.PC_ImgBox img_box="author">
+                <Heart
+                  width="30"
+                  height="30"
+                  fill={like ? '#d7443e' : 'black'}
+                  onClick={authorLike}
+                />
+              </S.PC_ImgBox>
             </S.PC_AuthorBox>
             <S.PC_AuthorBox ab_type="mid">
               <S.PC_AuthorInfo ai_type="name">{author}</S.PC_AuthorInfo>
@@ -147,19 +152,14 @@ export const Card = ({
           onClick={cardOnclick}
         >
           <S.PC_Box box="like">
-            {show && (
-              <>
-                {isSubscribe ? (
-                  <S.PC_ImgBox img_box="like">
-                    <Heart width="30" height="30" fill="#d7443e" />
-                  </S.PC_ImgBox>
-                ) : (
-                  <S.PC_ImgBox img_box="like">
-                    <Heart width="30" height="30" fill="black" />
-                  </S.PC_ImgBox>
-                )}
-              </>
-            )}
+            <S.PC_ImgBox img_box="like">
+              <Heart
+                width="30"
+                height="30"
+                fill={like ? '#d7443e' : 'black'}
+                onClick={imgLike}
+              />
+            </S.PC_ImgBox>
             <S.PC_Img i_type="like" src={likeImg} />
           </S.PC_Box>
         </S.PC_Wrap>

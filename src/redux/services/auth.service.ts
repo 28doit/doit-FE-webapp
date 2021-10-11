@@ -133,4 +133,19 @@ export const get_dash = () => {
 
 export const get_img_detail = (galleryId: any) => {
   return axios.get(process.env.REACT_APP_LOCAL + `/imde`);
+  // return axios.get(process.env.REACT_APP_HOON + `/gallery/galleryId`);
+};
+
+export const post_like_img = (idx: any, galleryId: any) => {
+  return axios.post(process.env.REACT_APP_HOON + `/subscribe/gallery`, {
+    idx: idx,
+    galleryId: galleryId,
+  });
+};
+
+export const post_like_author = (idx: any, subscribeUser: any) => {
+  return axios.post(process.env.REACT_APP_HOON + `/subscribe/user`, {
+    idx: idx,
+    subscribeUser: subscribeUser,
+  });
 };
