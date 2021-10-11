@@ -6,6 +6,7 @@ import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
 import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 import { ReactComponent as EditImg } from '../../../assets/pencil.svg';
 import { ReactComponent as TrashImg } from '../../../assets/trash.svg';
+import axios from 'axios';
 
 export interface CardProps {
   CardType: string;
@@ -48,32 +49,35 @@ export const Card = ({
   ...props
 }: CardProps): React.ReactElement => {
   const [show, setShow] = useState(false);
+  const [like, setLike] = useState(isSubscribe);
+
+  const toggleLike = (e: any) => {
+    // axios.post("") 여기에 통신 넣기
+    setLike(!like);
+  };
 
   return (
     <S.PC_Container>
       {CardType === 'type01' && (
-        <S.PC_Wrap w_type="t_1">
-          <S.PC_Img
-            i_type="default"
-            src={imgSrc}
-            onMouseOver={() => setShow(true)}
-            onMouseOut={() => setShow(false)}
-            onClick={cardOnclick}
-          />
+        <S.PC_Wrap
+          w_type="t_1"
+          onMouseEnter={() => setShow(true)}
+          onMouseLeave={() => setShow(false)}
+        >
+          <S.PC_Img i_type="default" src={imgSrc} />
           {show && (
             <S.PC_Modal m_type="default">
               <S.PC_Modal m_type="top">
-                {isSubscribe ? (
-                  <S.PC_ModalBox mb_type="t_img">
-                    <Heart width="60" height="60" fill="#d7443e" />
-                  </S.PC_ModalBox>
-                ) : (
-                  <S.PC_ModalBox mb_type="t_img">
-                    <Heart width="60" height="60" fill="black" />
-                  </S.PC_ModalBox>
-                )}
+                <S.PC_ModalBox mb_type="t_img">
+                  <Heart
+                    width="60"
+                    height="60"
+                    fill={like ? '#d7443e' : 'black'}
+                    onClick={toggleLike}
+                  />
+                </S.PC_ModalBox>
               </S.PC_Modal>
-              <S.PC_Modal m_type="mid">
+              <S.PC_Modal m_type="mid" onClick={cardOnclick}>
                 <S.PC_ModalBox mb_type="m_img">
                   <ViewImg width="20" height="20" fill="#f9f9f9" />
                 </S.PC_ModalBox>
@@ -87,7 +91,7 @@ export const Card = ({
                 </S.PC_ModalBox>
                 <S.PC_P p_type="default">{likeCount}</S.PC_P>
               </S.PC_Modal>
-              <S.PC_Modal m_type="bot">
+              <S.PC_Modal m_type="bot" onClick={cardOnclick}>
                 <S.PC_Img i_type="author" src={proFileImg} />
                 <S.PC_ModalBox mb_type="b_author">{author}</S.PC_ModalBox>
               </S.PC_Modal>

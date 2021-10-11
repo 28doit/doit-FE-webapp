@@ -531,7 +531,7 @@
     => axios Card에서 Image Detail로 Image ID를 보내주고 useLayoutEffect를 사용해서 데이터를 가져옴
 
     - 기존의 Category Url 수정
-    => /search/{catery 명} path parameter에서 /category?item= query string 형태로 변경 
+    => /search/{catery 명} path parameter에서 /category?item= query string 형태로 변경
     => routes 수정 - category, img
 
 </div>
@@ -559,10 +559,10 @@
     => src/MediaQuery.tsx 생성 - phone, tablet, pc로 구분
     => PC 먼저 다 만들고 Tablet 마지막에 Mobile로 작업
     => 1차 완료: css의 어느정도의 틀 2차 완료: 완전 끝
-    
-    - PC 
+
+    - PC
     => Header, Main, Join, Login, MyMenu 1차 완료
-    
+
     - organsim - modal 삭제
     => 쓸데 없이 중첩 되는 구조여서 분해하고 별도로 옮겼음
 
@@ -581,7 +581,7 @@
 
     - 남은 것
     => atoms
-    => molecules - Card 
+    => molecules - Card
     => organisms
 
 #### 21.10.07 23:12
@@ -601,6 +601,11 @@
     => Tablet, Mobile 에서의 렌더링
     => Card % 단위 축소를 해결해야 할 듯
 
-    - mac tests
+#### 21.10.11 17:19
+
+    - 구독 버튼 활성화
+    => 기존의 껍데이만 있던 구독 버튼을 활성화 시켰음
+    => css 에서 pointer-events: none; 이어서 문제가 있었는데 잘 해결 됬음
+
 </div>
 </details>

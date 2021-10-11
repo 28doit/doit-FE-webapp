@@ -51,7 +51,7 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           viewCount: somet.viewCount,
           downloadCount: somet.downloadCount,
           likeCount: somet.likeCount,
-          profileImg: somet.profileImg,
+          proFileImg: somet.profileImg,
         };
         newArray = [...newArray, newItem];
       });
@@ -129,7 +129,9 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
                   downloadCount={item.downloadCount}
                   likeCount={item.likeCount}
                   proFileImg={item.proFileImg}
-                  cardOnclick={() => {history.push(`/img?id=${item.key}`)}}
+                  cardOnclick={() => {
+                    history.push(`/img?id=${item.key}`);
+                  }}
                 />
               </S.PC_Li>
             ))}
