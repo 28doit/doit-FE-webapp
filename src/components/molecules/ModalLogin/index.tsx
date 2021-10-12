@@ -43,9 +43,9 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
       .then((data) => {
         setLoading(false);
         console.log(data);
-        if (data.name && data.token && data.isvalue === 1) {
+        if (data.email && data.token && data.isValue === 1) {
           history.replace(ROUTES.HOME);
-        } else if (data.isvalue === 2) {
+        } else if (data.isValue === 2) {
           alert('이메일로 가서 인증을 완료해주시기 바랍니다.');
           window.location.replace(ROUTES.LOGIN);
         } else {

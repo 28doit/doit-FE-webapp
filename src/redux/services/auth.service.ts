@@ -28,7 +28,7 @@ export const send_payment = (
   });
 };
 
-export const editUserProfile = (formData: any) => {
+export const edit_user_profile = (formData: any) => {
   return axios.post(
     process.env.REACT_APP_HOON + `/api/uploader/profileimage`,
     formData,
@@ -80,8 +80,12 @@ export const register = (formData: any) => {
   });
 };
 
-export const get_purchase = (startDate: any, endDate: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
+export const get_purchase = (startDate: any, endDate: any, token: any) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM +
+      `/payment/itemhistory?token=${token}&start_history=${startDate}&end_history=${endDate}`,
+  );
+  // return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
 };
 
 export const get_pay_log = (token: any, startDate: any, endDate: any) => {
@@ -148,4 +152,11 @@ export const post_like_author = (idx: any, subscribeUser: any) => {
     idx: idx,
     subscribeUser: subscribeUser,
   });
+};
+
+export const get_buy_img = (token: any, gallary_id: any) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM +
+      `/payment/buy?gallaryid=${gallary_id}&token=${token}`,
+  );
 };

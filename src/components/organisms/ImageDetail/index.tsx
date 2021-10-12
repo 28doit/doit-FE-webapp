@@ -6,13 +6,16 @@ import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 import { useLayoutEffect, useState } from 'react';
 import { get_img_detail } from '../../../redux/services/auth.service';
 import queryString from 'query-string';
+import { get_buy_img } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
+import { useSelector } from 'react-redux';
 
 export interface ImageDetailProps {}
 
 export const ImageDetail = ({
   ...args
 }: ImageDetailProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
   const query = queryString.parse(location.search);
   const [imgData, setImgData] = useState({
     imgSrc: '',
@@ -70,6 +73,12 @@ export const ImageDetail = ({
       });
     });
   }, []);
+
+  const buyImgHandler = (e: any) => {
+    get_buy_img(currentUser.token, query.id).then((response) => {
+      console.log(response);
+    });
+  };
 
   return (
     <>
@@ -148,7 +157,7 @@ export const ImageDetail = ({
                 <S.PC_P p_type="r_b">업로드 날짜: {uploadDate}</S.PC_P>
                 <S.PC_P p_type="r_b">카메라 정보: {cameraInfo}</S.PC_P>
                 <S.PC_P p_type="r_b">촬영 정보: {locationInfo}</S.PC_P>
-                <S.PC_Btn>구매하기</S.PC_Btn>
+                <S.PC_Btn btnOnClick={buyImgHandler}>구매하기</S.PC_Btn>
               </S.PC_RightInfo>
             </S.PC_RightInfo>
             <S.PC_Hr />

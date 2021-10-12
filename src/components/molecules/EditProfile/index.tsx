@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { ModalLoading } from '../../index';
 import {
   expired_check,
-  editUserProfile,
+  edit_user_profile,
 } from '../../../redux/services/auth.service';
 import { Nlogout } from '../../../redux/actions/auth';
 import ROUTES from '../../../commons/routes';
@@ -33,7 +33,7 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
 
   useLayoutEffect(() => {
     const getUser = async () => {
-      await expired_check(currentUser.token, currentUser.name)
+      await expired_check(currentUser.token, currentUser.email)
         .then((response) => {
           console.log(response.data);
           if (response.data.Token === false) {
@@ -114,12 +114,10 @@ export const EditProfileModal = ({}: ModalItemProps): React.ReactElement => {
     formData.append('idx', '2006');
     formData.append('nickName', NickName);
     formData.append('password', Password);
-
     if (Password !== ConfirmPassword) {
       return alert('비밀번호가 일치 하지 않습니다.');
     }
-
-    editUserProfile(formData)
+    edit_user_profile(formData)
       .then((response) => {
         console.log(response);
       })

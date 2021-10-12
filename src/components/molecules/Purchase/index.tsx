@@ -6,6 +6,7 @@ import * as S from './style';
 import 'react-datepicker/dist/react-datepicker.css';
 import { get_purchase } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
+import { useSelector } from 'react-redux';
 
 export interface PurchaseProps {}
 
@@ -36,6 +37,8 @@ const PurchaseCard = ({
 };
 
 export const PurchaseItem = ({}: PurchaseProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
+
   const [startDate, setStartDate] = useState(
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),
   );
@@ -57,12 +60,10 @@ export const PurchaseItem = ({}: PurchaseProps): React.ReactElement => {
     ) {
       alert('조회할 수 있는 기간은 31일 이내 입니다.');
     } else {
-      console.log(startDate.toLocaleString('fr-CA').substr(0, 10)); // 나중에 통신 시 사용 할 주소 요소
-      console.log(addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10));
-
       get_purchase(
         startDate.toLocaleString('fr-CA').substr(0, 10),
-        endDate.toLocaleString('fr-CA').substr(0, 10),
+        addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10),
+        currentUser.token,
       ).then((response) => {
         console.log(response);
         setItem(response.data);
@@ -120,14 +121,22 @@ export const PurchaseItem = ({}: PurchaseProps): React.ReactElement => {
                 </S.PC_Ul>
                 <S.PC_Ul>
                   {item &&
-                    item.map((info: any) =>
-                      PurchaseCard({
-                        gallId: info.gall_id,
-                        extension: info.type,
-                        when: info.time,
-                        author: info.author,
-                        preview: info.src,
-                      }),
+                    item.map(
+                      (info: any) =>
+                        PurchaseCard({
+                          gallId: info.gallaryId,
+                          extension: 'jpg',
+                          when: info.date,
+                          author: info.gallaryName,
+                          preview: info.gallaryImageLocation,
+                        }),
+                      // PurchaseCard({
+                      //   gallId: info.gall_id,
+                      //   extension: info.type,
+                      //   when: info.time,
+                      //   author: info.author,
+                      //   preview: info.src,
+                      // }),
                     )}
                 </S.PC_Ul>
               </S.PC_Modal>
