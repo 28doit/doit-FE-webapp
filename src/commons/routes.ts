@@ -17,6 +17,7 @@ export default {
   MYFAVORITE: '/user/favorite',
   NEWPAYMENT: '/user/payment',
   MYPAYMENT: '/user/paylog',
+  MYCART: '/user/cart',
 
   MYDASH: '/user/dashboard',
   MYIMGUPLOAD: '/user/upload-image',

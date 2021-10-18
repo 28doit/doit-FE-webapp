@@ -1170,32 +1170,93 @@
         {
           "key": 8,
           "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
-          
         },
         {
           "key": 9,
           "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU"
-          
         }
       ]
     }
   ],
-  "imde": 
+  "imde": {
+    "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU",
+    "isSubscribe": false,
+    "profileImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzqORtG1gBb-jptUXHBJ02VwEiVZ1N7LpqNQ&usqp=CAU",
+    "isAuthSubScribe": false,
+    "author": "poeynus",
+    "likePeople": 20,
+    "viewCount": 1123,
+    "downloadCount": 234,
+    "likeCount": 45,
+    "resolution": "6240X4160 / 72dpi(웹용)",
+    "imgSize": "7.16MB",
+    "uploadDate": "2021년 8월 26일",
+    "cameraInfo": "Canon EOS 6D Mark II",
+    "locationInfo": "경상북도"
+  },
+  "cart": [
     {
-      "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROBtQmlHf0waNBCe_bWx7CnwFWnI_UdZxzA&usqp=CAU",
-      "isSubscribe": false,
-      "profileImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzqORtG1gBb-jptUXHBJ02VwEiVZ1N7LpqNQ&usqp=CAU",
-      "isAuthSubScribe": false,
-      "author": "poeynus",
-      "likePeople": 20,
-      "viewCount": 1123,
-      "downloadCount": 234,
-      "likeCount": 45,
-      "resolution": "6240X4160 / 72dpi(웹용)",
-      "imgSize": "7.16MB",
-      "uploadDate": "2021년 8월 26일",
-      "cameraInfo": "Canon EOS 6D Mark II",
-      "locationInfo": "경상북도"
+      "gall_id": "1",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS8jFebACLz4r4bL71HYEOEofB7OkMtpPbbA&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-06 20:51:56",
+      "author": "poeynus1"
+    },
+    {
+      "gall_id": "2",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFT3t6y2gUJ9ZxNnuDHn9Hhyk7c6LI0R0vVA&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-07 20:51:56",
+      "author": "poeynus2"
+    },
+    {
+      "gall_id": "3",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIQNj5wiB18F8j7owA1FpvuWJu5WhARHccVg&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-08 20:51:56",
+      "author": "poeynus3"
+    },
+    {
+      "gall_id": "4",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxd3EQa6R382gSgu8jqy6Lmwsa38GnoIziOA&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-09 20:51:56",
+      "author": "poeynus4"
+    },
+    {
+      "gall_id": "5",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc3h6NnS259_cUZNeeJ-1Dy6tHYNhqrEa7aw&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-10 20:51:56",
+      "author": "poeynus5"
+    },
+    {
+      "gall_id": "6",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB4oNOEpAjIChuC9BsqtPYVuT68FcRktgMPw&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-11 20:51:56",
+      "author": "poeynus6"
+    },
+    {
+      "gall_id": "7",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXbalLb3kBg3MmuRNWBPAGwLCV3s3IpjBJkA&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-12 20:51:56",
+      "author": "poeynus7"
+    },
+    {
+      "gall_id": "8",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrJb7-LnlaXYqh1AgxQ5h17SMMbmAtGRAvlA&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-13 20:51:56",
+      "author": "poeynus8"
+    },
+    {
+      "gall_id": "9",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaxFr52f8ca1FyseVojK8EWNO4d1W1X1d36A&usqp=CAU",
+      "type": "JPG",
+      "time": "2021-09-14 20:51:56",
+      "author": "poeynus9"
     }
-  
+  ]
 }

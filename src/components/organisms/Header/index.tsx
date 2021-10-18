@@ -41,7 +41,7 @@ export const Header = (): React.ReactElement => {
           </S.PC_Center>
           {currentUser ? (
             <S.PC_Right>
-              <S.PC_LinkBtn btnLink={ROUTES.JOIN} btntype="gray">
+              <S.PC_LinkBtn btnLink={ROUTES.MYCART} btntype="gray">
                 <Cart />
               </S.PC_LinkBtn>
 

@@ -11,6 +11,7 @@ import {
   ManagementItem,
   ExchangeItem,
   DashBoardItem,
+  CartItem,
 } from '../../components/index';
 import * as S from './style';
 
@@ -78,6 +79,13 @@ export const MyPage = ({ match }: any) => {
           <>
             <MyMenu />
             <DashBoardItem />
+          </>
+        );
+      case 'cart':
+        return (
+          <>
+            <MyMenu />
+            <CartItem />
           </>
         );
       default:

@@ -34,6 +34,9 @@ export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
           </S.PC_Box>
           <S.PC_Box>
             <S.PC_Title>일반 회원</S.PC_Title>
+            <S.PC_Btn btnLink={ROUTES.MYCART} btntype="default">
+              장바구니
+            </S.PC_Btn>
             <S.PC_Btn btnLink={ROUTES.MYPURCHASE} btntype="default">
               구매한 이미지
             </S.PC_Btn>
