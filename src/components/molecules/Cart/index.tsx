@@ -1,23 +1,39 @@
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import * as S from './style';
+import { get_cart, post_pay_cart } from '../../../redux/services/auth.service';
+import { useSelector } from 'react-redux';
+
 export interface CartProps {}
 
 export const CartItem = ({}: CartProps): React.ReactElement => {
+  // const { user: currentUser } = useSelector((state) => state.auth);
   const [cartList, setCartList] = useState([]);
-  // eslint-disable-next-line prettier/prettier
   const [check, setCheck] = useState([] as any);
+  const [money, setMoney] = useState(0);
+  let allPay = 0;
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_LOCAL + `/cart`).then((response) => {
+    // currentUser.token, currentUser.email
+    get_cart('token', 'email').then((response) => {
       setCartList(response.data);
-      console.log(response.data);
     });
   }, []);
 
+  useEffect(() => {
+    check.map((info: any) => (allPay += info.pay));
+    setMoney(allPay);
+  }, [check]);
+
   const onCheckAll = (e: any) => {
-    setCheck(e.target.checked ? cartList : []);
+    if (e.target.checked) {
+      cartList.map((info: any) => (allPay += info.pay));
+      setCheck(cartList);
+    } else {
+      setCheck([]);
+    }
   };
 
   const onCheckEach = (e: any, info: any) => {
@@ -26,6 +42,12 @@ export const CartItem = ({}: CartProps): React.ReactElement => {
     } else {
       setCheck(check.filter((gall_info: any) => gall_info != info));
     }
+  };
+
+  const onSubmint = (e: any) => {
+    post_pay_cart('token', 'email', check, money).then(() => {
+      console.log('hi');
+    });
   };
 
   return (
@@ -41,23 +63,25 @@ export const CartItem = ({}: CartProps): React.ReactElement => {
           <S.PC_Inner>
             <S.PC_Container>
               <S.PC_Title>장바구니</S.PC_Title>
-              {JSON.stringify(check)}
-              <S.PC_Box>
+              <S.PC_Table>
+                <S.PC_Thead>
+                  <S.PC_Tr>
+                    <S.PC_Th>
+                      <input
+                        type="checkbox"
+                        onChange={onCheckAll}
+                        checked={check.length === cartList.length}
+                      />
+                    </S.PC_Th>
+                    <S.PC_Th>사진 정보</S.PC_Th>
+                    <S.PC_Th>사진 이름</S.PC_Th>
+                    <S.PC_Th>판매자</S.PC_Th>
+                    <S.PC_Th>금액</S.PC_Th>
+                  </S.PC_Tr>
+                </S.PC_Thead>
+              </S.PC_Table>
+              <S.PC_Box box="table">
                 <S.PC_Table>
-                  <S.PC_Thead>
-                    <S.PC_Tr>
-                      <S.PC_Th>
-                        <input
-                          type="checkbox"
-                          onChange={onCheckAll}
-                          checked={check.length === cartList.length}
-                        />
-                      </S.PC_Th>
-                      <S.PC_Th>상품 정보</S.PC_Th>
-                      <S.PC_Th>판매자</S.PC_Th>
-                      <S.PC_Th>금액</S.PC_Th>
-                    </S.PC_Tr>
-                  </S.PC_Thead>
                   <S.PC_Tbody>
                     {cartList &&
                       cartList.map((info: any) => (
@@ -73,16 +97,21 @@ export const CartItem = ({}: CartProps): React.ReactElement => {
                             />
                           </S.PC_Td>
                           <S.PC_Td>
-                            <S.PC_img src={info.src} />
+                            <S.PC_Img src={info.src} />
                           </S.PC_Td>
                           <S.PC_Td>{info.gall_id}</S.PC_Td>
                           <S.PC_Td>{info.author}</S.PC_Td>
-                          <S.PC_Td>500</S.PC_Td>
+                          <S.PC_Td>{info.pay}</S.PC_Td>
                         </S.PC_Tr>
                       ))}
                   </S.PC_Tbody>
                 </S.PC_Table>
               </S.PC_Box>
+              <S.PC_Box box="money">
+                <S.PC_P p_type="txt">총 상품금액</S.PC_P>
+                <S.PC_P p_type="money">{money} 원</S.PC_P>
+              </S.PC_Box>
+              <S.PC_Btn btnOnClick={onSubmint}>구매하기</S.PC_Btn>
             </S.PC_Container>
           </S.PC_Inner>
         </S.PC_Overlay>

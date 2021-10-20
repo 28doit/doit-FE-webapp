@@ -160,3 +160,21 @@ export const get_buy_img = (token: any, gallary_id: any) => {
       `/payment/buy?gallaryid=${gallary_id}&token=${token}`,
   );
 };
+
+export const get_cart = (token: any, email: any) => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/cart`);
+};
+
+export const post_pay_cart = (
+  token: any,
+  email: any,
+  items: any,
+  money: any,
+) => {
+  return axios.post(process.env.REACT_APP_LOCAL + `/cart/buy`, {
+    token: token,
+    user_email: email,
+    gallery_id: items,
+    pay: money,
+  });
+};

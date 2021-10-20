@@ -1200,63 +1200,72 @@
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS8jFebACLz4r4bL71HYEOEofB7OkMtpPbbA&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-06 20:51:56",
-      "author": "poeynus1"
+      "author": "poeynus1",
+      "pay": 500
     },
     {
       "gall_id": "2",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFT3t6y2gUJ9ZxNnuDHn9Hhyk7c6LI0R0vVA&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-07 20:51:56",
-      "author": "poeynus2"
+      "author": "poeynus2",
+      "pay": 600
     },
     {
       "gall_id": "3",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIQNj5wiB18F8j7owA1FpvuWJu5WhARHccVg&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-08 20:51:56",
-      "author": "poeynus3"
+      "author": "poeynus3",
+      "pay": 700
     },
     {
       "gall_id": "4",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxd3EQa6R382gSgu8jqy6Lmwsa38GnoIziOA&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-09 20:51:56",
-      "author": "poeynus4"
+      "author": "poeynus4",
+      "pay": 800
     },
     {
       "gall_id": "5",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc3h6NnS259_cUZNeeJ-1Dy6tHYNhqrEa7aw&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-10 20:51:56",
-      "author": "poeynus5"
+      "author": "poeynus5",
+      "pay": 900
     },
     {
       "gall_id": "6",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB4oNOEpAjIChuC9BsqtPYVuT68FcRktgMPw&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-11 20:51:56",
-      "author": "poeynus6"
+      "author": "poeynus6",
+      "pay": 1000
     },
     {
       "gall_id": "7",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXbalLb3kBg3MmuRNWBPAGwLCV3s3IpjBJkA&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-12 20:51:56",
-      "author": "poeynus7"
+      "author": "poeynus7",
+      "pay": 1100
     },
     {
       "gall_id": "8",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrJb7-LnlaXYqh1AgxQ5h17SMMbmAtGRAvlA&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-13 20:51:56",
-      "author": "poeynus8"
+      "author": "poeynus8",
+      "pay": 1200
     },
     {
       "gall_id": "9",
       "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaxFr52f8ca1FyseVojK8EWNO4d1W1X1d36A&usqp=CAU",
       "type": "JPG",
       "time": "2021-09-14 20:51:56",
-      "author": "poeynus9"
+      "author": "poeynus9",
+      "pay": 1300
     }
   ]
 }
