@@ -3,7 +3,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import * as S from './style';
-import { get_cart, post_pay_cart } from '../../../redux/services/auth.service';
+import {
+  get_cart,
+  post_pay_cart,
+  post_delete_cart,
+} from '../../../redux/services/auth.service';
 import { useSelector } from 'react-redux';
 
 export interface CartProps {}
@@ -42,6 +46,12 @@ export const CartItem = ({}: CartProps): React.ReactElement => {
     } else {
       setCheck(check.filter((gall_info: any) => gall_info != info));
     }
+  };
+
+  const onDeleteCart = (e: any) => {
+    post_delete_cart('token', 'email', check).then((response) => {
+      console.log(response);
+    });
   };
 
   const onSubmint = (e: any) => {
@@ -107,11 +117,18 @@ export const CartItem = ({}: CartProps): React.ReactElement => {
                   </S.PC_Tbody>
                 </S.PC_Table>
               </S.PC_Box>
+              <S.PC_Box box="del">
+                <S.PC_Btn b_type="del" btnOnClick={onDeleteCart}>
+                  삭제
+                </S.PC_Btn>
+              </S.PC_Box>
               <S.PC_Box box="money">
                 <S.PC_P p_type="txt">총 상품금액</S.PC_P>
                 <S.PC_P p_type="money">{money} 원</S.PC_P>
+                <S.PC_Btn b_type="pay" btnOnClick={onSubmint}>
+                  구매하기
+                </S.PC_Btn>
               </S.PC_Box>
-              <S.PC_Btn btnOnClick={onSubmint}>구매하기</S.PC_Btn>
             </S.PC_Container>
           </S.PC_Inner>
         </S.PC_Overlay>

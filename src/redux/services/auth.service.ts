@@ -178,3 +178,11 @@ export const post_pay_cart = (
     pay: money,
   });
 };
+
+export const post_delete_cart = (token: any, email: any, items: any) => {
+  return axios.post(process.env.REACT_APP_LOCAL + `/cart/buy`, {
+    token: token,
+    user_email: email,
+    gallery_id: items,
+  });
+};

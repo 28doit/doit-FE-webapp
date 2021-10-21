@@ -28,7 +28,7 @@ export const PC_Container = styled.div`
 
 export const PC_Title = styled.h2`
   font-size: 3rem;
-  font-weight: 700;
+  font-family: elice;
   text-align: center;
   padding: 3rem 0;
 `;
@@ -54,10 +54,16 @@ export const PC_Box = styled.div<{ box: string }>`
   ${(props) =>
     props.box === 'money' &&
     css`
-      width: 40%;
+      width: 60%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
+      border: 0.1rem solid black;
+    `}
+    ${(props) =>
+    props.box === 'del' &&
+    css`
+      width: 95%;
     `}
 `;
 
@@ -72,18 +78,26 @@ export const PC_P = styled.p<{ p_type: string }>`
     css`
       font-size: 3rem;
     `}
+    font-family: elice;
 `;
 
 export const PC_Table = styled.table`
   width: 98%;
   text-align: center;
+  font-family: elice;
+  margin-top: 1rem;
 `;
 
 export const PC_Tbody = styled.tbody``;
 
 export const PC_Thead = styled.thead``;
 
-export const PC_Tr = styled.tr``;
+export const PC_Tr = styled.tr`
+  border-top: 0.1rem solid;
+  border-right: 0.1rem solid;
+  border-bottom: 0.1rem solid;
+  border-left: 0.1rem solid;
+`;
 
 export const PC_Th = styled.th`
   width: 13rem;
@@ -94,15 +108,26 @@ export const PC_Td = styled.td`
   width: 13rem;
   vertical-align: middle;
   font-size: 2rem;
-  padding-bottom: 1rem;
+  padding: 1rem 0 1rem 0;
 `;
 
 export const PC_Img = styled.img`
   height: 12rem;
 `;
 
-export const PC_Btn = styled(Btn)`
-  width: 20rem;
+export const PC_Btn = styled(Btn)<{ b_type: string }>`
+  ${(props) =>
+    props.b_type === 'pay' &&
+    css`
+      width: 20rem;
+      background-color: #0197ea;
+    `}
+  ${(props) =>
+    props.b_type === 'del' &&
+    css`
+      width: 6rem;
+      background-color: #041e7d;
+    `}
   padding: 0 0 3rem 0;
-  background-color: #0197ea;
+  font-family: elice;
 `;
