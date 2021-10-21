@@ -21,6 +21,7 @@ export interface Item {
   author?: string;
   proFileImg?: any;
   category?: string;
+  isCart?: boolean;
 }
 
 interface Response {
@@ -52,6 +53,7 @@ const loadItems = (some: Array<any>): Promise<Response> => {
           downloadCount: somet.downloadCount,
           likeCount: somet.likeCount,
           proFileImg: somet.profileImg,
+          isCart: somet.isCart,
         };
         newArray = [...newArray, newItem];
       });
@@ -129,6 +131,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
                   downloadCount={item.downloadCount}
                   likeCount={item.likeCount}
                   proFileImg={item.proFileImg}
+                  isCart={item.isCart}
                   cardOnclick={() => {
                     history.push(`/img?id=${item.key}`);
                   }}

@@ -186,3 +186,11 @@ export const post_delete_cart = (token: any, email: any, items: any) => {
     gallery_id: items,
   });
 };
+
+export const post_cart_img = (token: any, email: any, gallery_id: any) => {
+  return axios.post(process.env.REACT_APP_LOCAL + `/img-cart`, {
+    token: token,
+    email: email,
+    gallery_id: gallery_id,
+  });
+};

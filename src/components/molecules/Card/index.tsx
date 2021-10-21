@@ -6,9 +6,11 @@ import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
 import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 import { ReactComponent as EditImg } from '../../../assets/pencil.svg';
 import { ReactComponent as TrashImg } from '../../../assets/trash.svg';
+import { ReactComponent as CartImg } from '../../../assets/cart.svg';
 import {
   post_like_img,
   post_like_author,
+  post_cart_img,
 } from '../../../redux/services/auth.service';
 
 export interface CardProps {
@@ -18,6 +20,7 @@ export interface CardProps {
   downloadCount?: number;
   likeCount?: number;
   isSubscribe?: boolean;
+  isCart?: boolean;
   author?: string;
   proFileImg?: string;
   authorPhotos?: string; // 작가 카드에서만 사용
@@ -39,6 +42,7 @@ export const Card = ({
   downloadCount,
   likeCount,
   isSubscribe,
+  isCart,
   author,
   proFileImg,
   authorPhotos,
@@ -53,6 +57,7 @@ export const Card = ({
 }: CardProps): React.ReactElement => {
   const [show, setShow] = useState(false);
   const [like, setLike] = useState(isSubscribe);
+  const [cart, setCart] = useState(isCart);
 
   const imgLike = (e: any) => {
     post_like_img(2006, 23).then(() => {
@@ -63,6 +68,12 @@ export const Card = ({
   const authorLike = (e: any) => {
     post_like_author(2006, 2010).then(() => {
       setLike(!like);
+    });
+  };
+
+  const imgCart = (e: any) => {
+    post_cart_img('token', 'email', 'gallery_id').then((response) => {
+      setCart(!cart);
     });
   };
 
@@ -84,6 +95,13 @@ export const Card = ({
                     height="60"
                     fill={like ? '#d7443e' : 'black'}
                     onClick={imgLike}
+                  />
+                </S.PC_ModalBox>
+                <S.PC_ModalBox mb_type="t_img">
+                  <CartImg
+                    width="60"
+                    height="60"
+                    stroke={cart ? '#ffffff' : 'black'}
                   />
                 </S.PC_ModalBox>
               </S.PC_Modal>

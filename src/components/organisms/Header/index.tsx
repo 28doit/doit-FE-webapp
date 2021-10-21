@@ -42,7 +42,7 @@ export const Header = (): React.ReactElement => {
           {currentUser ? (
             <S.PC_Right>
               <S.PC_LinkBtn btnLink={ROUTES.MYCART} btntype="gray">
-                <Cart />
+                <Cart stroke="#ffffff" />
               </S.PC_LinkBtn>
 
               <S.PC_LinkBtn btnLink={ROUTES.MYDASH} btntype="gray">

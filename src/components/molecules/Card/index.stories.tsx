@@ -21,6 +21,7 @@ Type01.args = {
   downloadCount: 24,
   likeCount: 242,
   proFileImg: ProImg,
+  isCart: true,
   cardOnclick: () => {
     console.log('hi');
   },

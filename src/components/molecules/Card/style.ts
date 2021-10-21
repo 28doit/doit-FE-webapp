@@ -206,7 +206,7 @@ export const PC_Modal = styled.div<{ m_type: string }>`
   ${(props) =>
     props.m_type === 'top' &&
     css`
-      width: 20%;
+      width: 100%;
       height: 20%;
       display: flex;
     `}
@@ -232,9 +232,9 @@ export const PC_ModalBox = styled.div<{ mb_type: string }>`
   ${(props) =>
     props.mb_type === 't_img' &&
     css`
-      width: 6rem;
-      hegiht: 6rem;
-      margin-left: 2rem;
+      width: 5rem;
+      height: 5rem;
+      padding: 1rem 0 0 2rem;
     `}
   ${(props) =>
     props.mb_type === 'm_img' &&
