@@ -1,11 +1,11 @@
 import { BaseTemplate } from '../../templates';
 import {
-  MyMenu,
-  EditProfileModal,
-  UploadImageModal,
+  MyMenuItem,
+  EditProfileItem,
+  UploadImageItem,
   PaymentItem,
   PayLogItem,
-  ErrItem,
+  NotFoundItem,
   FavoriteItem,
   PurchaseItem,
   ManagementItem,
@@ -21,75 +21,75 @@ export const MyPage = ({ match }: any) => {
       case 'edit-profile':
         return (
           <>
-            <MyMenu />
-            <EditProfileModal />
+            <MyMenuItem />
+            <EditProfileItem />
           </>
         );
       case 'upload-image':
         return (
           <>
-            <MyMenu />
-            <UploadImageModal />
+            <MyMenuItem />
+            <UploadImageItem />
           </>
         );
       case 'payment':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <PaymentItem />
           </>
         );
       case 'paylog':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <PayLogItem />
           </>
         );
       case 'favorite':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <FavoriteItem />
           </>
         );
       case 'purchase':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <PurchaseItem />
           </>
         );
       case 'management':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <ManagementItem />
           </>
         );
       case 'profit':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <ExchangeItem />
           </>
         );
       case 'dashboard':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <DashBoardItem />
           </>
         );
       case 'cart':
         return (
           <>
-            <MyMenu />
+            <MyMenuItem />
             <CartItem />
           </>
         );
       default:
-        return <ErrItem />;
+        return <NotFoundItem />;
     }
   };
 

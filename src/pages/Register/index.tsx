@@ -1,10 +1,10 @@
 import { BaseTemplate } from '../../templates';
-import { RegisterItemModal } from '../../components/index';
+import { ModalRegisterItem } from '../../components/index';
 
 export const NewJoinForm = () => {
   return (
     <BaseTemplate>
-      <RegisterItemModal />
+      <ModalRegisterItem />
     </BaseTemplate>
   );
 };

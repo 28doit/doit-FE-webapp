@@ -6,7 +6,7 @@ import {
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export const ProfitToBank = (some: any) => {
+const profitToBank = (some: any) => {
   return (
     <S.PC_Box box="list">
       <S.PC_Ul>
@@ -72,7 +72,7 @@ export const ExchangeItem = ({}: ExchangeItemProps): React.ReactElement => {
                 <S.PC_Input value={money} onChange={onChangeMoney} />
                 <S.PC_Btn btnOnClick={onSubmitHandler}>신청</S.PC_Btn>
               </S.PC_Box>
-              {ProfitToBank(item)}
+              {profitToBank(item)}
             </S.PC_Container>
           </S.PC_Inner>
         </S.PC_Overlay>

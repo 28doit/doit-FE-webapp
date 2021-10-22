@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './style';
-import { Card } from '../../index';
+import { CardItem } from '../../index';
 import { get_favorite } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface FavoriteProps {}
+export interface FavoriteItemProps {}
 
-export const FavoriteImg = (some: any) => {
+const favoriteImg = (some: any) => {
   return (
     <S.PC_Box box="info">
       <S.PC_Ul>
         {some &&
           some.map((info: any) => (
             <S.PC_Li key={info.img_id}>
-              <Card
+              <CardItem
                 CardType="type03"
                 isSubscribe={info.subscribe}
                 likeImg={info.src}
@@ -25,14 +25,14 @@ export const FavoriteImg = (some: any) => {
   );
 };
 
-export const FavoriteAuthor = (some: any) => {
+const favoriteAuthor = (some: any) => {
   return (
     <S.PC_Box box="info">
       <S.PC_Ul>
         {some &&
           some.map((info: any) => (
             <S.PC_Li key={info.author}>
-              <Card
+              <CardItem
                 CardType="type02"
                 isSubscribe={info.subscribe}
                 author={info.author}
@@ -49,14 +49,13 @@ export const FavoriteAuthor = (some: any) => {
   );
 };
 
-export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
+export const FavoriteItem = ({}: FavoriteItemProps): React.ReactElement => {
   const [imgItem, setImgItem] = useState([]);
   const [authItem, setAuthItem] = useState([]);
   const [favImg, setFavImg] = useState(true);
 
   useEffect(() => {
     get_favorite().then((response) => {
-      console.log(response.data);
       response.data.map((info: any) => {
         setImgItem(info.img);
         setAuthItem(info.auth);
@@ -66,7 +65,6 @@ export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
 
   const onFavoriteHandler = () => {
     get_favorite().then((response) => {
-      console.log(response.data);
       response.data.map((info: any) => {
         setImgItem(info.img);
         setAuthItem(info.auth);
@@ -109,7 +107,7 @@ export const FavoriteItem = ({}: FavoriteProps): React.ReactElement => {
                   </>
                 )}
               </S.PC_Box>
-              {favImg ? FavoriteImg(imgItem) : FavoriteAuthor(authItem)}
+              {favImg ? favoriteImg(imgItem) : favoriteAuthor(authItem)}
             </S.PC_Container>
           </S.PC_Inner>
         </S.PC_Overlay>

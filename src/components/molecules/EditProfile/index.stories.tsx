@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react';
-import { EditProfileModal, ModalItemProps } from './index';
+import { EditProfileItem, EditProfileItemProps } from './index';
 
 export default {
   title: 'Molecules/EditProfile',
 } as Meta;
 
-export const Template = (args: ModalItemProps) => (
-  <EditProfileModal {...args} />
+export const Template = (args: EditProfileItemProps) => (
+  <EditProfileItem {...args} />
 );

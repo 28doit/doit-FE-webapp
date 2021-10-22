@@ -3,9 +3,9 @@ import React from 'react';
 import ROUTES from '../../../commons/routes';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface NoticeProps {}
+export interface NoticeItemProps {}
 
-export const NoticeItem = ({}: NoticeProps): React.ReactElement => {
+export const NoticeItem = ({}: NoticeItemProps): React.ReactElement => {
   const onJoinEmailClick = (e: any) => {
     return window.location.replace(`${ROUTES.LOGIN}`);
   };

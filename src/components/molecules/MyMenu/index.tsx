@@ -3,9 +3,9 @@ import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface MyMenuProps {}
+export interface MyMenuItemProps {}
 
-export const MyMenu = ({}: MyMenuProps): React.ReactElement => {
+export const MyMenuItem = ({}: MyMenuItemProps): React.ReactElement => {
   return (
     <>
       <Mobile>

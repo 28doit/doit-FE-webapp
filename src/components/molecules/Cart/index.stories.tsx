@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react';
-import { CartItem, CartProps } from './index';
+import { CartItem, CartItemProps } from './index';
 
 export default {
   title: 'Molecules/Cart',
 } as Meta;
 
-export const Template = (args: CartProps) => <CartItem {...args} />;
+export const Template = (args: CartItemProps) => <CartItem {...args} />;

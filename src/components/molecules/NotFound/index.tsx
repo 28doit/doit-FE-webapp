@@ -3,7 +3,9 @@ import ErrSvg from '../../../assets/404.svg';
 import ROUTES from '../../../commons/routes';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export const ErrItem = () => {
+export interface NotFoundItemProps {}
+
+export const NotFoundItem = () => {
   return (
     <>
       <Mobile>

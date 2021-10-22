@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { NewLoginForm, RePasswordForm } from './pages/Login';
-import { NewJoinForm } from './pages/Join';
+import { NewJoinForm } from './pages/Register';
 import { Main } from './pages/Main';
 import { Search, BestCategorySearch } from './pages/Search';
 import { MyPage } from './pages/MyPage';

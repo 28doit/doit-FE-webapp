@@ -8,7 +8,7 @@ import { get_pay_log } from '../../../redux/services/auth.service';
 import { useSelector } from 'react-redux';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface PayLogProps {}
+export interface PayLogItemProps {}
 
 interface PayLogCardProps {
   c_date?: string;
@@ -34,7 +34,7 @@ const PayLogCard = ({
   );
 };
 
-export const PayLogItem = ({}: PayLogProps): React.ReactElement => {
+export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [startDate, setStartDate] = useState(
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),

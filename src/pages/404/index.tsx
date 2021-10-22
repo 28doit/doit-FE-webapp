@@ -1,10 +1,10 @@
 import { BaseTemplate } from '../../templates';
-import { ErrItem } from '../../components/index';
+import { NotFoundItem } from '../../components/index';
 
 export const Err404 = () => {
   return (
     <BaseTemplate>
-      <ErrItem />
+      <NotFoundItem />
     </BaseTemplate>
   );
 };

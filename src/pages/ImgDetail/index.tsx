@@ -1,10 +1,10 @@
 import { BaseTemplate } from '../../templates';
-import { ImageDetail } from '../../components/index';
+import { ImageDetailItem } from '../../components/index';
 
 export const ImgDetail = () => {
   return (
     <BaseTemplate>
-      <ImageDetail />
+      <ImageDetailItem />
     </BaseTemplate>
   );
 };

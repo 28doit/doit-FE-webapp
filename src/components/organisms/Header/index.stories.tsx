@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react';
-import { Header } from './index';
+import { HeaderItem, HeaderItemProps } from './index';
 
 export default {
   title: 'Organisms/Header',
-  component: Header,
+  component: HeaderItem,
 } as Meta;
 
-export const general = () => <Header />;
+export const general = ({}: HeaderItemProps) => <HeaderItem />;

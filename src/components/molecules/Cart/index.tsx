@@ -10,9 +10,9 @@ import {
 } from '../../../redux/services/auth.service';
 import { useSelector } from 'react-redux';
 
-export interface CartProps {}
+export interface CartItemProps {}
 
-export const CartItem = ({}: CartProps): React.ReactElement => {
+export const CartItem = ({}: CartItemProps): React.ReactElement => {
   // const { user: currentUser } = useSelector((state) => state.auth);
   const [cartList, setCartList] = useState([]);
   const [check, setCheck] = useState([] as any);

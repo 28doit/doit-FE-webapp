@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react';
-import { LoginItemModal, ModalItemProps } from './index';
+import { ModalLoginItem, ModalLoginItemProps } from './index';
 
 export default {
   title: 'Molecules/ModalLogin',
 } as Meta;
 
-export const Template = (args: ModalItemProps) => <LoginItemModal {...args} />;
+export const Template = (args: ModalLoginItemProps) => (
+  <ModalLoginItem {...args} />
+);

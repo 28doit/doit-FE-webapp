@@ -1,38 +1,38 @@
 import { useState, useEffect } from 'react';
 import * as S from './style';
-import { Card } from '../../index';
+import { CardItem } from '../../index';
 import { get_management } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface ManagementProps {}
+export interface ManagementItemProps {}
 
-const ManageResult = (some: any) => {
+const manageResult = (some: any) => {
   return (
     <>
       {some &&
         some.map((info: any) => (
           <S.PC_Li key={info.gall_id}>
-            <Card CardType="type05" likeImg={info.src} />
+            <CardItem CardType="type05" likeImg={info.src} />
           </S.PC_Li>
         ))}
     </>
   );
 };
 
-const ManageDeny = (some: any) => {
+const manageDeny = (some: any) => {
   return (
     <>
       {some &&
         some.map((info: any) => (
           <S.PC_Li key={info.gall_id}>
-            <Card CardType="type06" likeImg={info.src} />
+            <CardItem CardType="type06" likeImg={info.src} />
           </S.PC_Li>
         ))}
     </>
   );
 };
 
-export const ManagementItem = ({}: ManagementProps): React.ReactElement => {
+export const ManagementItem = ({}: ManagementItemProps): React.ReactElement => {
   const [accessItem, setAccessItem] = useState([]);
   const [inProcessItem, setInProcessItem] = useState([]);
   const [denyItem, setDenyItem] = useState([]);
@@ -144,9 +144,9 @@ export const ManagementItem = ({}: ManagementProps): React.ReactElement => {
               </S.PC_Box>
               <S.PC_Box box="result">
                 <S.PC_Ul>
-                  {access ? ManageResult(accessItem) : ''}
-                  {inProcess ? ManageResult(inProcessItem) : ''}
-                  {deny ? ManageDeny(denyItem) : ''}
+                  {access ? manageResult(accessItem) : ''}
+                  {inProcess ? manageResult(inProcessItem) : ''}
+                  {deny ? manageDeny(denyItem) : ''}
                 </S.PC_Ul>
               </S.PC_Box>
             </S.PC_Container>

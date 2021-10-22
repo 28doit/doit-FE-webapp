@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import { Header } from '../components/index';
+import { HeaderItem } from '../components/index';
 
 export interface BaseProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export const BaseTemplate = ({
   return (
     <S.Container>
       <S.HeaderWrap>
-        <Header />
+        <HeaderItem />
       </S.HeaderWrap>
       {full ? (
         <S.BaseWrap full>{children}</S.BaseWrap>

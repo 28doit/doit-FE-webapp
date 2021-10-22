@@ -10,11 +10,11 @@ import { get_buy_img } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { useSelector } from 'react-redux';
 
-export interface ImageDetailProps {}
+export interface ImageDetailItemProps {}
 
-export const ImageDetail = ({
+export const ImageDetailItem = ({
   ...args
-}: ImageDetailProps): React.ReactElement => {
+}: ImageDetailItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const query = queryString.parse(location.search);
   const [imgData, setImgData] = useState({

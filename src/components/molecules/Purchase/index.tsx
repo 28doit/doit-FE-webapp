@@ -8,7 +8,7 @@ import { get_purchase } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { useSelector } from 'react-redux';
 
-export interface PurchaseProps {}
+export interface PurchaseItemProps {}
 
 interface PurchaseCardProps {
   preview?: string;
@@ -36,7 +36,7 @@ const PurchaseCard = ({
   );
 };
 
-export const PurchaseItem = ({}: PurchaseProps): React.ReactElement => {
+export const PurchaseItem = ({}: PurchaseItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const [startDate, setStartDate] = useState(

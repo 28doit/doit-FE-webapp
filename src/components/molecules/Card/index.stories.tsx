@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Card, CardProps } from './index';
+import { CardItem, CardItemProps } from './index';
 import test1 from '../../../assets/test1.jpg';
 import test2 from '../../../assets/test2.jpg';
 import test3 from '../../../assets/test3.jpg';
@@ -9,7 +9,7 @@ import ProImg from '../../../assets/cats.svg';
 
 export default { title: 'Molecules/Card' } as Meta;
 
-const Template: Story<CardProps> = (args) => <Card {...args} />;
+const Template: Story<CardItemProps> = (args) => <CardItem {...args} />;
 
 export const Type01 = Template.bind({});
 Type01.args = {

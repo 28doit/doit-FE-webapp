@@ -11,7 +11,9 @@ import { ReactComponent as Cart } from '../../../assets/cart.svg';
 import { ReactComponent as Best } from '../../../assets/best.svg';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export const Header = (): React.ReactElement => {
+export interface HeaderItemProps {}
+
+export const HeaderItem = ({}: HeaderItemProps): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
   const { user: currentUser } = useSelector((state) => state.auth);
 

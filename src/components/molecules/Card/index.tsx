@@ -13,7 +13,7 @@ import {
   post_cart_img,
 } from '../../../redux/services/auth.service';
 
-export interface CardProps {
+export interface CardItemProps {
   CardType: string;
   imgSrc?: string;
   viewCount?: number;
@@ -35,7 +35,7 @@ export interface CardProps {
   cardOnclick?: (e: any) => void;
 }
 
-export const Card = ({
+export const CardItem = ({
   CardType,
   imgSrc,
   viewCount,
@@ -54,7 +54,7 @@ export const Card = ({
   imgCategory,
   cardOnclick,
   ...props
-}: CardProps): React.ReactElement => {
+}: CardItemProps): React.ReactElement => {
   const [show, setShow] = useState(false);
   const [like, setLike] = useState(isSubscribe);
   const [cart, setCart] = useState(isCart);

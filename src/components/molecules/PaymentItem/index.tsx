@@ -1,6 +1,6 @@
 import * as S from './style';
 import React, { useEffect, useState } from 'react';
-import { ModalLoading } from '../../index';
+import { ModalLoadingItem } from '../../index';
 import {
   expired_check,
   send_payment,
@@ -11,9 +11,9 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import { Nlogout } from '../../../redux/actions/auth';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface PaymentProps {}
+export interface PaymentItemProps {}
 
-export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
+export const PaymentItem = ({}: PaymentItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({
@@ -153,7 +153,7 @@ export const PaymentItem = ({}: PaymentProps): React.ReactElement => {
         <div>태블릿</div>
       </Tablet>
       <PC>
-        {Loading ? <ModalLoading /> : ''}
+        {Loading ? <ModalLoadingItem /> : ''}
         <S.PC_Overlay>
           <S.PC_Inner>
             <S.PC_Container>

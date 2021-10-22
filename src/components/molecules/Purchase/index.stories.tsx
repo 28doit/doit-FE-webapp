@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react';
-import { PurchaseItem, PurchaseProps } from './index';
+import { PurchaseItem, PurchaseItemProps } from './index';
 
 export default {
   title: 'Molecules/Purchase',
 } as Meta;
 
-export const Template = (args: PurchaseProps) => <PurchaseItem {...args} />;
+export const Template = (args: PurchaseItemProps) => <PurchaseItem {...args} />;

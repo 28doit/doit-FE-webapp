@@ -3,15 +3,15 @@ import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import validator from 'validator';
 import { useAppThunkDispatch } from '../../../redux/store';
-import { ModalLoading } from '../../index';
+import { ModalLoadingItem } from '../../index';
 import { Nlogin } from '../../../redux/actions/auth';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface ModalItemProps {}
+export interface ModalLoginItemProps {}
 
-export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
+export const ModalLoginItem = ({}: ModalLoginItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const history = useHistory();
 
@@ -74,7 +74,7 @@ export const LoginItemModal = ({}: ModalItemProps): React.ReactElement => {
         <S.PC_Overlay>
           <S.PC_Inner>
             <S.PC_Container>
-              {Loading ? <ModalLoading /> : ''}
+              {Loading ? <ModalLoadingItem /> : ''}
               <S.PC_Title>로그인</S.PC_Title>
               <S.PC_Form onSubmit={onSubmitHandler}>
                 <S.PC_Input

@@ -1,10 +1,13 @@
 import { BaseTemplate } from '../../templates';
-import { SearchContainer, BestCategoryContainer } from '../../components/index';
+import {
+  SearchContainerItem,
+  BestCategoryContainerItem,
+} from '../../components/index';
 
 export const Search = () => {
   return (
     <BaseTemplate>
-      <SearchContainer />
+      <SearchContainerItem />
     </BaseTemplate>
   );
 };
@@ -12,7 +15,7 @@ export const Search = () => {
 export const BestCategorySearch = () => {
   return (
     <BaseTemplate>
-      <BestCategoryContainer />
+      <BestCategoryContainerItem />
     </BaseTemplate>
   );
 };

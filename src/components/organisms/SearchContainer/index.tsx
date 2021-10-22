@@ -4,13 +4,13 @@ import { useState } from 'react';
 import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
-import { CardInfiniteList } from '../../index';
+import { CardGridItem } from '../../index';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
-export interface SearchContainerProps {}
+export interface SearchContainerItemProps {}
 
-export const SearchContainer =
-  ({}: SearchContainerProps): React.ReactElement => {
+export const SearchContainerItem =
+  ({}: SearchContainerItemProps): React.ReactElement => {
     const [searchItem, setSearchItem] = useState('');
     const query = queryString.parse(location.search);
     const history = useHistory();
@@ -35,13 +35,13 @@ export const SearchContainer =
         />
         <h3>{searchItem}</h3>
         <S.PC_CardBox>
-          <CardInfiniteList />
+          <CardGridItem />
         </S.PC_CardBox>
       </S.PC_Container>
     );
   };
 
-export const BestCategoryContainer = (): React.ReactElement => {
+export const BestCategoryContainerItem = (): React.ReactElement => {
   const [searchItem, setSearchItem] = useState('');
   const history = useHistory();
   const query = queryString.parse(location.search);
@@ -72,7 +72,7 @@ export const BestCategoryContainer = (): React.ReactElement => {
             formClcik={goToSearch}
           />
           <S.PC_CardBox>
-            <CardInfiniteList />
+            <CardGridItem />
           </S.PC_CardBox>
         </S.PC_Container>
       </PC>

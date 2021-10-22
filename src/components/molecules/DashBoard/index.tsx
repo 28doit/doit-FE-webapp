@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './style';
-import { Card } from '../Card/index';
+import { CardItem } from '../../index';
 import { get_dash } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
+
+export interface DashBoardItemProps {}
 
 export const DashBoardItem = (): React.ReactElement => {
   const [imgItem, setImgItem] = useState([]);
@@ -60,7 +62,7 @@ export const DashBoardItem = (): React.ReactElement => {
                   {imgItem &&
                     imgItem.map((info: any) => (
                       <S.PC_Li key={info.key}>
-                        <Card
+                        <CardItem
                           CardType="type05"
                           likeImg={info.imgSrc}
                           cardOnclick={() => {

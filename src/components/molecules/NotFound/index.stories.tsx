@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Meta } from '@storybook/react';
-import { ErrItem } from './index';
+import { NotFoundItem, NotFoundItemProps } from './index';
 
 export default {
   title: 'Molecules/NotFound',
 } as Meta;
 
-export const Template = () => <ErrItem/>;
+export const Template = ({}: NotFoundItemProps) => <NotFoundItem />;

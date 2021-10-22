@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
-import { Card } from '../../index';
+import { CardItem } from '../../index';
 import ROUTES from '../../../commons/routes';
 import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -103,9 +103,9 @@ const useLoadItems = () => {
   return { loading, items, hasNextPage, error, loadMore };
 };
 
-export interface CardGridProps {}
+export interface CardGridItemProps {}
 
-export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
+export const CardGridItem = ({}: CardGridItemProps): React.ReactElement => {
   const { loading, items, hasNextPage, error, loadMore } = useLoadItems();
   const [infiniteRef] = useInfiniteScroll({
     loading,
@@ -122,7 +122,7 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
           {items &&
             items.map((item) => (
               <S.PC_Li key={item.key}>
-                <Card
+                <CardItem
                   CardType="type01"
                   imgSrc={item.imgSrc}
                   isSubscribe={item.isSubscribe}
@@ -145,7 +145,9 @@ export const CardInfiniteList = ({}: CardGridProps): React.ReactElement => {
   );
 };
 
-export const CategoryGridItems = () => {
+export interface CategoryGridItemProps {}
+
+export const CategoryGridItem = ({}: CategoryGridItemProps) => {
   const [cItem, setCItem] = useState([]);
   const history = useHistory();
   useLayoutEffect(() => {
@@ -167,7 +169,7 @@ export const CategoryGridItems = () => {
             {cItem &&
               cItem.map((info: any) => (
                 <S.PC_Li key={info.key}>
-                  <Card
+                  <CardItem
                     CardType="type04"
                     imgSrc={info.src}
                     imgCategory={info.category}
