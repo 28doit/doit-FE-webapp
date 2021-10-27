@@ -21,6 +21,11 @@ export const SearchContainerItem =
 
     const goToSearch = () => {
       console.log(ROUTES.SEARCHITEM + searchItem);
+      if (searchItem.includes('@')) {
+        console.log('author'); // 여기는 작가 리턴 해야 되는데 페이지를 새로 만들어야 할 듯? 일단은 잘 되는가 테스트만
+      } else {
+        console.log('img'); // 여기는 기존의 이미지 리턴
+      }
       return history.push(ROUTES.SEARCHITEM + searchItem);
     };
 

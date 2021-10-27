@@ -102,6 +102,7 @@ export const CardItem = ({
                     width="60"
                     height="60"
                     stroke={cart ? '#ffffff' : 'black'}
+                    onClick={imgCart}
                   />
                 </S.PC_ModalBox>
               </S.PC_Modal>
