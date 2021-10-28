@@ -115,7 +115,11 @@ export const post_upload_img = (formData: any) => {
   );
 };
 
-export const get_cursor_based_img = (imgCount: any) => {
+export const get_cursor_based_img = (imgCount: any, imgName: any) => {
+  return axios.get(process.env.REACT_APP_LOCAL + `/cursor${imgCount}`);
+};
+
+export const get_cursor_based_auth = (imgCount: any, authName: any) => {
   return axios.get(process.env.REACT_APP_LOCAL + `/cursor${imgCount}`);
 };
 

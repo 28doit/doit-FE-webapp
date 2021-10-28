@@ -8,6 +8,7 @@ import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import {
   get_cursor_based_img,
+  get_cursor_based_auth,
   get_category,
 } from '../../../redux/services/auth.service';
 
@@ -62,7 +63,7 @@ const loadItems = (some: Array<any>): Promise<Response> => {
   });
 };
 
-const useLoadItems = () => {
+const useLoadItems = (nItem: any) => {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<Item[]>([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
@@ -79,7 +80,14 @@ const useLoadItems = () => {
       } else {
         // http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main
         //process.env.REACT_APP_HOON + `/api/pagination/cursor/${imgCount}`
-        get_cursor_based_img(imgCount)
+
+        if (nItem.includes('@')) {
+          console.log('@');
+        } else {
+          console.log('img');
+        }
+
+        get_cursor_based_img(imgCount, 'poeynus')
           .then((response) => {
             console.log(response.data);
             setImgData(response.data);
@@ -103,10 +111,14 @@ const useLoadItems = () => {
   return { loading, items, hasNextPage, error, loadMore };
 };
 
-export interface CardGridItemProps {}
+export interface CardGridItemProps {
+  nItem: any;
+}
 
-export const CardGridItem = ({}: CardGridItemProps): React.ReactElement => {
-  const { loading, items, hasNextPage, error, loadMore } = useLoadItems();
+export const CardGridItem = ({
+  nItem,
+}: CardGridItemProps): React.ReactElement => {
+  const { loading, items, hasNextPage, error, loadMore } = useLoadItems(nItem);
   const [infiniteRef] = useInfiniteScroll({
     loading,
     hasNextPage,
@@ -115,6 +127,7 @@ export const CardGridItem = ({}: CardGridItemProps): React.ReactElement => {
     rootMargin: '0px 0px 400px 0px',
   });
   const history = useHistory();
+
   return (
     <>
       <S.PC_Container c_type="list">

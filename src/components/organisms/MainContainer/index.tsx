@@ -48,7 +48,7 @@ export const MainContainerItem =
             <S.PC_Hr top="700px">어떤 이미지가 있을까?</S.PC_Hr>
 
             <S.PC_Box box="card">
-              <CardGridItem />
+              <CardGridItem nItem="hi" />
             </S.PC_Box>
           </S.PC_Container>
         </PC>
