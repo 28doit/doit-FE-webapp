@@ -9,6 +9,7 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import {
   get_cursor_based_img,
   get_cursor_based_auth,
+  get_cursor_based_default,
   get_category,
 } from '../../../redux/services/auth.service';
 
@@ -63,12 +64,12 @@ const loadItems = (some: Array<any>): Promise<Response> => {
   });
 };
 
-const useLoadItems = (nItem: any) => {
+const useLoadItems = (nItem: any, cursor: any) => {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<Item[]>([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
-  const [imgCount, setImgCount] = useState(2); // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
+  const [imgCount, setImgCount] = useState(cursor); // 통신할 때 한번 렌더링 후 다음 목록을 볼 때 사용할 state
   const [imgData, setImgData] = useState([]);
 
   async function loadMore() {
@@ -80,10 +81,18 @@ const useLoadItems = (nItem: any) => {
       } else {
         // http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main
         //process.env.REACT_APP_HOON + `/api/pagination/cursor/${imgCount}`
-
+        console.log(nItem);
         if (nItem.includes('@')) {
-          console.log('@');
-          get_cursor_based_auth(imgCount, 'auth')
+          get_cursor_based_auth(imgCount, nItem)
+            .then((response) => {
+              console.log(response);
+              setImgData(response.data);
+            })
+            .catch((err) => {
+              console.clear();
+            });
+        } else if (nItem.includes('default')) {
+          get_cursor_based_default(imgCount, 'default')
             .then((response) => {
               setImgData(response.data);
             })
@@ -91,14 +100,12 @@ const useLoadItems = (nItem: any) => {
               console.clear();
             });
         } else {
-          console.log('img');
-          get_cursor_based_img(imgCount, 'img')
+          get_cursor_based_img(imgCount, nItem)
             .then((response) => {
+              console.log(response);
               setImgData(response.data);
             })
-            .catch((err) => {
-              console.clear();
-            });
+            .catch((err) => {});
         }
 
         const { data, hasNextPage: newHasNextPage } = await loadItems(imgData);
@@ -119,12 +126,17 @@ const useLoadItems = (nItem: any) => {
 
 export interface CardGridItemProps {
   nItem: any;
+  cursor: any;
 }
 
 export const CardGridItem = ({
   nItem,
+  cursor,
 }: CardGridItemProps): React.ReactElement => {
-  const { loading, items, hasNextPage, error, loadMore } = useLoadItems(nItem);
+  const { loading, items, hasNextPage, error, loadMore } = useLoadItems(
+    nItem,
+    cursor,
+  );
   const [infiniteRef] = useInfiniteScroll({
     loading,
     hasNextPage,
@@ -136,7 +148,6 @@ export const CardGridItem = ({
 
   return (
     <>
-      <div>{nItem}</div>
       <S.PC_Container c_type="list">
         <S.PC_VeList>
           {items &&

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './style';
 import { useState } from 'react';
 import queryString from 'query-string';
@@ -6,14 +6,22 @@ import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
 import { CardGridItem } from '../../index';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
+import axios from 'axios';
 
 export interface SearchContainerItemProps {}
 
 export const SearchContainerItem =
   ({}: SearchContainerItemProps): React.ReactElement => {
     const [searchItem, setSearchItem] = useState('');
+    const [itemCnt, setItemCnt] = useState(0);
     const query = queryString.parse(location.search);
     const history = useHistory();
+
+    useEffect(() => {
+      axios.post('', searchItem).then((response) => {
+        console.log(response);
+      });
+    }, []);
 
     const onSearchHandler = (e: any) => {
       setSearchItem(e.currentTarget.value);
@@ -42,7 +50,7 @@ export const SearchContainerItem =
               formClcik={goToSearch}
             />
             <S.PC_CardBox>
-              <CardGridItem nItem={query.item} />
+              <CardGridItem nItem={query.item} cursor={27} />
             </S.PC_CardBox>
           </S.PC_Container>
         </PC>
@@ -80,7 +88,7 @@ export const BestCategoryContainerItem = (): React.ReactElement => {
             formClcik={goToSearch}
           />
           <S.PC_CardBox>
-            <CardGridItem nItem="by" />
+            <CardGridItem nItem="by" cursor={1} />
           </S.PC_CardBox>
         </S.PC_Container>
       </PC>

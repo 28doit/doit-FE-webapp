@@ -116,10 +116,18 @@ export const post_upload_img = (formData: any) => {
 };
 
 export const get_cursor_based_img = (imgCount: any, imgName: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/cursor${imgCount}`);
+  return axios.get(
+    process.env.REACT_APP_HOON + `/search/title/${imgCount}/${imgName}`,
+  );
 };
 
 export const get_cursor_based_auth = (imgCount: any, authName: any) => {
+  return axios.get(
+    process.env.REACT_APP_HOON + `/seller/${imgCount}/${authName}`,
+  );
+};
+
+export const get_cursor_based_default = (imgCount: any, authName: any) => {
   return axios.get(process.env.REACT_APP_LOCAL + `/cursor${imgCount}`);
 };
 
