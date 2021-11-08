@@ -6,11 +6,9 @@ import { ReactComponent as DownloadImg } from '../../../assets/download.svg';
 import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 import { ReactComponent as EditImg } from '../../../assets/pencil.svg';
 import { ReactComponent as TrashImg } from '../../../assets/trash.svg';
-import { ReactComponent as CartImg } from '../../../assets/cart.svg';
 import {
   post_like_img,
   post_like_author,
-  post_cart_img,
 } from '../../../redux/services/auth.service';
 
 export interface CardItemProps {
@@ -57,7 +55,6 @@ export const CardItem = ({
 }: CardItemProps): React.ReactElement => {
   const [show, setShow] = useState(false);
   const [like, setLike] = useState(isSubscribe);
-  const [cart, setCart] = useState(isCart);
 
   const imgLike = (e: any) => {
     post_like_img(2006, 23).then(() => {
@@ -68,12 +65,6 @@ export const CardItem = ({
   const authorLike = (e: any) => {
     post_like_author(2006, 2010).then(() => {
       setLike(!like);
-    });
-  };
-
-  const imgCart = (e: any) => {
-    post_cart_img('token', 'email', 'gallery_id').then((response) => {
-      setCart(!cart);
     });
   };
 
@@ -95,14 +86,6 @@ export const CardItem = ({
                     height="60"
                     fill={like ? '#d7443e' : 'black'}
                     onClick={imgLike}
-                  />
-                </S.PC_ModalBox>
-                <S.PC_ModalBox mb_type="t_img">
-                  <CartImg
-                    width="60"
-                    height="60"
-                    stroke={cart ? '#ffffff' : 'black'}
-                    onClick={imgCart}
                   />
                 </S.PC_ModalBox>
               </S.PC_Modal>

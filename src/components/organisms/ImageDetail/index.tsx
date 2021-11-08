@@ -6,7 +6,10 @@ import { ReactComponent as LikeImg } from '../../../assets/like.svg';
 import { useLayoutEffect, useState } from 'react';
 import { get_img_detail } from '../../../redux/services/auth.service';
 import queryString from 'query-string';
-import { get_buy_img } from '../../../redux/services/auth.service';
+import {
+  get_buy_img,
+  post_cart_img,
+} from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { useSelector } from 'react-redux';
 
@@ -32,6 +35,7 @@ export const ImageDetailItem = ({
     uploadDate: '',
     cameraInfo: '',
     locationInfo: '',
+    isCart: false,
   });
   const {
     imgSrc,
@@ -48,7 +52,10 @@ export const ImageDetailItem = ({
     uploadDate,
     cameraInfo,
     locationInfo,
+    isCart,
   } = imgData;
+
+  const [cart, setCart] = useState(isCart);
 
   useLayoutEffect(() => {
     get_img_detail(query.id).then((response) => {
@@ -70,6 +77,7 @@ export const ImageDetailItem = ({
         uploadDate: data.uploadDate,
         cameraInfo: data.cameraInfo,
         locationInfo: data.locationInfo,
+        isCart: data.isCart,
       });
     });
   }, []);
@@ -77,6 +85,12 @@ export const ImageDetailItem = ({
   const buyImgHandler = (e: any) => {
     get_buy_img(currentUser.token, query.id).then((response) => {
       console.log(response);
+    });
+  };
+
+  const imgCart = (e: any) => {
+    post_cart_img('token', 'email', 'gallery_id').then((response) => {
+      setCart(!cart);
     });
   };
 
@@ -157,7 +171,12 @@ export const ImageDetailItem = ({
                 <S.PC_P p_type="r_b">업로드 날짜: {uploadDate}</S.PC_P>
                 <S.PC_P p_type="r_b">카메라 정보: {cameraInfo}</S.PC_P>
                 <S.PC_P p_type="r_b">촬영 정보: {locationInfo}</S.PC_P>
-                <S.PC_Btn btnOnClick={buyImgHandler}>구매하기</S.PC_Btn>
+                <S.PC_Btn b_type="cart" btnOnClick={imgCart}>
+                  장바구니
+                </S.PC_Btn>
+                <S.PC_Btn b_type="buy" btnOnClick={buyImgHandler}>
+                  구매하기
+                </S.PC_Btn>
               </S.PC_RightInfo>
             </S.PC_RightInfo>
             <S.PC_Hr />
@@ -192,8 +211,6 @@ export const ImageDetailItem = ({
                 </S.PC_Li>
               </S.PC_Ul>
             </S.PC_RightInfo>
-            <S.PC_Hr />
-            <S.PC_RightInfo i_type="r_h"></S.PC_RightInfo>
           </S.PC_Wrap>
         </S.PC_Container>
       </PC>
