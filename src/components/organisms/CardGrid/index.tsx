@@ -83,18 +83,24 @@ const useLoadItems = (nItem: any) => {
 
         if (nItem.includes('@')) {
           console.log('@');
+          get_cursor_based_auth(imgCount, 'auth')
+            .then((response) => {
+              setImgData(response.data);
+            })
+            .catch((err) => {
+              console.clear();
+            });
         } else {
           console.log('img');
+          get_cursor_based_img(imgCount, 'img')
+            .then((response) => {
+              setImgData(response.data);
+            })
+            .catch((err) => {
+              console.clear();
+            });
         }
 
-        get_cursor_based_img(imgCount, 'poeynus')
-          .then((response) => {
-            console.log(response.data);
-            setImgData(response.data);
-          })
-          .catch((err) => {
-            console.clear();
-          });
         const { data, hasNextPage: newHasNextPage } = await loadItems(imgData);
         setItems((current) => [...current, ...data]);
         setHasNextPage(newHasNextPage);
@@ -130,6 +136,7 @@ export const CardGridItem = ({
 
   return (
     <>
+      <div>{nItem}</div>
       <S.PC_Container c_type="list">
         <S.PC_VeList>
           {items &&

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as S from './style';
 import { useState } from 'react';
 import queryString from 'query-string';
@@ -20,22 +20,33 @@ export const SearchContainerItem =
     };
 
     const goToSearch = () => {
-      history.replace(ROUTES.SEARCHITEM + searchItem);
+      history.push(ROUTES.SEARCHITEM + searchItem);
+      history.go(0);
     };
 
     return (
-      <S.PC_Container>
-        <S.PC_Title>검색 결과: {query.item} </S.PC_Title>
-        <S.PC_Input
-          placeholder="이미지 검색 / @작가"
-          onChange={onSearchHandler}
-          value={searchItem}
-          formClcik={goToSearch}
-        />
-        <S.PC_CardBox>
-          <CardGridItem nItem={query.item} />
-        </S.PC_CardBox>
-      </S.PC_Container>
+      <>
+        <Mobile>
+          <div>모바일</div>
+        </Mobile>
+        <Tablet>
+          <div>태블릿</div>
+        </Tablet>
+        <PC>
+          <S.PC_Container>
+            <S.PC_Title>검색 결과: {query.item} </S.PC_Title>
+            <S.PC_Input
+              placeholder="이미지 검색 / @작가"
+              onChange={onSearchHandler}
+              value={searchItem}
+              formClcik={goToSearch}
+            />
+            <S.PC_CardBox>
+              <CardGridItem nItem={query.item} />
+            </S.PC_CardBox>
+          </S.PC_Container>
+        </PC>
+      </>
     );
   };
 
