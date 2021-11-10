@@ -111,7 +111,7 @@ export const ImageDetailItem = ({
                 <S.PC_LeftInfo i_type="l_t_auth">
                   <S.PC_Img img="l_auth" src={profileImg} />
                   <S.PC_P p_type="l_auth">{author}</S.PC_P>
-                  {isAuthSubScribe ? (
+                  {!isAuthSubScribe ? (
                     <S.PC_LeftInfo i_type="like">
                       <Heart width="30" height="30" fill="#d7443e" />
                     </S.PC_LeftInfo>
@@ -125,7 +125,7 @@ export const ImageDetailItem = ({
                   </S.PC_P>
                 </S.PC_LeftInfo>
                 <S.PC_LeftInfo i_type="l_t_like">
-                  {isSubscribe ? (
+                  {!isSubscribe ? (
                     <S.PC_LeftInfo i_type="like">
                       <Heart width="30" height="30" fill="#d7443e" />
                     </S.PC_LeftInfo>

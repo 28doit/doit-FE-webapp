@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
 
 export const PC_Overlay = styled.div`
@@ -24,10 +25,7 @@ export const PC_Container = styled.div`
   flex-direction: column;
 `;
 
-export const PC_Box =
-  styled.div <
-  { where: string } >
-  `
+export const PC_Box = styled.div<{ where: string }>`
   ${(props) =>
     props.where === 'top' &&
     css`
@@ -88,10 +86,7 @@ export const PC_Info = styled.div`
   border-radius: 5%;
 `;
 
-export const PC_P =
-  styled.p <
-  { p_type: string } >
-  `
+export const PC_P = styled.p<{ p_type: string }>`
   ${(props) =>
     props.p_type === 'main' &&
     css`

@@ -313,6 +313,6 @@ export const PC_Deny = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem
+  font-size: 1.6rem;
   font-family: elice;
 `;

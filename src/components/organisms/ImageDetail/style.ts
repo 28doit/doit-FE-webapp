@@ -45,12 +45,12 @@ export const PC_LeftBox = styled.div<{ b_type: string }>`
   ${(props) =>
     props.b_type === 'mid' &&
     css`
-      height: 20%;
+      height: 25%;
     `}
 ${(props) =>
     props.b_type === 'bot' &&
     css`
-      height: 25%;
+      height: 20%;
     `}
   width: 100%;
 `;
@@ -98,6 +98,7 @@ export const PC_P = styled.p<{ p_type: string }>`
   ${(props) =>
     props.p_type === 'l_p' &&
     css`
+      padding-left: 1rem;
       font-size: 1.6rem;
       font-family: elice;
       color: #808080;

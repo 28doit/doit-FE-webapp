@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
 import { Btn } from '../../index';
 
@@ -32,10 +33,7 @@ export const PC_Title = styled.h2`
   padding: 3rem 0;
 `;
 
-export const PC_Box =
-  styled.div <
-  { box: string } >
-  `
+export const PC_Box = styled.div<{ box: string }>`
   ${(props) =>
     props.box === 'btn' &&
     css`
@@ -61,20 +59,18 @@ export const PC_Box =
     `}
 `;
 
-export const PC_Btn =
-  styled(Btn) <
-  { b_type: string } >
-  `
+export const PC_Btn = styled(Btn)<{ b_type: string }>`
   ${(props) =>
     props.b_type === 'yes' &&
     css`
       background-color: #0197ea;
     `}
-    ${(props) =>
-      props.b_type === 'no' &&
-      css`
-        background-color: #041e7d;
-      `}
+  ${(props) =>
+    props.b_type === 'no' &&
+    css`
+      background-color: #041e7d;
+    `}
+      font-size: 2rem;
 `;
 
 export const PC_Ul = styled.ul`
