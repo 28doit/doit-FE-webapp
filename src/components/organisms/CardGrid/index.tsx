@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { CardItem } from '../../index';

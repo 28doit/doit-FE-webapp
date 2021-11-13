@@ -42,14 +42,14 @@ export const edit_user_profile = (formData: any) => {
 
 export const email_check = (email: any) => {
   return axios.get(
-    process.env.REACT_APP_BEOM + '/accounts/new/email-check?email=' + email,
+    process.env.REACT_APP_BEOM + '/accounts/email?email=' + email,
   );
 };
 
 export const expired_check = (token: any, userEmail: any) => {
   return axios.get(
     process.env.REACT_APP_BEOM +
-      `/accounts/token-check?token=${token}&email=${userEmail}`,
+      `/accounts/token?token=${token}&email=${userEmail}`,
   );
 };
 
@@ -73,7 +73,7 @@ export const logout = () => {
 };
 
 export const register = (formData: any) => {
-  return axios.post(process.env.REACT_APP_HOON + '/accounts/new', formData, {
+  return axios.post(process.env.REACT_APP_HOON + '/accounts', formData, {
     headers: {
       'content-type': 'multipart/form-data',
     },
@@ -83,7 +83,7 @@ export const register = (formData: any) => {
 export const get_purchase = (startDate: any, endDate: any, token: any) => {
   return axios.get(
     process.env.REACT_APP_BEOM +
-      `/payment/itemhistory?token=${token}&start_history=${startDate}&end_history=${endDate}`,
+      `/item/buy?token=${token}&start_history=${startDate}&end_history=${endDate}`,
   );
   // return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
 };
@@ -91,7 +91,7 @@ export const get_purchase = (startDate: any, endDate: any, token: any) => {
 export const get_pay_log = (token: any, startDate: any, endDate: any) => {
   return axios.get(
     process.env.REACT_APP_BEOM +
-      `/payment/history?token=${token}&start_history=${startDate}&end_history=${endDate}`,
+      `/cash/payment?token=${token}&start_history=${startDate}&end_history=${endDate}`,
   );
 };
 
@@ -166,15 +166,16 @@ export const post_like_author = (idx: any, subscribeUser: any) => {
   });
 };
 
+/* 제대로 된 주소 다 알아야 바꿀듯 */
 export const get_buy_img = (token: any, gallary_id: any) => {
   return axios.get(
     process.env.REACT_APP_BEOM +
-      `/payment/buy?gallaryid=${gallary_id}&token=${token}`,
+      `/item/buy?gallaryid=${gallary_id}&token=${token}`,
   );
 };
 
 export const get_cart = (token: any, email: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/cart`);
+  return axios.get(process.env.REACT_APP_LOCAL + `/item/cart`);
 };
 
 export const post_pay_cart = (
@@ -183,7 +184,7 @@ export const post_pay_cart = (
   items: any,
   money: any,
 ) => {
-  return axios.post(process.env.REACT_APP_LOCAL + `/cart/buy`, {
+  return axios.post(process.env.REACT_APP_LOCAL + `/item/cart/buy`, {
     token: token,
     user_email: email,
     gallery_id: items,
@@ -200,9 +201,5 @@ export const post_delete_cart = (token: any, email: any, items: any) => {
 };
 
 export const post_cart_img = (token: any, email: any, gallery_id: any) => {
-  return axios.post(process.env.REACT_APP_LOCAL + `/img-cart`, {
-    token: token,
-    email: email,
-    gallery_id: gallery_id,
-  });
+  return axios.delete(process.env.REACT_APP_LOCAL + `/item/cart`);
 };

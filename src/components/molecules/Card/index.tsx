@@ -221,6 +221,13 @@ export const CardItem = ({
           </S.PC_Box>
         </S.PC_Wrap>
       )}
+      {CardType === 'type07' && (
+        <S.PC_Wrap w_type="t_5" onClick={cardOnclick}>
+          <S.PC_Box box="like">
+            <S.PC_Img i_type="like" src={likeImg} />
+          </S.PC_Box>
+        </S.PC_Wrap>
+      )}
     </S.PC_Container>
   );
 };

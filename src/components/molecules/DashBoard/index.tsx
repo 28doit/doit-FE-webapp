@@ -63,7 +63,7 @@ export const DashBoardItem = (): React.ReactElement => {
                     imgItem.map((info: any) => (
                       <S.PC_Li key={info.key}>
                         <CardItem
-                          CardType="type05"
+                          CardType="type07"
                           likeImg={info.imgSrc}
                           cardOnclick={() => {
                             console.log('hi');
