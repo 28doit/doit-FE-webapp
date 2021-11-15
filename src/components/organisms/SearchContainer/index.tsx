@@ -43,7 +43,6 @@ export const SearchContainerItem =
         <PC>
           <S.PC_Container>
             <S.PC_Title>검색 결과: {query.item} </S.PC_Title>
-            <div>{query.item}</div>
             <S.PC_Input
               placeholder="이미지 검색 / @작가"
               onChange={onSearchHandler}
@@ -51,7 +50,7 @@ export const SearchContainerItem =
               formClcik={goToSearch}
             />
             <S.PC_CardBox>
-              <CardGridItem nItem={query.item} cursor={3} />
+              <CardGridItem nItem={query.item} cursor={27} />
             </S.PC_CardBox>
           </S.PC_Container>
         </PC>

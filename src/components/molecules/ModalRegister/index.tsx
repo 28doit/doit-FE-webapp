@@ -229,7 +229,9 @@ export const ModalRegisterItem =
                     />
                     {NameRegex.test(Name) ? (
                       validator.isLength(Name, { min: 2, max: 12 }) ? (
-                        <S.PC_Valid v_type="default">✔ 통과.</S.PC_Valid>
+                        <S.PC_Valid v_type="default">
+                          ✔ 확인되었습니다.
+                        </S.PC_Valid>
                       ) : (
                         <S.PC_Invalid nv_type="default">
                           ❌ 한글 이름을 입력하세요.

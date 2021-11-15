@@ -16,14 +16,7 @@ export const MainContainerItem =
     const onSearchHandler = (e: any) => {
       setSearchItem(e.currentTarget.value);
     };
-    useEffect(() => {
-      axios
-        .get('http://203.250.32.29:8080/user/21')
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => console.log(err));
-    });
+
     const goToSearch = () => {
       return history.push(ROUTES.SEARCHITEM + searchItem);
     };
@@ -55,9 +48,9 @@ export const MainContainerItem =
 
             <S.PC_Hr top="700px">어떤 이미지가 있을까?</S.PC_Hr>
 
-            <S.PC_Box box="card">
-              <CardGridItem nItem="default" cursor={2} />
-            </S.PC_Box>
+            {/* <S.PC_Box box="card">
+              <CardGridItem nItem="default" cursor={3} />
+            </S.PC_Box> */}
           </S.PC_Container>
         </PC>
       </>

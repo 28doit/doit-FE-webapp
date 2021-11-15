@@ -20,11 +20,15 @@ export const logout = () => {
 };
 
 export const register = (formData: any) => {
-  return axios.post(process.env.REACT_APP_BEOM + '/accounts', formData, {
-    headers: {
-      'content-type': 'multipart/form-data',
+  return axios.post(
+    process.env.REACT_APP_HOON + '/api/accounts/new',
+    formData,
+    {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
     },
-  });
+  );
 };
 
 export const re_password = (name: any, email: any, phone: any) => {
@@ -120,8 +124,10 @@ export const get_cursor_based_auth = (imgCount: any, authName: any) => {
   );
 };
 
-export const get_cursor_based_default = (imgCount: any, authName: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/cursor${imgCount}`);
+export const get_cursor_based_default = (imgCount: any) => {
+  return axios.get(
+    process.env.REACT_APP_HOON + `/pagination/cursor/${imgCount}`,
+  );
 };
 
 export const get_category = () => {

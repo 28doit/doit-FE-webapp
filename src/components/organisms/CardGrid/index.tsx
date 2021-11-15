@@ -37,25 +37,24 @@ const loadItems = (some: Array<any>): Promise<Response> => {
     setTimeout(() => {
       some.map((somet) => {
         const newItem = {
-          /*
-          key: somet.gallaryId,
-          imgSrc: somet.gallaryImageLocation,
+          key: somet.galleryId,
+          imgSrc: somet.galleryImageLocation,
           isSubscribe: somet.isSubscribe,
-          authot: somet.idx,
+          author: somet.idx,
           viewCount: 1234,
           downloadCount: 30,
-          likeCount: somet.gallarySubscribeCount,
-          profileImg: somet.gallaryImageLocation
-          */
-          key: somet.key,
-          imgSrc: somet.imgSrc,
-          isSubscribe: somet.isSubscribe,
-          author: somet.author,
-          viewCount: somet.viewCount,
-          downloadCount: somet.downloadCount,
-          likeCount: somet.likeCount,
-          proFileImg: somet.profileImg,
-          isCart: somet.isCart,
+          likeCount: somet.gallerySubscribeCount,
+          profileImg: somet.galleryImageLocation,
+
+          // key: somet.key,
+          // imgSrc: somet.imgSrc,
+          // isSubscribe: somet.isSubscribe,
+          // author: somet.author,
+          // viewCount: somet.viewCount,
+          // downloadCount: somet.downloadCount,
+          // likeCount: somet.likeCount,
+          // proFileImg: somet.profileImg,
+          // isCart: somet.isCart,
         };
         newArray = [...newArray, newItem];
       });
@@ -75,7 +74,7 @@ const useLoadItems = (nItem: any, cursor: any) => {
   async function loadMore() {
     setLoading(true);
     try {
-      if (imgCount == -1) {
+      if (imgCount == 23) {
         setHasNextPage(false);
         setLoading(false);
       } else {
@@ -92,8 +91,9 @@ const useLoadItems = (nItem: any, cursor: any) => {
               console.clear();
             });
         } else if (nItem.includes('default')) {
-          get_cursor_based_default(imgCount, 'default')
+          get_cursor_based_default(imgCount)
             .then((response) => {
+              console.log(response);
               setImgData(response.data);
             })
             .catch((err) => {

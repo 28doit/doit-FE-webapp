@@ -124,11 +124,11 @@ export const PurchaseItem = ({}: PurchaseItemProps): React.ReactElement => {
                     item.map(
                       (info: any) =>
                         PurchaseCard({
-                          gallId: info.gallaryId,
+                          gallId: info.galleryId,
                           extension: info.order_number,
                           when: info.date,
-                          author: info.gallaryName,
-                          preview: info.gallaryImageLocation,
+                          author: info.galleryName,
+                          preview: info.galleryImageLocation,
                         }),
                       // PurchaseCard({
                       //   gallId: info.gall_id,
