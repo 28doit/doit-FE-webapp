@@ -27,41 +27,41 @@ export const PaymentItem = ({}: PaymentItemProps): React.ReactElement => {
   });
   const dispatch = useAppThunkDispatch();
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     await expired_check(currentUser.token, currentUser.name)
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         if (response.data.Token === false) {
-  //           alert('시간이 만료되었습니다. 다시 로그인 해주세요');
-  //           dispatch(Nlogout());
-  //           window.location.replace(ROUTES.LOGIN);
-  //         } else {
-  //           const userData = response.data;
-  //           setData({
-  //             ...data,
-  //             ['email']: userData.Email,
-  //             ['name']: userData.Name,
-  //             ['sex']: userData.sex,ZZzzzz
-  //             ['year']: userData.Year,
-  //             ['month']: userData.Month,
-  //             ['day']: userData.Day,
-  //             ['phone']: userData.PhoneNumber,
-  //           });
-  //         }
-  //       })
-  //       .catch(() => {
-  //         alert(
-  //           '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
-  //         );
-  //         setLoading(false);
-  //         window.location.replace(ROUTES.MYDASH);
-  //       });
-  //     setLoading(false);
-  //   };
-  //   setLoading(true);
-  //   currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
-  // }, []);
+  useEffect(() => {
+    const getUser = async () => {
+      await expired_check(currentUser.token, currentUser.name)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.Token === false) {
+            alert('시간이 만료되었습니다. 다시 로그인 해주세요');
+            dispatch(Nlogout());
+            window.location.replace(ROUTES.LOGIN);
+          } else {
+            const userData = response.data;
+            setData({
+              ...data,
+              ['email']: userData.Email,
+              ['name']: userData.Name,
+              ['sex']: userData.sex,
+              ['year']: userData.Year,
+              ['month']: userData.Month,
+              ['day']: userData.Day,
+              ['phone']: userData.PhoneNumber,
+            });
+          }
+        })
+        .catch(() => {
+          alert(
+            '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+          );
+          setLoading(false);
+          window.location.replace(ROUTES.MYDASH);
+        });
+      setLoading(false);
+    };
+    setLoading(true);
+    currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
+  }, []);
 
   const [service, setService] = useState({
     first: false,
@@ -131,9 +131,6 @@ export const PaymentItem = ({}: PaymentItemProps): React.ReactElement => {
       send_payment(
         merchant_uid,
         buyer_name,
-        buyer_email,
-        paid_amount,
-        imp_uid,
         currentUser.token,
         currentUser.name,
       ).then(() => {

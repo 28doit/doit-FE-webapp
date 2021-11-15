@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import * as S from './style';
@@ -8,7 +7,6 @@ import {
   post_pay_cart,
   post_delete_cart,
 } from '../../../redux/services/auth.service';
-import { useSelector } from 'react-redux';
 
 export interface CartItemProps {}
 

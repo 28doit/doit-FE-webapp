@@ -1,5 +1,32 @@
 import axios from 'axios';
 
+export const login = (email: any, password: any) => {
+  return axios
+    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
+      email: email,
+      password: password,
+    })
+    .then((response) => {
+      if (response.data.token) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+
+      return response.data;
+    });
+};
+
+export const logout = () => {
+  localStorage.removeItem('user');
+};
+
+export const register = (formData: any) => {
+  return axios.post(process.env.REACT_APP_BEOM + '/accounts', formData, {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
+  });
+};
+
 export const re_password = (name: any, email: any, phone: any) => {
   return axios.post('/api/user/findPwd', {
     name: name,
@@ -11,20 +38,14 @@ export const re_password = (name: any, email: any, phone: any) => {
 export const send_payment = (
   merchant_uid: any,
   buyer_name: any,
-  buyer_email: any,
-  paid_amount: any,
-  imp_uid: any,
   token: any,
   user_email: any,
 ) => {
   return axios.post(process.env.REACT_APP_BEOM + '/payment/check', {
     mid: merchant_uid,
     name: buyer_name,
-    //buyer_email: buyer_email,
-    //paid_amount: paid_amount,
-    //imp_uid: imp_uid,
-    token: token,
     login_email: user_email,
+    token: token,
   });
 };
 
@@ -53,39 +74,11 @@ export const expired_check = (token: any, userEmail: any) => {
   );
 };
 
-export const login = (email: any, password: any) => {
-  return axios
-    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
-      email: email,
-      password: password,
-    })
-    .then((response) => {
-      if (response.data.token) {
-        localStorage.setItem('user', JSON.stringify(response.data));
-      }
-
-      return response.data;
-    });
-};
-
-export const logout = () => {
-  localStorage.removeItem('user');
-};
-
-export const register = (formData: any) => {
-  return axios.post(process.env.REACT_APP_HOON + '/accounts', formData, {
-    headers: {
-      'content-type': 'multipart/form-data',
-    },
-  });
-};
-
 export const get_purchase = (startDate: any, endDate: any, token: any) => {
   return axios.get(
     process.env.REACT_APP_BEOM +
       `/item/buy?token=${token}&start_history=${startDate}&end_history=${endDate}`,
   );
-  // return axios.get(process.env.REACT_APP_LOCAL + `/purchase`);
 };
 
 export const get_pay_log = (token: any, startDate: any, endDate: any) => {
@@ -166,7 +159,6 @@ export const post_like_author = (idx: any, subscribeUser: any) => {
   });
 };
 
-/* 제대로 된 주소 다 알아야 바꿀듯 */
 export const get_buy_img = (token: any, gallary_id: any) => {
   return axios.get(
     process.env.REACT_APP_BEOM +
@@ -175,7 +167,9 @@ export const get_buy_img = (token: any, gallary_id: any) => {
 };
 
 export const get_cart = (token: any, email: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/item/cart`);
+  return axios.get(
+    process.env.REACT_APP_BEOM + `/item/cart?token=${token}&email=${email}`,
+  );
 };
 
 export const post_pay_cart = (
@@ -201,5 +195,5 @@ export const post_delete_cart = (token: any, email: any, items: any) => {
 };
 
 export const post_cart_img = (token: any, email: any, gallery_id: any) => {
-  return axios.delete(process.env.REACT_APP_LOCAL + `/item/cart`);
+  return axios.delete(process.env.REACT_APP_BEOM + `/item/cart`);
 };

@@ -105,7 +105,9 @@ const useLoadItems = (nItem: any, cursor: any) => {
               console.log(response);
               setImgData(response.data);
             })
-            .catch((err) => {});
+            .catch((err) => {
+              console.log(err);
+            });
         }
 
         const { data, hasNextPage: newHasNextPage } = await loadItems(imgData);

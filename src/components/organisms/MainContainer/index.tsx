@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './style';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../commons/routes';
 import { CardGridItem, CategoryGridItem } from '../../index';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
+import axios from 'axios';
 
 export interface MainContainerItemProps {}
 
@@ -15,7 +16,14 @@ export const MainContainerItem =
     const onSearchHandler = (e: any) => {
       setSearchItem(e.currentTarget.value);
     };
-
+    useEffect(() => {
+      axios
+        .get('http://203.250.32.29:8080/user/21')
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => console.log(err));
+    });
     const goToSearch = () => {
       return history.push(ROUTES.SEARCHITEM + searchItem);
     };
@@ -33,7 +41,7 @@ export const MainContainerItem =
             <S.PC_Top>
               <S.PC_Title>Photo Logger</S.PC_Title>
               <S.PC_Input
-                placeholder="이미지 검색 / @작가 / #키워드1#키워드2"
+                placeholder="이미지 검색 / @작가"
                 onChange={onSearchHandler}
                 formClcik={goToSearch}
                 value={searchItem}

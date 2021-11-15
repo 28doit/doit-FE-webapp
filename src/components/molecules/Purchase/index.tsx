@@ -125,7 +125,7 @@ export const PurchaseItem = ({}: PurchaseItemProps): React.ReactElement => {
                       (info: any) =>
                         PurchaseCard({
                           gallId: info.gallaryId,
-                          extension: 'jpg',
+                          extension: info.order_number,
                           when: info.date,
                           author: info.gallaryName,
                           preview: info.gallaryImageLocation,
