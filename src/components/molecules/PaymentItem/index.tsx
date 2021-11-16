@@ -14,6 +14,7 @@ import { PC, Tablet, Mobile } from '../../../MediaQuery';
 export interface PaymentItemProps {}
 
 export const PaymentItem = ({}: PaymentItemProps): React.ReactElement => {
+  const dispatch = useAppThunkDispatch();
   const { user: currentUser } = useSelector((state) => state.auth);
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({
@@ -25,11 +26,10 @@ export const PaymentItem = ({}: PaymentItemProps): React.ReactElement => {
     day: '',
     name: '',
   });
-  const dispatch = useAppThunkDispatch();
 
   useEffect(() => {
     const getUser = async () => {
-      await expired_check(currentUser.token, currentUser.name)
+      await expired_check(currentUser.token, currentUser.email)
         .then((response) => {
           console.log(response.data);
           if (response.data.Token === false) {

@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import * as S from './style';
 import moment from 'moment';
 import 'moment/locale/ko';
-import { get_pay_log } from '../../../redux/services/auth.service';
+import {
+  expired_check,
+  get_pay_log,
+} from '../../../redux/services/auth.service';
 import { useSelector } from 'react-redux';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
+import { Nlogout } from '../../../redux/actions/auth';
+import { useAppThunkDispatch } from '../../../redux/store';
+import ROUTES from '../../../commons/routes';
+import { ModalLoadingItem } from '../ModalLoading';
 
 export interface PayLogItemProps {}
 
@@ -36,6 +43,54 @@ const PayLogCard = ({
 
 export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
+  const dispatch = useAppThunkDispatch();
+  const [Loading, setLoading] = useState(false);
+  const [data, setData] = useState({
+    email: '',
+    sex: 1,
+    phone: '',
+    month: '',
+    year: '',
+    day: '',
+    name: '',
+  });
+
+  useEffect(() => {
+    const getUser = async () => {
+      await expired_check(currentUser.token, currentUser.email)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.Token === false) {
+            alert('시간이 만료되었습니다. 다시 로그인 해주세요');
+            dispatch(Nlogout());
+            window.location.replace(ROUTES.LOGIN);
+          } else {
+            const userData = response.data;
+            setData({
+              ...data,
+              ['email']: userData.Email,
+              ['name']: userData.Name,
+              ['sex']: userData.sex,
+              ['year']: userData.Year,
+              ['month']: userData.Month,
+              ['day']: userData.Day,
+              ['phone']: userData.PhoneNumber,
+            });
+          }
+        })
+        .catch(() => {
+          alert(
+            '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+          );
+          setLoading(false);
+          window.location.replace(ROUTES.MYDASH);
+        });
+      setLoading(false);
+    };
+    setLoading(true);
+    currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
+  }, []);
+
   const [startDate, setStartDate] = useState(
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),
   );
@@ -62,6 +117,7 @@ export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
         startDate.toLocaleString('fr-CA').substr(0, 10),
         addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10),
       ).then((response) => {
+        console.log(response);
         setItem(response.data);
       });
     }
@@ -76,6 +132,7 @@ export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
         <div>태블릿</div>
       </Tablet>
       <PC>
+        {Loading ? <ModalLoadingItem /> : ''}
         <S.PC_Overlay>
           <S.PC_Inner>
             <S.PC_Contatiner>
@@ -112,7 +169,7 @@ export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
                     c_date: '날짜',
                     c_m_uid: '구매 번호',
                     c_money: '금액',
-                    c_name: '이름',
+                    c_name: '카드',
                   })}
                 </S.PC_CardUl>
                 <S.PC_CardUl>
@@ -122,7 +179,7 @@ export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
                         c_date: info.time,
                         c_m_uid: info.mid,
                         c_money: info.pay,
-                        c_name: info.name,
+                        c_name: info.payCard,
                       }),
                     )}
                 </S.PC_CardUl>

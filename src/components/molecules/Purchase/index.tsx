@@ -64,10 +64,17 @@ export const PurchaseItem = ({}: PurchaseItemProps): React.ReactElement => {
         startDate.toLocaleString('fr-CA').substr(0, 10),
         addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10),
         currentUser.token,
-      ).then((response) => {
-        console.log(response);
-        setItem(response.data);
-      });
+      )
+        .then((response) => {
+          console.log(response);
+          if (response.data === false) {
+          } else {
+            setItem(response.data);
+          }
+        })
+        .catch(() => {
+          alert('오류가 발생했습니다. 다시 시도해 주세요.');
+        });
     }
   };
 
@@ -114,29 +121,21 @@ export const PurchaseItem = ({}: PurchaseItemProps): React.ReactElement => {
                 <S.PC_Ul>
                   <S.PC_Li key={1} v="default">
                     <S.PC_Info li_type="preview">사진</S.PC_Info>
-                    <S.PC_Info li_type="extension">확장자</S.PC_Info>
+                    <S.PC_Info li_type="extension">제목</S.PC_Info>
                     <S.PC_Info li_type="when">시간</S.PC_Info>
                     <S.PC_Info li_type="author">작가</S.PC_Info>
                   </S.PC_Li>
                 </S.PC_Ul>
                 <S.PC_Ul>
                   {item &&
-                    item.map(
-                      (info: any) =>
-                        PurchaseCard({
-                          gallId: info.galleryId,
-                          extension: info.order_number,
-                          when: info.date,
-                          author: info.galleryName,
-                          preview: info.galleryImageLocation,
-                        }),
-                      // PurchaseCard({
-                      //   gallId: info.gall_id,
-                      //   extension: info.type,
-                      //   when: info.time,
-                      //   author: info.author,
-                      //   preview: info.src,
-                      // }),
+                    item.map((info: any) =>
+                      PurchaseCard({
+                        gallId: info.galleryId,
+                        extension: info.galleryName,
+                        when: info.date,
+                        author: info.seller_Name,
+                        preview: info.galleryImageLocation,
+                      }),
                     )}
                 </S.PC_Ul>
               </S.PC_Modal>

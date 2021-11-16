@@ -193,13 +193,12 @@ export const post_pay_cart = (
 };
 
 export const post_delete_cart = (token: any, email: any, items: any) => {
-  return axios.post(process.env.REACT_APP_LOCAL + `/cart/buy`, {
-    token: token,
-    user_email: email,
-    gallery_id: items,
-  });
+  return axios.delete(
+    process.env.REACT_APP_BEOM +
+      `/item/cart?token=${token}&email=${email}&gallery_id=${items}`,
+  );
 };
 
 export const post_cart_img = (token: any, email: any, gallery_id: any) => {
-  return axios.delete(process.env.REACT_APP_BEOM + `/item/cart`);
+  return axios.post(process.env.REACT_APP_BEOM + `/item/cart`);
 };
