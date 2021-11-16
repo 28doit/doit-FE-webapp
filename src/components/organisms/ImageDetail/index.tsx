@@ -7,7 +7,7 @@ import { useLayoutEffect, useState } from 'react';
 import { get_img_detail } from '../../../redux/services/auth.service';
 import queryString from 'query-string';
 import {
-  get_buy_img,
+  post_buy_img,
   post_cart_img,
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
@@ -58,40 +58,47 @@ export const ImageDetailItem = ({
   const [cart, setCart] = useState(isCart);
 
   useLayoutEffect(() => {
-    get_img_detail(query.id).then((response) => {
-      console.log(response.data);
-      console.log(query.id);
-      const data = response.data;
-      setImgData({
-        imgSrc: data.imgSrc,
-        isSubscribe: data.isSubscribe,
-        profileImg: data.profileImg,
-        isAuthSubScribe: data.isAuthSubScribe,
-        author: data.author,
-        likePeople: data.likePeople,
-        viewCount: data.viewCount,
-        downloadCount: data.downloadCount,
-        likeCount: data.likeCount,
-        resolution: data.resolution,
-        imgSize: data.imgSize,
-        uploadDate: data.uploadDate,
-        cameraInfo: data.cameraInfo,
-        locationInfo: data.locationInfo,
-        isCart: data.isCart,
+    get_img_detail(query.id)
+      .then((response) => {
+        console.log(response.data);
+        console.log(query.id);
+        const data = response.data;
+        setImgData({
+          imgSrc: data.galleryImageLocation,
+          isSubscribe: data.isSubscribe,
+          profileImg: data.profileImg,
+          isAuthSubScribe: data.isAuthSubScribe,
+          author: data.author,
+          likePeople: data.likePeople,
+          viewCount: data.galleryViews,
+          downloadCount: data.downloadCount,
+          likeCount: data.likeCount,
+          resolution: data.resolution,
+          imgSize: data.imgSize,
+          uploadDate: data.galleryTime,
+          cameraInfo: data.cameraInfo,
+          locationInfo: data.locationInfo,
+          isCart: data.isCart,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    });
   }, []);
 
   const buyImgHandler = (e: any) => {
-    get_buy_img(currentUser.token, query.id).then((response) => {
+    post_buy_img(currentUser.token, query.id).then((response) => {
       console.log(response);
     });
   };
 
   const imgCart = (e: any) => {
-    post_cart_img('token', 'email', 'gallery_id').then((response) => {
-      setCart(!cart);
-    });
+    post_cart_img(currentUser.token, currentUser.email, query.id).then(
+      (response) => {
+        console.log(response);
+        setCart(!cart);
+      },
+    );
   };
 
   return (

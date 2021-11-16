@@ -20,15 +20,11 @@ export const logout = () => {
 };
 
 export const register = (formData: any) => {
-  return axios.post(
-    process.env.REACT_APP_HOON + '/api/accounts/new',
-    formData,
-    {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
+  return axios.post(process.env.REACT_APP_BEOM + '/accounts', formData, {
+    headers: {
+      'content-type': 'multipart/form-data',
     },
-  );
+  });
 };
 
 export const re_password = (name: any, email: any, phone: any) => {
@@ -138,8 +134,11 @@ export const get_profit = () => {
   return axios.get(process.env.REACT_APP_LOCAL + `/profit`);
 };
 
-export const post_profit_bank = () => {
-  return axios.post(process.env.REACT_APP_LOCAL + `/test`);
+export const put_profit_bank = (token: any, email: any, pay: any) => {
+  return axios.put(
+    process.env.REACT_APP_BEOM +
+      `/cash/payment?token=${token}&email=${email}&pay=${pay}`,
+  );
 };
 
 export const get_dash = () => {
@@ -147,8 +146,7 @@ export const get_dash = () => {
 };
 
 export const get_img_detail = (galleryId: any) => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/imde`);
-  // return axios.get(process.env.REACT_APP_HOON + `/gallery/galleryId`);
+  return axios.get(process.env.REACT_APP_HOON + `/gallery/${galleryId}`);
 };
 
 export const post_like_img = (idx: any, galleryId: any) => {
@@ -165,11 +163,11 @@ export const post_like_author = (idx: any, subscribeUser: any) => {
   });
 };
 
-export const get_buy_img = (token: any, gallary_id: any) => {
-  return axios.get(
-    process.env.REACT_APP_BEOM +
-      `/item/buy?gallaryid=${gallary_id}&token=${token}`,
-  );
+export const post_buy_img = (token: any, gallery_id: any) => {
+  return axios.post(process.env.REACT_APP_BEOM + `/item/buy`, {
+    token: token,
+    gallery_id: gallery_id,
+  });
 };
 
 export const get_cart = (token: any, email: any) => {
@@ -200,5 +198,9 @@ export const post_delete_cart = (token: any, email: any, items: any) => {
 };
 
 export const post_cart_img = (token: any, email: any, gallery_id: any) => {
-  return axios.post(process.env.REACT_APP_BEOM + `/item/cart`);
+  return axios.post(process.env.REACT_APP_BEOM + `/item/cart`, {
+    token: token,
+    email: email,
+    gallery_id: gallery_id,
+  });
 };

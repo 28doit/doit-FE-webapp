@@ -30,16 +30,16 @@ export const ModalRegisterItem =
     const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
     const NameRegex = /^[가-힣]+$/;
     const [Account, setAccount] = useState({
-      Email: '',
-      Name: '',
-      NickName: '',
-      Gender: '',
-      Phone: '',
+      Email: 'poeynus@gmail.com',
+      Name: '한국인',
+      NickName: 'lelelelelel',
+      Gender: '1',
+      Phone: '01012345678',
       Password: '',
       ConfirmPassword: '',
-      Year: '',
-      Month: '',
-      Day: '',
+      Year: '1998',
+      Month: '03',
+      Day: '12',
       ImgBase64: PURPLE,
       ImgFile: null,
     });

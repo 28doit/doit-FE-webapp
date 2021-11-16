@@ -3,7 +3,7 @@ import * as S from './style';
 import {
   expired_check,
   get_profit,
-  post_profit_bank,
+  put_profit_bank,
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { Nlogout } from '../../../redux/actions/auth';
@@ -108,7 +108,19 @@ export const ExchangeItem = ({}: ExchangeItemProps): React.ReactElement => {
     if (Number(money) < 5000 || Number(money) % 500 !== 0) {
       alert('환전은 5000원 이상, 500원 단위로 신청해주시기 바랍니다.');
     } else {
-      post_profit_bank().then((response) => {});
+      put_profit_bank(currentUser.token, currentUser.email, money)
+        .then((response) => {
+          if (response.data === false) {
+            alert('금액이 부족합니다.');
+          } else {
+            alert(`${money}원이 출금 신청 되었습니다.`);
+          }
+          window.location.reload();
+        })
+        .catch((err) => {
+          alert('에러가 발생했습니다. 다시 시도해 주시기 바랍니다.');
+          window.location.reload();
+        });
     }
   };
 

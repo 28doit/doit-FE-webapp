@@ -35,29 +35,20 @@ const loadItems = (some: Array<any>): Promise<Response> => {
   return new Promise((resolve) => {
     let newArray: Item[] = [];
     setTimeout(() => {
-      some.map((somet) => {
-        const newItem = {
-          key: somet.galleryId,
-          imgSrc: somet.galleryImageLocation,
-          isSubscribe: somet.isSubscribe,
-          author: somet.idx,
-          viewCount: 1234,
-          downloadCount: 30,
-          likeCount: somet.gallerySubscribeCount,
-          profileImg: somet.galleryImageLocation,
-
-          // key: somet.key,
-          // imgSrc: somet.imgSrc,
-          // isSubscribe: somet.isSubscribe,
-          // author: somet.author,
-          // viewCount: somet.viewCount,
-          // downloadCount: somet.downloadCount,
-          // likeCount: somet.likeCount,
-          // proFileImg: somet.profileImg,
-          // isCart: somet.isCart,
-        };
-        newArray = [...newArray, newItem];
-      });
+      some &&
+        some.map((somet) => {
+          const newItem = {
+            key: somet.galleryId,
+            imgSrc: somet.galleryImageLocation,
+            isSubscribe: somet.isSubscribe,
+            author: somet.idx,
+            viewCount: somet.galleryViews,
+            downloadCount: 30,
+            likeCount: somet.gallerySubscribeCount,
+            profileImg: somet.galleryImageLocation,
+          };
+          newArray = [...newArray, newItem];
+        });
       resolve({ hasNextPage: true, data: newArray });
     }, 1000);
   });
@@ -90,7 +81,7 @@ const useLoadItems = (nItem: any, cursor: any) => {
             .catch((err) => {
               console.clear();
             });
-        } else if (nItem.includes('default')) {
+        } else if (nItem === 'default') {
           get_cursor_based_default(imgCount)
             .then((response) => {
               console.log(response);
@@ -106,7 +97,7 @@ const useLoadItems = (nItem: any, cursor: any) => {
               setImgData(response.data);
             })
             .catch((err) => {
-              console.log(err);
+              console.clear();
             });
         }
 
@@ -186,7 +177,6 @@ export const CategoryGridItem = ({}: CategoryGridItemProps) => {
   useLayoutEffect(() => {
     get_category()
       .then((response) => {
-        console.log(response.data);
         setCItem(response.data);
       })
       .catch((err) => {
