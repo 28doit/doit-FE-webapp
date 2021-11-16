@@ -184,7 +184,7 @@ export const post_pay_cart = (
   items: any,
   money: any,
 ) => {
-  return axios.post(process.env.REACT_APP_LOCAL + `/item/cart/buy`, {
+  return axios.post(process.env.REACT_APP_BEOM + `/item/cart/buy`, {
     token: token,
     user_email: email,
     gallery_id: items,

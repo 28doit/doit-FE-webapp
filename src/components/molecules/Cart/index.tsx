@@ -26,13 +26,13 @@ export const CartItem = ({}: CartItemProps): React.ReactElement => {
   }, []);
 
   useEffect(() => {
-    check.map((info: any) => (allPay += info.pay));
+    check.map((info: any) => (allPay += info.price));
     setMoney(allPay);
   }, [check]);
 
   const onCheckAll = (e: any) => {
     if (e.target.checked) {
-      cartList.map((info: any) => (allPay += info.pay));
+      cartList.map((info: any) => (allPay += info.price));
       setCheck(cartList);
     } else {
       setCheck([]);
@@ -48,14 +48,24 @@ export const CartItem = ({}: CartItemProps): React.ReactElement => {
   };
 
   const onDeleteCart = (e: any) => {
-    post_delete_cart('token', 'email', check).then((response) => {
-      console.log(response);
-    });
+    post_delete_cart(currentUser.token, currentUser.email, check).then(
+      (response) => {
+        console.log(response);
+      },
+    );
   };
 
   const onSubmint = (e: any) => {
-    post_pay_cart('token', 'email', check, money).then(() => {
-      console.log('hi');
+    let allImg = [] as any;
+    check.map((info: any) => allImg.push(info.gallery_id));
+    post_pay_cart(
+      currentUser.token,
+      currentUser.email,
+      allImg.join(','),
+      money,
+    ).then((response) => {
+      console.log(response);
+      window.location.reload();
     });
   };
 
@@ -94,7 +104,7 @@ export const CartItem = ({}: CartItemProps): React.ReactElement => {
                   <S.PC_Tbody>
                     {cartList &&
                       cartList.map((info: any) => (
-                        <S.PC_Tr key={info.gall_id}>
+                        <S.PC_Tr key={info.gallery_id}>
                           <S.PC_Td>
                             <S.PC_Input
                               i_type="checkbox"
@@ -106,11 +116,11 @@ export const CartItem = ({}: CartItemProps): React.ReactElement => {
                             />
                           </S.PC_Td>
                           <S.PC_Td>
-                            <S.PC_Img src={info.src} />
+                            <S.PC_Img src={info.gallery_location} />
                           </S.PC_Td>
-                          <S.PC_Td>{info.gall_id}</S.PC_Td>
-                          <S.PC_Td>{info.author}</S.PC_Td>
-                          <S.PC_Td>{info.pay}</S.PC_Td>
+                          <S.PC_Td>{info.gallery_name}</S.PC_Td>
+                          <S.PC_Td>{info.seller_Name}</S.PC_Td>
+                          <S.PC_Td>{info.price}</S.PC_Td>
                         </S.PC_Tr>
                       ))}
                   </S.PC_Tbody>
