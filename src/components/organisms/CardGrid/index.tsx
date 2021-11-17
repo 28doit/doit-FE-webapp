@@ -15,6 +15,7 @@ import {
 
 export interface Item {
   key: number;
+  gallId?: any;
   imgSrc?: any;
   viewCount?: number;
   downloadCount?: number;
@@ -24,6 +25,7 @@ export interface Item {
   proFileImg?: any;
   category?: string;
   isCart?: boolean;
+  imgUserIdx?: any;
 }
 
 interface Response {
@@ -46,6 +48,8 @@ const loadItems = (some: Array<any>): Promise<Response> => {
             downloadCount: 30,
             likeCount: somet.gallerySubscribeCount,
             profileImg: somet.galleryImageLocation,
+            imgUserIdx: somet.idx,
+            gallId: somet.gallertId,
           };
           newArray = [...newArray, newItem];
         });
@@ -156,6 +160,8 @@ export const CardGridItem = ({
                   likeCount={item.likeCount}
                   proFileImg={item.proFileImg}
                   isCart={item.isCart}
+                  imgUserIdx={item.imgUserIdx}
+                  gallId={item.gallId}
                   cardOnclick={() => {
                     history.push(`/img?id=${item.key}`);
                   }}

@@ -64,10 +64,11 @@ export const DashBoardItem = (): React.ReactElement => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    get_dash().then((response: any) => {
-      response.data.map(
-        (info: any) => (setImgItem(info.img), setUserData(info.user)),
-      );
+    get_dash(2006).then((response: any) => {
+      console.log(response);
+      // response.data.map(
+      //   (info: any) => (setImgItem(info.img), setUserData(info.user)),
+      // );
     });
   }, []);
 

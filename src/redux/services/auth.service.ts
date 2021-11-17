@@ -97,15 +97,11 @@ export const get_management = () => {
 };
 
 export const post_upload_img = (formData: any) => {
-  return axios.post(
-    process.env.REACT_APP_HOON + '/api/uploader/images',
-    formData,
-    {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
+  return axios.post(process.env.REACT_APP_HOON + '/uploader/images', formData, {
+    headers: {
+      'content-type': 'multipart/form-data',
     },
-  );
+  });
 };
 
 export const get_cursor_based_img = (imgCount: any, imgName: any) => {
@@ -141,8 +137,8 @@ export const put_profit_bank = (token: any, email: any, pay: any) => {
   );
 };
 
-export const get_dash = () => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/dash`);
+export const get_dash = (idx: any) => {
+  return axios.get(process.env.REACT_APP_HOON + `/user/${idx}`);
 };
 
 export const get_img_detail = (galleryId: any) => {

@@ -13,6 +13,8 @@ import {
 
 export interface CardItemProps {
   CardType: string;
+  gallId?: any;
+  imgUserIdx?: any;
   imgSrc?: string;
   viewCount?: number;
   downloadCount?: number;
@@ -35,6 +37,8 @@ export interface CardItemProps {
 
 export const CardItem = ({
   CardType,
+  gallId,
+  imgUserIdx,
   imgSrc,
   viewCount,
   downloadCount,
@@ -56,14 +60,14 @@ export const CardItem = ({
   const [show, setShow] = useState(false);
   const [like, setLike] = useState(isSubscribe);
 
-  const imgLike = (e: any) => {
-    post_like_img(2006, 23).then(() => {
+  const imgLike = (idx: any, gallId: any) => {
+    return post_like_img(idx, gallId).then(() => {
       setLike(!like);
     });
   };
 
-  const authorLike = (e: any) => {
-    post_like_author(2006, 2010).then(() => {
+  const authorLike = (idx: any, auth: any) => {
+    return post_like_author(idx, auth).then(() => {
       setLike(!like);
     });
   };
@@ -85,7 +89,9 @@ export const CardItem = ({
                     width="60"
                     height="60"
                     fill={like ? '#d7443e' : 'black'}
-                    onClick={imgLike}
+                    onClick={() => {
+                      imgLike(imgUserIdx, gallId);
+                    }}
                   />
                 </S.PC_ModalBox>
               </S.PC_Modal>
@@ -125,7 +131,9 @@ export const CardItem = ({
                   width="30"
                   height="30"
                   fill={like ? '#d7443e' : 'black'}
-                  onClick={authorLike}
+                  onClick={() => {
+                    authorLike(imgUserIdx, imgUserIdx);
+                  }}
                 />
               </S.PC_ImgBox>
             </S.PC_AuthorBox>
@@ -159,7 +167,9 @@ export const CardItem = ({
                 width="30"
                 height="30"
                 fill={like ? '#d7443e' : 'black'}
-                onClick={imgLike}
+                onClick={() => {
+                  imgLike(imgUserIdx, gallId);
+                }}
               />
             </S.PC_ImgBox>
             <S.PC_Img i_type="like" src={likeImg} />
