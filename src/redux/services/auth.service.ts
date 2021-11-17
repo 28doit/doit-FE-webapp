@@ -27,10 +27,17 @@ export const register = (formData: any) => {
   });
 };
 
-export const re_password = (name: any, email: any, phone: any) => {
-  return axios.post('/api/user/findPwd', {
+export const post_re_password = (name: any, email: any, phone: any) => {
+  return axios.post(process.env.REACT_APP_HOON + '/user/findPwd', {
     name: name,
     email: email,
+    phoneNumber: phone,
+  });
+};
+
+export const post_find_id = (name: any, phone: any) => {
+  return axios.post(process.env.REACT_APP_HOON + '/user/findId', {
+    name: name,
     phoneNumber: phone,
   });
 };

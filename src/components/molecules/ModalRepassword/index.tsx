@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import * as S from './style';
-import { re_password } from '../../../redux/services/auth.service';
+import { post_re_password } from '../../../redux/services/auth.service';
 import ROUTES from '../../../commons/routes';
 import { ModalLoadingItem } from '../../index';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
@@ -30,7 +30,7 @@ export const ModalRePasswordItem =
     const onSubmitHandler = (e: any) => {
       e.preventDefault();
       setLoading(true);
-      re_password(Email, Name, Phone)
+      post_re_password(Email, Name, Phone)
         .then((response) => {
           console.log(response);
           setLoading(true);

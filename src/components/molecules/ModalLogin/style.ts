@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
 import { Input, Label, Btn, LinkBtn } from '../..';
 import CheckOn from '../../../assets/check_on.svg';
@@ -48,10 +49,7 @@ export const PC_Join = styled.div`
 
 export const PC_Form = styled.form``;
 
-export const PC_Span =
-  styled.span <
-  { s_type: string } >
-  `
+export const PC_P = styled.p<{ s_type: string }>`
   font-size: 1.2rem;
   ${(props) =>
     props.s_type === 'invalid' &&
@@ -75,6 +73,7 @@ export const PC_Span =
     props.s_type === 'repwd' &&
     css`
       cursor: pointer;
+      margin: 0 0 0 3rem;
     `}
 `;
 
@@ -93,14 +92,13 @@ export const PC_Input = styled(Input)`
 `;
 
 export const PC_Label = styled(Label)`
-  margin: 0 0 0 1rem;
+  margin: 0 14rem 0 1rem;
   color: #888888;
   font-family: elice;
 `;
 
 export const PC_CheckWrap = styled.div`
   display: flex;
-  justify-content: space-between;
   font-size: 1.4rem;
   line-height: 2.2rem;
   font-family: elice;

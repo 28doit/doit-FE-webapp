@@ -10,6 +10,7 @@ export default {
   REPASSWORD: '/re-password',
   NOTICE: '/notice',
   IMGDETAIL: '/img',
+  FINDID: '/find-id',
 
   USER: '/user',
   MYEDIT: '/user/edit-profile',

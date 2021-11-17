@@ -33,9 +33,13 @@ export const ModalLoginItem = ({}: ModalLoginItemProps): React.ReactElement => {
     setPassword(e.currentTarget.value);
   };
   const onRePasswordHandler = (e: any) => {
-    e.preventDefault();
-    history.replace('/re-password');
+    history.push(ROUTES.REPASSWORD);
   };
+
+  const onFindIdHandler = (e: any) => {
+    history.push(ROUTES.FINDID);
+  };
+
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -84,11 +88,11 @@ export const ModalLoginItem = ({}: ModalLoginItemProps): React.ReactElement => {
                   inputType="email"
                 />
                 {validator.isEmail(Email) ? (
-                  <S.PC_Span s_type="valid">✔</S.PC_Span>
+                  <S.PC_P s_type="valid">✔</S.PC_P>
                 ) : (
-                  <S.PC_Span s_type="invalid">
+                  <S.PC_P s_type="invalid">
                     * 이메일을 입력해주시기 바랍니다.
-                  </S.PC_Span>
+                  </S.PC_P>
                 )}
                 <S.PC_Input
                   inputType="password"
@@ -97,18 +101,21 @@ export const ModalLoginItem = ({}: ModalLoginItemProps): React.ReactElement => {
                   onChange={onPasswordHandler}
                 />
                 {validator.isEmpty(Password) ? (
-                  <S.PC_Span s_type="invalid">
+                  <S.PC_P s_type="invalid">
                     * 비밀번호를 입력해주시기 바랍니다.
-                  </S.PC_Span>
+                  </S.PC_P>
                 ) : (
-                  <S.PC_Span s_type="valid">✔</S.PC_Span>
+                  <S.PC_P s_type="valid">✔</S.PC_P>
                 )}
                 <S.PC_CheckWrap>
                   <S.PC_Input id="idSave" inputType="checkbox" />
                   <S.PC_Label htmlFor="idSave">아이디 저장</S.PC_Label>
-                  <S.PC_Span onClick={onRePasswordHandler} s_type="repwd">
+                  <S.PC_P onClick={onFindIdHandler} s_type="repwd">
+                    아이디 찾기
+                  </S.PC_P>
+                  <S.PC_P onClick={onRePasswordHandler} s_type="repwd">
                     비밀번호 재설정
-                  </S.PC_Span>
+                  </S.PC_P>
                 </S.PC_CheckWrap>
                 {validator.isEmpty(Email) || validator.isEmpty(Password) ? (
                   <S.PC_No>로그인</S.PC_No>

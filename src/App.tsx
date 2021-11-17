@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { NewLoginForm, RePasswordForm } from './pages/Login';
+import { NewLoginForm, RePasswordForm, FindIdForm } from './pages/Login';
 import { NewJoinForm } from './pages/Register';
 import { Main } from './pages/Main';
 import { Search, BestCategorySearch } from './pages/Search';
@@ -17,6 +17,7 @@ const App: React.FC = () => {
         <Route path={ROUTES.HOME} exact component={Main} />
         <Route path={ROUTES.LOGIN} component={NewLoginForm} />
         <Route path={ROUTES.REPASSWORD} component={RePasswordForm} />
+        <Route path={ROUTES.FINDID} component={FindIdForm} />
         <Route path={ROUTES.JOIN} component={NewJoinForm} />
         <Route path={`${ROUTES.CATEGORY}`} component={BestCategorySearch} />
         <Route path={ROUTES.SEARCH} component={Search} />

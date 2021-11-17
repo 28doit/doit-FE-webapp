@@ -12,6 +12,7 @@ export { MyMenuItem } from './molecules/MyMenu';
 export { EditProfileItem } from './molecules/EditProfile';
 export { ModalLoadingItem } from './molecules/ModalLoading';
 export { ModalRePasswordItem } from './molecules/ModalRepassword';
+export { ModalFindIdItem } from './molecules/ModalFindId';
 export { UploadImageItem } from './molecules/UploadImage';
 export { NoticeItem } from './molecules/Notice';
 export { PaymentItem } from './molecules/PaymentItem';
