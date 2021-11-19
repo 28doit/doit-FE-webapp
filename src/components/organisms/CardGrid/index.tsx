@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import * as S from './style';
 import { CardItem } from '../../index';
@@ -33,26 +33,45 @@ interface Response {
   data: Item[];
 }
 
-const loadItems = (some: Array<any>): Promise<Response> => {
+const loadItems = (some: Array<any>, sItem: any): Promise<Response> => {
   return new Promise((resolve) => {
     let newArray: Item[] = [];
     setTimeout(() => {
-      some &&
-        some.map((somet) => {
-          const newItem = {
-            key: somet.galleryId,
-            imgSrc: somet.galleryImageLocation,
-            isSubscribe: somet.isSubscribe,
-            author: somet.idx,
-            viewCount: somet.galleryViews,
-            downloadCount: 30,
-            likeCount: somet.gallerySubscribeCount,
-            profileImg: somet.galleryImageLocation,
-            imgUserIdx: somet.idx,
-            gallId: somet.gallertId,
-          };
-          newArray = [...newArray, newItem];
-        });
+      if (sItem.includes('@')) {
+        some && // 작가 검색 결과 페이지
+          some.map((somet) => {
+            const newItem = {
+              key: somet.galleryId,
+              imgSrc: somet.galleryImageLocation,
+              isSubscribe: somet.isSubscribe,
+              author: somet.idx,
+              viewCount: somet.galleryViews,
+              downloadCount: 30,
+              likeCount: somet.gallerySubscribeCount,
+              profileImg: somet.galleryImageLocation,
+              imgUserIdx: somet.idx,
+              gallId: somet.gallertId,
+            };
+            newArray = [...newArray, newItem];
+          });
+      } else {
+        some &&
+          some.map((somet) => {
+            const newItem = {
+              key: somet.galleryId,
+              imgSrc: somet.galleryImageLocation,
+              isSubscribe: somet.isSubscribe,
+              author: somet.idx,
+              viewCount: somet.galleryViews,
+              downloadCount: 30,
+              likeCount: somet.gallerySubscribeCount,
+              profileImg: somet.galleryImageLocation,
+              imgUserIdx: somet.idx,
+              gallId: somet.gallertId,
+            };
+            newArray = [...newArray, newItem];
+          });
+      }
       resolve({ hasNextPage: true, data: newArray });
     }, 1000);
   });
@@ -73,8 +92,6 @@ const useLoadItems = (nItem: any, cursor: any) => {
         setHasNextPage(false);
         setLoading(false);
       } else {
-        // http://a8674237-5aeb-4942-be54-37b0bb661eaa.mock.pstmn.io/main
-        //process.env.REACT_APP_HOON + `/api/pagination/cursor/${imgCount}`
         console.log(nItem);
         if (nItem.includes('@')) {
           get_cursor_based_auth(imgCount, nItem)
@@ -105,7 +122,10 @@ const useLoadItems = (nItem: any, cursor: any) => {
             });
         }
 
-        const { data, hasNextPage: newHasNextPage } = await loadItems(imgData);
+        const { data, hasNextPage: newHasNextPage } = await loadItems(
+          imgData,
+          nItem,
+        );
         setItems((current) => [...current, ...data]);
         setHasNextPage(newHasNextPage);
       }
@@ -142,32 +162,57 @@ export const CardGridItem = ({
     rootMargin: '0px 0px 400px 0px',
   });
   const history = useHistory();
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    if (nItem.includes('@')) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+  }, []);
 
   return (
     <>
       <S.PC_Container c_type="list">
         <S.PC_VeList>
-          {items &&
-            items.map((item) => (
-              <S.PC_Li key={item.key}>
-                <CardItem
-                  CardType="type01"
-                  imgSrc={item.imgSrc}
-                  isSubscribe={item.isSubscribe}
-                  author={item.author}
-                  viewCount={item.viewCount}
-                  downloadCount={item.downloadCount}
-                  likeCount={item.likeCount}
-                  proFileImg={item.proFileImg}
-                  isCart={item.isCart}
-                  imgUserIdx={item.imgUserIdx}
-                  gallId={item.gallId}
-                  cardOnclick={() => {
-                    history.push(`/img?id=${item.key}`);
-                  }}
-                />
-              </S.PC_Li>
-            ))}
+          {auth
+            ? items &&
+              items.map((item) => (
+                <S.PC_Li key={item.key}>
+                  <CardItem
+                    CardType="type02"
+                    isSubscribe={item.isSubscribe}
+                    author={item.author}
+                    // authorPhotos={item.photos}
+                    // authorFimg={item.fimg}
+                    // authorSimg={item.simg}
+                    // authorTimg={item.timg}
+                    // authorHimg={item.himg}
+                  />
+                </S.PC_Li>
+              ))
+            : items &&
+              items.map((item) => (
+                <S.PC_Li key={item.key}>
+                  <CardItem
+                    CardType="type01"
+                    imgSrc={item.imgSrc}
+                    isSubscribe={item.isSubscribe}
+                    author={item.author}
+                    viewCount={item.viewCount}
+                    downloadCount={item.downloadCount}
+                    likeCount={item.likeCount}
+                    proFileImg={item.proFileImg}
+                    isCart={item.isCart}
+                    imgUserIdx={item.imgUserIdx}
+                    gallId={item.gallId}
+                    cardOnclick={() => {
+                      history.push(`/img?id=${item.key}`);
+                    }}
+                  />
+                </S.PC_Li>
+              ))}
+
           {hasNextPage && <div ref={infiniteRef}></div>}
         </S.PC_VeList>
       </S.PC_Container>

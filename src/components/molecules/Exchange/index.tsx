@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import * as S from './style';
 import {
   expired_check,
-  get_profit,
+  get_profit_log,
   put_profit_bank,
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
@@ -11,6 +11,10 @@ import { useAppThunkDispatch } from '../../../redux/store';
 import { useSelector } from 'react-redux';
 import ROUTES from '../../../commons/routes';
 import { ModalLoadingItem } from '../ModalLoading';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/esm/locale';
+import moment from 'moment';
+import 'moment/locale/ko';
 
 const profitToBank = (some: any) => {
   return (
@@ -18,17 +22,17 @@ const profitToBank = (some: any) => {
       <S.PC_Ul>
         <S.PC_Li key={1}>
           <S.PC_Info li_type="date">신청일</S.PC_Info>
-          <S.PC_Info li_type="bank">은행</S.PC_Info>
+          <S.PC_Info li_type="bank">거래 ID</S.PC_Info>
           <S.PC_Info li_type="money">금액</S.PC_Info>
-          <S.PC_Info li_type="status">상태</S.PC_Info>
+          <S.PC_Info li_type="status">사용자 ID</S.PC_Info>
         </S.PC_Li>
         {some &&
           some.map((info: any) => (
-            <S.PC_Li key={info.id}>
+            <S.PC_Li key={info.date}>
               <S.PC_Info li_type="date">{info.date}</S.PC_Info>
-              <S.PC_Info li_type="bank">{info.bank}</S.PC_Info>
-              <S.PC_Info li_type="money">{info.money}</S.PC_Info>
-              <S.PC_Info li_type="status">{info.status}</S.PC_Info>
+              <S.PC_Info li_type="bank">{info.withdrawalNumber}</S.PC_Info>
+              <S.PC_Info li_type="money">{info.point}</S.PC_Info>
+              <S.PC_Info li_type="status">{info.idx}</S.PC_Info>
             </S.PC_Li>
           ))}
       </S.PC_Ul>
@@ -90,17 +94,39 @@ export const ExchangeItem = ({}: ExchangeItemProps): React.ReactElement => {
     currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
   }, []);
 
-  const [item, setitem] = useState([]);
+  const [item, setItem] = useState([]);
   const [money, setMoney] = useState(0);
-
-  useEffect(() => {
-    get_profit().then((response) => {
-      setitem(response.data);
-    });
-  }, []);
+  const [startDate, setStartDate] = useState(
+    new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),
+  );
+  const [endDate, setEndDate] = useState(
+    new Date(moment().format('YYYY/MM/DD')),
+  );
+  const addDaysToDate = (date: any) => {
+    var res = new Date(date);
+    res.setDate(res.getDate() + 1);
+    return res;
+  };
 
   const onChangeMoney = (e: any) => {
     setMoney(e.currentTarget.value);
+  };
+
+  const onLogHandler = () => {
+    return get_profit_log(
+      currentUser.token,
+      currentUser.email,
+      startDate.toLocaleString('fr-CA').substr(0, 10),
+      addDaysToDate(endDate).toLocaleString('fr-CA').substr(0, 10),
+    )
+      .then((response) => {
+        console.log(response), setItem(response.data);
+      })
+      .catch((err) =>
+        alert(
+          '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+        ),
+      );
   };
 
   const onSubmitHandler = (e: any) => {
@@ -113,7 +139,7 @@ export const ExchangeItem = ({}: ExchangeItemProps): React.ReactElement => {
           if (response.data === false) {
             alert('금액이 부족합니다.');
           } else {
-            alert(`${money}원이 출금 신청 되었습니다.`);
+            alert(`${money}원이 출금 되었습니다.`);
           }
           window.location.reload();
         })
@@ -137,11 +163,41 @@ export const ExchangeItem = ({}: ExchangeItemProps): React.ReactElement => {
         <S.PC_Overlay>
           <S.PC_Inner>
             <S.PC_Container>
-              <S.PC_Title>환전 가능 포인트: {data.point}</S.PC_Title>
+              <S.PC_Title>환전 가능 포인트:s {data.point}</S.PC_Title>
               <S.PC_Box box="change">
                 <S.PC_Input value={money} onChange={onChangeMoney} />
-                <S.PC_Btn btnOnClick={onSubmitHandler}>신청</S.PC_Btn>
+                <S.PC_Btn b_type="submit" btnOnClick={onSubmitHandler}>
+                  신청
+                </S.PC_Btn>
               </S.PC_Box>
+              <S.PC_DateContainer>
+                <S.PC_DateBox>
+                  <S.PC_DatePicker
+                    selected={startDate}
+                    onChange={(date: any) => setStartDate(date)}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    locale={ko}
+                    dateFormat="yyyy년 MM월 dd일"
+                  />
+                  <S.PC_DatePicker
+                    selected={endDate}
+                    onChange={(date: any) => setEndDate(date)}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    locale={ko}
+                    dateFormat="yyyy년 MM월 dd일"
+                  />
+                </S.PC_DateBox>
+                <S.PC_DateBox>
+                  <S.PC_Btn b_type="log" btnOnClick={onLogHandler}>
+                    조회 하기
+                  </S.PC_Btn>
+                </S.PC_DateBox>
+              </S.PC_DateContainer>
               {profitToBank(item)}
             </S.PC_Container>
           </S.PC_Inner>

@@ -50,6 +50,7 @@ export const SearchContainerItem =
               formClcik={goToSearch}
             />
             <S.PC_CardBox>
+              {}
               <CardGridItem nItem={query.item} cursor={27} />
             </S.PC_CardBox>
           </S.PC_Container>

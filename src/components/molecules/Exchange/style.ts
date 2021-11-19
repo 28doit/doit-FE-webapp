@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
 import { Btn } from '../../index';
+import DatePicker from 'react-datepicker';
 
 export const PC_Overlay = styled.div`
   width: 100%;
@@ -38,16 +40,24 @@ export const PC_Input = styled.input`
   font-size: 2rem;
 `;
 
-export const PC_Btn = styled(Btn)`
-  width: 20%;
-  margin: 0;
+export const PC_Btn = styled(Btn)<{ b_type: string }>`
+  ${(props) =>
+    props.b_type === 'submit' &&
+    css`
+      width: 20%;
+      margin: 0;
+    `}
+  ${(props) =>
+    props.b_type === 'log' &&
+    css`
+      margin-top: 2.4rem;
+      width: 10rem;
+      border-radius: 0.4rem;
+    `}
   background-color: #0197ea;
 `;
 
-export const PC_Box =
-  styled.div <
-  { box: string } >
-  `
+export const PC_Box = styled.div<{ box: string }>`
   ${(props) =>
     props.box === 'list' &&
     css`
@@ -74,7 +84,6 @@ export const PC_Box =
       align-items: center;
       justify-content: space-between;
     `}
-
 `;
 
 export const PC_Ul = styled.ul`
@@ -93,24 +102,21 @@ export const PC_Li = styled.li`
   color: #f2f2f2;
 `;
 
-export const PC_Info =
-  styled.div <
-  { li_type: string } >
-  `
+export const PC_Info = styled.div<{ li_type: string }>`
   ${(props) =>
     props.li_type === 'date' &&
     css`
-      width: 15%;
+      width: 30%;
     `}
   ${(props) =>
     props.li_type === 'bank' &&
     css`
-      width: 15%;
+      width: 30%;
     `}
   ${(props) =>
     props.li_type === 'money' &&
     css`
-      width: 15%;
+      width: 10%;
     `}
   ${(props) =>
     props.li_type === 'status' &&
@@ -120,4 +126,27 @@ export const PC_Info =
   text-align: center;
   font-size: 1.8rem;
   font-family: elice;
+`;
+
+export const PC_DateContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+`;
+
+export const PC_DateBox = styled.div`
+  display: flex;
+  width: 12rem;
+  margin-bottom: 1rem;
+`;
+
+export const PC_DatePicker = styled(DatePicker)`
+  margin-top: 3rem;
+  width: 10rem;
+  height: 3.8rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid black;
+  font-size: 1.2rem;
+  font-family: elice;
+  margin-right: 6rem;
 `;

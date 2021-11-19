@@ -133,14 +133,23 @@ export const get_category = () => {
   return axios.get(process.env.REACT_APP_LOCAL + `/category`);
 };
 
-export const get_profit = () => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/profit`);
-};
-
 export const put_profit_bank = (token: any, email: any, pay: any) => {
   return axios.put(
     process.env.REACT_APP_BEOM +
-      `/cash/payment?token=${token}&email=${email}&pay=${pay}`,
+      `/cash/withdrawal?token=${token}&email=${email}&pay=${pay}`,
+  );
+};
+
+export const get_profit_log = (
+  token: any,
+  email: any,
+  startDate: any,
+  endDate: any,
+) => {
+  return axios.get(
+    process.env.REACT_APP_BEOM +
+      `/cash/withdrawal?token=${token}&email=${email}&start_history=${startDate}&end_history=${endDate}`,
+    {},
   );
 };
 

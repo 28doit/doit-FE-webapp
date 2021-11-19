@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
-import * as S from './style';
 import moment from 'moment';
 import 'moment/locale/ko';
+import * as S from './style';
 import {
   expired_check,
   get_pay_log,
@@ -97,13 +97,13 @@ export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
   const [endDate, setEndDate] = useState(
     new Date(moment().format('YYYY/MM/DD')),
   );
-  const [item, setItem] = useState([]);
-
   const addDaysToDate = (date: any) => {
     var res = new Date(date);
     res.setDate(res.getDate() + 1);
     return res;
   };
+
+  const [item, setItem] = useState([]);
 
   const onBtnHandler = (e: any) => {
     if (
