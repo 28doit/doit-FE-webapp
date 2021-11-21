@@ -20,7 +20,7 @@ export const logout = () => {
 };
 
 export const register = (formData: any) => {
-  return axios.post(process.env.REACT_APP_BEOM + '/accounts', formData, {
+  return axios.post(process.env.REACT_APP_HOON + '/accounts', formData, {
     headers: {
       'content-type': 'multipart/form-data',
     },

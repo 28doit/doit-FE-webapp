@@ -9,6 +9,8 @@ import queryString from 'query-string';
 import {
   post_buy_img,
   post_cart_img,
+  post_like_img,
+  post_like_author,
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { useSelector } from 'react-redux';
@@ -22,7 +24,7 @@ export const ImageDetailItem = ({
   const query = queryString.parse(location.search);
   const [imgData, setImgData] = useState({
     imgSrc: '',
-    isSubscribe: '',
+    isSubscribe: false,
     profileImg: '',
     isAuthSubScribe: false,
     author: '',
@@ -36,6 +38,9 @@ export const ImageDetailItem = ({
     cameraInfo: '',
     locationInfo: '',
     isCart: false,
+    price: 0,
+    galleryId: 0,
+    galleryAuthId: 0,
   });
   const {
     imgSrc,
@@ -53,6 +58,9 @@ export const ImageDetailItem = ({
     cameraInfo,
     locationInfo,
     isCart,
+    price,
+    galleryId,
+    galleryAuthId,
   } = imgData;
 
   const [cart, setCart] = useState(isCart);
@@ -61,24 +69,29 @@ export const ImageDetailItem = ({
     get_img_detail(query.id)
       .then((response) => {
         console.log(response.data);
-        console.log(query.id);
-        const data = response.data;
+        const gallery = response.data.gallery;
+        const authInfo = response.data.user;
+
         setImgData({
-          imgSrc: data.galleryImageLocation,
-          isSubscribe: data.isSubscribe,
-          profileImg: data.profileImg,
-          isAuthSubScribe: data.isAuthSubScribe,
-          author: data.author,
-          likePeople: data.likePeople,
-          viewCount: data.galleryViews,
-          downloadCount: data.downloadCount,
-          likeCount: data.likeCount,
-          resolution: data.resolution,
-          imgSize: data.imgSize,
-          uploadDate: data.galleryTime,
-          cameraInfo: data.cameraInfo,
-          locationInfo: data.locationInfo,
-          isCart: data.isCart,
+          // 추가로 사진 4장만 가능?
+          isSubscribe: gallery.isSubscribe, // 없음
+          isCart: gallery.isCart, // 없음
+          isAuthSubScribe: gallery.isAuthSubScribe, // 없음
+          likePeople: authInfo.userSubscribeCount,
+          imgSrc: gallery.galleryImageLocation,
+          profileImg: authInfo.profileImageLocation,
+          author: authInfo.nickName,
+          viewCount: gallery.galleryViews,
+          downloadCount: gallery.galleryBuyCount,
+          likeCount: gallery.gallerySubscribeCount,
+          resolution: gallery.galleryName,
+          uploadDate: gallery.galleryTime,
+          locationInfo: gallery.galleryAdress,
+          price: response.data.galleryPrice.price,
+          imgSize: gallery.imgSize,
+          cameraInfo: gallery.cameraInfo,
+          galleryId: gallery.galleryId,
+          galleryAuthId: gallery.idx,
         });
       })
       .catch((err) => {
@@ -101,6 +114,20 @@ export const ImageDetailItem = ({
     );
   };
 
+  const onImgLikeBtn = (e: any) => {
+    setImgData({ ...imgData, ['isSubscribe']: !isSubscribe });
+    post_like_img(currentUser.idx, galleryId).then((response) => {
+      console.log(response);
+    });
+  };
+
+  const onAuthLikeBtn = (e: any) => {
+    setImgData({ ...imgData, ['isAuthSubScribe']: !isAuthSubScribe });
+    post_like_author(currentUser.idx, galleryAuthId).then((response) => {
+      console.log(response);
+    });
+  };
+
   return (
     <>
       <Mobile>
@@ -118,12 +145,12 @@ export const ImageDetailItem = ({
                 <S.PC_LeftInfo i_type="l_t_auth">
                   <S.PC_Img img="l_auth" src={profileImg} />
                   <S.PC_P p_type="l_auth">{author}</S.PC_P>
-                  {!isAuthSubScribe ? (
-                    <S.PC_LeftInfo i_type="like">
+                  {isAuthSubScribe ? (
+                    <S.PC_LeftInfo i_type="like" onClick={onAuthLikeBtn}>
                       <Heart width="30" height="30" fill="#d7443e" />
                     </S.PC_LeftInfo>
                   ) : (
-                    <S.PC_LeftInfo i_type="like">
+                    <S.PC_LeftInfo i_type="like" onClick={onAuthLikeBtn}>
                       <Heart width="30" height="30" fill="black" />
                     </S.PC_LeftInfo>
                   )}
@@ -132,12 +159,12 @@ export const ImageDetailItem = ({
                   </S.PC_P>
                 </S.PC_LeftInfo>
                 <S.PC_LeftInfo i_type="l_t_like">
-                  {!isSubscribe ? (
-                    <S.PC_LeftInfo i_type="like">
+                  {isSubscribe ? (
+                    <S.PC_LeftInfo i_type="like" onClick={onImgLikeBtn}>
                       <Heart width="30" height="30" fill="#d7443e" />
                     </S.PC_LeftInfo>
                   ) : (
-                    <S.PC_LeftInfo i_type="like">
+                    <S.PC_LeftInfo i_type="like" onClick={onImgLikeBtn}>
                       <Heart width="30" height="30" fill="black" />
                     </S.PC_LeftInfo>
                   )}
@@ -151,7 +178,7 @@ export const ImageDetailItem = ({
               <S.PC_LeftInfo i_type="l_m_list"></S.PC_LeftInfo>
             </S.PC_LeftBox>
             <S.PC_LeftBox b_type="bot">
-              <S.PC_P p_type="l_p">댓글</S.PC_P>
+              <S.PC_P p_type="l_p">댓글 (구현 중)</S.PC_P>
             </S.PC_LeftBox>
           </S.PC_Wrap>
           <S.PC_Wrap wrap="right">
@@ -172,12 +199,12 @@ export const ImageDetailItem = ({
             <S.PC_Hr />
             <S.PC_RightInfo i_type="r_s">
               <S.PC_RightInfo i_type="r_s_box">
-                <S.PC_P p_type="r_name">JPG \500</S.PC_P>
-                <S.PC_P p_type="r_b">해상도: {resolution}</S.PC_P>
-                <S.PC_P p_type="r_b">용량: {imgSize}</S.PC_P>
+                <S.PC_P p_type="r_name">JPG {price}원</S.PC_P>
+                <S.PC_P p_type="r_b">제목: {resolution}</S.PC_P>
                 <S.PC_P p_type="r_b">업로드 날짜: {uploadDate}</S.PC_P>
-                <S.PC_P p_type="r_b">카메라 정보: {cameraInfo}</S.PC_P>
-                <S.PC_P p_type="r_b">촬영 정보: {locationInfo}</S.PC_P>
+                <S.PC_P p_type="r_b">촬영지 주소: {locationInfo}</S.PC_P>
+                <S.PC_P p_type="r_b">촬영지 보기: {imgSize}</S.PC_P>
+                {/* <S.PC_P p_type="r_b">카메라 정보: {cameraInfo}</S.PC_P> */}
                 <S.PC_Btn b_type="cart" btnOnClick={imgCart}>
                   장바구니
                 </S.PC_Btn>

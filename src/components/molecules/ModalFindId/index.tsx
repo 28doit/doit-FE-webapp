@@ -30,6 +30,7 @@ export const ModalFindIdItem =
     const onSubmitHandler = (e: any) => {
       e.preventDefault();
       setLoading(true);
+      console.log(Name, Phone);
       post_find_id(Name, Phone)
         .then((response) => {
           console.log(response);

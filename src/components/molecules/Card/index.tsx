@@ -61,13 +61,14 @@ export const CardItem = ({
   const [like, setLike] = useState(isSubscribe);
 
   const imgLike = (idx: any, gallId: any) => {
-    return post_like_img(idx, gallId).then(() => {
+    console.log(idx, gallId);
+    post_like_img(idx, gallId).then(() => {
       setLike(!like);
     });
   };
 
   const authorLike = (idx: any, auth: any) => {
-    return post_like_author(idx, auth).then(() => {
+    post_like_author(idx, auth).then(() => {
       setLike(!like);
     });
   };
@@ -88,7 +89,7 @@ export const CardItem = ({
                   <Heart
                     width="60"
                     height="60"
-                    fill={like ? '#d7443e' : 'black'}
+                    fill={like ? '#d7443e' : 'white'}
                     onClick={() => {
                       imgLike(imgUserIdx, gallId);
                     }}

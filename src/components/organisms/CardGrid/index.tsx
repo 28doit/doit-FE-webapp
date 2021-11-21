@@ -12,6 +12,7 @@ import {
   get_cursor_based_default,
   get_category,
 } from '../../../redux/services/auth.service';
+import { useSelector } from 'react-redux';
 
 export interface Item {
   key: number;
@@ -50,7 +51,7 @@ const loadItems = (some: Array<any>, sItem: any): Promise<Response> => {
               likeCount: somet.gallerySubscribeCount,
               profileImg: somet.galleryImageLocation,
               imgUserIdx: somet.idx,
-              gallId: somet.gallertId,
+              gallId: somet.galleryId,
             };
             newArray = [...newArray, newItem];
           });
@@ -67,7 +68,7 @@ const loadItems = (some: Array<any>, sItem: any): Promise<Response> => {
               likeCount: somet.gallerySubscribeCount,
               profileImg: somet.galleryImageLocation,
               imgUserIdx: somet.idx,
-              gallId: somet.gallertId,
+              gallId: somet.galleryId,
             };
             newArray = [...newArray, newItem];
           });
@@ -150,6 +151,7 @@ export const CardGridItem = ({
   nItem,
   cursor,
 }: CardGridItemProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
   const { loading, items, hasNextPage, error, loadMore } = useLoadItems(
     nItem,
     cursor,
@@ -204,7 +206,7 @@ export const CardGridItem = ({
                     likeCount={item.likeCount}
                     proFileImg={item.proFileImg}
                     isCart={item.isCart}
-                    imgUserIdx={item.imgUserIdx}
+                    imgUserIdx={currentUser ? currentUser.idx : 0}
                     gallId={item.gallId}
                     cardOnclick={() => {
                       history.push(`/img?id=${item.key}`);

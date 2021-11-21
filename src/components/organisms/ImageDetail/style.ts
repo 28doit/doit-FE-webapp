@@ -4,6 +4,7 @@ import { Btn } from '../../index';
 
 export const PC_Container = styled.div`
   width: 100%;
+  height: 100%;
   background-color: #898e96;
   display: flex;
   justify-content: center;
@@ -25,7 +26,7 @@ export const PC_Wrap = styled.div<{ wrap: string }>`
       margin-left: 2rem;
       border-radius: 2%;
     `}
-    margin-top: 2rem;
+    margin-top: 10rem;
   margin-bottom: 2rem;
   background-color: #ffffff;
   border: 1px solid #849db7;
