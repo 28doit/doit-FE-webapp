@@ -22,6 +22,12 @@ export const DashBoardItem = (): React.ReactElement => {
     year: '',
     day: '',
     name: '',
+    profile: '',
+    nickName: '',
+    photoIng: [],
+    subUser: [],
+    totalSale: 0,
+    totalMoney: 0,
   });
 
   useEffect(() => {
@@ -44,6 +50,12 @@ export const DashBoardItem = (): React.ReactElement => {
               ['month']: userData.Month,
               ['day']: userData.Day,
               ['phone']: userData.PhoneNumber,
+              ['profile']: userData.ProfileImageLocation,
+              ['nickName']: userData.NickName,
+              ['photoIng']: userData.PhotosForSale,
+              ['subUser']: userData.SubScribeUser,
+              ['totalSale']: userData.totalSales,
+              ['totalMoney']: userData.CumulativeSales,
             });
           }
         })
@@ -60,18 +72,6 @@ export const DashBoardItem = (): React.ReactElement => {
     currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
   }, []);
 
-  const [imgItem, setImgItem] = useState([]);
-  const [userData, setUserData] = useState([]);
-
-  useEffect(() => {
-    get_dash(2006).then((response: any) => {
-      console.log(response);
-      // response.data.map(
-      //   (info: any) => (setImgItem(info.img), setUserData(info.user)),
-      // );
-    });
-  }, []);
-
   return (
     <>
       <Mobile>
@@ -85,41 +85,40 @@ export const DashBoardItem = (): React.ReactElement => {
         <S.PC_Overlay>
           <S.PC_Inner>
             <S.PC_Container>
-              {userData &&
-                userData.map((info: any) => (
-                  <S.PC_TopMid key="PC_TopMid">
-                    <S.PC_Box where="top">
-                      <S.PC_Img src={info.profile} />
-                      <S.PC_Nickname>{info.nickName}</S.PC_Nickname>
-                    </S.PC_Box>
-                    <S.PC_Box where="mid">
-                      <S.PC_Info>
-                        <S.PC_P p_type="main">누적 판매 수</S.PC_P>
-                        <S.PC_P p_type="sub">{info.rate} 개</S.PC_P>
-                      </S.PC_Info>
-                      <S.PC_Info>
-                        <S.PC_P p_type="main">누적 매출</S.PC_P>
-                        <S.PC_P p_type="sub">{info.sale} 원</S.PC_P>
-                      </S.PC_Info>
-                      <S.PC_Info>
-                        <S.PC_P p_type="main">판매중 콘텐츠</S.PC_P>
-                        <S.PC_P p_type="sub">{info.ing} 개</S.PC_P>
-                      </S.PC_Info>
-                      <S.PC_Info>
-                        <S.PC_P p_type="main">팬 수</S.PC_P>
-                        <S.PC_P p_type="sub">{info.fan} 명</S.PC_P>
-                      </S.PC_Info>
-                    </S.PC_Box>
-                  </S.PC_TopMid>
-                ))}
+              {data && (
+                <S.PC_TopMid key="PC_TopMid">
+                  <S.PC_Box where="top">
+                    <S.PC_Img src={data.profile} />
+                    <S.PC_Nickname>{data.nickName}</S.PC_Nickname>
+                  </S.PC_Box>
+                  <S.PC_Box where="mid">
+                    <S.PC_Info>
+                      <S.PC_P p_type="main">누적 판매 수</S.PC_P>
+                      <S.PC_P p_type="sub">{data.totalSale} 개</S.PC_P>
+                    </S.PC_Info>
+                    <S.PC_Info>
+                      <S.PC_P p_type="main">누적 매출</S.PC_P>
+                      <S.PC_P p_type="sub">{data.totalMoney} 원</S.PC_P>
+                    </S.PC_Info>
+                    <S.PC_Info>
+                      <S.PC_P p_type="main">판매중 콘텐츠</S.PC_P>
+                      <S.PC_P p_type="sub">{data.photoIng.length} 개</S.PC_P>
+                    </S.PC_Info>
+                    <S.PC_Info>
+                      <S.PC_P p_type="main">팬 수</S.PC_P>
+                      <S.PC_P p_type="sub">{data.subUser.length} 명</S.PC_P>
+                    </S.PC_Info>
+                  </S.PC_Box>
+                </S.PC_TopMid>
+              )}
               <S.PC_Box where="bot">
                 <S.PC_Ul>
-                  {imgItem &&
-                    imgItem.map((info: any) => (
-                      <S.PC_Li key={info.key}>
+                  {data &&
+                    data.photoIng.map((info: any) => (
+                      <S.PC_Li key={info.galleryId}>
                         <CardItem
                           CardType="type07"
-                          likeImg={info.imgSrc}
+                          likeImg={info.galleryImageLocation}
                           cardOnclick={() => {
                             console.log('hi');
                           }}

@@ -45,9 +45,9 @@ export const ModalRegisterItem =
     });
 
     const [Loading, setLoading] = useState(false); // 화면 로딩 창
-    const [Check, setCheck] = useState(false); // 약관 동의 체크박스 체크했는지 판별
-    const [EmailDuplicate, setEmailDuplicate] = useState(true); // 중복 이메일인지 판별하는 state - true면 중복, false면 사용 가능
-    const [IsCheck, setIsCheck] = useState(false); // 이메일 중복을 했는지 안했는지 판별하는 state - 중복 확인 후 사용가능하면 true로 변함
+    const [Check, setCheck] = useState(true); // 약관 동의 체크박스 체크했는지 판별
+    const [EmailDuplicate, setEmailDuplicate] = useState(false); // 중복 이메일인지 판별하는 state - true면 중복, false면 사용 가능
+    const [IsCheck, setIsCheck] = useState(true); // 이메일 중복을 했는지 안했는지 판별하는 state - 중복 확인 후 사용가능하면 true로 변함
 
     const {
       Email,
