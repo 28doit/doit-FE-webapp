@@ -68,7 +68,7 @@ export const ImageDetailItem = ({
   useLayoutEffect(() => {
     get_img_detail(query.id)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
         const gallery = response.data.gallery;
         const authInfo = response.data.user;
 
@@ -151,7 +151,7 @@ export const ImageDetailItem = ({
                     </S.PC_LeftInfo>
                   ) : (
                     <S.PC_LeftInfo i_type="like" onClick={onAuthLikeBtn}>
-                      <Heart width="30" height="30" fill="black" />
+                      <Heart width="30" height="30" fill="#d7443e" />
                     </S.PC_LeftInfo>
                   )}
                   <S.PC_P p_type="l_p">
@@ -165,7 +165,7 @@ export const ImageDetailItem = ({
                     </S.PC_LeftInfo>
                   ) : (
                     <S.PC_LeftInfo i_type="like" onClick={onImgLikeBtn}>
-                      <Heart width="30" height="30" fill="black" />
+                      <Heart width="30" height="30" fill="#d7443e" />
                     </S.PC_LeftInfo>
                   )}
                   <S.PC_P p_type="l_p">좋아요</S.PC_P>

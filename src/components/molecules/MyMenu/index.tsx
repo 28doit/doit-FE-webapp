@@ -10,42 +10,42 @@ export interface MyMenuItemProps {}
 export const MyMenuItem = ({}: MyMenuItemProps): React.ReactElement => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [data, setData] = useState({
-    email: '',
+    email: 'ㅂ',
     sex: 1,
-    phone: '',
-    month: '',
-    year: '',
-    day: '',
-    name: '',
-    profit: '',
-    total: '',
+    phone: 'ㅈ',
+    month: 'ㅈ',
+    year: 'ㅈ',
+    day: 'ㅈ',
+    name: 'ㅈ',
+    profit: 'ㅈ',
+    total: 'ㅈ',
   });
-  useEffect(() => {
-    const getUser = async () => {
-      await expired_check(currentUser.token, currentUser.email)
-        .then((response) => {
-          if (response.data.Token === false) {
-            window.location.replace(ROUTES.LOGIN);
-          } else {
-            const userData = response.data;
-            setData({
-              ...data,
-              ['email']: userData.Email,
-              ['name']: userData.Name,
-              ['sex']: userData.sex,
-              ['year']: userData.Year,
-              ['month']: userData.Month,
-              ['day']: userData.Day,
-              ['phone']: userData.PhoneNumber,
-              ['profit']: userData.Point.profitPoint,
-              ['total']: userData.Point.totalPoint,
-            });
-          }
-        })
-        .catch(() => {});
-    };
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     await expired_check(currentUser.token, currentUser.email)
+  //       .then((response) => {
+  //         if (response.data.Token === false) {
+  //           window.location.replace(ROUTES.LOGIN);
+  //         } else {
+  //           const userData = response.data;
+  //           setData({
+  //             ...data,
+  //             ['email']: userData.Email,
+  //             ['name']: userData.Name,
+  //             ['sex']: userData.sex,
+  //             ['year']: userData.Year,
+  //             ['month']: userData.Month,
+  //             ['day']: userData.Day,
+  //             ['phone']: userData.PhoneNumber,
+  //             ['profit']: userData.Point.profitPoint,
+  //             ['total']: userData.Point.totalPoint,
+  //           });
+  //         }
+  //       })
+  //       .catch(() => {});
+  //   };
+  //   getUser();
+  // }, []);
 
   return (
     <>

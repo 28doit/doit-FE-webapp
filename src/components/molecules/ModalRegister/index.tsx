@@ -30,17 +30,17 @@ export const ModalRegisterItem =
     const NickNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
     const NameRegex = /^[가-힣]+$/;
     const [Account, setAccount] = useState({
-      Email: 'poeynus@gmail.com',
-      Name: '한국인',
-      NickName: 'lelelelelel',
-      Gender: '1',
-      Phone: '01012345678',
-      Password: 'qweQWE!23',
-      ConfirmPassword: 'qweQWE!23',
-      Year: '1998',
-      Month: '03',
-      Day: '12',
-      ImgBase64: PURPLE,
+      Email: '',
+      Name: '',
+      NickName: '',
+      Gender: '',
+      Phone: '',
+      Password: '',
+      ConfirmPassword: '',
+      Year: '',
+      Month: '',
+      Day: '',
+      ImgBase64: '',
       ImgFile: null,
     });
 
@@ -163,7 +163,7 @@ export const ModalRegisterItem =
           formData.append('userDay', Day);
           formData.append('password', Password);
           formData.append('type', '1');
-          formData.append('gallaryCount', '0');
+          formData.append('gallCount', '0');
           formData.append('userSubscribeCount', '0');
 
           console.log(data);

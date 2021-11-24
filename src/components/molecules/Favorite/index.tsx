@@ -3,7 +3,8 @@ import * as S from './style';
 import { CardItem, ModalLoadingItem } from '../../index';
 import {
   expired_check,
-  get_favorite,
+  get_favorite_img,
+  get_favorite_auth,
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { Nlogout } from '../../../redux/actions/auth';
@@ -23,7 +24,7 @@ const favoriteImg = (some: any) => {
               <CardItem
                 CardType="type03"
                 isSubscribe={info.subscribe}
-                likeImg={info.src}
+                likeImg={info.gallery.galleryImageLocation}
               />
             </S.PC_Li>
           ))}
@@ -57,69 +58,70 @@ const favoriteAuthor = (some: any) => {
 };
 
 export const FavoriteItem = ({}: FavoriteItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
-  const dispatch = useAppThunkDispatch();
-  const [Loading, setLoading] = useState(false);
-  const [data, setData] = useState({
-    email: '',
-    sex: 1,
-    phone: '',
-    month: '',
-    year: '',
-    day: '',
-    name: '',
-  });
+  // const { user: currentUser } = useSelector((state) => state.auth);
+  // const dispatch = useAppThunkDispatch();
+  // const [Loading, setLoading] = useState(false);
+  // const [data, setData] = useState({
+  //   email: '',
+  //   sex: 1,
+  //   phone: '',
+  //   month: '',
+  //   year: '',
+  //   day: '',
+  //   name: '',
+  // });
 
-  useEffect(() => {
-    const getUser = async () => {
-      await expired_check(currentUser.token, currentUser.email)
-        .then((response) => {
-          console.log(response.data);
-          if (response.data.Token === false) {
-            alert('시간이 만료되었습니다. 다시 로그인 해주세요');
-            dispatch(Nlogout());
-            window.location.replace(ROUTES.LOGIN);
-          } else {
-            const userData = response.data;
-            setData({
-              ...data,
-              ['email']: userData.Email,
-              ['name']: userData.Name,
-              ['sex']: userData.sex,
-              ['year']: userData.Year,
-              ['month']: userData.Month,
-              ['day']: userData.Day,
-              ['phone']: userData.PhoneNumber,
-            });
-          }
-        })
-        .catch(() => {
-          alert(
-            '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
-          );
-          setLoading(false);
-          window.location.replace(ROUTES.MYDASH);
-        });
-      setLoading(false);
-    };
-    setLoading(true);
-    currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
-  }, []);
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     await expired_check(currentUser.token, currentUser.email)
+  //       .then((response) => {
+  //         console.log(response.data);
+  //         if (response.data.Token === false) {
+  //           alert('시간이 만료되었습니다. 다시 로그인 해주세요');
+  //           dispatch(Nlogout());
+  //           window.location.replace(ROUTES.LOGIN);
+  //         } else {
+  //           const userData = response.data;
+  //           setData({
+  //             ...data,
+  //             ['email']: userData.Email,
+  //             ['name']: userData.Name,
+  //             ['sex']: userData.sex,
+  //             ['year']: userData.Year,
+  //             ['month']: userData.Month,
+  //             ['day']: userData.Day,
+  //             ['phone']: userData.PhoneNumber,
+  //           });
+  //         }
+  //       })
+  //       .catch(() => {
+  //         alert(
+  //           '잠시 오류가 발생하였습니다. 잠시 후 다시 시도해주시기 바랍니다.',
+  //         );
+  //         setLoading(false);
+  //         window.location.replace(ROUTES.MYDASH);
+  //       });
+  //     setLoading(false);
+  //   };
+  //   setLoading(true);
+  //   currentUser ? getUser() : window.location.replace(ROUTES.LOGIN);
+  // }, []);
   const [imgItem, setImgItem] = useState([]);
   const [authItem, setAuthItem] = useState([]);
   const [favImg, setFavImg] = useState(true);
 
   useEffect(() => {
-    get_favorite().then((response) => {
-      response.data.map((info: any) => {
-        setImgItem(info.img);
-        setAuthItem(info.auth);
-      });
+    get_favorite_img(2006).then((response) => {
+      console.log(response);
+      setImgItem(response.data);
+    });
+    get_favorite_auth(2006).then((response) => {
+      console.log(response);
     });
   }, []);
 
   const onFavoriteHandler = () => {
-    get_favorite().then((response) => {
+    get_favorite_img(2006).then((response) => {
       response.data.map((info: any) => {
         setImgItem(info.img);
         setAuthItem(info.auth);
@@ -137,7 +139,6 @@ export const FavoriteItem = ({}: FavoriteItemProps): React.ReactElement => {
         <div>태블릿</div>
       </Tablet>
       <PC>
-        {Loading ? <ModalLoadingItem /> : ''}
         <S.PC_Overlay>
           <S.PC_Inner>
             <S.PC_Container>

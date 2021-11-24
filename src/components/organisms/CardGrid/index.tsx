@@ -42,16 +42,16 @@ const loadItems = (some: Array<any>, sItem: any): Promise<Response> => {
         some && // 작가 검색 결과 페이지
           some.map((somet) => {
             const newItem = {
-              key: somet.galleryId,
-              imgSrc: somet.galleryImageLocation,
-              isSubscribe: somet.isSubscribe,
-              author: somet.idx,
-              viewCount: somet.galleryViews,
-              downloadCount: 30,
-              likeCount: somet.gallerySubscribeCount,
-              profileImg: somet.galleryImageLocation,
-              imgUserIdx: somet.idx,
-              gallId: somet.galleryId,
+              key: somet.gallery.galleryId,
+              imgSrc: somet.gallery.galleryImageLocation,
+              isSubscribe: somet.gallery.isSubscribe,
+              author: somet.user.nickName,
+              viewCount: somet.gallery.galleryViews,
+              downloadCount: somet.gallery.galleryBuyCount,
+              likeCount: somet.gallery.gallerySubscribeCount,
+              profileImg: somet.gallery.galleryImageLocation,
+              imgUserIdx: somet.gallery.idx,
+              gallId: somet.gallery.galleryId,
             };
             newArray = [...newArray, newItem];
           });
@@ -59,16 +59,16 @@ const loadItems = (some: Array<any>, sItem: any): Promise<Response> => {
         some &&
           some.map((somet) => {
             const newItem = {
-              key: somet.galleryId,
-              imgSrc: somet.galleryImageLocation,
-              isSubscribe: somet.isSubscribe,
-              author: somet.idx,
-              viewCount: somet.galleryViews,
-              downloadCount: 30,
-              likeCount: somet.gallerySubscribeCount,
-              profileImg: somet.galleryImageLocation,
-              imgUserIdx: somet.idx,
-              gallId: somet.galleryId,
+              key: somet.gallery.galleryId,
+              imgSrc: somet.gallery.galleryImageLocation,
+              isSubscribe: somet.gallery.isSubscribe,
+              author: somet.user.nickName,
+              viewCount: somet.gallery.galleryViews,
+              downloadCount: somet.gallery.galleryBuyCount,
+              likeCount: somet.gallery.gallerySubscribeCount,
+              profileImg: somet.gallery.galleryImageLocation,
+              imgUserIdx: somet.gallery.idx,
+              gallId: somet.gallery.galleryId,
             };
             newArray = [...newArray, newItem];
           });

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const login = (email: any, password: any) => {
   return axios
-    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
+    .post(process.env.REACT_APP_HOON + '/accounts/login', {
       email: email,
       password: password,
     })
@@ -95,8 +95,16 @@ export const get_pay_log = (token: any, startDate: any, endDate: any) => {
   );
 };
 
-export const get_favorite = () => {
-  return axios.get(process.env.REACT_APP_LOCAL + '/favorite');
+export const get_favorite_img = (idx: any) => {
+  return axios.get(
+    process.env.REACT_APP_HOON + `/subscribe/gallery/cursor/${idx}`,
+  );
+};
+
+export const get_favorite_auth = (idx: any) => {
+  return axios.get(
+    process.env.REACT_APP_HOON + `/subscribe/user/cursor/${idx}`,
+  );
 };
 
 export const get_management = () => {
