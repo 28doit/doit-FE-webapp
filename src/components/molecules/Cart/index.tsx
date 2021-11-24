@@ -8,7 +8,7 @@ import {
   post_delete_cart,
   expired_check,
 } from '../../../redux/services/auth.service';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { Nlogout } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 import ROUTES from '../../../commons/routes';
@@ -17,7 +17,9 @@ import { ModalLoadingItem } from '../ModalLoading';
 export interface CartItemProps {}
 
 export const CartItem = ({}: CartItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const [cartList, setCartList] = useState([]);
   const [check, setCheck] = useState([] as any);
   const [money, setMoney] = useState(0);
