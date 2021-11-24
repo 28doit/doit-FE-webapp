@@ -17,12 +17,12 @@ import { ModalLoadingItem } from '../ModalLoading';
 export interface CartItemProps {}
 
 export const CartItem = ({}: CartItemProps): React.ReactElement => {
+  const { user: currentUser } = useSelector((state) => state.auth);
   const [cartList, setCartList] = useState([]);
   const [check, setCheck] = useState([] as any);
   const [money, setMoney] = useState(0);
   let allPay = 0;
 
-  const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useAppThunkDispatch();
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({
