@@ -12,7 +12,7 @@ import {
   get_cursor_based_default,
   get_category,
 } from '../../../redux/services/auth.service';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 
 export interface Item {
   key: number;
@@ -151,7 +151,9 @@ export const CardGridItem = ({
   nItem,
   cursor,
 }: CardGridItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const { loading, items, hasNextPage, error, loadMore } = useLoadItems(
     nItem,
     cursor,
