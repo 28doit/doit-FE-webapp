@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const login = (email: any, password: any) => {
   return axios
-    .post(process.env.REACT_APP_HOON + '/accounts/login', {
+    .post(process.env.REACT_APP_BEOM + '/accounts/login', {
       email: email,
       password: password,
     })
