@@ -3,7 +3,7 @@ import * as S from './style';
 import { CardItem, ModalLoadingItem } from '../../index';
 import { expired_check, get_dash } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { Nlogout } from '../../../redux/actions/auth';
 import ROUTES from '../../../commons/routes';
@@ -11,7 +11,9 @@ import ROUTES from '../../../commons/routes';
 export interface DashBoardItemProps {}
 
 export const DashBoardItem = (): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const dispatch = useAppThunkDispatch();
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({

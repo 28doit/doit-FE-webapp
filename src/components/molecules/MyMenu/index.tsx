@@ -2,50 +2,52 @@ import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { expired_check } from '../../../redux/services/auth.service';
 
 export interface MyMenuItemProps {}
 
 export const MyMenuItem = ({}: MyMenuItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const [data, setData] = useState({
-    email: 'ㅂ',
+    email: '',
     sex: 1,
-    phone: 'ㅈ',
-    month: 'ㅈ',
-    year: 'ㅈ',
-    day: 'ㅈ',
-    name: 'ㅈ',
-    profit: 'ㅈ',
-    total: 'ㅈ',
+    phone: '',
+    month: '',
+    year: '',
+    day: '',
+    name: '',
+    profit: '',
+    total: '',
   });
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     await expired_check(currentUser.token, currentUser.email)
-  //       .then((response) => {
-  //         if (response.data.Token === false) {
-  //           window.location.replace(ROUTES.LOGIN);
-  //         } else {
-  //           const userData = response.data;
-  //           setData({
-  //             ...data,
-  //             ['email']: userData.Email,
-  //             ['name']: userData.Name,
-  //             ['sex']: userData.sex,
-  //             ['year']: userData.Year,
-  //             ['month']: userData.Month,
-  //             ['day']: userData.Day,
-  //             ['phone']: userData.PhoneNumber,
-  //             ['profit']: userData.Point.profitPoint,
-  //             ['total']: userData.Point.totalPoint,
-  //           });
-  //         }
-  //       })
-  //       .catch(() => {});
-  //   };
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    const getUser = async () => {
+      await expired_check(currentUser.token, currentUser.email)
+        .then((response) => {
+          if (response.data.Token === false) {
+            window.location.replace(ROUTES.LOGIN);
+          } else {
+            const userData = response.data;
+            setData({
+              ...data,
+              ['email']: userData.Email,
+              ['name']: userData.Name,
+              ['sex']: userData.sex,
+              ['year']: userData.Year,
+              ['month']: userData.Month,
+              ['day']: userData.Day,
+              ['phone']: userData.PhoneNumber,
+              ['profit']: userData.Point.profitPoint,
+              ['total']: userData.Point.totalPoint,
+            });
+          }
+        })
+        .catch(() => {});
+    };
+    getUser();
+  }, []);
 
   return (
     <>

@@ -3,7 +3,7 @@ import * as S from './style';
 import { useHistory } from 'react-router-dom';
 import { useAppThunkDispatch } from '../../../redux/store';
 import validator from 'validator';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { ModalLoadingItem } from '../../index';
 import {
   expired_check,
@@ -19,7 +19,9 @@ export interface EditProfileItemProps {}
 
 export const EditProfileItem =
   ({}: EditProfileItemProps): React.ReactElement => {
-    const { user: currentUser } = useSelector((state) => state.auth);
+    const { user: currentUser } = useSelector(
+      (state: RootStateOrAny) => state.auth,
+    );
     const dispatch = useAppThunkDispatch();
     const [data, setData] = useState({
       email: '',

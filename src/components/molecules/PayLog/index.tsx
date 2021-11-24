@@ -8,7 +8,7 @@ import {
   expired_check,
   get_pay_log,
 } from '../../../redux/services/auth.service';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { Nlogout } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
@@ -42,7 +42,9 @@ const PayLogCard = ({
 };
 
 export const PayLogItem = ({}: PayLogItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const dispatch = useAppThunkDispatch();
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({

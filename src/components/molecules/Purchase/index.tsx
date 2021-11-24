@@ -6,7 +6,7 @@ import * as S from './style';
 import 'react-datepicker/dist/react-datepicker.css';
 import { get_purchase } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 
 export interface PurchaseItemProps {}
 
@@ -37,7 +37,9 @@ const PurchaseCard = ({
 };
 
 export const PurchaseItem = ({}: PurchaseItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
 
   const [startDate, setStartDate] = useState(
     new Date(moment().subtract('1', 'M').format('YYYY/MM/DD')),

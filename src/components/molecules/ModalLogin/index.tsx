@@ -5,14 +5,16 @@ import validator from 'validator';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { ModalLoadingItem } from '../../index';
 import { Nlogin } from '../../../redux/actions/auth';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 
 export interface ModalLoginItemProps {}
 
 export const ModalLoginItem = ({}: ModalLoginItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const history = useHistory();
 
   useEffect(() => {

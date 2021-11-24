@@ -13,14 +13,16 @@ import {
   post_like_author,
 } from '../../../redux/services/auth.service';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 
 export interface ImageDetailItemProps {}
 
 export const ImageDetailItem = ({
   ...args
 }: ImageDetailItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const query = queryString.parse(location.search);
   const [imgData, setImgData] = useState({
     imgSrc: '',

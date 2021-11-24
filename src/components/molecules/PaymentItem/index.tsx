@@ -6,7 +6,7 @@ import {
   send_payment,
 } from '../../../redux/services/auth.service';
 import ROUTES from '../../../commons/routes';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { Nlogout } from '../../../redux/actions/auth';
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
@@ -15,7 +15,9 @@ export interface PaymentItemProps {}
 
 export const PaymentItem = ({}: PaymentItemProps): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({
     email: '',

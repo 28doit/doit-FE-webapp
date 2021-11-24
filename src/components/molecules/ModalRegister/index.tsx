@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import * as S from './style';
 import PLUS from '../../../assets/plus.svg';
@@ -17,7 +17,9 @@ export interface RegisterItemProps {}
 
 export const ModalRegisterItem =
   ({}: RegisterItemProps): React.ReactElement => {
-    const { user: currentUser } = useSelector((state) => state.auth);
+    const { user: currentUser } = useSelector(
+      (state: RootStateOrAny) => state.auth,
+    );
     const history = useHistory();
 
     useEffect(() => {

@@ -1,6 +1,6 @@
 import * as S from './style';
 import ROUTES from '../../../commons/routes';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { Nlogout } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
 import { ReactComponent as Login } from '../../../assets/login.svg';
@@ -15,7 +15,9 @@ export interface HeaderItemProps {}
 
 export const HeaderItem = ({}: HeaderItemProps): React.ReactElement => {
   const dispatch = useAppThunkDispatch();
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
 
   const Exit = () => {
     dispatch(Nlogout());

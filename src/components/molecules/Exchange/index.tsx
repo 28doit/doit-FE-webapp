@@ -8,7 +8,7 @@ import {
 import { PC, Tablet, Mobile } from '../../../MediaQuery';
 import { Nlogout } from '../../../redux/actions/auth';
 import { useAppThunkDispatch } from '../../../redux/store';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import ROUTES from '../../../commons/routes';
 import { ModalLoadingItem } from '../ModalLoading';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -43,7 +43,9 @@ const profitToBank = (some: any) => {
 export interface ExchangeItemProps {}
 
 export const ExchangeItem = ({}: ExchangeItemProps): React.ReactElement => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector(
+    (state: RootStateOrAny) => state.auth,
+  );
   const dispatch = useAppThunkDispatch();
   const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({
