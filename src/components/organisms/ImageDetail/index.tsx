@@ -176,7 +176,7 @@ export const ImageDetailItem = ({
               <S.PC_Hr />
             </S.PC_LeftBox>
             <S.PC_LeftBox b_type="mid">
-              <S.PC_P p_type="l_p">작가의 다른 이미지</S.PC_P>
+              <S.PC_P p_type="l_p">작가의 다른 이미지 (구현 중)</S.PC_P>
               <S.PC_LeftInfo i_type="l_m_list"></S.PC_LeftInfo>
             </S.PC_LeftBox>
             <S.PC_LeftBox b_type="bot">
@@ -205,7 +205,7 @@ export const ImageDetailItem = ({
                 <S.PC_P p_type="r_b">제목: {resolution}</S.PC_P>
                 <S.PC_P p_type="r_b">업로드 날짜: {uploadDate}</S.PC_P>
                 <S.PC_P p_type="r_b">촬영지 주소: {locationInfo}</S.PC_P>
-                <S.PC_P p_type="r_b">촬영지 보기: {imgSize}</S.PC_P>
+                <S.PC_P p_type="r_b">촬영지 보기: (구현 중)</S.PC_P>
                 {/* <S.PC_P p_type="r_b">카메라 정보: {cameraInfo}</S.PC_P> */}
                 <S.PC_Btn b_type="cart" btnOnClick={imgCart}>
                   장바구니

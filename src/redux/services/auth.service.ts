@@ -138,7 +138,9 @@ export const get_cursor_based_default = (imgCount: any) => {
 };
 
 export const get_category = () => {
-  return axios.get(process.env.REACT_APP_LOCAL + `/category`);
+  return axios.get(
+    `https://0d67f0d3-4d63-402a-b634-396764869c5e.mock.pstmn.io/category`,
+  );
 };
 
 export const put_profit_bank = (token: any, email: any, pay: any) => {

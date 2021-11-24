@@ -121,8 +121,8 @@ export const CardItem = ({
       {CardType === 'type02' && (
         <S.PC_Wrap
           w_type="t_2"
-          onMouseOver={() => setShow(true)}
-          onMouseOut={() => setShow(false)}
+          onMouseEnter={() => setShow(true)}
+          onMouseLeave={() => setShow(false)}
           onClick={cardOnclick}
         >
           <S.PC_Box box="author">
@@ -158,8 +158,8 @@ export const CardItem = ({
       {CardType === 'type03' && (
         <S.PC_Wrap
           w_type="t_3"
-          onMouseOver={() => setShow(true)}
-          onMouseOut={() => setShow(false)}
+          onMouseEnter={() => setShow(true)}
+          onMouseLeave={() => setShow(false)}
           onClick={cardOnclick}
         >
           <S.PC_Box box="like">
@@ -193,8 +193,8 @@ export const CardItem = ({
       {CardType === 'type05' && (
         <S.PC_Wrap
           w_type="t_5"
-          onMouseOver={() => setShow(true)}
-          onMouseOut={() => setShow(false)}
+          onMouseEnter={() => setShow(true)}
+          onMouseLeave={() => setShow(false)}
           onClick={cardOnclick}
         >
           <S.PC_Box box="like">
@@ -215,8 +215,8 @@ export const CardItem = ({
       {CardType === 'type06' && (
         <S.PC_Wrap
           w_type="t_6"
-          onMouseOver={() => setShow(true)}
-          onMouseOut={() => setShow(false)}
+          onMouseEnter={() => setShow(true)}
+          onMouseLeave={() => setShow(false)}
           onClick={cardOnclick}
         >
           <S.PC_Box box="manage">

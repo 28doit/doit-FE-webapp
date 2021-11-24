@@ -84,7 +84,7 @@ export const MyMenuItem = ({}: MyMenuItemProps): React.ReactElement => {
               구매한 이미지
             </S.PC_Btn>
             <S.PC_Btn btnLink={ROUTES.MYFAVORITE} btntype="default">
-              구독한 이미지 / 작가
+              구독한 이미지 / 작가(구현 중)
             </S.PC_Btn>
             <S.PC_Btn btnLink={ROUTES.MYPAYMENT} btntype="default">
               결제 내역
@@ -102,7 +102,7 @@ export const MyMenuItem = ({}: MyMenuItemProps): React.ReactElement => {
               이미지 업로드 하기
             </S.PC_Btn>
             <S.PC_Btn btnLink={ROUTES.MYUPLOADLIST} btntype="default">
-              이미지 관리
+              이미지 관리(구현 중)
             </S.PC_Btn>
             <S.PC_Btn btnLink={ROUTES.MYEXCHANGE} btntype="default">
               출금 신청

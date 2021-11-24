@@ -34,6 +34,11 @@ export const PC_Wrap = styled.div<{ w_type: string }>`
       width: 33rem;
       height: 20rem;
       position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
     `}
   ${(props) =>
     props.w_type == 't_5' &&
