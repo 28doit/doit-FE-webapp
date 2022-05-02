@@ -1,3 +1,5 @@
+## [작업 기록 - 노션](https://altera520.notion.site/PROJECT-90ec32b69b264562b600d1904f969af8)
+
 # 기록
 
 <details>
